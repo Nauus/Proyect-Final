@@ -26,7 +26,7 @@
     scale: 1.1;
 }
 body {
-    background-image: url(/public/views/img/fondoarreglado.svg);
+    background-image: url(/img/fondoarreglado.svg);
     background-position: center;
     background-size: cover;
     min-height: 100vh;
@@ -39,7 +39,7 @@ body {
 }
 .register-section {
     border: 2px solid #fff;
-    height: 490px;
+    height: 690px;
     width: 400px;
     backdrop-filter: blur(1px);
     border-radius: 10px;
@@ -75,6 +75,8 @@ body {
     align-items: center;
     height: 100%;
     width: 100%;
+    top: 2%;
+    bottom: 20%;
     transition: transform 0.6s;
 }
 .formbox h3 {
@@ -85,7 +87,7 @@ body {
 .input {
     display: flex;
     align-items: center;
-    width: 340px;
+    width: 330px;
     height: 50px;
     border-bottom: 2px solid rgba(0, 0, 0, 0.514);
     margin: 20px 0;

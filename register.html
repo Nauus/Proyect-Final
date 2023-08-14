@@ -39,7 +39,7 @@
                       <!-- agregar icono-->
                       <i class="fa-solid fa-key" style="color: #f09100;"></i>
                     </span>
-                    <input type="password" id="registerPassword" required placeholder="Contraseña">
+                    <input type="password" id="registerPassword" required placeholder="Contraseña"  pattern=".{6,}" title="La contraseña debe tener al menos 6 caracteres."><br>
                     <label for="registerPassword"></label>
                 </div>
                 <div class="input">
@@ -47,10 +47,10 @@
                         <!-- agregar icono-->
                         <i class="fa-solid fa-key" style="color: #f09100;"></i>
                     </span>
-                    <input type="password" required placeholder="Confirmar Contraseña">
+                    <input type="password" id="verifyPassword" placeholder="Confirmar Contraseña"  pattern=".{6,}" title="La contraseña debe tener al menos 6 caracteres."><br>
                     <label for=""></label>
                 </div>
-                <button class="btn">Registrarme</button>
+                <button class="btn" id="buttonRegister">Registrarme</button>
                 
                 <div class="create">
                     <p>o registrate con:<a href="#" target="_blank" style="color: #f09100;">  <i class="fa-brands fa-google"></i></a>
@@ -66,6 +66,7 @@
     </div>
     <div class="footer"></div>
     </div>
-    <script src="/js/register.js" type="module"></script>
+    <script src="js/localStorageUtils.js" type="module"></script>
+    <script src="js/register.js" type="module"></script>
 </body>
 </html>
