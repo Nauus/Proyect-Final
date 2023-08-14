@@ -1,3 +1,13 @@
+const currentUser = localStorage.getItem('currentUser');
+
+
+
+if (!currentUser) {
+    window.location.href = 'login.html';
+}
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const productListContainer = document.getElementById('car-list-container');
 

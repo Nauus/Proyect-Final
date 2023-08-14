@@ -5,7 +5,11 @@ let currentCategoriesArray = [];
 let currentSortCriteria = undefined;
 let minCount = undefined;
 let maxCount = undefined;
+const currentUser = localStorage.getItem('currentUser');
 
+if (!currentUser) {
+    window.location.href = 'login.html';
+}
 function sortCategories (criteria, array) {
     let result = [];
     if (criteria === ORDER_ASC_BY_NAME) {
