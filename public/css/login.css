@@ -1,0 +1,177 @@
+* {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+}
+.navbar {
+    height: 49px;
+    background-color:#212529;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+.logo {
+    position: fixed;
+    top: 60px;
+    left: 215px;
+    max-width: 550px; 
+    height: auto;
+    z-index: 1000;
+    background: none;
+    border: none; 
+    transition: .3s ease all;
+    cursor: pointer;
+}
+.logo:hover {
+    scale: 1.1;
+}
+body {
+    background-image: url(/public/views/img/fondoarreglado.svg);
+    background-position: center;
+    background-size: cover;
+    min-height: 100vh;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.login-section {
+    border: 2px solid #fff;
+    height: 490px;
+    width: 400px;
+    backdrop-filter: blur(1px);
+    border-radius: 10px;
+    transition: .3s;
+    display: flex;
+    overflow: hidden;
+}
+@keyframes changShadow {
+    0% {
+        box-shadow: 0 0 60px hsla(36, 100%, 47%, 0)
+    }
+    25% {
+        box-shadow: 0 0 60px hsl(36, 100%, 47%)
+    }
+    50% {
+        box-shadow: 0 0 60px hsl(178,99%,31%);
+    }
+    75% {
+        box-shadow: 0 0 60px hsl(36, 100%, 47%)
+    }
+    100% {
+        box-shadow: 0 0 60px hsla(36, 100%, 47%, 0)
+    }
+}
+.login-section:hover {
+    box-shadow: 0 0 60px hsl(36,100%,47%);
+    animation: changShadow  5s 3 ;
+}
+.formbox {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    transition: transform 0.6s;
+}
+.formbox h3 {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+.input {
+    display: flex;
+    align-items: center;
+    width: 340px;
+    height: 50px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.514);
+    margin: 20px 0;
+    position: relative;
+}
+.input input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    padding-right: 28px;
+    color: #000000;
+}
+.input .icono {
+    position: relative;
+    
+    right: 15px;
+    font-size: 20px;
+}
+.input label {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    font-size: 18px;
+    font-weight: bold;
+    color: #000000;
+    transition: .3s ease;
+}
+.btn {
+    background-color:   #f09100 ;
+    width: 100%;
+    height: 45px;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+    transition: background-color .7s;
+}
+.btn:hover {
+    background-color: 
+    #019f99;
+    
+}
+.create p {
+    font-size: 15px;
+    text-align: center;
+    margin: 25px;
+}
+.create a {
+    color: #000000;
+    font-weight: 600;
+    text-decoration: none;
+}
+.create a:hover {
+    color: 
+    #019f99;
+    font-weight: 600;
+    
+}
+.hidden {
+    display: none;
+}
+.footer {
+    height: 14px;
+    background-color:#212529;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000; 
+}
+.passwordforgotten {
+    font-size: 14px;
+    font-weight: normal;
+    
+}
+.create i {
+    padding: 10px;
+}
+.create i:hover{
+    scale: 1.4;
+    color: #019f99;
+}

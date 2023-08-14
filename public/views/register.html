@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/public/css/register.css">
+    <link rel="shortcut icon" href="icons/icon.png">
+    <script src="https://kit.fontawesome.com/b72f4da2bc.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="navbar"></div><a href="https://jovenesaprogramar.edu.uy" target="_blank">
+        <img src="img/logoarreglado2.png" alt="Logo" class="logo">
+    </a>
+    <div class="register-section">
+        <div class="formbox register" id="register">
+            <form id="registerForm">
+                <h3>Regístrate</h3>
+                <div class="input">
+                    <span class="icono">
+                        <!-- agregar icono-->
+                        <i class="fa-solid fa-user" style="color: #f09100;"></i>
+                                        </span>
+                    <input type="name" id="registerUsername" required placeholder="Nombre">
+                    <label for="registerUsername"></label>
+                </div>
+                <div>
+                    <div class="input">
+                        <span class="icono">
+                            <!-- agregar icono-->
+                            <i class="fa-solid fa-envelope" style="color: #f09100;"></i>
+                                            </span>
+                        <input type="email" id="registerEmail" required placeholder="Correo Electrónico">
+                        <label for="registerEmail"></label>
+                    </div>
+                </div>
+                <div class="input">
+                    <span class="icono">
+                      <!-- agregar icono-->
+                      <i class="fa-solid fa-key" style="color: #f09100;"></i>
+                    </span>
+                    <input type="password" id="registerPassword" required placeholder="Contraseña">
+                    <label for="registerPassword"></label>
+                </div>
+                <div class="input">
+                    <span class="icono">
+                        <!-- agregar icono-->
+                        <i class="fa-solid fa-key" style="color: #f09100;"></i>
+                    </span>
+                    <input type="password" required placeholder="Confirmar Contraseña">
+                    <label for=""></label>
+                </div>
+                <button class="btn">Registrarme</button>
+                
+                <div class="create">
+                    <p>o registrate con:<a href="#" target="_blank" style="color: #f09100;">  <i class="fa-brands fa-google"></i></a>
+                        <a href="#" target="_blank" style="color: #f09100;">  <i class="fa-brands fa-facebook"></i></a>
+                            <a href="#" target="_blank" style="color: #f09100;">  <i class="fa-brands fa-apple"></i></a>
+                                <a href="#" target="_blank" style="color: #f09100;"> <i class="fa-brands fa-github"></i></a></p>
+                    <p>¿Ya tienes una cuenta? <a href="login.html" class="login-link">Iniciar sesión</a></p>
+                    <div id="message" class="messageRegister"></div>
+                    </div>
+            </form>
+            
+        </div>
+    </div>
+    <div class="footer"></div>
+    </div>
+    <script src="/js/register.js" type="module"></script>
+</body>
+</html>
