@@ -9,15 +9,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const selectedCategoryID = localStorage.getItem('catID');
     const productsUrl = `https://japceibal.github.io/emercado-api/cats_products/${selectedCategoryID}.json`;
 
-   
+
+
     fetch(productsUrl)
         .then(response => response.json())
         .then(data => {
             const products = data.products;
+            const categoriaNombre = document.getElementById('categoriaNombre');
 
-            
+            categoriaNombre.textContent = data.catName; // accedo a la URL que se esta accediendo en el ciclo, de alli saco el catName que es el nombre que especifica  que contiene la API.
+
             products.forEach(product => {
                 const productCard = document.createElement('div');
+
                 productCard.classList.add('card', 'mb-3');
                 productCard.innerHTML = `
                 <div class="row">
