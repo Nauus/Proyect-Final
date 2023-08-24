@@ -42,9 +42,35 @@
         <h2>Productos</h2>
         <p class="lead" id="parrafoProductos">Verás aquí todos los productos de la categoría <span id="categoriaNombre"></span></p>
       </div>
+      
+      <div class="btn-group btn-group-toggle mb-5 " data-bs-toggle="buttons">
+        <input type="number" id="rangeFilterPriceMin" class="mb-4" placeholder="Precio mínimo">
+        <div class="w-100"></div>
+        <input type="number" id="rangeFilterPriceMax" class="mb-4" placeholder="Precio máximo">
+        <div class="w-100"></div> <!-- Agregar un divisor para alinear los botones en una sola línea -->
+        <input type="radio" class="btn-check" name="options" id="sortAscPrice">
+        <label class="btn btn-light mb-lg-4 " for="sortAscPrice">Precio ascendente</label>
+        <div class="w-100"></div>
+        <input type="radio" class="btn-check" name="options" id="sortDescPrice">
+        <label class="btn btn-light mb-lg-4" for="sortDescPrice">Precio descendente</label>
+        <div class="w-100"></div>
+        <input type="radio" class="btn-check" name="options" id="sortDescRelevance">
+        <label class="btn btn-light mb-lg-4" for="sortDescRelevance">Más relevantes</label>
+        <div class="w-100"></div>
+        <input type="radio" class="btn-check" name="options" id="sortNone" checked>
+        <label class="btn btn-light mb-lg-4" for="sortNone">Quitar Filtros</label>
     </div>
+    <div class="form-outline">
+      <input type="search" id="searchInput" class="form-control mb-4" placeholder="Buscar Productos" aria-label="Search" />
+    </div>
+      
+         
+        </span>
+    
+
     <div class="row">
       <div class="list-group" id="car-list-container">
+      </div>
       </div>
   </main>
   <footer class="text-muted">
