@@ -42,24 +42,35 @@
         <h2>Productos</h2>
         <p class="lead" id="parrafoProductos">Verás aquí todos los productos de la categoría <span id="categoriaNombre"></span></p>
       </div>
-      
-      <div class="btn-group btn-group-toggle mb-5 " data-bs-toggle="buttons">
-        <input type="number" id="rangeFilterPriceMin" class="mb-4" placeholder="Precio mínimo">
-        <div class="w-100"></div>
-        <input type="number" id="rangeFilterPriceMax" class="mb-4" placeholder="Precio máximo">
-        <div class="w-100"></div> <!-- Agregar un divisor para alinear los botones en una sola línea -->
+
+    <div class="col text-end">
+      <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
         <input type="radio" class="btn-check" name="options" id="sortAscPrice">
-        <label class="btn btn-light mb-lg-4 " for="sortAscPrice">Precio ascendente</label>
-        <div class="w-100"></div>
+        <label class="btn btn-light" for="sortAscPrice" content="\f062"><i class="fas fa-arrow-up mr-1"></i>$</label>
         <input type="radio" class="btn-check" name="options" id="sortDescPrice">
-        <label class="btn btn-light mb-lg-4" for="sortDescPrice">Precio descendente</label>
-        <div class="w-100"></div>
-        <input type="radio" class="btn-check" name="options" id="sortDescRelevance">
-        <label class="btn btn-light mb-lg-4" for="sortDescRelevance">Más relevantes</label>
-        <div class="w-100"></div>
-        <input type="radio" class="btn-check" name="options" id="sortNone" checked>
-        <label class="btn btn-light mb-lg-4" for="sortNone">Quitar Filtros</label>
+        <label class="btn btn-light" for="sortDescPrice"><i class="fas fa-arrow-down mr-1"></i>$</label>
+        <input type="radio" class="btn-check" name="options" id="sortDescRelevance" checked="">
+        <label class="btn btn-light" for="sortDescRelevance"><i class="fas fa-sort-amount-down mr-1"></i></label>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
+        <div class="row container p-0 m-0">
+          <div class="col">
+            <p class="font-weight-normal text-end my-2">Cant.</p>
+          </div>
+          <div class="col">
+            <input class="form-control" type="number" placeholder="min." id="rangeFilterPriceMin">
+          </div>
+          <div class="col">
+            <input class="form-control" type="number" placeholder="máx." id="rangeFilterPriceMax">
+          </div>
+          <div class="col-3 p-0">
+            <input type="radio" class="btn-check" name="options" id="sortNone" checked>
+        <label class="btn btn-light mb-lg-4" for="sortNone">Quitar Filtros</label>
+          </div>
+        </div>
+      </div>
     <div class="form-outline">
       <input type="search" id="searchInput" class="form-control mb-4" placeholder="Buscar Productos" aria-label="Search" />
     </div>
