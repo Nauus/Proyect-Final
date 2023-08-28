@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             categoriaNombre.textContent = data.catName;
 
             // Obtener elementos HTML para los filtros y botones de orden
+            ////////////////////////////////////////////////////////// !BELEN
             const rangeFilterMin = document.getElementById('rangeFilterPriceMin');
             const rangeFilterMax = document.getElementById('rangeFilterPriceMax');
             const sortAscPriceButton = document.getElementById('sortAscPrice');
@@ -33,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const sortDescRelevanceButton = document.getElementById('sortDescRelevance');
             const sortNoneButton = document.getElementById('sortNone');
             const searchInput = document.getElementById('searchInput');
-
+            ////////////////////////////////////////////////////////// ! CAMILA
             // Función que aplica los filtros y ordena los productos
             const applyFiltersAndSort = () => {
                 // Obtener los valores del rango de precios
@@ -46,25 +47,32 @@ document.addEventListener('DOMContentLoaded', () => {
                     return (isNaN(minPrice) || productPrice >= minPrice) && (isNaN(maxPrice) || productPrice <= maxPrice);
                 });
 
+                //////////////////////////////////////////////////////////
                 // Realizar la búsqueda y luego aplicar los filtros y ordenar
+                ////////////////////////////////////////////////////////////// //! NAHUEL MEDINA
                 performSearch(searchInput.value.trim(), filteredProducts);
             };
 
             // Función que realiza la búsqueda y aplica los filtros y ordena
+
             const performSearch = (searchText, productsToShow) => {
                 const normalizedSearchText = searchText.toLowerCase().trim();
+                const searchWords = normalizedSearchText.split(/\s+/);
 
                 const searchResults = normalizedSearchText === '' ?
+
+                    ////////////////////////////////////////////////////////////////! JUAN
                     productsToShow :
                     productsToShow.filter(product => {
                         const productName = product.name.toLowerCase();
                         const productDescription = product.description.toLowerCase();
-                        return productName.includes(normalizedSearchText) || productDescription.includes(normalizedSearchText);
-                    });
 
+                        // Verificar si alguna palabra de búsqueda está presente en el nombre o descripción
+                        return searchWords.some(word => productName.includes(word) || productDescription.includes(word));
+                    });
+                //////////////////////////////////////////////////////////////! JOSE
                 // Ordenar los productos según las opciones seleccionadas
                 let sortedProducts;
-                console.log(sortedProducts);
                 if (sortAscPriceButton.checked) {
                     sortedProducts = searchResults.slice().sort((a, b) => parseFloat(a.cost) - parseFloat(b.cost)); // dicho metodo .sort devuelve un numero negativo, cero o positivo, segun si el costo de a es menor, igual o mayor que el costo de b. Ordena los productos de menor a mayor
                 } else if (sortDescPriceButton.checked) {
@@ -74,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else if (sortNoneButton.checked) {
                     sortedProducts = searchResults;
                 }
-
+                ////////////////////////////////////////////////////////////// 
                 // Limpiar el contenedor de productos antes de agregar los productos filtrados y ordenados
                 productListContainer.innerHTML = '';
 
@@ -101,6 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             // Escuchar eventos de entrada y cambio en los filtros y botones de orden
+            ////////////////////////////////////////////////////////////// //! MARTIN
             rangeFilterMin.addEventListener('input', applyFiltersAndSort);
             rangeFilterMax.addEventListener('input', applyFiltersAndSort);
             sortAscPriceButton.addEventListener('change', applyFiltersAndSort);
@@ -110,6 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
             searchInput.addEventListener('input', applyFiltersAndSort);
 
             applyFiltersAndSort(); // Aplicar los filtros y ordenación inicialmente al cargar la página
+            ////////////////////////////////////////////////////////////////
         })
         .catch(error => {
             console.error('Error al cargar los productos:', error);
