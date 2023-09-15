@@ -1,0 +1,193 @@
+.navbar-dark .navbar-nav,
+.navbar-dark .navbar-nav .nav-link:hover {
+  color:hsl(39, 100%, 52%);
+}
+  .card.custom-card {
+    transition: transform 0.3s ease-in-out;
+  }
+  .card.custom-card:hover {
+    transform: scale(1.05);
+    border-color: hsl(178,99%,31%) !important;
+  }
+  .navbar {
+   background-color: #0b0b0b;
+
+  }
+ 
+  
+  footer a.btn {
+    border-radius: 20px;
+    background-color:#0b0b0b;
+    padding: 5px 10px;
+  }
+  
+  footer a.btn:hover {
+    color: hsl(0, 0%, 0%);
+    background-color: #3f2910a8;
+  }
+
+.rounded-circle {
+  border:2px solid white;
+}
+.btn {
+    background-color: #f39407 !important;
+    border-color: #f39407;
+    margin-right: 10px;
+    outline: none;
+    
+  }
+  .btn-light:focus {
+    border-color: #f39407; /* Cambia el color del borde al seleccionar */
+    box-shadow: none; /* Opcional: quita la sombra al enfocar */
+  }
+  .btn-primary:active:focus {
+    border-color: #f39407; /* Cambia el color del borde al seleccionar */
+    box-shadow: none; /* Opcional: quita la sombra al enfocar */
+  }
+  .btn-primary:hover {
+    border-color: #d7cfc3;
+  }
+  .form-control:focus {
+    border-color: #f39407; /* o establece el color de borde deseado */
+    box-shadow: none; /* Opcional: quita la sombra al enfocar */
+  }
+  .btn-group-toggle .btn {
+    margin-right: 10px; 
+  }
+.card a  {
+  border: 2px solid #d7cfc3;
+  backdrop-filter: blur(1px);
+  border-radius: 10px;
+  transition: .3s;
+  display: flex;
+  overflow: hidden;
+}
+@keyframes changShadow {
+  0% {
+      box-shadow: 0 0 20px hsla(36, 100%, 47%, 0)
+  }
+  25% {
+      box-shadow: 0 0 20px #f39407
+  }
+  50% {
+      box-shadow: 0 0 20px hsl(178,99%,31%);
+  }
+  75% {
+      box-shadow: 0 0 20px #f39407
+  }
+  100% {
+      box-shadow: 0 0 20px hsla(36, 100%, 47%, 0)
+  }
+} .card a:hover{
+  
+  box-shadow: 0 0 60px #f39407;
+  animation: changShadow  5s 3 ;
+}
+.hover {
+  backdrop-filter: blur(1px);
+  border-radius: 10px;
+  transition: .3s;
+  display: flex;
+  overflow: hidden;
+}
+ .hover:hover{
+  
+  box-shadow: 0 0 60px #f39407;
+  animation: changShadow  5s 3 ;
+}
+.coloredshap {
+  background-color: #d7cfc3;
+  background-size: none;
+}
+
+div .list-group-item  {
+  background-color: rgba(255, 255, 255, 0.5); 
+}
+
+
+
+
+
+/* Estilo para el título de categoría */
+.categoria-title {
+  color: #fff; /* Color del texto en el fondo */
+  padding: 10px 20px; /* Espaciado interno */
+  border-radius: 5px; /* Bordes redondeados */
+  display: inline-block; /* Para que se ajuste al contenido */
+  text-align: center; /* Alineación central */
+  font-size: 35px; /* Tamaño de fuente grande */
+  font-weight: 700; /* Fuente en negrita */
+  color: #747474; /* Color azul llamativo */
+  text-align: center; /* Alineación central */
+  margin: 20px 0; /* Margen superior e inferior */
+  text-transform: uppercase; /* Texto en mayúsculas */
+  letter-spacing: 2px; /* Espaciado entre letras */
+  margin-bottom: 15px; /* Margen inferior adicional */
+}
+
+/* Estilo para el subtítulo */
+.categoria-subtitle {
+  font-size: 20px; /* Tamaño de fuente para el subtítulo */
+  color: #333; /* Color de texto oscuro */
+  text-align: center; /* Alineación central */
+  margin-bottom: 15px; /* Margen inferior adicional */
+}
+
+/* Estilo para el fondo de color del párrafo dentro del contenedor */
+.div.text-center.p-4 p {
+  background-color: #f39407; /* Color de fondo para el párrafo */
+  color: #fff; /* Color del texto en el fondo */
+  padding: 20px; /* Espaciado interno alrededor del contenido */
+}
+
+
+/* Estilo inicial para el título de categoría */
+.categoria-title {
+  font-size: 35px; /* Tamaño de fuente */
+  font-weight: 700; /* Fuente en negrita */
+  color: #747474; /* Color de texto */
+  text-align: center; /* Alineación central */
+  margin: 20px 0; /* Margen superior e inferior */
+  text-transform: uppercase; /* Texto en mayúsculas */
+  letter-spacing: 2px; /* Espaciado entre letras */
+  margin-bottom: 15px; /* Margen inferior adicional */
+  transition: transform 0.3s ease-in-out; /* Transición para suavizar el efecto */
+}
+
+/* Estilo para el efecto de escala al hacer hover */
+.categoria-title:hover {
+  transform: scale(1.05); /* Escalar el texto al 105% del tamaño original */
+}
+
+/* Estilo para el borde de los elementos de categoría */
+.categoria-item {
+    border: 2px solid #000; /* Cambia el color y el grosor del borde según tus preferencias */
+    padding: 20px; /* Espaciado interno alrededor del contenido */
+}
+
+.categorias {
+  background-color: #f39407;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+.productos {
+  background-color: #f39407;
+}
+.lead {
+  font-size: 1.25rem;
+    font-weight: 300;
+}
+.productTitle {
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+body {
+  background-color: #d7cfc3 !important;
+}
+
+
+
+
+
+

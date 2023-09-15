@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const productCard = document.createElement('div');
                     productCard.classList.add('card', 'mb-3');
                     productCard.innerHTML = `
-                        <div class="row">
+                    <a href="product-info.html?id=${product.id}" class="list-group-item list-group-item-action"> <div class="row">
                             <div class="col-3">
                                 <img src="${product.image}" alt="${product.name}" class="img-thumbnail">
                             </div>
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <p class="mb-1">${product.description}</p>
                             </div>
                         </div>
-                    </div>`;
+                    </div></a>`;
                     productListContainer.appendChild(productCard);
                 });
             };
@@ -125,3 +125,16 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Error al cargar los productos:', error);
         });
 });
+
+
+
+
+
+
+function seleccionarProducto (productID) {
+    localStorage.setItem('productoSeleccionado', productID);
+    window.location.href = 'product-info.html';
+    console.log('ID del producto seleccionado:', productID);
+}
+
+

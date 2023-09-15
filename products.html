@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>eMercado - Todo lo que busques está aquí</title>
-
+  <title>eMercado - Productos</title>
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link href="css/custom-styles.css" rel="stylesheet">
+  <link rel="shortcut icon" href="img/logoarreglado2.png">
 </head>
-
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+  <nav class="navbar navbar-expand-lg navbar-dark p-1">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <i id="modeIcon" class="fa fa-sun-o" aria-hidden="true"></i>
+      </a>
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,12 +28,24 @@
             <a class="nav-link" href="index.html">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="categories.html">Categorías</a>
+            <a class="nav-link active bold" href="categories.html">Categorías</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item ml-auto">
+            <div class="dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="img/psyduck.jpg" alt="Imagen de perfil" class="rounded-circle" style="width: 30px; height: 30px;">
+              </a>
+              <ul class="dropdown-menu dropdown-menu-wide" aria-labelledby="navbarDarkDropdownMenuLink">
+                <a href="#" class="dropdown-item">Configuración</a>
+                <div class="dropdown-divider"></div>
+                <p class="dropdown-item-text">Sesión activa como: <span class="currentUser" id="currentUser"></span></p>
+                <a class="dropdown-item" id="logoutButton" style="cursor: pointer;">Cerrar sesión</a>
+              </ul>
+            </div>
           </li>
         </ul>
       </div>
@@ -39,10 +54,10 @@
   <main class="pb-5 container">
     <div class="container">
       <div class="text-center p-4">
-        <h2>Productos</h2>
-        <p class="lead" id="parrafoProductos">Verás aquí todos los productos de la categoría <span id="categoriaNombre"></span></p>
+        <h2 class="productos">Productos</h2>
+        <h4 class="lead" id="parrafoProductos">Verás aquí todos los productos de la categoría <span id="categoriaNombre"></span></h4>
       </div>
-
+    </div>
     <div class="col text-end">
       <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
         <input type="radio" class="btn-check" name="options" id="sortAscPrice">
@@ -67,25 +82,31 @@
           </div>
           <div class="col-3 p-0">
             <input type="radio" class="btn-check" name="options" id="sortNone" checked>
-        <label class="btn btn-light mb-lg-4" for="sortNone">Quitar Filtros</label>
+            <label class="btn btn-light mb-lg-4" for="sortNone">Quitar Filtros</label>
           </div>
         </div>
       </div>
-    <div class="form-outline">
-      <input type="search" id="searchInput" class="form-control mb-4" placeholder="Buscar Productos" aria-label="Search" />
     </div>
-        </span>
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-12 mb-4">
+        <div class="form-outline">
+          <input type="search" id="searchInput" class="form-control" placeholder="Buscar Productos" aria-label="Search" />
+        </div>
+      </div>
+    </div>
     <div class="row">
       <div class="list-group" id="car-list-container">
       </div>
-      </div>
+    </div>
   </main>
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
-        <a href="#">Volver arriba</a>
+        <a href="#" class="btn btn-outline-dark btn-sm" data-bs-toggle="tooltip" data-bs-placement="top"
+          title="Volver arriba">Volver arriba</a>
       </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank"
+          class="text-decoration-none text-dark">Jovenes a Programar</a></p>
     </div>
   </footer>
   <div id="spinner-wrapper">
@@ -96,9 +117,9 @@
       <div></div>
     </div>
   </div>
+  
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/products.js"></script>
 </body>
-
 </html>
