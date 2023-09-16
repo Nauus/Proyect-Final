@@ -7,6 +7,10 @@ if (productId) {
   console.log(productDetailsUrl);
   const productCommentsUrl = `https://japceibal.github.io/emercado-api/products_comments/${productId}.json`;
 
+  
+//Belen
+
+  
   function cargarComentarios (product) {
     fetch(productCommentsUrl)
       .then(response => response.json())
@@ -41,6 +45,10 @@ if (productId) {
       });
   }
 
+  
+//Camila
+
+  
   fetch(productDetailsUrl)
     .then(response => response.json())
     .then(product => {
@@ -56,6 +64,10 @@ if (productId) {
       soldCountElement.textContent = `Vendidos: ${product.soldCount}`;
       categoryElement.textContent = `Categoría: ${product.category}`;
 
+      
+//Jose
+
+      
       const carouselInner = document.querySelector('#imageCarousel .carousel-inner');
 
       // Limpia el carrusel actual
@@ -78,6 +90,10 @@ if (productId) {
         carouselInner.appendChild(slideDiv);
       });
 
+      
+// Nahuel M
+
+      
       product.relatedProducts.forEach(relatedProduct => {
         const relatedProductElement = document.createElement('div');
         relatedProductElement.classList.add("col-md-6");
@@ -99,7 +115,11 @@ if (productId) {
   console.error('ID de producto no válido.');
 }
 
-// Comentarios
+
+// Martin Rodriguez
+
+
+
 const commentForm = document.getElementById('comment-form');
 commentForm.addEventListener('submit', function (e) {
   e.preventDefault();
@@ -111,6 +131,11 @@ commentForm.addEventListener('submit', function (e) {
     return;
   }
 
+
+  // Nacho Ignacio Juan
+
+
+  
   const currentUser = localStorage.getItem('currentUser');
   const currentDateTime = new Date().toLocaleString().replace(/\//g, '-');
 
@@ -138,3 +163,6 @@ commentForm.addEventListener('submit', function (e) {
 
   alert('Comentario agregado con éxito. (Este mensaje es solo para demostración, no se envía al servidor)');
 });
+
+//Nahuel A
+
