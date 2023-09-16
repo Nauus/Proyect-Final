@@ -98,9 +98,11 @@ if (productId) {
         const relatedProductElement = document.createElement('div');
         relatedProductElement.classList.add("col-md-6");
         relatedProductElement.innerHTML = `
-          <h3>${relatedProduct.name}</h3>
+        <h3>${relatedProduct.name}</h3>
+        <a href="product-info.html?id=${relatedProduct.id}">
           <img src="${relatedProduct.image}" alt="${relatedProduct.name}">
-        `;
+        </a>
+  `;
         relatedProductsContainer.appendChild(relatedProductElement);
       });
       cargarComentarios(product);
