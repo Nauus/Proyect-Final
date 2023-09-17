@@ -1,176 +1,226 @@
 .slide {
-    position: relative;
-    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.64);
-    margin-top: 26px;
+  position: relative;
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.64);
+  margin-top: 26px;
 }
 
 .slide-open:checked + .slide-item {
-    position: static;
-    opacity: 100;
+  position: static;
+  opacity: 100;
 }
 .slide-item {
-    position: absolute;
-    opacity: 0;
-    -webkit-transition: opacity 0.6s ease-out;
-    transition: opacity 0.6s ease-out;
+  position: absolute;
+  opacity: 0;
+  -webkit-transition: opacity 0.6s ease-out;
+  transition: opacity 0.6s ease-out;
 }
 .slide-item img {
-    display: block;
-    height: auto;
-    max-width: 100%;
+  display: block;
+  height: auto;
+  max-width: 100%;
 }
 
 .imageCarousel {
-  width: 750px;
-  height: 700px;
-    margin: 0 auto; /* Para centrar horizontalmente */
-    border: 1px solid #747474; /* Agrega un borde */
-    background-color: white;
-    margin-bottom: -40px;
+width: 750px;
+height: 750px;
+  margin: 0 auto; /* Para centrar horizontalmente */
+  border: 1px solid #747474; /* Agrega un borde */
+  background-color: white;
+  margin-bottom: -100px;
+  margin-top: -10px;
+}
+
+.carousel-inner {
+margin-top: 10px;
 }
 
 .productTitle {
-    background-color: #f39407;
+  background-color: #f39407;
 height: 100% !important;
-    
+  
 }
 
 #comment-form {
-  margin: 3rem;
-  margin-top: 20px;
+margin: 3rem;
+margin-top: 20px;
+text-align: center;
+padding: 20px;
+background-color: #f9f9f9;
+border: 1px solid #e0e0e0;
+border-radius: 8px;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+p.comentarios {
+text-align: center;
+font-size: 30px;
+background-color: #f39407;
+}
+
+textarea#comment.form-control {
+height: 100px;
+width: 100%;
+}
+div.comments-container {
+padding: 40px;
+}
+div.comment {
+text-align: left;
+}
+span.comentarios  {
+font-size: 30px;
+display: flex; /* Activa el modelo de caja flexible */
+justify-content: center; /* Centra horizontalmente el contenido */
+height: 55px;
+background-color: #f39407;
+margin-bottom: 20px;
+}
+#form {
+width: 250px;
+margin: 0 auto;
+height: 50px;
+}
+
+#form p {
+ text-align: center;
+}
+
+#form label {
+  font-size: 20px;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+label {
+  color: grey;
+}
+
+.clasificacion {
   text-align: center;
-  padding: 20px;
-  background-color: #f9f9f9;
+  direction: rtl; /* Forzar la dirección de escritura de izquierda a derecha */
+
+}
+.clasificacion input[type="radio"] {
+  display: none;
+}
+.clasificacion label {
+  font-size: 30px;
+  cursor: pointer;
+  color: #ccc;
+  transition: color 0.3s;
+  margin: 0 10px;
+}
+.clasificacion input[type="radio"]:checked ~ label {
+  color: #f39407;
+}
+
+
+
+.pintada span  {
+  text-align: center;
+}
+
+.pintada span  {
+  font-size: 30px;
+  cursor: pointer;
+  color: #ccc;
+  transition: color 0.3s;
+  margin: 0 10px;
+}
+
+.pintada span {
+  color: #f39407; /* Color para estrellas pintadas */
+}
+.comment {
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 15px;
+  background-color: #ffffff;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-p.comentarios {
+.comment p {
+  margin: 5px 0;
+}
+
+.carouselFlechas {
+  background-color: #f39407;
+}
+
+.form-control {
+  width: 60%;
+}
+
+.comentarios {
+  padding-left: 40px;
+  margin-bottom: -5px;
+  font-size: 40px;
+  color: #333333; /* Color del título */
+}
+
+.card-product {
+  margin-bottom: 20%;
+}
+
+.classComent {
+  color: grey;
+}
+
+.card-title {
   text-align: center;
-  font-size: 30px;
   background-color: #f39407;
-}
-
-textarea#comment.form-control {
-  height: 100px;
-  width: 100%;
-}
-div.comments-container {
-  padding: 40px;
-}
-div.comment {
-  text-align: left;
-}
-span.comentarios  {
-  font-size: 30px;
-  display: flex; /* Activa el modelo de caja flexible */
-  justify-content: center; /* Centra horizontalmente el contenido */
-  height: 55px;
-  background-color: #f39407;
-}
-#form {
-  width: 250px;
-  margin: 0 auto;
-  height: 50px;
-}
-  
-  #form p {
-   text-align: center;
-  }
-  
-  #form label {
-    font-size: 20px;
-  }
-  
-  input[type="radio"] {
-    display: none;
-  }
-  
-  label {
-    color: grey;
-  }
-  
-  .clasificacion {
-    text-align: center;
-  }
-  .clasificacion input[type="radio"] {
-    display: none;
-  }
-  .clasificacion label {
     font-size: 30px;
-    cursor: pointer;
-    color: #ccc;
-    transition: color 0.3s;
-    margin: 0 10px;
-  }
-  .clasificacion input[type="radio"]:checked ~ label {
-    color: #f39407;
-  }
-  
+    margin-bottom: 20px;
 
+}
 
-  .pintada span  {
-    text-align: center;
-  }
- 
-  .pintada span  {
-    font-size: 30px;
-    cursor: pointer;
-    color: #ccc;
-    transition: color 0.3s;
-    margin: 0 10px;
-  }
- 
-  .pintada span {
-    color: #f39407; /* Color para estrellas pintadas */
-  }
-  .comment {
-    padding: 10px;
-    text-align: center;
-    margin-bottom: 15px;
-    background-color: #ffffff;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .comment p {
-    margin: 5px 0;
-  }
-  
-  .carouselFlechas {
-    background-color: #f39407;
-  }
-  
-  .form-control {
-    width: 60%;
-  }
-  
-  .comentarios {
-    padding-left: 40px;
-    margin-bottom: -5px;
-    font-size: 40px;
-    color: #333333; /* Color del título */
-  }
-  
-  .card-product {
-    margin-bottom: 20%;
-  }
-  
-  .classComent {
-    color: grey;
-  }
+p#product-description.card-text {
+  text-align: center;
+  font-size: 16px; /* Tamaño de fuente */
+  color: #333333; /* Color de texto principal */
+  line-height: 1.5; /* Espaciado entre líneas */
+  background-color: #c9c6c6;
+}
 
-  .card-title {
-    text-align: center;
-    background-color: #f39407;
-  }
-  
-  p#product-description.card-text {
-    text-align: center;
-    font-size: 16px; /* Tamaño de fuente */
-    color: #333333; /* Color de texto principal */
-    line-height: 1.5; /* Espaciado entre líneas */
-    background-color: #c9c6c6;
-  }
+.Recommended-Product {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 5px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  max-width: 500px; /* Ancho máximo de la tarjeta */
+  margin: 0 auto; /* Centrar la tarjeta en el contenedor */
+  margin-bottom: 20px; /* Agregar espacio entre tarjetas */
+}
+
+.Recommended-Product:hover {
+  transform: scale(1.05); /* Escala ligeramente al pasar el mouse */
+}
+
+.Recommended-Product img {
+  max-width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.Recommended-Product h3 {
+  font-size: 20px; /* Tamaño de fuente ligeramente mayor */
+  margin: 10px 0;
+  font-weight: bold; /* Hace que el título sea más prominente */
+  text-align: center; /* Centra el título */
+  color: #f39407; /* Color del texto principal */
+  text-transform: uppercase; /* Convierte el texto a mayúsculas */
+}
+
+/* Estilo para el contenedor de las tarjetas */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Distribuye las tarjetas horizontalmente */
+  padding: 20px; /* Agrega espacio alrededor del contenedor */
+}

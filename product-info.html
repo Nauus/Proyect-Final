@@ -67,7 +67,7 @@
     <div class="container my-5">
       <div class="row card-product">
         <div id="imageCarousel" class="carousel  imageCarousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner d-block w-100">
+          <div class="carousel-inner">
             <!-- Aquí se agregarán las imágenes del producto -->
           </div>
 
@@ -103,26 +103,28 @@
                 <textarea class="form-control" id="comment" placeholder="Ingrese su comentario." rows="4" required></textarea>
               </div>
               <div class="form-group">
+                <span class="classComent">Puntuacion:</span>
                 <p class="clasificacion">
-                  <span class="classComent">Puntuacion:</span>
-                  <input id="radio1" type="radio" name="rating" value="5"><!--
-                  --><label for="radio1">★</label><!--
-                  --><input id="radio2" type="radio" name="rating" value="4"><!--
-                  --><label for="radio2">★</label><!--
-                  --><input id="radio3" type="radio" name="rating" value="3"><!--
-                  --><label for="radio3">★</label><!--
-                  --><input id="radio4" type="radio" name="rating" value="2"><!--
-                  --><label for="radio4">★</label><!--
-                  --><input id="radio5" type="radio" name="rating" value="1"><!--
-                  --><label for="radio5">★</label>
+                  <input id="radio1" type="radio" name="rating" value="5">
+                  <label for="radio1">★</label>
+                  <input id="radio2" type="radio" name="rating" value="4">
+                  <label for="radio2">★</label>
+                  <input id="radio3" type="radio" name="rating" value="3">
+                  <label for="radio3">★</label>
+                  <input id="radio4" type="radio" name="rating" value="2">
+                  <label for="radio4">★</label>
+                  <input id="radio5" type="radio" name="rating" value="1">
+                  <label for="radio5">★</label>
                 </p>
               </div>
               <button type="submit" class="btn btn-primary">Enviar comentario</button>
              
             </form>
+            <p class="card-title">Productos relacionados</p>
       <div class="card">
+        
         <div class="card-body">
-          <h3 class="card-title">Productos relacionados</h3>
+          
           <div id="related-products" class="row"></div>
         </div>
       </div>
