@@ -28,28 +28,58 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+  <nav class="navbar navbar-expand-lg navbar-dark p-1">
     <div class="container">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav w-100 justify-content-between">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="categories.html">Categorías</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="sell.html">Vender</a>
-          </li>
-          <li class="nav-item">
-          </li>
-        </ul>
+      <a class="navbar-brand" href="#">
+        <i id="modeIcon" class="fa fa-sun-o" aria-hidden="true"></i>
+      </a>
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav w-100 justify-content-between">
+            <li class="nav-item">
+              <a class="nav-link active bold" href="index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="categories.html">Categorías</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="sell.html">Vender</a>
+            </li>
+            
+            <li class="nav-item ml-auto">
+              <div class="dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="img/psyduck.jpg" alt="Imagen de perfil" class="rounded-circle"
+                    style="width: 30px; height: 30px;">
+                </a>
+                <ul class="dropdown-menu dropdown-menu-wide" aria-labelledby="navbarDarkDropdownMenuLink">
+                  
+                  <a href="my-profile.html" class="dropdown-item">Perfil</a>
+                  <a href="cart.html" class="dropdown-item">Carrito</a>
+                 
+                  <li>
+                    <div class=" switchContainer"><button class="switch dropdown-item " id="switch">
+                      <span>Modo Oscuro</span><br></div>
+                    </button>
+                  </li>
+                    
+                  
+                  <div class="dropdown-divider"></div>
+                  <p class="dropdown-item-text">Sesión activa como: <span class="currentUser" id="currentUser"></span>
+                  </p>
+                  
+                  <a class="dropdown-item" id="logoutButton" style="cursor: pointer;">Cerrar sesión</a>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
   </nav>
   <main>
     <div class="container">
