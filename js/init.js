@@ -40,19 +40,21 @@ let getJSONData = function (url) {
     });
 };
 
-
+//! NAHUEL ALONSO
 const btnSwitch = document.querySelector('#switch');
 const darkModeEnabled = localStorage.getItem('darkModeEnabled');
-function enableDarkMode() {
+function enableDarkMode () {
   document.body.classList.add('dark');
   btnSwitch.classList.add('active');
   localStorage.setItem('darkModeEnabled', 'true');
 }
-function disableDarkMode() {
+function disableDarkMode () {
   document.body.classList.remove('dark');
   btnSwitch.classList.remove('active');
   localStorage.setItem('darkModeEnabled', 'false');
 }
+
+//! NAHUEL MEDINA
 if (darkModeEnabled === 'true') {
   enableDarkMode();
 }
