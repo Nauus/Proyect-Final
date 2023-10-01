@@ -241,10 +241,14 @@ body.dark .categorias  {
 }
 
 
-body.dark .inputmaxandmin  {
+body.dark .filtermaxymin {
   border-color: hsl(178,99%,31%) !important;
 }
 
 body.dark .productos {
   box-shadow: 0px -4px 33px 0px hsl(178,99%,31%);
 }
+body.dark .searchProducts {
+  border-color: hsl(178,99%,31%) !important;
+}
+
