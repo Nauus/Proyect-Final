@@ -4,36 +4,68 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>eMercado - Todo lo que busques está aquí</title>
+  <title>eMercado - Vender</title>
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/dropzone.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link href="css/custom-styles.css" rel="stylesheet">
+  <link rel="shortcut icon" href="img/logoarreglado2.png">
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+  <nav class="navbar navbar-expand-lg navbar-dark p-1">
     <div class="container">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav w-100 justify-content-between">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="categories.html">Categorías</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="sell.html">Vender</a>
-          </li>
-          <li class="nav-item">
-          </li>
-        </ul>
+      <a class="navbar-brand" href="#">
+        <i id="modeIcon" class="fa fa-sun-o" aria-hidden="true"></i>
+      </a>
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav w-100 justify-content-between">
+            <li class="nav-item">
+              <a class="nav-link active bold" href="index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="categories.html">Categorías</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="sell.html">Vender</a>
+            </li>
+            
+            <li class="nav-item ml-auto">
+              <div class="dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="img/psyduck.jpg" alt="Imagen de perfil" class="rounded-circle"
+                    style="width: 30px; height: 30px;">
+                </a>
+                <ul class="dropdown-menu dropdown-menu-wide" aria-labelledby="navbarDarkDropdownMenuLink">
+                  
+                  <a href="my-profile.html" class="dropdown-item">Perfil</a>
+                  <a href="cart.html" class="dropdown-item">Carrito</a>
+                 
+                  <li>
+                    <div class=" switchContainer"><button class="switch dropdown-item " id="switch">
+                      <span>Modo Oscuro</span><br></div>
+                    </button>
+                  </li>
+                    
+                  
+                  <div class="dropdown-divider"></div>
+                  <p class="dropdown-item-text">Sesión activa como: <span class="currentUser" id="currentUser"></span>
+                  </p>
+                  
+                  <a class="dropdown-item" id="logoutButton" style="cursor: pointer;">Cerrar sesión</a>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
   </nav>
   <div class="container">
     <div class="text-center p-4">
@@ -134,8 +166,8 @@
               <label class="custom-control-label" for="standardradio">Estándar (3%)</label>
             </div>
             <div class="row">
-              <button type="button" class="m-1 btn btn-link" data-bs-toggle="modal"
-                data-bs-target="#contidionsModal">Ver
+              <button type="button" class="m-1 btn btn-link btn-light btn-clear" data-bs-toggle="modal"
+                data-bs-target="#contidionsModal" style="text-decoration: none; color:rgb(0, 0, 0)">Ver
                 condiciones</button>
             </div>
           </div>
@@ -162,7 +194,7 @@
             </li>
           </ul>
           <hr class="mb-4">
-          <button class="btn btn-primary btn-lg" type="submit">Vender</button>
+          <button class="btn btn-primary btn-lg btn-light btn-clear" style="outline: none;" type="submit">Vender</button>
         </form>
       </div>
     </div>
@@ -170,9 +202,11 @@
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
-        <a href="#">Volver arriba</a>
+        <a href="#" class="btn btn-outline-dark btn-sm " data-bs-toggle="tooltip" data-bs-placement="top"
+          title="Volver arriba">Volver arriba</a>
       </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank"
+          class="text-decoration-none text-dark">Jovenes a Programar</a></p>
     </div>
   </footer>
 

@@ -4,7 +4,7 @@ export function loadDatabase (databaseKey) { // hacemos una funcion que mas tard
 }
 
 export function saveDatabase (databaseKey, database) { // hacemos una function que va a ser util para poder guardar usuarios dentro de la misma
-    localStorage.setItem(databaseKey, JSON.stringify(database)); // para poder guardar usuarios dentro de nuestro localstorage tenemos que
+    localStorage.setItem(databaseKey, JSON.stringify(database)); // para poder guardar usuarios dentro de nuestro localstorage
 }
 
 export function clearCurrentUser () {
