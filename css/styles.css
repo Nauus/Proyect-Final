@@ -39,7 +39,10 @@ nav a {
   background-repeat: no-repeat;
   color: black;
   font-weight: bold;
+
+  
 }
+
 
 @media (min-width: 768px) {
   .jumbotron {
@@ -195,4 +198,53 @@ a.custom-card:hover {
 
 
 /* DARKMODE */
-/* REVISAR QUE ESTEN TODOS LOS HTML ENLAZADOS A LA MISMA HOJA DE ESTILOS, SI SE CAMBIA UN BODY SE CAMBIAN DOS*/
+
+body.dark{
+  background-color:rgb(164, 160, 153);
+  color: #000000;
+  
+}
+body.dark nav {
+  background-color:#484749 !important ;
+}
+
+body.dark .jumbotron{
+  background-image: url(../img/cover_back_black.svg);
+}
+body.dark .darkk {
+  background-color: rgb(164, 160, 153)!important;
+}
+body.dark .custom-card {
+  background-color: #ffffff75!important;
+}
+body.dark button {
+  background-color: lightcoral!important;
+}
+body.dark .btn {
+  background-color: hsl(178,99%,31%)!important;
+  border: #484749;
+}
+body.dark .card-title  {
+  box-shadow: 0px -4px 33px 0px hsl(178,99%,31%);
+}
+
+body.dark .productTitle  {
+  box-shadow: 0px -4px 33px 0px hsl(178,99%,31%);
+}
+
+body.dark .carouselFlechas  {
+  background-color: hsl(178,99%,31%);
+}
+
+body.dark .categorias  {
+  box-shadow: 0px -4px 33px 0px hsl(178,99%,31%);
+}
+
+
+body.dark .inputmaxandmin  {
+  border-color: hsl(178,99%,31%) !important;
+}
+
+body.dark .productos {
+  box-shadow: 0px -4px 33px 0px hsl(178,99%,31%);
+}

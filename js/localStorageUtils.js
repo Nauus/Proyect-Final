@@ -7,6 +7,9 @@ export function saveDatabase (databaseKey, database) { // hacemos una function q
     localStorage.setItem(databaseKey, JSON.stringify(database)); // para poder guardar usuarios dentro de nuestro localstorage
 }
 
+//! PARTE  BELEN
+///////////////////////////
 export function clearCurrentUser () {
     localStorage.removeItem('currentUser');
 }
+//////////////////////////

@@ -1,3 +1,7 @@
+
+
+
+
 .navbar-dark .navbar-nav,
 .navbar-dark .navbar-nav .nav-link:hover {
   color:hsl(177, 76%, 26%);
@@ -10,59 +14,29 @@
     border-color: hsl(178,99%,31%) !important;
   }
   .navbar {
-   background-color: #0b0b0b;
+   background-color: #552f11b6;
 
   }
  
-  
-  footer a.btn {
-    border-radius: 20px;
-    background-color:#0b0b0b;
-    padding: 5px 10px;
-  }
-  
-  footer a.btn:hover {
-    color: hsl(0, 0%, 0%);
-    background-color: #3f2910a8;
+  * {
+    font-family: Georgia, 'Times New Roman', Times, serif;
   }
 
 .rounded-circle {
   border:2px solid white;
 }
 .btn {
-    background-color: #f39407 !important;
-    border-color: #f39407;
+  background-color: #f09100!important;
+    border-color: #f39407!important;
     margin-right: 10px;
-    outline: none;
     border-radius: 48px 0;
-    
+    font-size: 1.5vh;
   }
-  .btn-light:focus {
-    border-color: #f39407; /* Cambia el color del borde al seleccionar */
-    box-shadow: none; /* Opcional: quita la sombra al enfocar */
-  }
-  .btn-primary:active:focus {
-    border-color: #f39407; /* Cambia el color del borde al seleccionar */
-    box-shadow: none; /* Opcional: quita la sombra al enfocar */
-  }
-  .btn-primary:hover {
-    border-color: #d7cfc3;
-  }
-  .form-control:focus {
-    border-color: #f39407; /* o establece el color de borde deseado */
-    box-shadow: none; /* Opcional: quita la sombra al enfocar */
-  }
-  .btn-group-toggle .btn {
-    margin-right: 10px; 
-  }
-.card a  {
-  border: 2px solid #d7cfc3;
-  backdrop-filter: blur(1px);
-  border-radius: 10px;
-  transition: .3s;
-  display: flex;
-  overflow: hidden;
+.col, p, input {
+  font-size: 1,5vh;
+  border-color: #f39407!important;
 }
+
 @keyframes changShadow {
   0% {
       box-shadow: 0 0 20px hsla(36, 100%, 47%, 0)
@@ -83,28 +57,23 @@
   
   box-shadow: 0 0 60px #f39407;
   animation: changShadow  5s 3 ;
-  transform: scale(1.1);
-  transition: transform 0.7s;
+  transition: transform 0.5s;
  
 }
 .hover {
-  backdrop-filter: blur(1px);
   border-radius: 10px;
   transition: .3s;
   display: flex;
-  overflow: hidden;
+  
 }
  .hover:hover{
   
   box-shadow: 0 0 60px #f39407;
   animation: changShadow  5s 3 ;
-  transform: scale(1.1);
-  transition: transform 0.7s;
+  transform: scale(1.05);
+  
 }
-.coloredshap {
-  background-color: #d7cfc3;
-  background-size: none;
-}
+
 
 div .list-group-item  {
   background-color: rgba(255, 255, 255, 0.5); 
@@ -113,87 +82,151 @@ div .list-group-item  {
 
 
 
-
-/* Estilo para el título de categoría */
-.categoria-title {
-  color: #fff; /* Color del texto en el fondo */
-  padding: 10px 20px; /* Espaciado interno */
-  border-radius: 5px; /* Bordes redondeados */
-  display: inline-block; /* Para que se ajuste al contenido */
-  text-align: center; /* Alineación central */
-  font-size: 35px; /* Tamaño de fuente grande */
-  font-weight: 700; /* Fuente en negrita */
-  color: #747474; /* Color azul llamativo */
-  text-align: center; /* Alineación central */
-  margin: 20px 0; /* Margen superior e inferior */
-  text-transform: uppercase; /* Texto en mayúsculas */
-  letter-spacing: 2px; /* Espaciado entre letras */
-  margin-bottom: 15px; /* Margen inferior adicional */
-}
-
-/* Estilo para el subtítulo */
-.categoria-subtitle {
-  font-size: 20px; /* Tamaño de fuente para el subtítulo */
-  color: #333; /* Color de texto oscuro */
-  text-align: center; /* Alineación central */
-  margin-bottom: 15px; /* Margen inferior adicional */
-}
-
-/* Estilo para el fondo de color del párrafo dentro del contenedor */
-.div.text-center.p-4 p {
-  background-color: #f39407; /* Color de fondo para el párrafo */
-  color: #fff; /* Color del texto en el fondo */
-  padding: 20px; /* Espaciado interno alrededor del contenido */
-}
-
-
-/* Estilo inicial para el título de categoría */
-.categoria-title {
-  font-size: 35px; /* Tamaño de fuente */
-  font-weight: 700; /* Fuente en negrita */
-  color: #747474; /* Color de texto */
-  text-align: center; /* Alineación central */
-  margin: 20px 0; /* Margen superior e inferior */
-  text-transform: uppercase; /* Texto en mayúsculas */
-  letter-spacing: 2px; /* Espaciado entre letras */
-  margin-bottom: 15px; /* Margen inferior adicional */
-  transition: transform 0.3s ease-in-out; /* Transición para suavizar el efecto */
-}
-
-/* Estilo para el efecto de escala al hacer hover */
-.categoria-title:hover {
-  transform: scale(1.05); /* Escalar el texto al 105% del tamaño original */
-}
-
-/* Estilo para el borde de los elementos de categoría */
-.categoria-item {
-    border: 2px solid #000; /* Cambia el color y el grosor del borde según tus preferencias */
-    padding: 20px; /* Espaciado interno alrededor del contenido */
-}
-
 .categorias {
-  background-color: #f39407;
+  background-color: #d4d4d400;
+  border-radius: 50px;
+  -webkit-box-shadow: 0px -4px 33px 0px rgba(240,145,0,0.6);
+-moz-box-shadow: 0px -4px 33px 0px rgba(240,145,0,0.6);
+box-shadow: 0px -4px 33px 0px rgba(240,145,0,0.6);
   margin-left: 20%;
   margin-right: 20%;
+  
 }
 .productos {
-  background-color: #f39407;
-}
-.lead {
-  font-size: 1.25rem;
-    font-weight: 300;
-}
-.productTitle {
+  background-color: #d4d4d400;
+  border-radius: 50px;
+box-shadow: 0px -4px 33px 0px rgba(240,145,0,0.6);
   margin-left: 20%;
   margin-right: 20%;
-}
-
-body {
-  background-color: #d7cfc3 !important;
+  
 }
 
 
+.bg {
+  background-image: url(../img/bgjar.svg);
+}
 
 
 
 
+
+
+.payment-container {
+  list-style: none;
+  background-color: #ffffff75;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 500px;
+}
+
+.payment-container h1 {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.payment-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.payment-container .mb-3 {
+  margin-bottom: 20px;
+}
+
+.payment-container label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.payment-container input[type="text"],
+.payment-container input[type="number"] {
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.payment-container button[type="submit"] {
+  background-color: #019f99;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.payment-container button[type="submit"]:hover {
+  background-color: #017777;
+}
+
+
+.payment-container:hover {
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+  transition: box-shadow 0.3s ease;
+}
+
+.centered-container {
+  padding-top: 1%;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  
+  
+}
+.product-list-container {
+  flex: 1;
+}
+#product-list {
+  list-style: none;
+  padding: 0;
+  width: 50%; 
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  -webkit-box-shadow: 0px -4px 33px 0px rgba(0,0,0,0.25);
+-moz-box-shadow: 0px -4px 33px 0px rgba(0,0,0,0.25);
+box-shadow: 0px -4px 33px 0px rgba(0,0,0,0.25);
+}
+
+#product-list li {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 100%; }
+
+#product-list img {
+  max-width: 80px;
+  margin-right: 10px;
+}
+
+.svg-container {
+  display: flex;
+  align-items: center; 
+  margin-left: 20px; 
+ margin-bottom: 1vh;
+ cursor: pointer;
+}
+
+
+/* darkmode custom */
+
+
+body.dark .bg {
+  background-image: url("../img/backg-dark.svg");
+  background-size: cover;
+  
+}
+
+
+body.dark #related-products {
+  color: white;
+}

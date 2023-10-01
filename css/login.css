@@ -1,5 +1,6 @@
 * {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+    list-style: none;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 .navbar {
     height: 49px;
@@ -35,7 +36,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    position: relative;
+    padding-bottom: 2em;
 }
 .login-section {
     border: 2px solid #fff;
@@ -154,15 +156,7 @@ body {
 .hidden {
     display: none;
 }
-.footer {
-    height: 14px;
-    background-color:#212529;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000; 
-}
+
 .passwordforgotten {
     font-size: 14px;
     font-weight: normal;
@@ -174,4 +168,63 @@ body {
 .create i:hover{
     scale: 1.4;
     color: #019f99;
+}
+
+.containerfooter {
+    max-width: 1200px;
+    
+}
+.footer-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+.footer {
+    background: #383d41;
+    padding: 1px 1;
+    clear: both;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+   
+}
+.footer-links {
+    width: 25%;
+    padding: 0 15px;
+}
+.footer-links h4 {
+    font-size: 8px;
+    color: white;
+   
+    font-weight: 500;
+    border-bottom: 2px solid #f09100;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+.footer-links ul li a {
+    font-size: 8px;
+text-decoration: none;
+color: aliceblue;
+display: block;
+margin-bottom: 15px;
+transition: all .3s ease;
+}
+.footer-links ul li a:hover {
+    color: white;
+    padding-left: 6px;
+} 
+
+.social-links a {
+ display: inline-block;
+ min-height: 40px;
+ width: 40px;
+ background-color: #f09000b2;
+ margin: 0 10px 10px 0;
+ text-align: center;
+ line-height: 40px;
+ border-radius: 50%;
+ color: #f09100;
+ transition: all .5s ease;
+}
+.social-links a:hover {
+    background-color: #019f99;
 }

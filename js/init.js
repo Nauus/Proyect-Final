@@ -40,6 +40,7 @@ let getJSONData = function (url) {
     });
 };
 
+
 const btnSwitch = document.querySelector('#switch');
 const darkModeEnabled = localStorage.getItem('darkModeEnabled');
 function enableDarkMode() {

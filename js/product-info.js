@@ -9,7 +9,7 @@ if (productId) {
   const productCommentsUrl = `https://japceibal.github.io/emercado-api/products_comments/${productId}.json`;
 
 
-  //Belen
+
 
 
   function cargarComentarios (product) {
@@ -46,8 +46,6 @@ if (productId) {
   }
 
 
-  //Camila
-
 
   fetch(productDetailsUrl)
     .then(response => response.json())
@@ -65,7 +63,7 @@ if (productId) {
       categoryElement.textContent = `Categoría: ${product.category}`;
 
 
-      //Jose
+
 
 
       const carouselInner = document.querySelector('#imageCarousel .carousel-inner');
@@ -91,9 +89,11 @@ if (productId) {
       });
 
 
-      // Nahuel M
 
 
+
+      //! MARTIN
+      ////////////////
       product.relatedProducts.forEach(relatedProduct => {
         const relatedProductElement = document.createElement('div');
         relatedProductElement.classList.add("col-md-6");
@@ -102,14 +102,17 @@ if (productId) {
           <h3>${relatedProduct.name}</h3>
           <img src="${relatedProduct.image}" alt="${relatedProduct.name}">
         `;
-
+        ////////////////
         // Agrega el evento click para redirigir al usuario al producto
+        ////////////////////////////////////////////
+        //! JOSE
         relatedProductElement.addEventListener('click', () => {
           window.location.href = `product-info.html?id=${relatedProduct.id}`; // Reemplaza 'product.html' con la URL de tu página de detalles del producto
         });
 
         relatedProductsContainer.appendChild(relatedProductElement);
       });
+      ////////////////////////////////////////////
       cargarComentarios(product);
 
       // ...
@@ -123,7 +126,7 @@ if (productId) {
 }
 
 
-// Martin Rodriguez
+
 
 
 
@@ -139,7 +142,7 @@ commentForm.addEventListener('submit', function (e) {
   }
 
 
-  // Nacho Ignacio Juan
+
 
 
 
@@ -169,5 +172,5 @@ commentForm.addEventListener('submit', function (e) {
   }
 });
 
-//Nahuel A
+
 

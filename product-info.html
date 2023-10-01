@@ -13,7 +13,6 @@
   <link rel="stylesheet" href="css/productinfo.css">
   <link href="css/custom-styles.css" rel="stylesheet">
   <link rel="shortcut icon" href="img/logoarreglado2.png">
-  
 </head>
 
 <body>
@@ -39,6 +38,7 @@
               <a class="nav-link" href="sell.html">Vender</a>
             </li>
             
+            <!-- PARTE EXPLICAR NACHO -->
             <li class="nav-item ml-auto">
               <div class="dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
@@ -47,23 +47,20 @@
                     style="width: 30px; height: 30px;">
                 </a>
                 <ul class="dropdown-menu dropdown-menu-wide" aria-labelledby="navbarDarkDropdownMenuLink">
-                  
-                  <a href="my-profile.html" class="dropdown-item">Perfil</a>
-                  <a href="cart.html" class="dropdown-item">Carrito</a>
-                 
+                  <a href="my-profile.html" class="dropdown-item"> Mi Perfil</a>
+                  <a href="cart.html" class="dropdown-item">Mi Carrito</a>
                   <li>
                     <div class=" switchContainer"><button class="switch dropdown-item " id="switch">
                       <span>Modo Oscuro</span><br></div>
                     </button>
                   </li>
-                    
-                  
                   <div class="dropdown-divider"></div>
                   <p class="dropdown-item-text">Sesión activa como: <span class="currentUser" id="currentUser"></span>
                   </p>
                   
                   <a class="dropdown-item" id="logoutButton" style="cursor: pointer;">Cerrar sesión</a>
                 </ul>
+                <!-- AAAAAAAAAA -->
               </div>
             </li>
           </ul>
@@ -71,11 +68,13 @@
       </div>
   </nav>
 
-  <main>
+
+  <div class="bg"><main>
     <div class="text-center p-4">
-      <h3 class="productTitle">PRODUCTO</h3>
-      <h4  id="parrafoProductos">Verás aquí todas las propiedades del producto</h4>
+      <h3 class="productTitle">Producto</h3>
+      <h4 id="parrafoProductos">Verás aquí todas las propiedades del producto</h4>
     </div>
+
     <div class="container my-5">
       <div class="row card-product">
         <div id="imageCarousel" class="carousel  imageCarousel slide" data-bs-ride="carousel">
@@ -84,12 +83,14 @@
           </div>
 
           <a class="carousel-control-prev" href="#imageCarousel" role="button" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon carouselFlechas" aria-hidden="true" style="font-size: 30px;"></span>
+            <span class="carousel-control-prev-icon carouselFlechas" aria-hidden="true"
+              style="font-size: 30px;"></span>
             <span class="visually-hidden">Previous</span>
           </a>
-        
+
           <a class="carousel-control-next" href="#imageCarousel" role="button" data-bs-slide="next">
-            <span class="carousel-control-next-icon carouselFlechas" aria-hidden="true" style="font-size: 30px;"></span>
+            <span class="carousel-control-next-icon carouselFlechas" aria-hidden="true"
+              style="font-size: 30px;"></span>
             <span class="visually-hidden">Next</span>
           </a>
           <div class="card-body">
@@ -100,22 +101,32 @@
             <p id="product-category" class="card-text"></p>
           </div>
         </div>
+      </div>
+    </div>
 
-            </div>
-            </div>
-     
+    <div class="container my-5">
+      <div class="row">
+        <!-- Columna para comentarios -->
+        <div class="col-md-6">
+          <div id="comments-container">
            
+            <!-- Aquí puedes mostrar los comentarios existentes -->
+          </div>
+        </div>
+
+        <!-- Columna para comentar -->
+        <div class="col-md-6">
           
-            <div id="comments-container"> <span class="comentarios">Comentarios</span></div>
-            <p class="comentarios">Comentar</p>
-    
-            <form id="comment-form" col-md-6 mx-auto>
+          <div class="seccioncomentarios">
+            <form id="comment-form">
+              <!-- Formulario para agregar un nuevo comentario -->
               <div class="form-group">
                 <label for="comment">Tu opinión:</label>
-                <textarea class="form-control" id="comment" placeholder="Ingrese su comentario." rows="4" required></textarea>
+                <textarea class="form-control" id="comment" placeholder="Ingrese su comentario." rows="4"
+                  required></textarea>
               </div>
               <div class="form-group">
-                <span class="classComent">Puntuacion:</span>
+                <span class="classComent">Puntuación:</span>
                 <p class="clasificacion">
                   <input id="radio1" type="radio" name="rating" value="5">
                   <label for="radio1">★</label>
@@ -129,16 +140,19 @@
                   <label for="radio5">★</label>
                 </p>
               </div>
-              <button type="submit" class="btn btn-primary">Enviar comentario</button>
-             
+              <button type="submit" class="btn">Enviar comentario</button>
             </form>
-            <p class="card-title">Productos relacionados</p>
-      <div class="card">
-        
-        <div class="card-body">
-          
-          <div id="related-products" class="row"></div>
+          </div>
         </div>
+      </div>
+    </div>
+    <div class="comprar text-center mt-5">
+      <button class="btn comprarb" style="font-size: 24px;" onclick="window.location.href = 'cart.html'">Comprar</button>
+    </div>
+    <p class="card-title">Productos relacionados</p>
+    <div class="card">
+      <div class="card-body">
+        <div id="related-products" class="row"></div>
       </div>
     </div>
   </main>
@@ -150,7 +164,7 @@
       </p>
       <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank"
           class="text-decoration-none text-dark">Jovenes a Programar</a></p>
-    </div>
+    </div></div>
   </footer>
   <div id="spinner-wrapper">
     <div class="lds-ring">
@@ -163,6 +177,8 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/product-info.js"></script>
+  <script src="js/logout.js" type="module"></script>
+
 </body>
 
 </html>

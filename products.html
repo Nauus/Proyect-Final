@@ -42,17 +42,13 @@
                     style="width: 30px; height: 30px;">
                 </a>
                 <ul class="dropdown-menu dropdown-menu-wide" aria-labelledby="navbarDarkDropdownMenuLink">
-                  
-                  <a href="my-profile.html" class="dropdown-item">Perfil</a>
-                  <a href="cart.html" class="dropdown-item">Carrito</a>
-                 
+                  <a href="my-profile.html" class="dropdown-item"> Mi Perfil</a>
+                  <a href="cart.html" class="dropdown-item">Mi Carrito</a>
                   <li>
                     <div class=" switchContainer"><button class="switch dropdown-item " id="switch">
                       <span>Modo Oscuro</span><br></div>
                     </button>
                   </li>
-                    
-                  
                   <div class="dropdown-divider"></div>
                   <p class="dropdown-item-text">Sesión activa como: <span class="currentUser" id="currentUser"></span>
                   </p>
@@ -65,7 +61,9 @@
         </div>
       </div>
   </nav>
+
   <main class="pb-5 container">
+    <div class="bg">
     <div class="container">
       <div class="text-center p-4">
         <h2 class="productos">Productos</h2>
@@ -89,10 +87,10 @@
             <p class="font-weight-normal text-end my-2">Cant.</p>
           </div>
           <div class="col">
-            <input class="form-control" type="number" placeholder="min." id="rangeFilterPriceMin">
+            <input class="form-control inputmaxandmin" type="number" placeholder="min." id="rangeFilterPriceMin">
           </div>
           <div class="col">
-            <input class="form-control" type="number" placeholder="máx." id="rangeFilterPriceMax">
+            <input class="form-control inputmaxandmin" type="number" placeholder="máx." id="rangeFilterPriceMax">
           </div>
           <div class="col-3 p-0">
             <input type="radio" class="btn-check" name="options" id="sortNone" checked>
@@ -122,6 +120,7 @@
       <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank"
           class="text-decoration-none text-dark">Jovenes a Programar</a></p>
     </div>
+  </div>
   </footer>
   <div id="spinner-wrapper">
     <div class="lds-ring">
@@ -135,5 +134,6 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/products.js"></script>
+  <script src="js/logout.js" type="module"></script>
 </body>
 </html>

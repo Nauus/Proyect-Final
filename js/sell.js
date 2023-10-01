@@ -7,7 +7,7 @@ let PESO_CURRENCY = "Pesos Uruguayos (UYU)";
 let DOLLAR_SYMBOL = "USD ";
 let PESO_SYMBOL = "UYU ";
 let PERCENTAGE_SYMBOL = '%';
-let MSG = "FUNCIONALIDAD NO IMPLEMENTADA";
+let MSG = "Has publicado con éxito!";
 const currentUser = localStorage.getItem('currentUser');
 
 

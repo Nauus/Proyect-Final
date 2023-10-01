@@ -13,8 +13,3 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-
-
-
-
-

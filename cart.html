@@ -44,17 +44,13 @@
                     style="width: 30px; height: 30px;">
                 </a>
                 <ul class="dropdown-menu dropdown-menu-wide" aria-labelledby="navbarDarkDropdownMenuLink">
-                  
-                  <a href="my-profile.html" class="dropdown-item">Perfil</a>
-                  <a href="cart.html" class="dropdown-item">Carrito</a>
-                 
+                  <a href="my-profile.html" class="dropdown-item"> Mi Perfil</a>
+                  <a href="cart.html" class="dropdown-item">Mi Carrito</a>
                   <li>
                     <div class=" switchContainer"><button class="switch dropdown-item " id="switch">
                       <span>Modo Oscuro</span><br></div>
                     </button>
                   </li>
-                    
-                  
                   <div class="dropdown-divider"></div>
                   <p class="dropdown-item-text">Sesión activa como: <span class="currentUser" id="currentUser"></span>
                   </p>
@@ -67,13 +63,109 @@
         </div>
       </div>
   </nav>
-  <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+
+
+  <main class="bg">
+
+
+
+
+
+
+
+    <div class="centered-container">
+
+      <ul id="product-list">
+
+      </ul>
+      <div class="svg-container">
+        <svg xmlns="http://www.w3.org/2000/svg" height="1em"
+          viewBox="0 0 512 512">
+          <style>
+            svg {
+              fill: #b81f14
+            }
+          </style>
+          <path
+            d="M367.2 412.5L99.5 144.8C77.1 176.1 64 214.5 64 256c0 106 86 192 192 192c41.5 0 79.9-13.1 111.2-35.5zm45.3-45.3C434.9 335.9 448 297.5 448 256c0-106-86-192-192-192c-41.5 0-79.9 13.1-111.2 35.5L412.5 367.2zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z" />
+        </svg>
       </div>
     </div>
+
+
+
+
+
+
+
+    <div class="container payment-container">
+
+
+
+
+
+
+
+      <summary>
+        <h1>Información de Pago</h1>
+      </summary>
+      <details>
+        <form id="payment-form">
+
+          <div class="">
+            <label for="nombre">Nombre Completo</label>
+            <input type="text" id="nombre" name="nombre">
+          </div>
+          <div class="mb-3">
+            <label for="direccion">Dirección de Envío</label>
+            <input type="text" id="direccion" name="direccion">
+          </div>
+          <div class="mb-3">
+            <label for="ciudad">Ciudad</label>
+            <input type="text" id="ciudad" name="ciudad">
+          </div>
+          <div class="mb-3">
+            <label for="ciudad">Direccion</label>
+            <input type="text" id="direccion" name="direccion">
+          </div>
+
+
+          <div class="mb-3">
+            <label for="tarjeta">Número de Tarjeta de Crédito</label>
+            <input type="text" id="tarjeta" name="tarjeta">
+          </div>
+          <div class="mb-3">
+            <label for="fecha">Fecha de Vencimiento</label>
+            <input type="text" id="fecha" name="fecha" placeholder="MM/AA">
+          </div>
+          <div class="mb-3">
+            <label for="cvv">CVV (Código de Seguridad)</label>
+            <input type="text" id="cvv" name="cvv">
+          </div>
+      </details>
+
+
+
+
+      <button class="btn" type="submit">Finalizar Compra</button>
+      <button class="btn btn-save" type="submit">Guardar en el Carrito</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   </main>
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
@@ -83,6 +175,12 @@
       <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank"
           class="text-decoration-none text-dark">Jovenes a Programar</a></p>
     </div>
+
+
+    </div>
+    </div>
+
+
   </footer>
   <div id="spinner-wrapper">
     <div class="lds-ring">
@@ -95,6 +193,7 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
+  <script src="js/logout.js" type="module"></script>
 </body>
 
 </html>
