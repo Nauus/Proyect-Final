@@ -1,16 +1,12 @@
 const urlParams = new URLSearchParams(window.location.search);
 const productId = urlParams.get('id');
-
+const addToCartButton = document.querySelector('.agregar-al-carrito');
 
 if (productId) {
   localStorage.setItem('selectedProductId', productId);
 
   const productDetailsUrl = `https://japceibal.github.io/emercado-api/products/${productId}.json`;
   const productCommentsUrl = `https://japceibal.github.io/emercado-api/products_comments/${productId}.json`;
-
-
-
-
 
   function cargarComentarios (product) {
     fetch(productCommentsUrl)
@@ -86,14 +82,9 @@ if (productId) {
 
         slideDiv.appendChild(image);
         carouselInner.appendChild(slideDiv);
+
       });
 
-
-
-
-
-      //! MARTIN
-      ////////////////
       product.relatedProducts.forEach(relatedProduct => {
         const relatedProductElement = document.createElement('div');
         relatedProductElement.classList.add("col-md-6");
@@ -102,21 +93,48 @@ if (productId) {
           <h3>${relatedProduct.name}</h3>
           <img src="${relatedProduct.image}" alt="${relatedProduct.name}">
         `;
-        ////////////////
+
         // Agrega el evento click para redirigir al usuario al producto
-        ////////////////////////////////////////////
-        //! JOSE
+
         relatedProductElement.addEventListener('click', () => {
           window.location.href = `product-info.html?id=${relatedProduct.id}`; // Reemplaza 'product.html' con la URL de tu página de detalles del producto
         });
 
         relatedProductsContainer.appendChild(relatedProductElement);
       });
-      ////////////////////////////////////////////
       cargarComentarios(product);
+      addToCartButton.addEventListener('click', () => {
+        console.log(product.images[0]);
+        console.log(product.id);
+        const productDetails = {
+          id: product.id,
+          name: product.name,
+          image: product.images[0],
+          price: product.cost,
+          currency: product.currency,
+          quantity: 1, // Puedes establecer la cantidad inicial a 1 o permitir que el usuario la ajuste
+        };
+        // Obtener el carrito de compras actual desde el almacenamiento local
+        const currentCart = JSON.parse(localStorage.getItem('cart')) || [];
 
-      // ...
+        // Verificar si el producto ya está en el carrito
+        const existingProductIndex = currentCart.findIndex(item => item.id === productDetails.id);
+
+        if (existingProductIndex !== -1) {
+          // Si el producto ya está en el carrito, simplemente aumenta la cantidad
+          currentCart[existingProductIndex].quantity += 1;
+          console.log("agregado nuevamente");
+        } else {
+          // Si el producto no está en el carrito, agrégalo
+          currentCart.push(productDetails);
+          console.log("agregado al carrito nuevo");
+        }
+
+        // Guardar el carrito actualizado en el almacenamiento local
+        localStorage.setItem('cart', JSON.stringify(currentCart));
+      });
     })
+
     .catch(error => {
       console.error('Error al obtener detalles del producto:', error);
     });
@@ -124,11 +142,6 @@ if (productId) {
 } else {
   console.error('ID de producto no válido.');
 }
-
-
-
-
-
 
 const commentForm = document.getElementById('comment-form');
 commentForm.addEventListener('submit', function (e) {
@@ -140,11 +153,6 @@ commentForm.addEventListener('submit', function (e) {
     alert('La puntuación debe estar entre 1 y 5.');
     return;
   }
-
-
-
-
-
 
   const currentUser = localStorage.getItem('currentUser');
   const currentDateTime = new Date().toLocaleString().replace(/\//g, '-');
@@ -171,6 +179,3 @@ commentForm.addEventListener('submit', function (e) {
     return stars;
   }
 });
-
-
-

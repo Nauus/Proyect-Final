@@ -217,9 +217,7 @@ body.dark .darkk {
 body.dark .custom-card {
   background-color: #ffffff75!important;
 }
-body.dark button {
-  background-color: lightcoral!important;
-}
+
 body.dark .btn {
   background-color: hsl(178,99%,31%)!important;
   border: #484749;
@@ -251,4 +249,166 @@ body.dark .productos {
 body.dark .searchProducts {
   border-color: hsl(178,99%,31%) !important;
 }
+body.dark .product-image:hover {
+  transform: scale(1.1); 
+  border: 1px solid rgb(164, 160, 153); 
+  box-shadow: 0 0 10px hsl(178,99%,31%); 
+}
+
+body.dark .remove-product:hover {
+  background-color: hsl(178,99%,31%); 
+}
+/* Estilos para las imágenes de los productos */
+.product-image {
+  max-width: 100px; /* Ancho máximo de la imagen */
+  height: auto; /* La altura se ajustará automáticamente para mantener la proporción */
+  display: block; /* Asegura que la imagen esté centrada en su contenedor */
+  margin: 0 auto; /* Centra la imagen horizontalmente en su contenedor */
+ 
+  transition: transform 0.2s; /* Transición suave para el efecto de agrandamiento */
+}
+
+/* Estilos para las imágenes cuando se seleccionan */
+
+.product-image:hover {
+  transform: scale(1.1); 
+  border: 1px solid rgb(164, 160, 153); 
+  box-shadow: 0 0 10px hsl(36,100%,47%); 
+}
+
+
+/* Estilos para la tabla */
+table {
+  width: 100%;
+  border-collapse: collapse; 
+}
+
+/* Estilos para las celdas de la tabla */
+td, th {
+  padding: 10px; 
+  text-align: center;
+ 
+}
+.product-name {
+  text-decoration: none; 
+  color: inherit; 
+  cursor: default;
+}
+
+.preguntaCompra  {
+  text-decoration: none; 
+  color: inherit; 
+  cursor: default;
+}
+
+.preg-frecuente {
+  text-decoration: none; 
+  color: inherit; 
+  cursor: default;
+  margin-left: 10rem;
+}
+/* Estilos para los botones de eliminar */
+.remove-product {
+  background-color: transparent; 
+  color: grey; 
+  border: none; 
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.remove-product:hover {
+  background-color: hsl(36,100%,47%); 
+}
+
+/* Estilo para el contenedor del carrito */
+#cart-container {
+  border: 1px solid #ccc;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border-radius: 5px;
+  width: 300px;
+  margin: 20px auto;
+}
+
+/* Estilo para la tabla de productos */
+#product-list {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Estilo para las filas de la tabla */
+.cart-item {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+/* Estilo para las imágenes de los productos */
+.cart-item img {
+  max-width: 50px;
+  max-height: 50px;
+  margin-right: 10px;
+}
+
+/* Estilo para los botones de eliminar */
+.cart-item .remove-button {
+  background-color: #ff6666;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* Estilo para el selector de moneda */
+#currency {
+  margin-top: 10px;
+  padding: 5px;
+}
+
+/* Estilo para el botón de actualizar el total */
+#update-total-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#cart-total {
+  position: absolute; /* Opcionalmente, puedes usar 'fixed' si lo prefieres fijo en la ventana */
+}
+
+
+/* Estilo para los botones de radio de moneda */
+.currency-options label {
+  display: inline-block;
+  padding: 5px 10px;
+
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, border 0.3s;
+  position: relative; /* Agrega posición relativa para que el .checkmark sea relativo a este elemento */
+}
+
+
+/* Estilo para el .checkmark personalizado */
+.currency-options input[type="radio"] + span::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 20px;
+  width: 20px;
+  background-color: #B9B9B9;
+  border-radius: 50px; /* Esto crea un círculo para el .checkmark */
+}
+
+
+.currency-options input[type="radio"]:checked + span::before {
+  background-color: hsl(178, 99%, 31%); /* Cambia el color del .checkmark cuando está seleccionado */
+}
+
 
