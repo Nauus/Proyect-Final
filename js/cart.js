@@ -4,7 +4,7 @@ const currentCart = JSON.parse(localStorage.getItem('cart')) || [];
 // Función para crear una fila de la tabla del carrito
 function createCartTableRow (productDetails, index) {
   const tableRow = document.createElement('tr');
-
+  console.log(productDetails);
   // Crear celda de imagen
   const imgCell = document.createElement('td');
   const img = document.createElement('img');
@@ -27,7 +27,7 @@ function createCartTableRow (productDetails, index) {
 
   // Crear celda de precio
   const costCell = document.createElement('td');
-  costCell.textContent = `${productDetails.price} ${productDetails.currency}`;
+  costCell.textContent = `${productDetails.currency} ${productDetails.price} `;
   tableRow.appendChild(costCell);
 
   // Crear celda de cantidad
@@ -58,14 +58,25 @@ function createCartTableRow (productDetails, index) {
   // Event listener para actualizar el subtotal cuando cambia la cantidad
   quantityInput.addEventListener('input', (event) => {
     const newQuantity = parseInt(event.target.value, 10);
+
     if (!isNaN(newQuantity) && newQuantity >= 1) {
-      currentCart[index].quantity = newQuantity;
-      updateSubtotal(tableRow, index);
-      updateCartTotal();
+      // Obtener la posición real del producto en el carrito
+      const realIndex = currentCart.findIndex(product => product.id === productDetails.id);
+
+      if (realIndex !== -1) {
+        currentCart[realIndex].quantity = newQuantity;
+        updateSubtotal(tableRow, realIndex);
+        updateCartTotal();
+      }
     } else {
-      // Si la cantidad no es un número válido o es menor que 1, restaura el valor anterior
+      // Si la cantidad no es un número válido, restaura el valor anterior
       event.target.value = currentCart[index].quantity;
     }
+
+    // Selecciona automáticamente el botón de radio "USD" en el contenedor currency-options
+    const currencyOptions = document.querySelector('.currency-options');
+    const usdRadio = currencyOptions.querySelector('input[value="USD"]');
+    usdRadio.checked = true;
   });
 
   // Event listener para eliminar un producto del carrito
@@ -81,11 +92,18 @@ function createCartTableRow (productDetails, index) {
 // Función para actualizar el subtotal de un producto en el carrito
 function updateSubtotal (element, index) {
   const quantity = currentCart[index].quantity;
-  const price = parseFloat(element.querySelector('td:nth-child(3)').textContent);
-  if (currentCart[index]) {
+  const priceText = element.querySelector('td:nth-child(3)').textContent;
+  const price = parseFloat(priceText.replace(/[^\d.]/g, '')); // Elimina caracteres no numéricos y convierte a número
+
+  if (!isNaN(price)) {
     const subtotal = element.querySelector('td:nth-child(5)');
-    subtotal.textContent = `${price * quantity} ${currentCart[index].currency}`;
+    const subtotalValue = price * quantity;
+    subtotal.textContent = `${currentCart[index].currency} ${subtotalValue.toFixed(0)} `;
     localStorage.setItem('cart', JSON.stringify(currentCart));
+  } else {
+    // Si el precio no es válido, restaura el valor anterior
+    const previousPrice = currentCart[index].price;
+    element.querySelector('td:nth-child(3)').textContent = `${currentCart[index].currency} ${previousPrice} `;
   }
 }
 
@@ -111,13 +129,15 @@ function updateCartTotal (selectedCurrency) {
     }
   });
 
+  // Redondear el total hacia abajo a un número entero
+  const roundedTotal = Math.floor(total);
+
   const totalElement = document.getElementById('cart-total');
   if (totalElement) {
-    totalElement.textContent = `Total: ${currency} ${total} `;
-    localStorage.setItem('cartTotal', total);
+    totalElement.textContent = `Total: ${currency} ${roundedTotal} `;
+    localStorage.setItem('cartTotal', roundedTotal);
   }
 }
-
 
 // Obtén todos los botones de radio con name="currency"
 const currencyButtons = document.querySelectorAll('input[name="currency"]');
@@ -126,15 +146,19 @@ const currencyButtons = document.querySelectorAll('input[name="currency"]');
 currencyButtons.forEach((button) => {
   button.addEventListener('change', () => {
     const selectedCurrency = button.value;
-    updateCartTotal(selectedCurrency); // Llama a la función para actualizar el total con la moneda seleccionada
+    updateCartTotal(selectedCurrency);
   });
 });
+
 // Función para eliminar un producto del carrito
 function removeProductFromCart (index) {
-  currentCart.splice(index, 1);
-  localStorage.setItem('cart', JSON.stringify(currentCart));
-}
+  currentCart.splice(index, 1); // Elimina el producto del array currentCart
 
+  // Actualiza el almacenamiento local con la nueva versión del carrito
+  localStorage.setItem('cart', JSON.stringify(currentCart));
+
+  updateCartTotal(); // Actualiza el total del carrito
+}
 // Función para cargar un producto predeterminado desde una URL y agregarlo al carrito
 function loadDefaultProduct () {
   const productDetailsUrl =
@@ -147,22 +171,19 @@ function loadDefaultProduct () {
         id: 50924,
         name: productData.articles[0].name,
         price: productData.articles[0].unitCost,
-        currency: productData.articles[0].currency,
+        currency: 'USD',
         quantity: 1,
         image: productData.articles[0].image,
       };
+      console.log(defaultProduct);
 
-      // Convertir el precio a USD si la moneda es UYU
-      if (defaultProduct.currency === 'UYU') {
-        defaultProduct.price /= 40; // Aplicar la tasa de cambio
-        defaultProduct.currency = 'USD'; // Actualizar la moneda a USD
-      }
-
-      const existingProduct = currentCart.find(
+      // Verificar si el producto predeterminado ya existe en el carrito
+      const existingProductIndex = currentCart.findIndex(
         (product) => product.name === defaultProduct.name
       );
 
-      if (!existingProduct) {
+      if (existingProductIndex === -1) {
+        // Solo agregar el producto predeterminado si no existe en el carrito
         currentCart.push(defaultProduct);
         localStorage.setItem('cart', JSON.stringify(currentCart));
         renderCart(); // Renderizar el carrito después de agregar el producto predeterminado
@@ -173,7 +194,6 @@ function loadDefaultProduct () {
       console.error('Error al obtener detalles del producto:', error);
     });
 }
-
 // Función para renderizar los productos en el carrito
 function renderCart () {
   const productList = document.getElementById('product-list');
@@ -183,15 +203,6 @@ function renderCart () {
     const tableRow = createCartTableRow(productDetails, index);
     productList.appendChild(tableRow);
 
-    // Agregar una línea separativa después de cada fila, excepto la última
-    if (index < currentCart.length - 1) {
-      const separatorRow = document.createElement('tr');
-      const separatorCell = document.createElement('td');
-      separatorCell.setAttribute('colspan', '6'); // Ocupa todas las columnas
-      separatorCell.style.borderTop = '1px solid grey'; // Estilo de línea separativa
-      separatorRow.appendChild(separatorCell);
-      productList.appendChild(separatorRow);
-    }
   });
 }
 
