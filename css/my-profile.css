@@ -1,0 +1,133 @@
+/* Estilos generales */
+body {
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+}
+
+/* Contenedor principal */
+main {
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Títulos y texto */
+p {
+    font-size: 18px;
+}
+
+/* Formulario */
+form {
+    margin-top: 20px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    width: 60%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Estilos para el botón "Guardar Cambios" */
+#applyChanges {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#applyChanges:hover {
+    background-color: #0056b3;
+}
+
+/* Foto de perfil */
+img#currentProfilePicture {
+    max-width: 200px;
+    max-height: 200px;
+    margin: 10px 0;
+}
+
+/* Enlace Volver arriba */
+a.btn-outline-dark {
+    text-decoration: none;
+}
+
+/* Pie de página */
+footer {
+    margin-top: 20px;
+}
+
+/* Estilos adicionales para personalizar opciones */
+#usernameField,
+#passwordField,
+#emailField,
+#profilePictureField {
+    display: none;
+}
+
+/* Estilos para el contenedor de la imagen de perfil */
+#currentProfilePictureContainer {
+    width: 150px; 
+    height: 150px; 
+    overflow: hidden;
+    border-radius: 50%; 
+    background-color: #f0f0f0; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto; 
+}
+#profilePageProfilePicture {
+    max-width: 100%;   
+    max-height: 100%;   
+    width: auto;        
+    height: auto;     
+    display: block;     
+    margin: 0 auto;     
+}
+
+/* Estilos para el select y sus opciones */
+select {
+    width: 10%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    appearance: none; /* Oculta la flecha predeterminada del select */
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+}
+
+/* Estilos para las opciones */
+select option {
+    padding: 10px;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+/* Estilos para el mensaje de error al estilo de Bootstrap */
+.error-message {
+    color: #721c24; /* Color de texto rojo oscuro */
+    font-size: 0.875rem; /* Tamaño de fuente ligeramente más pequeño */
+    margin-top: 5px;
+    padding: 0.75rem 1.25rem; /* Relleno para el mensaje de error */
+    background-color: #f8d7da; /* Color de fondo rojo claro */
+    border: 1px solid #f5c6cb; /* Borde rojo claro */
+    border-radius: 0.25rem; /* Bordes redondeados */
+    display: none; /* Cambia a inline-block para alinear verticalmente */
+    vertical-align: middle; /* Alinea verticalmente con los otros elementos */
+}

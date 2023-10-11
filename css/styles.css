@@ -332,7 +332,7 @@ td, th {
 
 /* Estilo para la tabla de productos */
 #product-list {
-  width: 100%;
+  width: 50%;
   border-collapse: collapse;
 }
 

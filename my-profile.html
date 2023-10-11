@@ -1,103 +1,75 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>eMercado - Mi perfil</title>
-  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet">
-  <link rel="shortcut icon" href="img/logoarreglado2.png">
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-  </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>eMercado - Mi perfil</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/my-profile.css">
+    <link rel="shortcut icon" href="img/logoarreglado2.png">
+    <script src="js/navbar.js"></script>
 </head>
-
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark p-1">
-    <div class="container">
-      <a class="navbar-brand" href="#">
-        <i id="modeIcon" class="fa fa-sun-o" aria-hidden="true"></i>
-      </a>
-      <div class="container">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav w-100 justify-content-between">
-            <li class="nav-item">
-              <a class="nav-link active bold" href="index.html">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="categories.html">Categorías</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="sell.html">Vender</a>
-            </li>
-            
-            <li class="nav-item ml-auto">
-              <div class="dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
-                  data-bs-toggle="dropdown" aria-expanded="false">
-                  <img src="img/psyduck.jpg" alt="Imagen de perfil" class="rounded-circle"
-                    style="width: 30px; height: 30px;">
-                </a>
-                <ul class="dropdown-menu dropdown-menu-wide" aria-labelledby="navbarDarkDropdownMenuLink">
-                  <a href="cart.html" class="dropdown-item">Mi Carrito</a>
-                  <li>
-                    <div class=" switchContainer"><button class="switch dropdown-item " id="switch">
-                      <span>Modo Oscuro</span><br></div>
-                    </button>
-                  </li>
-                  <div class="dropdown-divider"></div>
-                  <p class="dropdown-item-text">Sesión activa como: <span class="currentUser" id="currentUser"></span>
-                  </p>
-                  
-                  <a class="dropdown-item" id="logoutButton" style="cursor: pointer;">Cerrar sesión</a>
-                </ul>
-              </div>
-            </li>
-          </ul>
+    <div id="navbarContainer"></div>
+    <main class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-lg-8">
+                <h1 class="text-center">Foto actual <i class="fa fa-user" aria-hidden="true"></i></h1>
+                <div id="currentProfilePictureContainer" class="text-center">
+                    <img id="profilePageProfilePicture" src="img/Default_pfp.svg.png" alt="Foto de perfil actual">
+                </div>
+                <form id="profileForm">
+                    <select id="changeOption" class="form-select mb-3">
+                        <option value="" disabled selected>Selecciona la opción</option>
+                        <option value="username">Cambiar nombre de usuario</option>
+                        <option value="password">Cambiar contraseña</option>
+                        <option value="email">Cambiar correo electrónico</option>
+                        <option value="profilePicture">Cambiar foto de perfil</option>
+                    </select>
+                    <div id="usernameField">
+                        <label for="currentName">Nombre actual: <span id="currentUsername"></span></label>
+                        <br>
+                        <label for="newUsername">Nuevo nombre de usuario:</label>
+                        <input type="text" id="newUsername" name="newUsername">
+                    </div>
+                    <div id="passwordField">
+                        <label for="currentPassword">Introduce la contraseña actual:</label>
+                        <input type="password" id="currentPassword" name="currentPassword">
+                       
+                        <br>
+                        <label for="newPassword">Introduce la nueva contraseña:</label>
+                        <input type="password" id="newPassword" name="newPassword">
+                        <div id="passwordError" class="error-message">La contraseña actual introducida no es válida</div>
+                    </div>
+                    <div id="emailField">
+                        <label for="currentName">Correo actual: <span id="currentEmail"></span></label>
+                        <br>
+                        <label for "newEmail">Nuevo correo electrónico:</label>
+                        <input type="email" id="newEmail" name="newEmail">
+                    </div>
+                    <div id="profilePictureField">
+                        <label for="newProfilePicture">Nueva foto de perfil:</label>
+                        <input type="file" id="newProfilePicture" name="newProfilePicture" accept="image/*">
+                    </div>
+                    <button id="applyChanges" class="btn btn-primary" type="button">Guardar Cambios</button>
+                </form>
+            </div>
         </div>
-      </div>
-  </nav>
-
-  <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
-    </div>
-  </main>
-  <footer class="text-muted">
-    <div class="container">
-      <p class="float-end">
-        <a href="#" class="btn btn-outline-dark btn-sm" data-bs-toggle="tooltip" data-bs-placement="top"
-          title="Volver arriba">Volver arriba</a>
-      </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank"
-          class="text-decoration-none text-dark">Jovenes a Programar</a></p>
-    </div>
-  </footer>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/init.js"></script>
-  <script src="js/my-profile.js"></script>
-  <script src="js/logout.js" type="module"></script>
+    </main>
+    
+    <footer class="text-muted">
+        <div class="container">
+            <p class="float-end">
+                <a href="#" class="btn btn-outline-dark btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Volver arriba">Volver arriba</a>
+            </p>
+            <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank" class="text-decoration-none text-dark">Jovenes a Programar</a></p>
+        </div>
+    </footer>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/init.js" type="module"></script>
+    <script src="js/my-profile.js" type="module"></script>
+    <script src="js/logout.js" type="module" defer></script>
 </body>
-
 </html>
