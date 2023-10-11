@@ -4,7 +4,6 @@ const currentCart = JSON.parse(localStorage.getItem('cart')) || [];
 // Función para crear una fila de la tabla del carrito
 function createCartTableRow (productDetails, index) {
   const tableRow = document.createElement('tr');
-  console.log(productDetails);
   // Crear celda de imagen
   const imgCell = document.createElement('td');
   const img = document.createElement('img');
@@ -13,7 +12,6 @@ function createCartTableRow (productDetails, index) {
   img.alt = productDetails.name;
   imgCell.appendChild(img);
   tableRow.appendChild(imgCell);
-
   // Crear enlace al producto
   const productLink = document.createElement('a');
   productLink.classList.add("product-name");
@@ -81,11 +79,11 @@ function createCartTableRow (productDetails, index) {
 
   // Event listener para eliminar un producto del carrito
   removeButton.addEventListener('click', () => {
-    removeProductFromCart(index);
+    removeProductFromCart(productDetails.id);
+
     tableRow.remove();
     updateCartTotal();
   });
-
   return tableRow;
 }
 
@@ -151,13 +149,15 @@ currencyButtons.forEach((button) => {
 });
 
 // Función para eliminar un producto del carrito
-function removeProductFromCart (index) {
-  currentCart.splice(index, 1); // Elimina el producto del array currentCart
-
-  // Actualiza el almacenamiento local con la nueva versión del carrito
-  localStorage.setItem('cart', JSON.stringify(currentCart));
-
-  updateCartTotal(); // Actualiza el total del carrito
+// Función para eliminar un producto del carrito por su ID
+function removeProductFromCart (productID) {
+  const productIndex = currentCart.findIndex((product) => product.id === productID);
+  if (productIndex !== -1) {
+    currentCart.splice(productIndex, 1);
+    // Actualiza el almacenamiento local con la nueva versión del carrito
+    localStorage.setItem('cart', JSON.stringify(currentCart));
+    updateCartTotal(); // Actualiza el total del carrito
+  }
 }
 // Función para cargar un producto predeterminado desde una URL y agregarlo al carrito
 function loadDefaultProduct () {
@@ -168,14 +168,13 @@ function loadDefaultProduct () {
     .then((response) => response.json())
     .then((productData) => {
       const defaultProduct = {
-        id: 50924,
+        id: productData.articles[0].id,
         name: productData.articles[0].name,
         price: productData.articles[0].unitCost,
         currency: 'USD',
         quantity: 1,
         image: productData.articles[0].image,
       };
-      console.log(defaultProduct);
 
       // Verificar si el producto predeterminado ya existe en el carrito
       const existingProductIndex = currentCart.findIndex(
