@@ -103,9 +103,9 @@ if (productId) {
         relatedProductsContainer.appendChild(relatedProductElement);
       });
       cargarComentarios(product);
+
+      //! 
       addToCartButton.addEventListener('click', () => {
-        console.log(product.images[0]);
-        console.log(product.id);
         const productDetails = {
           id: product.id,
           name: product.name,
@@ -179,3 +179,23 @@ commentForm.addEventListener('submit', function (e) {
     return stars;
   }
 });
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  let agregarAlCarritoButton = document.querySelector(".agregar-al-carrito");
+  let mensajeExito = document.getElementById("mensaje-exito");
+
+  agregarAlCarritoButton.addEventListener("click", function () {
+    mensajeExito.innerHTML = 'Su producto ha sido agregado con éxito. Puede visualizarlo en <a href="cart.html"><strong>Mi carrito</strong></a>.';
+    mensajeExito.style.display = "block"; 
+  });
+}); //JOSECODIGO PREGUNTEN SI NO SE CAPTA LA JUGADA
