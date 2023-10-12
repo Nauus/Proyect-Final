@@ -180,7 +180,11 @@ body {
 .messageRegister {
     margin-bottom: 40px !important;
 }
-
+@media (max-width: 993px) {
+    .navbar {
+        display: none;
+    }
+}
 @media (max-width: 768px) {
     .navbar {
         display: none;
@@ -193,3 +197,5 @@ body {
         width: 100%;
     }
 }
+
+
