@@ -38,7 +38,7 @@ body {
     
 }
 .register-section {
-    border: 2px solid #fff;
+   
     height: 690px;
     width: 400px;
     backdrop-filter: blur(1px);
@@ -179,4 +179,17 @@ body {
 }
 .messageRegister {
     margin-bottom: 40px !important;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        display: none;
+    }
+    .logo {
+        display: none; 
+    }
+    .login-section {
+        
+        width: 100%;
+    }
 }
