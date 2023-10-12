@@ -1,3 +1,5 @@
+//! Nahuel A 
+
 // Obtener el carrito de compras actual desde el almacenamiento local
 const currentCart = JSON.parse(localStorage.getItem('cart')) || [];
 
@@ -87,6 +89,8 @@ function createCartTableRow (productDetails, index) {
   return tableRow;
 }
 
+
+//! Martin Rodoriguez
 // Función para actualizar el subtotal de un producto en el carrito
 function updateSubtotal (element, index) {
   const quantity = currentCart[index].quantity;
@@ -106,6 +110,9 @@ function updateSubtotal (element, index) {
 }
 
 // Función para actualizar el total del carrito
+
+//! Nacho
+
 function updateCartTotal (selectedCurrency) {
   let total = 0;
   let currency = selectedCurrency; // Usar la moneda seleccionada
@@ -137,6 +144,7 @@ function updateCartTotal (selectedCurrency) {
   }
 }
 
+
 // Obtén todos los botones de radio con name="currency"
 const currencyButtons = document.querySelectorAll('input[name="currency"]');
 
@@ -150,6 +158,9 @@ currencyButtons.forEach((button) => {
 
 // Función para eliminar un producto del carrito
 // Función para eliminar un producto del carrito por su ID
+
+//! Belen Alano
+
 function removeProductFromCart (productID) {
   const productIndex = currentCart.findIndex((product) => product.id === productID);
   if (productIndex !== -1) {
@@ -160,6 +171,9 @@ function removeProductFromCart (productID) {
   }
 }
 // Función para cargar un producto predeterminado desde una URL y agregarlo al carrito
+
+//! Jose Perazza
+
 function loadDefaultProduct () {
   const productDetailsUrl =
     'https://japceibal.github.io/emercado-api/user_cart/25801.json';
@@ -194,9 +208,10 @@ function loadDefaultProduct () {
     });
 }
 // Función para renderizar los productos en el carrito
+
+//!  Nahuel Medina
 function renderCart () {
   const productList = document.getElementById('product-list');
-
 
   currentCart.forEach((productDetails, index) => {
     const tableRow = createCartTableRow(productDetails, index);
@@ -204,6 +219,7 @@ function renderCart () {
 
   });
 }
+
 
 // Evento que se ejecuta cuando se carga el DOM
 document.addEventListener('DOMContentLoaded', () => {

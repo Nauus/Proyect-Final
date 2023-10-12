@@ -103,9 +103,9 @@ if (productId) {
         relatedProductsContainer.appendChild(relatedProductElement);
       });
       cargarComentarios(product);
+
+      //! 
       addToCartButton.addEventListener('click', () => {
-        console.log(product.images[0]);
-        console.log(product.id);
         const productDetails = {
           id: product.id,
           name: product.name,
