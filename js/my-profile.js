@@ -96,41 +96,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
     applyChangesButton.addEventListener('click', () => {
         const selectedOption = changeOption.value;
-
+        
         if (user) {
-            // Realizar cambios según la opción seleccionada
             if (selectedOption === 'username') {
+                
                 const newUsername = document.getElementById('newUsername').value;
-                user.username = newUsername;
-                currentUsernameElement.textContent = newUsername;
-                localStorage.setItem('currentUser', newUsername);
+                if (newUsername.trim() !== '') {
+                    user.username = newUsername;
+                    currentUsernameElement.textContent = newUsername;
+                    localStorage.setItem('currentUser', newUsername);
+                }
             } else if (selectedOption === 'password') {
+                
                 const currentPassword = document.getElementById('currentPassword').value;
                 const newPassword = document.getElementById('newPassword').value;
-
-                if (currentPassword !== user.password) {
-                    // La contraseña actual no coincide, muestra el mensaje de error
-                    passwordError.style.display = 'block';
-                } else {
-                    // La contraseña actual es válida, oculta el mensaje de error
-                    passwordError.style.display = 'none';
-
-                    // Continúa con el cambio de contraseña
+    
+                if (currentPassword === user.password && newPassword.length > 6) {
                     user.password = newPassword;
+                } else {
 
-                }
+                    alert('La contraseña actual no coincide o la nueva contraseña es muy corta (debe tener al menos 6 caracteres).');
+                    return;}
             } else if (selectedOption === 'email') {
                 const newEmail = document.getElementById('newEmail').value;
-                user.email = newEmail;
-                currentEmailElement.textContent = newEmail;
+    
+                if (isValidEmail(newEmail)) {
+                    user.email = newEmail;
+                    currentEmailElement.textContent = newEmail;
+                } else {
+                    alert('El correo electrónico no es válido. Asegúrate de que tenga un formato válido.');
+                    return;
+                }
             }
-
-            // Guardar los cambios en el localStorage
+    
+            
             database = { users: database.users.map(u => (u.username === currentUser ? user : u)) };
             saveDatabase(databaseKey, database);
-
-            // Ahora que se han guardado los cambios, deshabilita el botón de "Guardar Cambios"
-            applyChangesButton.disabled = false;
+            location.reload();
+            applyChangesButton.disabled = true;
         }
     });
-});
+    
+    function isValidEmail(email) {
+        const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+        return emailPattern.test(email);
+    }
+   
+}); //////////////////JOSECODIGO PREGUNTAR CAMBIOS VALIDACIONES CONTRASEÑAS >6 BLABLABLA
+///////////////////JOSECODIGO 2 SE DA UNA FOTO POR DEFECTO

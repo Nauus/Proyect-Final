@@ -16,4 +16,5 @@ document.addEventListener('DOMContentLoaded', () => {
         navbarProfilePicture.src = storedProfilePicture;
     }
 
+    // Resto del código del navbar.js
 });

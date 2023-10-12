@@ -7,11 +7,13 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
+    <link href="css/custom-styles.css" rel="stylesheet">
     <link rel="stylesheet" href="css/my-profile.css">
     <link rel="shortcut icon" href="img/logoarreglado2.png">
     <script src="js/navbar.js"></script>
 </head>
-<body>
+<body class="bg">
+    <div class="bg">
     <div id="navbarContainer"></div>
     <main class="container">
         <div class="row justify-content-center align-items-center">
@@ -35,12 +37,12 @@
                         <input type="text" id="newUsername" name="newUsername">
                     </div>
                     <div id="passwordField">
-                        <label for="currentPassword">Introduce la contraseña actual:</label>
+                        <label for="currentPassword"  >Introduce la contraseña actual:</label>
                         <input type="password" id="currentPassword" name="currentPassword">
                        
                         <br>
                         <label for="newPassword">Introduce la nueva contraseña:</label>
-                        <input type="password" id="newPassword" name="newPassword">
+                        <input type="password" id="newPassword" name="newPassword"  >
                         <div id="passwordError" class="error-message">La contraseña actual introducida no es válida</div>
                     </div>
                     <div id="emailField">
@@ -57,16 +59,15 @@
                 </form>
             </div>
         </div>
+       
     </main>
     
     <footer class="text-muted">
         <div class="container">
-            <p class="float-end">
-                <a href="#" class="btn btn-outline-dark btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Volver arriba">Volver arriba</a>
-            </p>
             <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank" class="text-decoration-none text-dark">Jovenes a Programar</a></p>
         </div>
     </footer>
+    </div>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/init.js" type="module"></script>
     <script src="js/my-profile.js" type="module"></script>
