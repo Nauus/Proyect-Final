@@ -331,13 +331,14 @@ strong {
 
 /* Estilo para el contenedor del carrusel principal */
 .slider-for {
-  max-width: 60% !important;
-  margin: 0 auto !important; /* Centra horizontalmente el carrusel */
+  width: 100% !important;
+  height: auto !important; 
+  margin: 0 auto !important; 
 }
 
 /* Estilo para el contenedor de las miniaturas */
 .slider-nav {
-  max-width: 60% !important;
+
   margin: auto !important;
 }
 
