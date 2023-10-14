@@ -29,6 +29,7 @@
                         <option value="password">Cambiar contraseña</option>
                         <option value="email">Cambiar correo electrónico</option>
                         <option value="profilePicture">Cambiar foto de perfil</option>
+                        <option value="numTelefono">Cambiar/Agregar numero de telefono</option>
                     </select>
                     <div id="usernameField">
                         <label for="currentName">Nombre actual: <span id="currentUsername"></span></label>
@@ -54,6 +55,10 @@
                     <div id="profilePictureField">
                         <label for="newProfilePicture">Nueva foto de perfil:</label>
                         <input type="file" id="newProfilePicture" name="newProfilePicture" accept="image/*">
+                    </div>
+                    <div id="numTelField">
+                        <label for="numTel">Numero de telefono:</label>
+                        <input type="tel" id="numTel" name="numTel" placeholder="092394475" required pattern="\d{3} \d{3} \d{3}" >
                     </div>
                     <button id="applyChanges" class="btn btn-primary" type="button">Guardar Cambios</button>
                 </form>

@@ -123,11 +123,11 @@ if (productId) {
         if (existingProductIndex !== -1) {
           // Si el producto ya está en el carrito, simplemente aumenta la cantidad
           currentCart[existingProductIndex].quantity += 1;
-          console.log("agregado nuevamente");
+          console.log("ya existe en el carrito, lo agregue nuevamente y su cantidad aumento");
         } else {
           // Si el producto no está en el carrito, agrégalo
           currentCart.push(productDetails);
-          console.log("agregado al carrito nuevo");
+          console.log("agregado por primera vez al carrito");
         }
 
         // Guardar el carrito actualizado en el almacenamiento local
@@ -196,6 +196,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   agregarAlCarritoButton.addEventListener("click", function () {
     mensajeExito.innerHTML = 'Su producto ha sido agregado con éxito. Puede visualizarlo en <a href="cart.html"><strong>Mi carrito</strong></a>.';
-    mensajeExito.style.display = "block"; 
+    mensajeExito.style.display = "block";
   });
 }); //JOSECODIGO PREGUNTEN SI NO SE CAPTA LA JUGADA
