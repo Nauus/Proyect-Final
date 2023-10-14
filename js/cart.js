@@ -33,13 +33,41 @@ function createCartTableRow (productDetails, index) {
 
   // Crear celda de cantidad
   const quantityCell = document.createElement('td');
+  quantityCell.classList.add('quantity-cell');
+
+  const quantityContainer = document.createElement('div');
+  quantityContainer.classList.add('quantity-container');
+
   const quantityInput = document.createElement('input');
   quantityInput.type = 'number';
   quantityInput.min = 1;
   quantityInput.step = 1;
   quantityInput.classList.add('quantity-input');
   quantityInput.value = productDetails.quantity;
-  quantityCell.appendChild(quantityInput);
+  quantityInput.setAttribute('inputmode', 'numeric'); // Evita las flechas de aumento y disminución
+
+  const decreaseButton = document.createElement('button');
+  decreaseButton.textContent = '-';
+  decreaseButton.classList.add('quantity-button', 'decrease');
+  decreaseButton.addEventListener('click', () => {
+    if (quantityInput.value > 1) {
+      quantityInput.value = parseInt(quantityInput.value) - 1;
+      quantityInput.dispatchEvent(new Event('input'));
+    }
+  });
+
+  const increaseButton = document.createElement('button');
+  increaseButton.textContent = '+';
+  increaseButton.classList.add('quantity-button', 'increase');
+  increaseButton.addEventListener('click', () => {
+    quantityInput.value = parseInt(quantityInput.value) + 1;
+    quantityInput.dispatchEvent(new Event('input'));
+  });
+
+  quantityContainer.appendChild(decreaseButton);
+  quantityContainer.appendChild(quantityInput);
+  quantityContainer.appendChild(increaseButton);
+  quantityCell.appendChild(quantityContainer);
   tableRow.appendChild(quantityCell);
 
   // Crear celda de subtotal
@@ -161,7 +189,7 @@ const currentDay = new Date().getDay();
 
 // Función para aplicar un descuento del 10% los viernes (día 5)
 function applyDiscountOnFriday (total) {
-  if (currentDay === 5) { // Viernes
+  if (currentDay === 6 || 4 || 2) { // Viernes
     const discount = (total * 10) / 100;
     return total - discount;
   }
@@ -170,27 +198,49 @@ function applyDiscountOnFriday (total) {
 
 // Función para mostrar una notificación llamativa al recargar la página
 function showNotificationOnPageLoad () {
-  const message = `¡Hoy es el día ${currentDay} de la semana. Aplicando un descuento del 10% en los productos!`;
+  const currentDay = new Date().getDay(); // Obtener el día actual (0 = Domingo, 1 = Lunes, ..., 6 = Sábado)
 
-  // Configurar el estilo CSS personalizado para la notificación
-  const style = {
-    title: 'Descuento Especial',
-    text: message,
-    icon: 'info',
-    showConfirmButton: false,
-    showClass: {
-      popup: 'animated bounceInDown', // Animación de entrada
-    },
-    hideClass: {
-      popup: 'animated bounceOutUp', // Animación de salida
-    },
-    customClass: {
-      content: 'custom-swal-content', // Clase CSS personalizada para el contenido
-      container: 'custom-swal-container', // Clase CSS personalizada para el contenedor
-    },
-  };
+  const dayNames = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+  const currentDayName = dayNames[currentDay]; // Obtener el nombre del día actual
+  let discount = 0; // Descuento predeterminado
 
-  Swal.fire(style);
+  // Verificar el día actual y aplicar descuento correspondiente
+  switch (currentDay) {
+    case 2: // Martes
+      discount = 15; // Descuento del 15% los martes
+      break;
+    case 4: // Jueves
+      discount = 20; // Descuento del 20% los jueves
+      break;
+    case 6: // Sábado
+      discount = 10; // Descuento del 10% los sábados
+      break;
+  }
+
+  // Mostrar notificación solo si hay un descuento aplicable
+  if (discount > 0) {
+    const message = `¡Hoy es  ${currentDayName}, un dia especial para nosotros, por ello te damos un descuento del ${discount}% en los productos!`;
+
+    // Configurar el estilo CSS personalizado para la notificación
+    const style = {
+      title: 'Has obtenido un descuento especial',
+      text: message,
+      icon: 'info',
+      showConfirmButton: false,
+      showClass: {
+        popup: 'animated bounceInDown', // Animación de entrada
+      },
+      hideClass: {
+        popup: 'animated bounceOutUp', // Animación de salida
+      },
+      customClass: {
+        content: 'custom-swal-content', // Clase CSS personalizada para el contenido
+        container: 'custom-swal-container', // Clase CSS personalizada para el contenedor
+      },
+    };
+
+    Swal.fire(style);
+  }
 }
 
 // Mostrar la notificación al cargar la página

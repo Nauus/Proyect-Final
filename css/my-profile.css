@@ -65,7 +65,7 @@ a.btn-outline-dark {
 
 /* Pie de página */
 footer {
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
 /* Estilos adicionales para personalizar opciones */
@@ -87,6 +87,7 @@ footer {
     align-items: center;
     justify-content: center;
     margin: 0 auto; 
+    margin-bottom: 3rem;
 }
 #profilePageProfilePicture {
     max-width: 100%;   
@@ -95,6 +96,8 @@ footer {
     height: auto;     
     display: block;     
     margin: 0 auto;     
+    margin-bottom: 20px;
+    
 }
 
 /* Estilos para el select y sus opciones */

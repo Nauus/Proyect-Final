@@ -57,32 +57,50 @@ if (productId) {
       costElement.textContent = `Precio: ${product.cost} ${product.currency}`;
       soldCountElement.textContent = `Vendidos: ${product.soldCount}`;
       categoryElement.textContent = `Categoría: ${product.category}`;
+      $(document).ready(function () {
+        // Código para obtener los detalles del producto y las imágenes
 
+        // Limpia el carrusel actual
+        $('.slider-for').html('');
+        $('.slider-nav').html('');
 
+        // Agrega las imágenes al carrusel principal y las miniaturas
+        product.images.forEach((imageUrl, index) => {
+          const slideDiv = document.createElement("div");
+          slideDiv.classList.add("carousel-item");
+          if (index === 0) {
+            slideDiv.classList.add("active");
+          }
 
+          const image = document.createElement("img");
+          image.src = imageUrl;
+          image.alt = "Imagen de producto";
 
+          slideDiv.appendChild(image);
+          $('.slider-for').append(slideDiv);
 
-      const carouselInner = document.querySelector('#imageCarousel .carousel-inner');
+          const thumbnail = document.createElement("div");
+          thumbnail.innerHTML = `<img src="${imageUrl}" alt="Miniatura">`;
+          $('.slider-nav').append(thumbnail);
+        });
 
-      // Limpia el carrusel actual
-      carouselInner.innerHTML = '';
+        // Inicializa los carruseles Slick
+        $('.slider-for').slick({
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
+          fade: true,
+          asNavFor: ".slider-nav",
+        });
 
-      // Agrega las imágenes al carrusel y la imagen principal
-      product.images.forEach((imageUrl, index) => {
-        const slideDiv = document.createElement('div');
-        slideDiv.classList.add('carousel-item');
-        if (index === 0) {
-          slideDiv.classList.add('active'); // La primera imagen se establece como activa
-        }
-
-        const image = document.createElement('img');
-        image.src = imageUrl;
-        image.alt = 'Imagen de producto';
-
-
-        slideDiv.appendChild(image);
-        carouselInner.appendChild(slideDiv);
-
+        $('.slider-nav').slick({
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          asNavFor: ".slider-for",
+          dots: true,
+          centerMode: true,
+          focusOnSelect: true,
+        });
       });
 
       product.relatedProducts.forEach(relatedProduct => {
@@ -90,18 +108,18 @@ if (productId) {
         relatedProductElement.classList.add("col-md-6");
         relatedProductElement.classList.add("Recommended-Product");
         relatedProductElement.innerHTML = `
-          <h3>${relatedProduct.name}</h3>
-          <img src="${relatedProduct.image}" alt="${relatedProduct.name}">
-        `;
+        <h3>${relatedProduct.name}</h3>
+        <img src="${relatedProduct.image}" alt="${relatedProduct.name}">
+      `;
 
         // Agrega el evento click para redirigir al usuario al producto
-
         relatedProductElement.addEventListener('click', () => {
-          window.location.href = `product-info.html?id=${relatedProduct.id}`; // Reemplaza 'product.html' con la URL de tu página de detalles del producto
+          window.location.href = `product-info.html?id=${relatedProduct.id}`;
         });
 
         relatedProductsContainer.appendChild(relatedProductElement);
       });
+
       cargarComentarios(product);
 
       //! 
@@ -112,8 +130,9 @@ if (productId) {
           image: product.images[0],
           price: product.cost,
           currency: product.currency,
-          quantity: 1, // Puedes establecer la cantidad inicial a 1 o permitir que el usuario la ajuste
+          quantity: 1,
         };
+
         // Obtener el carrito de compras actual desde el almacenamiento local
         const currentCart = JSON.parse(localStorage.getItem('cart')) || [];
 
@@ -123,18 +142,17 @@ if (productId) {
         if (existingProductIndex !== -1) {
           // Si el producto ya está en el carrito, simplemente aumenta la cantidad
           currentCart[existingProductIndex].quantity += 1;
-          console.log("ya existe en el carrito, lo agregue nuevamente y su cantidad aumento");
+          console.log("Ya existe en el carrito, lo agregué nuevamente y su cantidad aumentó.");
         } else {
           // Si el producto no está en el carrito, agrégalo
           currentCart.push(productDetails);
-          console.log("agregado por primera vez al carrito");
+          console.log("Agregado por primera vez al carrito.");
         }
 
         // Guardar el carrito actualizado en el almacenamiento local
         localStorage.setItem('cart', JSON.stringify(currentCart));
       });
     })
-
     .catch(error => {
       console.error('Error al obtener detalles del producto:', error);
     });
@@ -180,22 +198,32 @@ commentForm.addEventListener('submit', function (e) {
   }
 });
 
-
-
-
-
-
-
-
-
-
-
 document.addEventListener("DOMContentLoaded", function () {
   let agregarAlCarritoButton = document.querySelector(".agregar-al-carrito");
-  let mensajeExito = document.getElementById("mensaje-exito");
 
   agregarAlCarritoButton.addEventListener("click", function () {
-    mensajeExito.innerHTML = 'Su producto ha sido agregado con éxito. Puede visualizarlo en <a href="cart.html"><strong>Mi carrito</strong></a>.';
-    mensajeExito.style.display = "block";
+    const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 3000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer);
+        toast.addEventListener('mouseleave', Swal.resumeTimer);
+      },
+      showClass: {
+        popup: 'animate__animated animate__fadeIn' // Animación de entrada
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOut' // Animación de salida
+      }
+    });
+
+    Toast.fire({
+      icon: 'success',
+      title: 'Producto agregado al carrito'
+    });
   });
-}); //JOSECODIGO PREGUNTEN SI NO SE CAPTA LA JUGADA
+});
+

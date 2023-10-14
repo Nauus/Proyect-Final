@@ -78,7 +78,7 @@ nav a {
 }
 
 footer {
-  padding-top: 20px; 
+  padding-top: 5.3rem; 
   padding-bottom: 3rem;
   background-color: #552f11b6;
 }
@@ -232,11 +232,17 @@ body.dark .btn {
   background-color: hsl(178,99%,31%)!important;
   border: #484749;
 }
-body.dark .card-title  {
+
+
+body.dark .productos  {
   color: #B9B9B9;
 }
 
-body.dark .productos  {
+body.dark .vender  {
+  color: #B9B9B9;
+}
+
+body.dark .venderSubtitulo {
   color: #B9B9B9;
 }
 
@@ -310,9 +316,9 @@ td, th {
   cursor: default;
 }
 .product-name:hover {
-  color: #ff6600; /* Cambia el color al pasar el mouse sobre el elemento */
+  color: #ff6600; 
 }
-body.dark.product-name:hover {
+body.dark .product-name:hover {
   color: hsl(178,99%,31%); 
 }
 
@@ -331,7 +337,7 @@ body.dark.product-name:hover {
 /* Estilos para los botones de eliminar */
 .remove-product {
   background-color: transparent; 
-  color: grey; 
+  color: white; 
   border: none; 
   padding: 5px 10px;
   cursor: pointer;

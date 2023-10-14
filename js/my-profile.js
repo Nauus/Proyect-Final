@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     currentEmailElement.textContent = user.email;
 
 
+
     // Mostrar la foto de perfil actual en la página my-profile.html
     const profilePageProfilePicture = document.getElementById('profilePageProfilePicture');
     if (user.profilePicture) {
@@ -154,7 +155,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-
             database = { users: database.users.map(u => (u.username === currentUser ? user : u)) };
             saveDatabase(databaseKey, database);
             location.reload();
@@ -166,6 +166,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
         return emailPattern.test(email);
     }
-
+    swal("Pestaña en Alpha", "Esta pestaña está en fase Alpha de desarrollo. Aun falta agregar estilos. ¡Gracias por tu visita!", "warning");
 }); //////////////////JOSECODIGO PREGUNTAR CAMBIOS VALIDACIONES CONTRASEÑAS >6 BLABLABLA
 ///////////////////JOSECODIGO 2 SE DA UNA FOTO POR DEFECTO
