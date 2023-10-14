@@ -3,10 +3,12 @@
 .container,
 .site-header {
   font-family: 'Verdana', serif !important;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .jumbotron .display-4 {
   font-weight: bold;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 nav a {
@@ -20,11 +22,13 @@ nav a {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 @media (min-width: 768px) {
   .bd-placeholder-img-lg {
     font-size: 3.5rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
   }
 }
 
@@ -39,6 +43,7 @@ nav a {
   background-repeat: no-repeat;
   color: black;
   font-weight: bold;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 
   
 }
@@ -56,6 +61,7 @@ nav a {
 }
 
 .jumbotron-heading {
+  font-family: Georgia, 'Times New Roman', Times, serif;
   font-weight: 300;
 }
 
@@ -67,6 +73,7 @@ nav a {
 }
 
 .jumbotron .lead {
+  font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 38px;
 }
 
@@ -78,7 +85,9 @@ footer {
 
 footer p {
   margin-bottom: .25rem;
+  color: #b3b3b3;
 }
+
 
 .site-header a {
   color: white;
@@ -224,11 +233,15 @@ body.dark .btn {
   border: #484749;
 }
 body.dark .card-title  {
-  box-shadow: 0px -4px 33px 0px hsl(178,99%,31%);
+  color: #B9B9B9;
+}
+
+body.dark .productos  {
+  color: #B9B9B9;
 }
 
 body.dark .productTitle  {
-  box-shadow: 0px -4px 33px 0px hsl(178,99%,31%);
+  color: #B9B9B9;
 }
 
 body.dark .carouselFlechas  {
@@ -236,17 +249,18 @@ body.dark .carouselFlechas  {
 }
 
 body.dark .categorias  {
-  box-shadow: 0px -4px 33px 0px hsl(178,99%,31%);
+  color: #B9B9B9;
 }
 
+body.dark h4{
+  color: #B9B9B9;
+}
 
 body.dark .filtermaxymin {
   border-color: hsl(178,99%,31%) !important;
 }
 
-body.dark .productos {
-  box-shadow: 0px -4px 33px 0px hsl(178,99%,31%);
-}
+
 body.dark .searchProducts {
   border-color: hsl(178,99%,31%) !important;
 }
@@ -415,3 +429,47 @@ body.dark.product-name:hover {
 }
 
 
+h4 { 
+  font-family: Georgia, 'Times New Roman', Times, serif;; 
+  font-size: 1.25rem; 
+  font-style: normal; 
+  font-variant: normal; 
+  line-height: 26.4px; 
+  padding-top: 0.6rem;
+} 
+  
+  h2 h3 { 
+    font-family: Georgia, 'Times New Roman', Times, serif;; 
+    font-size: 40px; 
+    font-style: normal; 
+    font-variant: normal; 
+    font-weight: 700; 
+    line-height: 15.4px; 
+  } 
+  p { 
+    font-family: Georgia, 'Times New Roman', Times, serif; ; 
+    font-size: 20px; 
+    font-style: normal; 
+    font-variant: normal; 
+    font-weight: 400; 
+    line-height: 20px; 
+  } 
+  
+  div.h3 { 
+    font-family: Georgia, 'Times New Roman', Times, serif;; 
+    font-size: 40px; 
+    font-style: normal; 
+    font-variant: normal; 
+    font-weight: 400; 
+    line-height: 20px; 
+  }
+
+  .col-md-8 {
+    border: 1rem solid transparent;
+    background-color: #ffffff75;
+    margin-bottom: 4rem;
+    border-radius: 2rem;
+   
+  }
+
+  
