@@ -37,17 +37,15 @@ nav a {
   padding: 5em inherit;
   margin-bottom: 0;
   background-color: #53C0FB;
-  background: url('../img/cover_back.png');
-  background-size: cover;
-  background-position: center;
+  background: url('../img/index\ sin\ fondo.png');
+  background-color: #f3bc78;
+  background-size: 40rem;
+  background-position: center ;
   background-repeat: no-repeat;
   color: black;
   font-weight: bold;
   font-family: Georgia, 'Times New Roman', Times, serif;
-
-  
 }
-
 
 @media (min-width: 768px) {
   .jumbotron {
@@ -78,7 +76,7 @@ nav a {
 }
 
 footer {
-  padding-top: 5.3rem; 
+  padding-top: 20px; 
   padding-bottom: 3rem;
   background-color: #552f11b6;
 }
@@ -218,31 +216,29 @@ body.dark nav {
   background-color:#484749 !important ;
 }
 
+.dark .jumbotron{
+  background-color: #554f4f75;
+}
+
 body.dark .jumbotron{
-  background-image: url(../img/cover_back_black.svg);
+  background-image: url(../img/index\ sin\ fondo.png);
 }
 body.dark .darkk {
   background-color: rgb(164, 160, 153)!important;
 }
 body.dark .custom-card {
-  background-color: #ffffff75!important;
+  background-color: #554f4f75!important;
 }
 
 body.dark .btn {
   background-color: hsl(178,99%,31%)!important;
   border: #484749;
 }
-
+body.dark .card-title  {
+  color: #B9B9B9;
+}
 
 body.dark .productos  {
-  color: #B9B9B9;
-}
-
-body.dark .vender  {
-  color: #B9B9B9;
-}
-
-body.dark .venderSubtitulo {
   color: #B9B9B9;
 }
 
@@ -316,9 +312,9 @@ td, th {
   cursor: default;
 }
 .product-name:hover {
-  color: #ff6600; 
+  color: #ff6600; /* Cambia el color al pasar el mouse sobre el elemento */
 }
-body.dark .product-name:hover {
+body.dark.product-name:hover {
   color: hsl(178,99%,31%); 
 }
 
@@ -337,7 +333,7 @@ body.dark .product-name:hover {
 /* Estilos para los botones de eliminar */
 .remove-product {
   background-color: transparent; 
-  color: white; 
+  color: grey; 
   border: none; 
   padding: 5px 10px;
   cursor: pointer;
@@ -475,7 +471,7 @@ h4 {
     background-color: #ffffff75;
     margin-bottom: 4rem;
     border-radius: 2rem;
-   
   }
 
+  
   

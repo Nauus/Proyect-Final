@@ -243,10 +243,7 @@ box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.75);
 .comentar-column {
   padding: 0 15px; 
 }
-.bg {
-  background-image: url(../img/bgjar.svg);
-  background-size: cover; /* Ajusta el tamaño de fondo para cubrir completamente el contenedor */
-}
+
 .card-body {
   background-color: rgba(255, 255, 255, 0.397);
   padding: 20px; /* Agrega espacio alrededor del contenido */
@@ -266,9 +263,9 @@ box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.75);
   color: black;
   cursor: pointer;
   transition: all 0.5s ease-in-out;
-  -webkit-box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.75);
-  -moz-box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.75);
-  box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 5px 5px 3px 7px rgba(0,0,0,0.75);
+  -moz-box-shadow: 5px 5px 3px 7px rgba(0,0,0,0.75);
+  box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.75);
 }
 .agregar-al-carrito:hover {
   transform: scale(0.9); 
@@ -280,6 +277,7 @@ box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.75);
   color: black;
   cursor: pointer;
   transition: all 0.5s ease-in-out;
+  background-color: #007bff;
 }
 .btn:hover {
   transform: scale(0.9); 
