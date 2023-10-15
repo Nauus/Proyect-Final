@@ -106,6 +106,11 @@ function updateSubtotal (element, index) {
 }
 
 // Función para actualizar el total del carrito
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
 function updateCartTotal (selectedCurrency) {
   let total = 0;
   let currency = selectedCurrency; // Usar la moneda seleccionada
@@ -150,6 +155,10 @@ currencyButtons.forEach((button) => {
 
 // Función para eliminar un producto del carrito
 // Función para eliminar un producto del carrito por su ID
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 function removeProductFromCart (productID) {
   const productIndex = currentCart.findIndex((product) => product.id === productID);
   if (productIndex !== -1) {
