@@ -165,10 +165,10 @@ tr {
 }
 }
 
+
 .payment-container h1 {
   font-size: 24px;
   font-family: Georgia, 'Times New Roman', Times, serif;
-  text-align: center;
   margin-bottom: 20px;
 }
 
@@ -400,4 +400,8 @@ body.dark #related-products {
 
 .pb-5 {
   padding-bottom: 0px !important;
+}
+
+#discount-amount {
+  margin-top: 2rem !important;
 }
