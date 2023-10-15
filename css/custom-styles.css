@@ -1,14 +1,12 @@
-
-
-
-
 .navbar-dark .navbar-nav,
-.navbar-dark .navbar-nav .nav-link:hover {
-  color:hsl(177, 76%, 26%);
+body.dark .navbar-nav .nav-link:hover {
+  color:hsl(177, 76%, 26%) !important;
 }
-.navbar .navbar-nav .nav-link:hover {
-  color:#f39407;
+
+ .navbar-nav .nav-link:hover {
+  color:#f39407 !important;
 }
+
   .card.custom-card {
     transition: transform 0.3s ease-in-out;
   }
@@ -130,11 +128,17 @@
   animation: focus-in-expand 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards;
 }
 
+body.dark .vender {
+  color: #B9B9B9;
+  animation: focus-in-expand 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards;
+}
+
+
 
 
 .bg {
   background-color: #f3bc78;
-
+  padding-bottom: 8rem;
 background-attachment: fixed;
 background-size: cover;
 
@@ -165,10 +169,10 @@ tr {
 }
 }
 
+
 .payment-container h1 {
   font-size: 24px;
   font-family: Georgia, 'Times New Roman', Times, serif;
-  text-align: center;
   margin-bottom: 20px;
 }
 
@@ -379,6 +383,7 @@ body.dark .bg {
 
 body.dark footer {
   background-color:#484749 !important;
+padding-bottom: 8rem;
 }
 
 body.dark #related-products {
@@ -399,4 +404,8 @@ body.dark #related-products {
 
 .pb-5 {
   padding-bottom: 0px !important;
+}
+
+#discount-amount {
+  margin-top: 2rem !important;
 }

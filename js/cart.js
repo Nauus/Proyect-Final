@@ -1,5 +1,3 @@
-//! Nahuel A 
-
 // Obtener el carrito de compras actual desde el almacenamiento local
 const currentCart = JSON.parse(localStorage.getItem('cart')) || [];
 
@@ -102,10 +100,8 @@ function createCartTableRow (productDetails, index) {
       event.target.value = currentCart[index].quantity;
     }
 
-
     selectUSDCurrency();
   });
-
 
   // Event listener para eliminar un producto del carrito
   removeButton.addEventListener('click', () => {
@@ -123,7 +119,6 @@ function selectUSDCurrency () {
   usdRadio.checked = true;
 }
 
-//! Martin Rodoriguez
 // Función para actualizar el subtotal de un producto en el carrito
 function updateSubtotal (element, index) {
   const quantity = currentCart[index].quantity;
@@ -187,19 +182,26 @@ tipoEnvioSelect.addEventListener('change', () => {
 // Obtener el día actual (0 = Domingo, 1 = Lunes, ..., 6 = Sábado)
 const currentDay = new Date().getDay();
 
-// Función para aplicar un descuento del 10% los viernes (día 5)
-function applyDiscountOnFriday (total) {
-  if (currentDay === 6 || 4 || 2) { // Viernes
-    const discount = (total * 10) / 100;
+
+// Luego, define la función applyDiscountOnSpecificDays
+function applyDiscountOnSpecificDays (total) {
+  const currentDay = new Date().getDay(); // Obtener el día actual (0 = Domingo, 1 = Lunes, ..., 6 = Sábado)
+
+  if (currentDay === 0) { // Domingo, Martes o Jueves
+    const discount = (total * 10) / 100; // Descuento del 10% los domingos
+    return total - discount;
+  } else if (currentDay === 2) {
+    const discount = (total * 15) / 100; // Descuento del 15% los  martes
+    return total - discount;
+  } else if (currentDay === 4) {
+    const discount = (total * 20) / 100; // Descuento del 20% los  jueves
     return total - discount;
   }
   return total;
 }
-
 // Función para mostrar una notificación llamativa al recargar la página
 function showNotificationOnPageLoad () {
   const currentDay = new Date().getDay(); // Obtener el día actual (0 = Domingo, 1 = Lunes, ..., 6 = Sábado)
-
   const dayNames = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
   const currentDayName = dayNames[currentDay]; // Obtener el nombre del día actual
   let discount = 0; // Descuento predeterminado
@@ -212,14 +214,21 @@ function showNotificationOnPageLoad () {
     case 4: // Jueves
       discount = 20; // Descuento del 20% los jueves
       break;
-    case 6: // Sábado
-      discount = 10; // Descuento del 10% los sábados
+    case 0: // Domingo
+      discount = 10; // Descuento del 10% los domingos
       break;
+  }
+
+  // Aquí puedes mostrar el porcentaje del descuento en algún elemento HTML específico
+  const discountElement = document.getElementById('discount-amount');
+  if (discountElement) {
+    const discountPercentage = discount > 0 ? `${discount}%` : '0%'; // Formatea el porcentaje
+    discountElement.textContent = `como es un dia especial para nosotros has obtenido un descuento del ${discountPercentage} se vera reflejado en tu total.`;
   }
 
   // Mostrar notificación solo si hay un descuento aplicable
   if (discount > 0) {
-    const message = `¡Hoy es  ${currentDayName}, un dia especial para nosotros, por ello te damos un descuento del ${discount}% en los productos!`;
+    const message = `¡Hoy es ${currentDayName}, un día especial para nosotros, por ello te damos un descuento del ${discount}% en los productos!`;
 
     // Configurar el estilo CSS personalizado para la notificación
     const style = {
@@ -250,6 +259,7 @@ showNotificationOnPageLoad();
 function updateCartTotal (selectedCurrency) {
   let total = 0;
   let currency = selectedCurrency;
+  let subtotal = 0;
 
   if (!currency) {
     currency = localStorage.getItem('cartCurrency') || 'USD';
@@ -258,40 +268,62 @@ function updateCartTotal (selectedCurrency) {
   currentCart.forEach((product) => {
     if (product.currency === 'UYU' && currency === 'USD') {
       total += (product.price * product.quantity) / 40;
+      subtotal += (product.price * product.quantity) / 40;
     } else if (product.currency === 'USD' && currency === 'UYU') {
       total += product.price * product.quantity * 40;
+      subtotal += product.price * product.quantity * 40;
     } else {
       total += product.price * product.quantity;
+      subtotal += product.price * product.quantity;
     }
   });
 
-  const aumentoDescuento = (total * aumentoPorcentaje) / 100;
-  total -= aumentoDescuento;
+  // Aplica el descuento si corresponde
+  total = applyDiscountOnSpecificDays(total);
 
-  total = applyDiscountOnFriday(total); // Aplicar descuento los viernes
+  const aumentoDescuento = (total * aumentoPorcentaje) / 100;
+  const costoEnvio = (total * aumentoPorcentaje) / 100;
+
+  total += costoEnvio;
 
   const roundedTotal = Math.floor(total);
-
   const totalElement = document.getElementById('cart-total');
   if (totalElement) {
     totalElement.textContent = `Total: ${currency} ${roundedTotal} `;
     localStorage.setItem('cartTotal', roundedTotal);
   }
-}
 
-tipoEnvioSelect.addEventListener('change', () => {
-  updateCartTotal();
-});
-// Obtén todos los botones de radio con name="currency"
-const currencyButtons = document.querySelectorAll('input[name="currency"]');
+  const roundedSubtotal = Math.floor(subtotal);
+  const subtotalElement = document.getElementById('subtotal');
+  if (subtotalElement) {
+    subtotalElement.textContent = `Subtotal: ${currency} ${roundedSubtotal} `;
+  }
 
-// Agrega un evento 'change' a cada botón de radio
-currencyButtons.forEach((button) => {
-  button.addEventListener('change', () => {
-    const selectedCurrency = button.value;
-    updateCartTotal(selectedCurrency);
+  const envioTotalElement = document.getElementById('envio-total');
+  if (envioTotalElement) {
+    envioTotalElement.textContent = `Costo de envío: ${currency} ${costoEnvio.toFixed(2)}`;
+  }
+
+
+
+
+
+
+  tipoEnvioSelect.addEventListener('change', () => {
+    updateCartTotal();
   });
-});
+
+  // Obtén todos los botones de radio con name="currency"
+  const currencyButtons = document.querySelectorAll('input[name="currency"]');
+
+  // Agrega un evento 'change' a cada botón de radio
+  currencyButtons.forEach((button) => {
+    button.addEventListener('change', () => {
+      const selectedCurrency = button.value;
+      updateCartTotal(selectedCurrency);
+    });
+  });
+}
 
 // Función para eliminar un producto del carrito
 // Función para eliminar un producto del carrito por su ID
