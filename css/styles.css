@@ -344,7 +344,7 @@ body.dark.product-name:hover {
 /* Estilos para los botones de eliminar */
 .remove-product {
   background-color: transparent; 
-  color: grey; 
+  color: white; 
   border: none; 
   padding: 5px 10px;
   cursor: pointer;
@@ -461,7 +461,7 @@ h4 {
   } 
   p { 
     font-family: Georgia, 'Times New Roman', Times, serif; ; 
-    font-size: 20px; 
+ 
     font-style: normal; 
     font-variant: normal; 
     font-weight: 400; 
