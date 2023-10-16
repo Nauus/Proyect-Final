@@ -88,13 +88,22 @@ body.dark .navbar-nav .nav-link:hover {
   background-color: rgba(255, 255, 255, 0.5) !important; 
 }
 
-.card {
-  background-color: rgba(255, 255, 255, 0.5) !important; 
 
+body.dark .cardProducts {
+  background-color: #212529 !important; 
+  border-radius: 10px !important;
 }
+
+.cardProducts {
+  background-color: rgba(255, 255, 255, 0.5) !important; 
+  border-radius: 10px !important;
+}
+
+
 
 .productname {
   color: black !important;
+ 
 }
 
 
@@ -150,7 +159,6 @@ background-size: cover;
 
 .bgCart {
   background-color: #f3bc78;
-  padding-bottom: 8rem;
 background-attachment: fixed;
 background-size: cover;
 
@@ -159,6 +167,20 @@ body.dark .bgCart  {
   background-color: #1E1C1F;
   background-attachment: fixed;
   background-size: cover;
+}
+body.cart.dark  {
+  background-color: #1E1C1F !important;
+}
+
+body.cart {
+  background-color: #f3bc78 !important;
+}
+
+body.bodyProfile.dark {
+  background-color: #1E1C1F !important;
+}
+body.bodyProfile {
+  background-color: #f3bc78 !important;
 }
 
 tr {
@@ -176,7 +198,7 @@ tr {
   padding: 20px;
   margin-top: 20px ;
   max-width: 500px;
- 
+ margin-bottom: 20px;
   
 }
 
@@ -400,7 +422,6 @@ body.dark .bg {
 
 body.dark footer {
   background-color:#484749 !important;
-padding-bottom: 8rem;
 }
 
 body.dark #related-products {
@@ -425,4 +446,8 @@ body.dark #related-products {
 
 #discount-amount {
   margin-top: 2rem !important;
+}
+
+.footerProfile {
+padding-top: 3rem;
 }

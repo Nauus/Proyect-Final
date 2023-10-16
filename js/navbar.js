@@ -1,3 +1,4 @@
+import { displayCurrentUser, logoutUser } from './logout.js';
 fetch('navbar.html')
     .then(response => response.text())
     .then(data => {
@@ -6,10 +7,19 @@ fetch('navbar.html')
         // Dispara el evento personalizado cuando el navbar se haya cargado
         const navbarLoadedEvent = new Event('navbarLoaded');
         document.dispatchEvent(navbarLoadedEvent);
+
+        // Llama a la función displayCurrentUser para mostrar el usuario actual en el navbar
+        displayCurrentUser();
+
+        // Llama a la función logoutUser para configurar el botón de cierre de sesión
+        logoutUser();
+
+
     })
     .catch(error => {
         console.error('Error al cargar el navbar:', error);
     });
+
 document.addEventListener('navbarLoaded', () => {
     // Código de "my-profile.js" relacionado con el navbar
     const navbarProfilePicture = document.getElementById('navbarProfilePicture');
@@ -18,4 +28,32 @@ document.addEventListener('navbarLoaded', () => {
     if (storedProfilePicture) {
         navbarProfilePicture.src = storedProfilePicture;
     }
+
+    //! darkmode button en navbar
+    const btnSwitch = document.querySelector('#switch');
+    const darkModeEnabled = localStorage.getItem('darkModeEnabled');
+
+    function enableDarkMode () {
+        document.body.classList.add('dark');
+        btnSwitch.classList.add('active');
+        localStorage.setItem('darkModeEnabled', 'true');
+    }
+
+    function disableDarkMode () {
+        document.body.classList.remove('dark');
+        btnSwitch.classList.remove('active');
+        localStorage.setItem('darkModeEnabled', 'false');
+    }
+
+    if (darkModeEnabled === 'true') {
+        enableDarkMode();
+    }
+
+    btnSwitch.addEventListener('click', () => {
+        if (document.body.classList.contains('dark')) {
+            disableDarkMode();
+        } else {
+            enableDarkMode();
+        }
+    });
 });

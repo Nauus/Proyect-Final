@@ -40,31 +40,3 @@ let getJSONData = function (url) {
     });
 };
 
-document.addEventListener('DOMContentLoaded', function () {
-  const btnSwitch = document.querySelector('#switch');
-  const darkModeEnabled = localStorage.getItem('darkModeEnabled');
-
-  function enableDarkMode () {
-    document.body.classList.add('dark');
-    btnSwitch.classList.add('active');
-    localStorage.setItem('darkModeEnabled', 'true');
-  }
-
-  function disableDarkMode () {
-    document.body.classList.remove('dark');
-    btnSwitch.classList.remove('active');
-    localStorage.setItem('darkModeEnabled', 'false');
-  }
-
-  if (darkModeEnabled === 'true') {
-    enableDarkMode();
-  }
-
-  btnSwitch.addEventListener('click', () => {
-    if (document.body.classList.contains('dark')) {
-      disableDarkMode();
-    } else {
-      enableDarkMode();
-    }
-  });
-});
