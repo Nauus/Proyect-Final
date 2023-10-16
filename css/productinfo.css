@@ -277,7 +277,6 @@ box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.75);
   color: black;
   cursor: pointer;
   transition: all 0.5s ease-in-out;
-  background-color: #007bff;
 }
 .btn:hover {
   transform: scale(0.9); 
