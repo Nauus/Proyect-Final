@@ -16,6 +16,11 @@ body {
     margin: 0 auto;
 }
 
+h3 {
+    text-align: center;
+    padding: 2%;
+    
+}
 .faq-item {
     background-color: #fff;
     border: 1px solid #ddd;
