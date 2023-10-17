@@ -676,12 +676,14 @@ document.getElementById("finalizarCompra").addEventListener("click", function (e
     });
     return;
   }
+
+
   if (paymentDataIsValid && isValid) {
     // Muestra el mensaje de éxito con SweetAlert
     Swal.fire({
       icon: 'success',
       title: 'Compra exitosa',
-      text: '¡Gracias por tu compra!',
+      text: "Gracias por tu compra, recibiras un mensaje en tu casilla de correo electronico con tu boleta e información de envio.",
     }).then((result) => {
       if (result.isConfirmed) {
         clearCart();
