@@ -1,6 +1,11 @@
 // Obtener el carrito de compras actual desde el almacenamiento local
 const currentCart = JSON.parse(localStorage.getItem('cart')) || [];
 
+const currentUser = localStorage.getItem('currentUser');
+
+if (!currentUser) {
+  window.location.href = 'login.html';
+}
 // Función para crear una fila de la tabla del carrito
 function createCartTableRow (productDetails, index) {
   console.log(index);
@@ -671,13 +676,27 @@ document.getElementById("finalizarCompra").addEventListener("click", function (e
     });
     return;
   }
+  if (paymentDataIsValid && isValid) {
+    // Muestra el mensaje de éxito con SweetAlert
+    Swal.fire({
+      icon: 'success',
+      title: 'Compra exitosa',
+      text: '¡Gracias por tu compra!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        clearCart();
+        location.reload();
+      }
+    });
+  }
 
-  // Si todos los datos son válidos, muestra un mensaje de éxito con SweetAlert
-  Swal.fire({
-    icon: 'success',
-    title: 'Compra exitosa',
-    text: '¡Gracias por tu compra!',
-  });
+  function clearCart () {
+    console.log('Limpieza del carrito...');
+    localStorage.removeItem('cart');
+    console.log('Carrito limpiado y localStorage actualizado.');
+    renderCart();
+    updateCartTotal();
+  }
 });
 
 // Evento que se ejecuta cuando se carga el DOM

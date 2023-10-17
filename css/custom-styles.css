@@ -483,3 +483,7 @@ padding-top: 3rem;
 .close:hover {
   color: #000;
 }
+
+body.dark .textcant {
+  color: white;
+}

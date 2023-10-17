@@ -36,24 +36,33 @@ document.addEventListener('navbarLoaded', () => {
     function enableDarkMode () {
         document.body.classList.add('dark');
         btnSwitch.classList.add('active');
-        localStorage.setItem('darkModeEnabled', 'true');
     }
 
     function disableDarkMode () {
         document.body.classList.remove('dark');
         btnSwitch.classList.remove('active');
-        localStorage.setItem('darkModeEnabled', 'false');
     }
 
     if (darkModeEnabled === 'true') {
         enableDarkMode();
+    } else {
+        disableDarkMode(); // Asegúrate de desactivar el modo oscuro si no está habilitado en localStorage.
     }
 
     btnSwitch.addEventListener('click', () => {
         if (document.body.classList.contains('dark')) {
             disableDarkMode();
+            localStorage.setItem('darkModeEnabled', 'false'); // Guardar el estado en localStorage
         } else {
             enableDarkMode();
+            localStorage.setItem('darkModeEnabled', 'true'); // Guardar el estado en localStorage
         }
     });
 });
+
+
+
+
+
+
+
