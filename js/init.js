@@ -68,3 +68,4 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
+//JOSECODIGO, USA LA MISMA FUNCIONALIDAD QUE EL DARKMODE
