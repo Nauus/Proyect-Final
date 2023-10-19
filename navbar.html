@@ -27,13 +27,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav w-100 justify-content-between">
             <li class="nav-item">
-              <a class="nav-link active bold" href="index.html">Inicio</a>
+              <a class="nav-link active bold" href="index.html"  id="reproducirSonido">Inicio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="categories.html">Categorías</a>
+              <a class="nav-link" href="categories.html"  id="reproducirSonido">Categorías</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="sell.html">Vender</a>
+              <a class="nav-link" href="sell.html"  id="reproducirSonido">Vender</a>
             </li>
             
 
@@ -52,6 +52,12 @@
                     <div class=" switchContainer"><button class="switch dropdown-item " id="switch">
                       <span>Modo Oscuro</span><br></div>
                     </button>
+                  </li>
+                  <li>
+                    <div class=" switchContainer"><button class="switch dropdown-item " id="spooky">
+                      <span>Modo spooky</span><br></div>
+                    </button>
+                    <audio id="sound" src="/fx/punch.mp3"></audio>
                   </li>
                   <div class="dropdown-divider"></div>
                   <p class="dropdown-item-text">Sesión activa como: <span class="currentUser" id="currentUser"></span>

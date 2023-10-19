@@ -42,22 +42,46 @@ let getJSONData = function (url) {
 
 document.addEventListener('DOMContentLoaded', function () {
   const btnSwitch = document.querySelector('#switch');
+  const btnSpooky = document.querySelector('#spooky');
   const darkModeEnabled = localStorage.getItem('darkModeEnabled');
+  const spookyModeEnabled = localStorage.getItem('spookyModeEnabled');
 
-  function enableDarkMode () {
+  function enableDarkMode() {
     document.body.classList.add('dark');
+    document.body.classList.remove('spooky'); // Asegura que no estén activos ambos modos
     btnSwitch.classList.add('active');
+    btnSpooky.classList.remove('active');
     localStorage.setItem('darkModeEnabled', 'true');
+    localStorage.setItem('spookyModeEnabled', 'false');
   }
 
-  function disableDarkMode () {
+  function disableDarkMode() {
     document.body.classList.remove('dark');
     btnSwitch.classList.remove('active');
     localStorage.setItem('darkModeEnabled', 'false');
   }
 
+  function enableSpookyMode() {
+    document.body.classList.add('spooky');
+    document.body.classList.remove('dark'); // Asegura que no estén activos ambos modos
+    btnSpooky.classList.add('active');
+    btnSwitch.classList.remove('active');
+    localStorage.setItem('spookyModeEnabled', 'true');
+    localStorage.setItem('darkModeEnabled', 'false');
+  }
+
+  function disableSpookyMode() {
+    document.body.classList.remove('spooky');
+    btnSpooky.classList.remove('active');
+    localStorage.setItem('spookyModeEnabled', 'false');
+  }
+
   if (darkModeEnabled === 'true') {
     enableDarkMode();
+  }
+
+  if (spookyModeEnabled === 'true') {
+    enableSpookyMode();
   }
 
   btnSwitch.addEventListener('click', () => {
@@ -67,4 +91,38 @@ document.addEventListener('DOMContentLoaded', function () {
       enableDarkMode();
     }
   });
+
+  btnSpooky.addEventListener('click', () => {
+    if (document.body.classList.contains('spooky')) {
+      disableSpookyMode();
+    } else {
+      enableSpookyMode();
+    }
+  });
 });
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  // Obtener el botón y el elemento de audio
+  var spookyButton = document.getElementById("spooky");
+  var sound = document.getElementById("sound");
+
+  // Agregar un controlador de eventos al botón para reproducir el sonido al hacer clic
+  spookyButton.addEventListener("click", function() {
+      sound.play();
+  });
+});
+
+
+
+
+
+
+
+
+
+

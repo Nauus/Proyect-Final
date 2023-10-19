@@ -1,10 +1,9 @@
-//! Nahuel A 
-
 // Obtener el carrito de compras actual desde el almacenamiento local
 const currentCart = JSON.parse(localStorage.getItem('cart')) || [];
 
 // Función para crear una fila de la tabla del carrito
 function createCartTableRow (productDetails, index) {
+  console.log(index);
   const tableRow = document.createElement('tr');
   // Crear celda de imagen
   const imgCell = document.createElement('td');
@@ -32,13 +31,41 @@ function createCartTableRow (productDetails, index) {
 
   // Crear celda de cantidad
   const quantityCell = document.createElement('td');
+  quantityCell.classList.add('quantity-cell');
+
+  const quantityContainer = document.createElement('div');
+  quantityContainer.classList.add('quantity-container');
+
   const quantityInput = document.createElement('input');
   quantityInput.type = 'number';
   quantityInput.min = 1;
   quantityInput.step = 1;
   quantityInput.classList.add('quantity-input');
   quantityInput.value = productDetails.quantity;
-  quantityCell.appendChild(quantityInput);
+  quantityInput.setAttribute('inputmode', 'numeric'); // Evita las flechas de aumento y disminución
+
+  const decreaseButton = document.createElement('button');
+  decreaseButton.textContent = '-';
+  decreaseButton.classList.add('quantity-button', 'decrease');
+  decreaseButton.addEventListener('click', () => {
+    if (quantityInput.value > 1) {
+      quantityInput.value = parseInt(quantityInput.value) - 1;
+      quantityInput.dispatchEvent(new Event('input'));
+    }
+  });
+
+  const increaseButton = document.createElement('button');
+  increaseButton.textContent = '+';
+  increaseButton.classList.add('quantity-button', 'increase');
+  increaseButton.addEventListener('click', () => {
+    quantityInput.value = parseInt(quantityInput.value) + 1;
+    quantityInput.dispatchEvent(new Event('input'));
+  });
+
+  quantityContainer.appendChild(decreaseButton);
+  quantityContainer.appendChild(quantityInput);
+  quantityContainer.appendChild(increaseButton);
+  quantityCell.appendChild(quantityContainer);
   tableRow.appendChild(quantityCell);
 
   // Crear celda de subtotal
@@ -73,10 +100,7 @@ function createCartTableRow (productDetails, index) {
       event.target.value = currentCart[index].quantity;
     }
 
-    // Selecciona automáticamente el botón de radio "USD" en el contenedor currency-options
-    const currencyOptions = document.querySelector('.currency-options');
-    const usdRadio = currencyOptions.querySelector('input[value="USD"]');
-    usdRadio.checked = true;
+    selectUSDCurrency();
   });
 
   // Event listener para eliminar un producto del carrito
@@ -89,8 +113,12 @@ function createCartTableRow (productDetails, index) {
   return tableRow;
 }
 
+function selectUSDCurrency () {
+  const currencyOptions = document.querySelector('.currency-options');
+  const usdRadio = currencyOptions.querySelector('input[value="USD"]');
+  usdRadio.checked = true;
+}
 
-//! Martin Rodoriguez
 // Función para actualizar el subtotal de un producto en el carrito
 function updateSubtotal (element, index) {
   const quantity = currentCart[index].quantity;
@@ -109,52 +137,193 @@ function updateSubtotal (element, index) {
   }
 }
 
+// Aquí agregamos el código para actualizar el total con el porcentaje de envío
+const tipoEnvioSelect = document.getElementById('tipoEnvio');
+const segundoMenu = document.getElementById('segundoMenu');
+
+let aumentoPorcentaje = 0;
+// Evento para manejar el cambio en la selección de tipo de envío
+tipoEnvioSelect.addEventListener('change', () => {
+  const selectedOption = tipoEnvioSelect.value;
+
+  // Calcular el porcentaje de aumento basado en la opción seleccionada
+
+  switch (selectedOption) {
+    case "premium":
+      aumentoPorcentaje = 15;
+      console.log("entre 15");
+      break;
+    case "express":
+      aumentoPorcentaje = 7;
+      console.log("entre 7");
+      break;
+    case "estandar":
+      aumentoPorcentaje = 5;
+      console.log("entre 5");
+      break;
+    default:
+      aumentoPorcentaje = 0;
+      console.log("entre 0");
+      break;
+  }
+
+  updateCartTotal();
+  selectUSDCurrency();
+});
+tipoEnvioSelect.addEventListener('change', () => {
+  if (tipoEnvioSelect.value === 'default') {
+    segundoMenu.style.display = 'block'; // Muestra el segundo menú
+    console.log("entre a block");
+  } else {
+    segundoMenu.style.display = 'none'; // Oculta el segundo menú
+    console.log("entre a none");
+  }
+});
+// Obtener el día actual (0 = Domingo, 1 = Lunes, ..., 6 = Sábado)
+const currentDay = new Date().getDay();
+
+
+// Luego, define la función applyDiscountOnSpecificDays
+function applyDiscountOnSpecificDays (total) {
+  const currentDay = new Date().getDay(); // Obtener el día actual (0 = Domingo, 1 = Lunes, ..., 6 = Sábado)
+
+  if (currentDay === 0) { // Domingo, Martes o Jueves
+    const discount = (total * 10) / 100; // Descuento del 10% los domingos
+    return total - discount;
+  } else if (currentDay === 2) {
+    const discount = (total * 15) / 100; // Descuento del 15% los  martes
+    return total - discount;
+  } else if (currentDay === 4) {
+    const discount = (total * 20) / 100; // Descuento del 20% los  jueves
+    return total - discount;
+  }
+  return total;
+}
+// Función para mostrar una notificación llamativa al recargar la página
+function showNotificationOnPageLoad () {
+  const currentDay = new Date().getDay(); // Obtener el día actual (0 = Domingo, 1 = Lunes, ..., 6 = Sábado)
+  const dayNames = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+  const currentDayName = dayNames[currentDay]; // Obtener el nombre del día actual
+  let discount = 0; // Descuento predeterminado
+
+  // Verificar el día actual y aplicar descuento correspondiente
+  switch (currentDay) {
+    case 2: // Martes
+      discount = 15; // Descuento del 15% los martes
+      break;
+    case 4: // Jueves
+      discount = 20; // Descuento del 20% los jueves
+      break;
+    case 0: // Domingo
+      discount = 10; // Descuento del 10% los domingos
+      break;
+  }
+
+  // Aquí puedes mostrar el porcentaje del descuento en algún elemento HTML específico
+  const discountElement = document.getElementById('discount-amount');
+  if (discountElement) {
+    const discountPercentage = discount > 0 ? `${discount}%` : '0%'; // Formatea el porcentaje
+    discountElement.textContent = `como es un dia especial para nosotros has obtenido un descuento del ${discountPercentage} se vera reflejado en tu total.`;
+  }
+
+  // Mostrar notificación solo si hay un descuento aplicable
+  if (discount > 0) {
+    const message = `¡Hoy es ${currentDayName}, un día especial para nosotros, por ello te damos un descuento del ${discount}% en los productos!`;
+
+    // Configurar el estilo CSS personalizado para la notificación
+    const style = {
+      title: 'Has obtenido un descuento especial',
+      text: message,
+      icon: 'info',
+      showConfirmButton: false,
+      showClass: {
+        popup: 'animated bounceInDown', // Animación de entrada
+      },
+      hideClass: {
+        popup: 'animated bounceOutUp', // Animación de salida
+      },
+      customClass: {
+        content: 'custom-swal-content', // Clase CSS personalizada para el contenido
+        container: 'custom-swal-container', // Clase CSS personalizada para el contenedor
+      },
+    };
+
+    Swal.fire(style);
+  }
+}
+
+// Mostrar la notificación al cargar la página
+showNotificationOnPageLoad();
+
 // Función para actualizar el total del carrito
-
-//! Nacho
-
 function updateCartTotal (selectedCurrency) {
   let total = 0;
-  let currency = selectedCurrency; // Usar la moneda seleccionada
+  let currency = selectedCurrency;
+  let subtotal = 0;
 
   if (!currency) {
-    // Si no se proporciona una moneda seleccionada, obtenerla de localStorage
-    currency = localStorage.getItem('cartCurrency') || 'USD'; // 'USD' como valor predeterminado si no se encuentra en localStorage
+    currency = localStorage.getItem('cartCurrency') || 'USD';
   }
 
   currentCart.forEach((product) => {
     if (product.currency === 'UYU' && currency === 'USD') {
-      // Convertir de UYU a USD si la moneda seleccionada es USD
-      total += product.price * product.quantity / 40;
+      total += (product.price * product.quantity) / 40;
+      subtotal += (product.price * product.quantity) / 40;
     } else if (product.currency === 'USD' && currency === 'UYU') {
-      // Convertir de USD a UYU si la moneda seleccionada es UYU
       total += product.price * product.quantity * 40;
+      subtotal += product.price * product.quantity * 40;
     } else {
-      total += product.price * product.quantity; // No es necesario convertir
+      total += product.price * product.quantity;
+      subtotal += product.price * product.quantity;
     }
   });
 
-  // Redondear el total hacia abajo a un número entero
-  const roundedTotal = Math.floor(total);
+  // Aplica el descuento si corresponde
+  total = applyDiscountOnSpecificDays(total);
 
+  const aumentoDescuento = (total * aumentoPorcentaje) / 100;
+  const costoEnvio = (total * aumentoPorcentaje) / 100;
+
+  total += costoEnvio;
+
+  const roundedTotal = Math.floor(total);
   const totalElement = document.getElementById('cart-total');
   if (totalElement) {
     totalElement.textContent = `Total: ${currency} ${roundedTotal} `;
     localStorage.setItem('cartTotal', roundedTotal);
   }
-}
+
+  const roundedSubtotal = Math.floor(subtotal);
+  const subtotalElement = document.getElementById('subtotal');
+  if (subtotalElement) {
+    subtotalElement.textContent = `Subtotal: ${currency} ${roundedSubtotal} `;
+  }
+
+  const envioTotalElement = document.getElementById('envio-total');
+  if (envioTotalElement) {
+    envioTotalElement.textContent = `Costo de envío: ${currency} ${costoEnvio.toFixed(2)}`;
+  }
 
 
-// Obtén todos los botones de radio con name="currency"
-const currencyButtons = document.querySelectorAll('input[name="currency"]');
 
-// Agrega un evento 'change' a cada botón de radio
-currencyButtons.forEach((button) => {
-  button.addEventListener('change', () => {
-    const selectedCurrency = button.value;
-    updateCartTotal(selectedCurrency);
+
+
+
+  tipoEnvioSelect.addEventListener('change', () => {
+    updateCartTotal();
   });
-});
+
+  // Obtén todos los botones de radio con name="currency"
+  const currencyButtons = document.querySelectorAll('input[name="currency"]');
+
+  // Agrega un evento 'change' a cada botón de radio
+  currencyButtons.forEach((button) => {
+    button.addEventListener('change', () => {
+      const selectedCurrency = button.value;
+      updateCartTotal(selectedCurrency);
+    });
+  });
+}
 
 // Función para eliminar un producto del carrito
 // Función para eliminar un producto del carrito por su ID
@@ -220,7 +389,29 @@ function renderCart () {
   });
 }
 
+const inputFecha = document.getElementById('fecha');
 
+inputFecha.addEventListener('input', function () {
+  let value = this.value.replace(/\D/g, ''); // Eliminar caracteres que no son dígitos
+
+  if (value.length > 4) {
+    value = value.slice(0, 4);
+  }
+
+  if (value.length > 4) {
+    this.value = value.slice(0, 2) + '/' + value.slice(2, 4) + '/' + value.slice(4);
+  } else if (value.length === 4) {
+    this.value = value.slice(0, 2) + '/' + value.slice(2, 4);
+  } else {
+    this.value = value;
+  }
+});
+
+inputFecha.addEventListener('keydown', function (e) {
+  if (!/\d/.test(e.key)) {
+    e.preventDefault(); // Evitar la entrada de caracteres no numéricos
+  }
+});
 // Evento que se ejecuta cuando se carga el DOM
 document.addEventListener('DOMContentLoaded', () => {
   if (currentCart.length === 0) {

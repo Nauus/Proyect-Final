@@ -6,11 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>eMercado - Carrito de compras</title>
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/custom-styles.css" rel="stylesheet">
   <link rel="shortcut icon" href="img/logoarreglado2.png">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="js/navbar.js" ></script>
 </head>
 
@@ -44,12 +46,18 @@
           <div class="mb-3">
             <label for="tipoEnvio">Tipo de Envío</label>
             <select id="tipoEnvio" name="tipoEnvio">
-              <option value="estandar">Envío Premium 2 a 5 días(15%)</option>
+              <option value="" disabled selected>Selecciona la opción</option>
+              <option value="premium">Envío Premium 2 a 5 días(15%)</option>
               <option value="express">Envío Express 5 a 8 días (7%)</option>
               <option value="estandar">Envío standard 12 a 15 días (5%)</option>
+              <option value="default">Retiro en sucursal (0%)</option>
              
             </select>
-            
+            <select id="segundoMenu" style="display: none;">
+              <option value="sucursal1">Sucursal Sayago</option>
+              <option value="sucursal2">Sucursal Cordon</option>
+              <option value="sucursal3">Sucursal Aguada</option>
+          </select>
           
           <div class="">
             <label for="direEnvio">Dirección de envío</label>
@@ -57,15 +65,15 @@
           </div>
           <div class="mb-3">
             <label for="direccion">Calle</label>
-            <input type="text" id="direccion" name="direccion">
+            <input type="text" id="direccion" name="direccion" required>
           </div>
           <div class="mb-3">
             <label for="ciudad">Numero</label>
-            <input type="text" id="ciudad" name="ciudad">
+            <input type="text" id="ciudad" name="ciudad"  required pattern="[0-9]+">
           </div>
           <div class="mb-3">
             <label for="ciudad">Esquina</label>
-            <input type="text" id="direccion" name="direccion">
+            <input type="text" id="direccion" name="direccion" required>
           </div>
 
           <div class="">
@@ -74,16 +82,16 @@
           </div>
           <div class="mb-3">
             
-            <label for="tarjeta">Número de Tarjeta de Crédito</label>
-            <input type="text" id="tarjeta" name="tarjeta">
+            <label for="tarjeta">Número de Tarjeta de Crédito/Débito</label>
+            <input type="text" id="tarjeta" name="tarjeta" required pattern="[0-9]+">
           </div>
           <div class="mb-3">
             <label for="fecha">Fecha de Vencimiento</label>
-            <input type="text" id="fecha" name="fecha" placeholder="MM/AA">
+            <input type="text" id="fecha" name="fecha" placeholder="MM/AA" pattern="\d{2}/\d{2}" title="Debe ser un número de dos dígitos seguido de una barra y otro número de dos dígitos" required>
           </div>
           <div class="mb-3">
             <label for="cvv">CVV (Código de Seguridad)</label>
-            <input type="text" id="cvv" name="cvv">
+            <input type="text" id="cvv" name="cvv" required pattern="[0-9/]+">
           </div>
           <div id="currency-selector">
             <div class="currency-options">
@@ -100,20 +108,18 @@
               <span>UYU</span>
             </div>
           </div>
-          
+          <h1 id="subtotal"></h1>
+          <h1 id="envio-total"></h1>
           <h1 id="cart-total" class="total-below-subtotal"></h1>
         </div>
+        <p id="discount-amount"></p>
       </details>
-
-
-
-
       <button class="btn" type="submit">Finalizar Compra</button>
       <a class="preguntaCompra" href="categories.html">Ver mas productos</a>
-      <a class="preg-frecuente" href="#">Preguntas frecuentes</a>
+      <a class="preg-frecuente" href="PreguntasFrecuentes.html">Preguntas frecuentes</a> 
+      
   </main>
-
-  <footer class="text-muted">
+  <footer class="text-muted footer-cart">
     <div class="container">
       <p class="float-end">
         <a href="#" class="btn btn-outline-dark btn-sm" data-bs-toggle="tooltip" data-bs-placement="top"
@@ -129,6 +135,7 @@
 
 
   </footer>
+
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>

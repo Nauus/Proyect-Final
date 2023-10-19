@@ -10,24 +10,9 @@ fetch('navbar.html')
 
 document.addEventListener('DOMContentLoaded', () => {
     const navbarProfilePicture = document.getElementById('navbarProfilePicture');
-    const storedProfilePicture = localStorage.getItem('profilePicture');
+    const storedProfilePicture = localStorage.getItem('profilePicture_' + localStorage.getItem('currentUser'));
 
     if (storedProfilePicture) {
         navbarProfilePicture.src = storedProfilePicture;
     }
-
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
