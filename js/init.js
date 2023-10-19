@@ -92,6 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+
   btnSpooky.addEventListener('click', () => {
     if (document.body.classList.contains('spooky')) {
       disableSpookyMode();
@@ -125,4 +126,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
+
+
+
+//JOSECODIGO, USA LA MISMA FUNCIONALIDAD QUE EL DARKMODE
 
