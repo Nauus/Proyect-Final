@@ -49,13 +49,13 @@ if (productId) {
       const titleElement = document.getElementById('product-title');
       const descriptionElement = document.getElementById('product-description');
       const costElement = document.getElementById('product-cost');
-      const soldCountElement = document.getElementById('product-soldCount');
+
       const categoryElement = document.getElementById('product-category');
       const relatedProductsContainer = document.getElementById('related-products');
       titleElement.textContent = product.name;
       descriptionElement.textContent = product.description;
       costElement.textContent = `Precio: ${product.cost} ${product.currency}`;
-      soldCountElement.textContent = `Vendidos: ${product.soldCount}`;
+
       categoryElement.textContent = `Categoría: ${product.category}`;
       $(document).ready(function () {
         // Código para obtener los detalles del producto y las imágenes

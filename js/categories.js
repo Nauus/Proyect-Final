@@ -122,25 +122,55 @@ document.addEventListener("DOMContentLoaded", function (e) {
     });
 
     document.getElementById("rangeFilterCount").addEventListener("click", function () {
-        //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
-        //de productos por categoría.
-        minCount = document.getElementById("rangeFilterCountMin").value;
-        maxCount = document.getElementById("rangeFilterCountMax").value;
+        // Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
+        // de productos por categoría.
+        let minCountInput = document.getElementById("rangeFilterCountMin");
+        let maxCountInput = document.getElementById("rangeFilterCountMax");
 
-        if ((minCount != undefined) && (minCount != "") && (parseInt(minCount)) >= 0) {
-            minCount = parseInt(minCount);
-        }
-        else {
-            minCount = undefined;
-        }
+        // Validar que los valores sean números válidos y no negativos
+        let minCountValue = minCountInput.value;
+        let maxCountValue = maxCountInput.value;
 
-        if ((maxCount != undefined) && (maxCount != "") && (parseInt(maxCount)) >= 0) {
-            maxCount = parseInt(maxCount);
-        }
-        else {
-            maxCount = undefined;
-        }
+        // Utilizar expresiones regulares para eliminar el número "e" y validar los valores
+        const validNumberRegex = /^[+-]?\d+(\.\d+)?$/;
 
-        showCategoriesList();
+        if (validNumberRegex.test(minCountValue) && validNumberRegex.test(maxCountValue)) {
+            minCount = parseFloat(minCountValue);
+            maxCount = parseFloat(maxCountValue);
+
+            // Validar si el valor máximo es mayor al mínimo
+            if (maxCount < minCount) {
+                const style = {
+                    title: 'Error',
+                    text: 'El valor máximo no puede ser menor que el mínimo',
+                    icon: 'error',
+                    showConfirmButton: false,
+                    showClass: {
+                        popup: 'animated bounceInDown',
+                    },
+                    hideClass: {
+                        popup: 'animated bounceOutUp',
+                    },
+                };
+                Swal.fire(style);
+            } else {
+                showCategoriesList();
+            }
+        } else {
+            const style = {
+                title: 'Error',
+                text: 'Por favor, recuerde ingresar ambos campos o ingresar valores válidos y no negativos en los campos de filtro.',
+                icon: 'error',
+                showConfirmButton: false,
+                showClass: {
+                    popup: 'animated bounceInDown',
+                },
+                hideClass: {
+                    popup: 'animated bounceOutUp',
+                },
+            };
+            Swal.fire(style);
+        }
     });
+
 });
