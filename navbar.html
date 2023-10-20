@@ -10,7 +10,7 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/custom-styles.css" rel="stylesheet">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 </head>
 
 <body>
@@ -24,7 +24,7 @@
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="collapse navbar-collapse " id="navbarNav">
           <ul class="navbar-nav w-100 justify-content-between">
             <li class="nav-item">
               <a class="nav-link active bold" href="index.html"  id="reproducirSonido">Inicio</a>
@@ -34,6 +34,18 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="sell.html"  id="reproducirSonido">Vender</a>
+              <a class="nav-link active bold animate__animated animate__zoomIn" href="#">
+                <img src="img/navbarlogo.png" alt="Logo" width="160" height="auto" style="margin-left: 2px;">
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active bold animate__animated animate__zoomIn" href="index.html">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link animate__animated animate__zoomIn" href="categories.html">Categorías</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link animate__animated animate__zoomIn" href="sell.html">Vender</a>
             </li>
             
 
@@ -65,6 +77,28 @@
                   
                   <a class="dropdown-item" id="logoutButton" style="cursor: pointer;">Cerrar sesión</a>
                 </ul>
+                <div class="dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <img id="navbarProfilePicture"  src="img/img_perfil.png" alt="Imagen de perfil" class="rounded-circle"
+                      style="width: 30px; height: 30px;">
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-wide dropdown-menu-end" aria-labelledby="navbarDarkDropdownMenuLink">
+                    <a href="my-profile.html" class="dropdown-item"> Mi Perfil</a>
+                    <a href="cart.html" class="dropdown-item">Mi Carrito</a>
+                    <li>
+                      <div class=" switchContainer"><button class="switch dropdown-item " id="switch">
+                        <span>Modo Oscuro</span><br></div>
+                      </button>
+                    </li>
+                    <div class="dropdown-divider"></div>
+                    <p class="dropdown-item-text">Sesión activa como: <span class="currentUser" id="currentUser"></span>
+                    </p>
+                    
+                    <a class="dropdown-item" id="logoutButton" style="cursor: pointer;">Cerrar sesión</a>
+                  </ul>
+                </div>
+                
               </div>
             </li>
           </ul>

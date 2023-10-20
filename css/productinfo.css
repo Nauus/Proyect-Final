@@ -182,13 +182,33 @@ input[type="radio"] {
 
 
 
+h1#product-title.card-title {
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold
+}
+
+
+p#product-category.card-text {
+  text-align: left;
+  font-size: 15px; 
+  line-height: 1.5; 
+  font-family: 'Raleway', sans-serif;
+}
+
+p#product-cost.card-text {
+  text-align: right;
+  font-size: 20px; 
+ color: #3d3d3d;
+ font-weight: bold;
+  line-height: 1.5; 
+}
+
 
 p#product-description.card-text {
   text-align: center;
-  font-size: 16px; 
- 
+  font-size: 15px; 
+  font-family: 'Raleway', sans-serif;
   line-height: 1.5; 
-  background-color: #c9c6c6;
 }
 
 .Recommended-Product {
@@ -248,7 +268,12 @@ box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.75);
   background-color: rgba(255, 255, 255, 0.397);
   padding: 20px; /* Agrega espacio alrededor del contenido */
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);}
+div.card-body {
+  background-color: #ffffff;
+  padding: 20px; /* Agrega espacio alrededor del contenido */
+  border-radius: 8px;
+  
 }
 .comprarb {
   font-weight: 500;
@@ -360,6 +385,15 @@ strong {
   /* Añade un margen a la parte superior e inferior para centrar verticalmente */
   margin-bottom: 30px !important;
 }
+
+h3.card-title {
+  margin-bottom: 2rem;
+  background-color: #e0e0e0;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px; 
+}
+
 
 .card-body {
   background-color: rgba(255, 255, 255, 0.397);
