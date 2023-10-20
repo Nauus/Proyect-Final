@@ -12,15 +12,16 @@
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/custom-styles.css" rel="stylesheet">
   <link rel="shortcut icon" href="img/logoarreglado2.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="js/navbar.js" ></script>
+  <script src="js/navbar.js" type="module"></script>
 </head>
 
-<body>
+<body class="cart">
   <div id="navbarContainer"></div>
 
 
-  <main class="bg">
+  <main class="bgCart">
     
     <div class="centered-container">
       
@@ -64,35 +65,56 @@
            
           </div>
           <div class="mb-3">
-            <label for="direccion">Calle</label>
-            <input type="text" id="direccion" name="direccion" required>
+            <label for="calle">Calle</label>
+            <input type="text" id="calle" name="calle" required pattern="[A-Za-z\s]+"
+            title="Por favor, ingrese solo letras y espacios para la calle">
           </div>
           <div class="mb-3">
-            <label for="ciudad">Numero</label>
-            <input type="text" id="ciudad" name="ciudad"  required pattern="[0-9]+">
+            <label for="direccion">Numero</label>
+            <input type="text" id="direccion" name="direccion"  required pattern="[0-9]+"
+            title="Por favor, ingrese solo números para el número">
           </div>
           <div class="mb-3">
-            <label for="ciudad">Esquina</label>
-            <input type="text" id="direccion" name="direccion" required>
+            <label for="esquina">Esquina</label>
+            <input type="text" id="esquina" name="esquina" required pattern="[A-Za-z\s]+"
+            title="Por favor, ingrese solo letras y espacios para la esquina">
           </div>
 
-          <div class="">
-            <label for="tarjeta">Información de pago</label>
-           
+        
+          <button type="button" id="openPaymentModal" class="btn">Seleccionar Forma de Pago</button>
+          <div id="selectedPaymentInfo">
+            Forma de Pago: <span id="selectedPaymentDisplay"></span>
           </div>
-          <div class="mb-3">
+          <div id="paymentModal" class="modal">
+            <div class="modal-content">
+              <span class="close" id="closePaymentModal">&times;</span>
+              <h2>Seleccione una Forma de Pago</h2>
+              <label for="paymentMethod">Forma de Pago:</label>
+              <select id="paymentMethod" name="paymentMethod">
+                <option value="defaultOption" selected disabled>Selecciona la opción</option>
+                <option value="creditCard">Tarjeta de Crédito/Débito</option>
+                <option value="bankAccount">Transferencia bancaria</option>
+              </select>
+              <div id="creditCardFields">
+                <!-- Campos para tarjeta de crédito -->
+                <label for="cardNumber">Número de Tarjeta de Crédito/Débito:</label>
+                <input type="text" id="cardNumber" name="cardNumber" placeholder="XXXX XXXX XXXX XXXX">
+                <label for="cardNumber">Codigo CVV:</label>
+                <input type="text" id="codeCvv" name="codeCvv" placeholder="XXX">
+                <label for="cardNumber">Vencimiento:</label>
+                <input type="text" id="vencimiento" name="vencimiento" placeholder="XX/XX">
+                <!-- Otros campos para tarjeta de crédito -->
+              </div>
+              <div id="bankAccountFields">
+                <!-- Campos para número de cuenta -->
+                <label for="accountNumber">Número de Cuenta:</label>
+                <input type="text" id="accountNumber" name="accountNumber" placeholder="XXXXXXXXXXXXXXXXXX">
+                <!-- Otros campos para número de cuenta -->
+              </div>
+              <button type="button" id="confirmPayment" class="btn">Confirmar</button>
+            </div>
+          </div>
             
-            <label for="tarjeta">Número de Tarjeta de Crédito/Débito</label>
-            <input type="text" id="tarjeta" name="tarjeta" required pattern="[0-9]+">
-          </div>
-          <div class="mb-3">
-            <label for="fecha">Fecha de Vencimiento</label>
-            <input type="text" id="fecha" name="fecha" placeholder="MM/AA" pattern="\d{2}/\d{2}" title="Debe ser un número de dos dígitos seguido de una barra y otro número de dos dígitos" required>
-          </div>
-          <div class="mb-3">
-            <label for="cvv">CVV (Código de Seguridad)</label>
-            <input type="text" id="cvv" name="cvv" required pattern="[0-9/]+">
-          </div>
           <div id="currency-selector">
             <div class="currency-options">
              <span>Moneda de pago</span>
@@ -114,9 +136,9 @@
         </div>
         <p id="discount-amount"></p>
       </details>
-      <button class="btn" type="submit">Finalizar Compra</button>
+      <button class="btn" id="finalizarCompra" type="submit">Finalizar Compra</button>
       <a class="preguntaCompra" href="categories.html">Ver mas productos</a>
-      <a class="preg-frecuente" href="PreguntasFrecuentes.html">Preguntas frecuentes</a> 
+      <a class="preg-frecuente" href="#">Preguntas frecuentes</a>
       
   </main>
   <footer class="text-muted footer-cart">
@@ -145,8 +167,8 @@
     </div>
   </div>
   <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/init.js"></script>
-  <script src="js/cart.js"></script>
+  <script src="js/init.js" type="module"></script>
+  <script src="js/cart.js" type="module"></script>
   <script src="js/logout.js" type="module"></script>
 </body>
 

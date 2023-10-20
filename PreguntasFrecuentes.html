@@ -12,7 +12,7 @@
   <link href="css/custom-styles.css" rel="stylesheet">
   <link href="css/PreguntasFrecuentes.css" rel="stylesheet">
   <link rel="shortcut icon" href="img/logoarreglado2.png">
-  <script src="js/navbar.js" ></script>
+  <script src="js/navbar.js" type="module"></script>
 </head>
 
 <body>
@@ -24,8 +24,8 @@
         <div class="row">
             <h3> Preguntas frecuentes:</h3>
           <div class="col-md-4">
-            <a href="#pagos">
             <div class="card mb-4 shadow-sm custom-card cursor-active" id="Pagos">
+              <a href="#pagos">
               <img class="bd-placeholder-img card-img-top" src="img/imgcompra.jpg"
                 alt="Imgagen representativa de la categoría 'Pagos'"></a>
               <h3 class="m-3">Pagos</h3> 
@@ -36,8 +36,9 @@
         
           </div>
           <div class="col-md-4">
-            <a href="#envios">
+          
             <div class="card mb-4 shadow-sm custom-card cursor-active" id="envios">
+              <a href="#envios">
               <img class="bd-placeholder-img card-img-top" src="img/imgenvio.jpg"
                 alt="Imagen representativa de la categoría 'envios'"></a>
               <h3 class="m-3">Envíos</h3>
@@ -122,8 +123,6 @@
      </span>
   </footer>
   <script src="js/bootstrap.bundle.min.js" type="module"></script>
-  
-  <script src="js/index.js" type="module"></script>
   <script src="js/init.js" type="module"></script>
   <script src="js/logout.js" type="module"></script>
 </body>
