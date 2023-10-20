@@ -20,49 +20,73 @@ fetch('navbar.html')
         console.error('Error al cargar el navbar:', error);
     });
 
-document.addEventListener('navbarLoaded', () => {
-    // Código de "my-profile.js" relacionado con el navbar
-    const navbarProfilePicture = document.getElementById('navbarProfilePicture');
-    const storedProfilePicture = localStorage.getItem('profilePicture_' + localStorage.getItem('currentUser'));
+   document.addEventListener('navbarLoaded', function () {
+    const body = document.body;
+    const switchButton = document.getElementById('switch');
+    const spookyButton = document.getElementById('spooky');
+    const soundElement = document.getElementById('sound');
+    let soundPlayed = false;
 
-    if (storedProfilePicture) {
-        navbarProfilePicture.src = storedProfilePicture;
-    }
-});
-    //! darkmode button en navbar
-    const btnSwitch = document.querySelector('#switch');
-    const darkModeEnabled = localStorage.getItem('darkModeEnabled');
-
-    function enableDarkMode () {
-        document.body.classList.add('dark');
-        btnSwitch.classList.add('active');
+    // Función para habilitar el modo oscuro
+    function enableDarkMode() {
+        disableSpookyMode();
+        body.classList.add('dark');
+        localStorage.setItem('mode', 'dark');
     }
 
-    function disableDarkMode () {
-        document.body.classList.remove('dark');
-        btnSwitch.classList.remove('active');
+    // Función para habilitar el modo spooky
+    function enableSpookyMode() {
+        disableDarkMode();
+        body.classList.add('spooky');
+        localStorage.setItem('mode', 'spooky');
+
+        if (!soundPlayed) {
+            // Reproducir el sonido una vez si no se ha reproducido antes
+            soundElement.currentTime = 0;
+            soundElement.play();
+            soundPlayed = true;
+        }
     }
 
-    if (darkModeEnabled === 'true') {
+    // Función para deshabilitar el modo oscuro
+    function disableDarkMode() {
+        body.classList.remove('dark');
+        localStorage.removeItem('mode');
+    }
+
+    // Función para deshabilitar el modo spooky
+    function disableSpookyMode() {
+        body.classList.remove('spooky');
+        localStorage.removeItem('mode');
+    }
+
+    // Verificar el estado almacenado en localStorage y aplicarlo
+    const storedMode = localStorage.getItem('mode');
+    if (storedMode === 'dark') {
         enableDarkMode();
-    } else {
-        disableDarkMode(); // Asegúrate de desactivar el modo oscuro si no está habilitado en localStorage.
+    } else if (storedMode === 'spooky') {
+        enableSpookyMode();
     }
 
-    btnSwitch.addEventListener('click', () => {
-        if (document.body.classList.contains('dark')) {
+    // Manejador de clic para el botón de modo oscuro
+    switchButton.addEventListener('click', function () {
+        if (body.classList.contains('dark')) {
             disableDarkMode();
-            localStorage.setItem('darkModeEnabled', 'false'); // Guardar el estado en localStorage
         } else {
             enableDarkMode();
-            localStorage.setItem('darkModeEnabled', 'true'); // Guardar el estado en localStorage
         }
     });
 
+    // Manejador de clic para el botón de modo spooky
+    spookyButton.addEventListener('click', function () {
+        if (body.classList.contains('spooky')) {
+            disableSpookyMode();
+        } else {
+            enableSpookyMode();
+        }
+    });
+});
 
-
-
-
-
+    
 
 

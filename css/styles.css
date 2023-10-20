@@ -229,12 +229,9 @@ body.dark .darkk {
 body.dark .custom-card {
   background-color: #554f4f75!important;
 }
-#btnmuchomas {
-  background-color: #552f11b6 !important;
-  border-color: transparent;
-  }
+
 body.dark #btnmuchomas {
-  background-color: grey !important;
+  background-color: rgb(255, 0, 0) !important;
   border-color: transparent;
   }
 #btnmuchomas:hover {
@@ -500,6 +497,7 @@ body.spooky .imgindex {
   content: url('../imgsp/spookyback.png');
 }
 
+
 body.spooky .bg {
   
     background-image: url(../imgsp/back.jpg);
@@ -565,9 +563,9 @@ body.spooky #btnmuchomas {
    
  
 
-
 body.spooky .navbar {
-  background-color: rgb(98, 43, 16);
+  background-color: rgb(29, 10, 0);
+  color: #fff!important;
 }
 body.spooky .bg {
   background-color: #fff;
@@ -592,10 +590,10 @@ body.spooky label
     font-family: 'Spooky', cursive;
 font-weight: 400;
 }
-body.spooky button {
-  font-family: 'Spooky', cursive;
-font-weight: 400;
+body.spooky .cart {
+  background-image: url(../imgsp/back.jpg)!important;
 }
+
 body.spooky span {
   font-family: 'Spooky', cursive;
 font-weight: 400;
@@ -603,4 +601,8 @@ font-weight: 400;
 body.spooky a{
   font-family: 'Spooky', cursive;
 font-weight: 400;
+}
+
+body.spooky #applyChanges {
+  background-color: red;
 }

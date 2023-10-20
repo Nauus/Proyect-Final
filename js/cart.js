@@ -730,3 +730,21 @@ document.addEventListener('DOMContentLoaded', () => {
   renderCart();
   updateCartTotal();
 });
+
+
+const cardNumberInput = document.getElementById('cardNumber'); // Reemplaza 'cardNumber' con el ID de tu campo de tarjeta
+  cardNumberInput.addEventListener('input', () => {
+    const cardNumberValue = cardNumberInput.value;
+    // Utiliza una expresión regular para verificar si el valor contiene solo dígitos
+    const isValidCardNumber = /^\d+$/.test(cardNumberValue);
+
+    // Aplica la clase 'input-error' si el valor no es válido, de lo contrario, quita la clase
+    if (!isValidCardNumber) {
+      cardNumberInput.classList.add('input-error');
+    } else {
+      cardNumberInput.classList.remove('input-error');
+    }
+  });
+
+
+  

@@ -11,9 +11,11 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/custom-styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/validacion.css">
   <link rel="shortcut icon" href="img/logoarreglado2.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <script src="js/navbar.js" type="module"></script>
 </head>
 
@@ -60,24 +62,23 @@
               <option value="sucursal3">Sucursal Aguada</option>
           </select>
           
-          <div class="">
+          <div class="" >
             <label for="direEnvio">Dirección de envío</label>
+            <input  novalidate type="text" id="direEnvio" name="direEnvio" required pattern="[A-Za-z0-9\s]+" title="Por favor, ingrese una dirección válida" >
            
           </div>
           <div class="mb-3">
             <label for="calle">Calle</label>
-            <input type="text" id="calle" name="calle" required pattern="[A-Za-z\s]+"
-            title="Por favor, ingrese solo letras y espacios para la calle">
+            <input type="text" id="calle" name="calle" required pattern="[A-Za-z\s]+" title="Por favor, ingrese solo letras y espacios para la calle">
+            <div class="feedback"></div>
           </div>
           <div class="mb-3">
-            <label for="direccion">Numero</label>
-            <input type="text" id="direccion" name="direccion"  required pattern="[0-9]+"
-            title="Por favor, ingrese solo números para el número">
+            <label for="direccion">Número</label>
+            <input type="text" id="direccion" name="direccion" required pattern="[0-9]+" title="Por favor, ingrese solo números para el número">
           </div>
           <div class="mb-3">
             <label for="esquina">Esquina</label>
-            <input type="text" id="esquina" name="esquina" required pattern="[A-Za-z\s]+"
-            title="Por favor, ingrese solo letras y espacios para la esquina">
+            <input type="text" id="esquina" name="esquina" required pattern="[A-Za-z\s]+" title="Por favor, ingrese solo letras y espacios para la esquina">
           </div>
 
         
@@ -98,17 +99,19 @@
               <div id="creditCardFields">
                 <!-- Campos para tarjeta de crédito -->
                 <label for="cardNumber">Número de Tarjeta de Crédito/Débito:</label>
-                <input type="text" id="cardNumber" name="cardNumber" placeholder="XXXX XXXX XXXX XXXX">
+                <input type="text" id="Number" name="cardNumber" placeholder="XXXX XXXX XXXX XXXX" required pattern="\d{16}">
                 <label for="cardNumber">Codigo CVV:</label>
-                <input type="text" id="codeCvv" name="codeCvv" placeholder="XXX">
+                <label for="codeCvv">Código CVV:</label>
+                <input type="text" id="codeCvv" name="codeCvv" placeholder="XXX" required pattern="\d{3}">
+
                 <label for="cardNumber">Vencimiento:</label>
-                <input type="text" id="vencimiento" name="vencimiento" placeholder="XX/XX">
+                <input type="text" id="vencimiento" name="vencimiento" placeholder="XX/XX" required pattern="\d{4}">
                 <!-- Otros campos para tarjeta de crédito -->
               </div>
               <div id="bankAccountFields">
                 <!-- Campos para número de cuenta -->
                 <label for="accountNumber">Número de Cuenta:</label>
-                <input type="text" id="accountNumber" name="accountNumber" placeholder="XXXXXXXXXXXXXXXXXX">
+                <input type="text" id="cardNumber" name="cardNumber" placeholder="XXXX XXXX XXXX XXXX" pattern="^\d{16}$">
                 <!-- Otros campos para número de cuenta -->
               </div>
               <button type="button" id="confirmPayment" class="btn">Confirmar</button>
