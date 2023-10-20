@@ -3,9 +3,6 @@ body.dark .navbar-nav .nav-link:hover {
   color:hsl(177, 76%, 26%) !important;
 }
 
-.navbar {
-  text-align: center !important;
-}
  .navbar-nav .nav-link:hover {
   color:#f39407 !important;
 }
@@ -32,7 +29,6 @@ body.dark .navbar-nav .nav-link:hover {
 .btn {
   background-color: white!important;
     border-color: white!important;
-
     .Recommended-Product {
       border: 1px solid #ccc;
       border-radius: 8px;
@@ -99,22 +95,7 @@ body.dark .navbar-nav .nav-link:hover {
 }
 
 .productname {
-  color: black !important;}
-body.dark .cardProducts {
-  background-color: #212529 !important; 
-  border-radius: 10px !important;
-}
-
-.cardProducts {
-  background-color: rgba(255, 255, 255, 0.5) !important; 
-  border-radius: 10px !important;
-}
-
-
-
-.productname {
   color: black !important;
- 
 }
 
 
@@ -163,38 +144,6 @@ background-size: cover;
 
 }
 
-.containerprofile {
-  background-color: #f3bc78;
-background-attachment: fixed;
-background-size: cover;
-}
-
-.bgCart {
-  background-color: #f3bc78;
-background-attachment: fixed;
-background-size: cover;
-
-}
-body.dark .bgCart  {
-  background-color: #1E1C1F;
-  background-attachment: fixed;
-  background-size: cover;
-}
-body.cart.dark  {
-  background-color: #1E1C1F !important;
-}
-
-body.cart {
-  background-color: #f3bc78 !important;
-}
-
-body.bodyProfile.dark {
-  background-color: #1E1C1F !important;
-}
-body.bodyProfile {
-  background-color: #f3bc78 !important;
-}
-
 tr {
  padding: 100px !important;
 }
@@ -211,7 +160,6 @@ tr {
   margin-top: 20px ;
   max-width: 500px;
  
- margin-bottom: 20px;
   
 }
 
@@ -460,44 +408,4 @@ body.dark #related-products {
 
 #discount-amount {
   margin-top: 2rem !important;
-}
-
-.footerProfile {
-padding-top: 3rem;
-}
-/* Estilos para el modal */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.4);
-}
-
-.modal-content {
-  background-color: #fefefe;
-  margin: 10% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  max-width: 600px;
-}
-
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover {
-  color: #000;
-}
-
-body.dark .textcant {
-  color: white;
 }

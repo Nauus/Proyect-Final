@@ -41,26 +41,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 const minPrice = parseFloat(rangeFilterMin.value);
                 const maxPrice = parseFloat(rangeFilterMax.value);
 
-                // Validar que los valores sean números válidos y no negativos
-                if (isNaN(minPrice) || minPrice < 0) {
-                    rangeFilterMin.value = '0';
-                }
-
-                if (isNaN(maxPrice) || maxPrice < 0) {
-                    rangeFilterMax.value = '0';
-                }
-
-
-
                 // Filtrar los productos según el rango de precios
                 const filteredProducts = products.filter(product => {
                     const productPrice = parseFloat(product.cost);
                     return (isNaN(minPrice) || productPrice >= minPrice) && (isNaN(maxPrice) || productPrice <= maxPrice);
                 });
 
-                // Realizar la búsqueda y ordenar los productos
+                //////////////////////////////////////////////////////////
+                // Realizar la búsqueda y luego aplicar los filtros y ordenar
+
                 performSearch(searchInput.value.trim(), filteredProducts);
             };
+
             // Función que realiza la búsqueda y aplica los filtros y ordena
 
             const performSearch = (searchText, productsToShow) => {
@@ -97,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Generar tarjetas de productos y agregarlas al contenedor
                 sortedProducts.forEach(product => {
                     const productCard = document.createElement('div');
-                    productCard.classList.add('card', 'cardProducts', 'mb-3');
+                    productCard.classList.add('card', 'mb-3');
                     productCard.innerHTML = `
                     <a href="product-info.html?id=${product.id}" class="list-group-item hover list-group-item-action cursor-active"> <div class="row">
                             <div class="col-3">
