@@ -3,10 +3,12 @@
 .container,
 .site-header {
   font-family: 'Verdana', serif !important;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .jumbotron .display-4 {
   font-weight: bold;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 nav a {
@@ -20,8 +22,10 @@ nav a {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
+<<<<<<< HEAD
 @media (max-width: 600px) {
   .fondo {
     content: url("../img/cover_back_mobile.png");
@@ -33,16 +37,71 @@ nav a {
   height: auto;
   margin: 0;
   padding: 0;
+=======
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  }
+}
+
+.jumbotron {
+  height: 50vh;
+  padding: 5em inherit;
+  margin-bottom: 0;
+  background-color: #53C0FB;
+  background: url('../img/cover_back.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: black;
+  font-weight: bold;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+
+  
+}
+
+
+@media (min-width: 768px) {
+  .jumbotron {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+.jumbotron p:last-child {
+  margin-bottom: 0;
+}
+
+.jumbotron-heading {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 300;
+}
+
+.jumbotron .container {
+  max-width: 40rem;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  text-shadow: 1px 1px 2px grey;
+}
+
+.jumbotron .lead {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 38px;
+>>>>>>> 45dcd85a661125f73ada500835748a396f14590d
 }
 
 footer {
-  padding-top: 3rem;
+  padding-top: 5.3rem; 
   padding-bottom: 3rem;
+  background-color: #552f11b6;
 }
 
 footer p {
   margin-bottom: .25rem;
+  color: #b3b3b3;
 }
+
 
 .site-header a {
   color: white;
@@ -187,12 +246,22 @@ body.dark .btn {
   background-color: hsl(178,99%,31%)!important;
   border: #484749;
 }
-body.dark .card-title  {
-  box-shadow: 0px -4px 33px 0px hsl(178,99%,31%);
+
+
+body.dark .productos  {
+  color: #B9B9B9;
+}
+
+body.dark .vender  {
+  color: #B9B9B9;
+}
+
+body.dark .venderSubtitulo {
+  color: #B9B9B9;
 }
 
 body.dark .productTitle  {
-  box-shadow: 0px -4px 33px 0px hsl(178,99%,31%);
+  color: #B9B9B9;
 }
 
 body.dark .carouselFlechas  {
@@ -200,17 +269,18 @@ body.dark .carouselFlechas  {
 }
 
 body.dark .categorias  {
-  box-shadow: 0px -4px 33px 0px hsl(178,99%,31%);
+  color: #B9B9B9;
 }
 
+body.dark h4{
+  color: #B9B9B9;
+}
 
 body.dark .filtermaxymin {
   border-color: hsl(178,99%,31%) !important;
 }
 
-body.dark .productos {
-  box-shadow: 0px -4px 33px 0px hsl(178,99%,31%);
-}
+
 body.dark .searchProducts {
   border-color: hsl(178,99%,31%) !important;
 }
@@ -259,6 +329,12 @@ td, th {
   color: inherit; 
   cursor: default;
 }
+.product-name:hover {
+  color: #ff6600; 
+}
+body.dark .product-name:hover {
+  color: hsl(178,99%,31%); 
+}
 
 .preguntaCompra  {
   text-decoration: none; 
@@ -275,7 +351,7 @@ td, th {
 /* Estilos para los botones de eliminar */
 .remove-product {
   background-color: transparent; 
-  color: grey; 
+  color: white; 
   border: none; 
   padding: 5px 10px;
   cursor: pointer;
@@ -295,11 +371,7 @@ td, th {
   margin: 20px auto;
 }
 
-/* Estilo para la tabla de productos */
-#product-list {
-  width: 50%;
-  border-collapse: collapse;
-}
+
 
 /* Estilo para las filas de la tabla */
 .cart-item {
@@ -377,3 +449,47 @@ td, th {
 }
 
 
+h4 { 
+  font-family: Georgia, 'Times New Roman', Times, serif;; 
+  font-size: 1.25rem; 
+  font-style: normal; 
+  font-variant: normal; 
+  line-height: 26.4px; 
+  padding-top: 0.6rem;
+} 
+  
+  h2 h3 { 
+    font-family: Georgia, 'Times New Roman', Times, serif;; 
+    font-size: 40px; 
+    font-style: normal; 
+    font-variant: normal; 
+    font-weight: 700; 
+    line-height: 15.4px; 
+  } 
+  p { 
+    font-family: Georgia, 'Times New Roman', Times, serif; ; 
+    font-size: 20px; 
+    font-style: normal; 
+    font-variant: normal; 
+    font-weight: 400; 
+    line-height: 20px; 
+  } 
+  
+  div.h3 { 
+    font-family: Georgia, 'Times New Roman', Times, serif;; 
+    font-size: 40px; 
+    font-style: normal; 
+    font-variant: normal; 
+    font-weight: 400; 
+    line-height: 20px; 
+  }
+
+  .col-md-8 {
+    border: 1rem solid transparent;
+    background-color: #ffffff75;
+    margin-bottom: 4rem;
+    border-radius: 2rem;
+   
+  }
+
+  

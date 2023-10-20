@@ -5,21 +5,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const changeOption = document.getElementById('changeOption');
     const applyChangesButton = document.getElementById('applyChanges');
     const newProfilePictureInput = document.getElementById('newProfilePicture');
-
     const usernameField = document.getElementById('usernameField');
     const passwordField = document.getElementById('passwordField');
     const emailField = document.getElementById('emailField');
     const profilePictureField = document.getElementById('profilePictureField');
-
-    // Mostrar los campos relevantes cuando cambia la opción seleccionada
-    changeOption.addEventListener('change', () => {
+    const numTelField = document.getElementById('numTelField');
+    function controlarVisibilidadCampos () {
         const selectedOption = changeOption.value;
         usernameField.style.display = selectedOption === 'username' ? 'block' : 'none';
         passwordField.style.display = selectedOption === 'password' ? 'block' : 'none';
         emailField.style.display = selectedOption === 'email' ? 'block' : 'none';
         profilePictureField.style.display = selectedOption === 'profilePicture' ? 'block' : 'none';
-    });
+        numTelField.style.display = selectedOption === 'numTelefono' ? 'block' : 'none';
+    }
 
+    changeOption.addEventListener('change', controlarVisibilidadCampos);
+
+    controlarVisibilidadCampos();
     const databaseKey = 'userDatabase';
     let database = loadDatabase(databaseKey);
     const currentUser = localStorage.getItem('currentUser');
@@ -30,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Obtener el usuario actual
     let user = database.users.find(user => user.username === currentUser);
-
     // Mostrar la información actual del usuario
     const currentUsernameElement = document.getElementById('currentUsername');
     const currentEmailElement = document.getElementById('currentEmail');
@@ -38,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     currentUsernameElement.textContent = user.username;
     currentEmailElement.textContent = user.email;
+
 
 
     // Mostrar la foto de perfil actual en la página my-profile.html
@@ -59,19 +61,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Guardar la imagen en el usuario
                 user.profilePicture = event.target.result;
-                localStorage.setItem('profilePicture', user.profilePicture);
 
-                // Actualiza la imagen de perfil en el navbar
-                const navbarProfilePicture = document.getElementById('navbarProfilePicture');
-                if (navbarProfilePicture) {
-                    navbarProfilePicture.src = user.profilePicture;
-                }
 
                 // Genera una clave única basada en el nombre de usuario
                 const uniqueKey = 'profilePicture_' + user.username;
-
                 // Almacena la imagen de perfil en el localStorage
-                localStorage.setItem(uniqueKey, user.profilePicture);
+                localStorage.setItem(uniqueKey, event.target.result);
+
+
+
 
                 // Dispara un evento personalizado para notificar al navbar
                 const profilePictureChangeEvent = new CustomEvent('profilePictureChanged', {
@@ -89,7 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Ahora que la imagen se ha cargado correctamente, habilita el botón de "Guardar Cambios"
                 applyChangesButton.disabled = false;
             };
-
             reader.readAsDataURL(newProfilePictureFile);
         }
     });
@@ -98,39 +95,77 @@ document.addEventListener('DOMContentLoaded', () => {
         const selectedOption = changeOption.value;
 
         if (user) {
-            // Realizar cambios según la opción seleccionada
             if (selectedOption === 'username') {
+
                 const newUsername = document.getElementById('newUsername').value;
-                user.username = newUsername;
-                currentUsernameElement.textContent = newUsername;
-                localStorage.setItem('currentUser', newUsername);
+                if (newUsername.trim() !== '') {
+                    user.username = newUsername;
+                    currentUsernameElement.textContent = newUsername;
+                    localStorage.setItem('currentUser', newUsername);
+                }
             } else if (selectedOption === 'password') {
+
                 const currentPassword = document.getElementById('currentPassword').value;
                 const newPassword = document.getElementById('newPassword').value;
 
-                if (currentPassword !== user.password) {
-                    // La contraseña actual no coincide, muestra el mensaje de error
-                    passwordError.style.display = 'block';
-                } else {
-                    // La contraseña actual es válida, oculta el mensaje de error
-                    passwordError.style.display = 'none';
-
-                    // Continúa con el cambio de contraseña
+                if (currentPassword === user.password && newPassword.length > 6) {
                     user.password = newPassword;
+                } else {
 
+                    alert('La contraseña actual no coincide o la nueva contraseña es muy corta (debe tener al menos 6 caracteres).');
+                    return;
                 }
             } else if (selectedOption === 'email') {
                 const newEmail = document.getElementById('newEmail').value;
-                user.email = newEmail;
-                currentEmailElement.textContent = newEmail;
+                console.log("entre");
+                if (isValidEmail(newEmail)) {
+                    user.email = newEmail;
+                    currentEmailElement.textContent = newEmail;
+                } else {
+                    alert('El correo electrónico no es válido. Asegúrate de que tenga un formato válido.');
+                    return;
+                }
+            } else if (selectedOption === 'numTelefono') {
+                const numTelInput = document.getElementById('numTel');
+                const newPhoneNumber = numTelInput.value;
+
+                // Eliminar espacios y guiones existentes (si los hubiera)
+                const cleanPhoneNumber = newPhoneNumber.replace(/[\s-]/g, '');
+
+                // Expresión regular para validar el número de teléfono
+                const phoneNumberPattern = /^0\d{8}$/;
+
+                if (phoneNumberPattern.test(cleanPhoneNumber)) {
+                    // Formatear el número de teléfono con espacios cada 3 dígitos
+                    const formattedPhoneNumber = cleanPhoneNumber.replace(/(\d{3})(?=\d)/g, '$1 ');
+
+                    // Asignar el número de teléfono formateado al campo de entrada
+                    numTelInput.value = formattedPhoneNumber;
+
+                    user.phoneNumber = formattedPhoneNumber;
+
+                    const userIndex = database.users.findIndex(u => u.username === currentUser);
+                    if (userIndex !== -1) {
+                        database.users[userIndex] = user;
+                        saveDatabase(databaseKey, database);
+                    }
+                } else {
+                    alert('El número de teléfono no es válido. Asegúrate de que empiece con "0" y contenga 8 dígitos numéricos.');
+                    return;
+                }
             }
 
-            // Guardar los cambios en el localStorage
             database = { users: database.users.map(u => (u.username === currentUser ? user : u)) };
             saveDatabase(databaseKey, database);
-
-            // Ahora que se han guardado los cambios, deshabilita el botón de "Guardar Cambios"
-            applyChangesButton.disabled = false;
+            location.reload();
+            applyChangesButton.disabled = true;
         }
     });
-});
+
+    function isValidEmail (email) {
+        const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+        return emailPattern.test(email);
+    }
+    swal("Pestaña en Alpha", "Esta pestaña está en fase Alpha de desarrollo. Aun falta agregar estilos. ¡Gracias por tu visita!", "warning");
+}); //////////////////JOSECODIGO PREGUNTAR CAMBIOS VALIDACIONES CONTRASEÑAS >6 BLABLABLA
+///////////////////JOSECODIGO 2 SE DA UNA FOTO POR DEFECTO

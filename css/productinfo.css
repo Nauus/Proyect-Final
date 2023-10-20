@@ -20,46 +20,9 @@
   max-width: 100%;
 }
 
-.imageCarousel {
-width: 750px;
-height: 750px;
-  margin: 0 auto; 
-  border: 1px solid #747474; 
-  background-color: white;
-  margin-bottom: -100px;
-  margin-top: -10px;
-}
-
-
-/* Ejemplo de CSS personalizado para hacer la navegación más pequeña en dispositivos móviles */
-@media (max-width: 768px) {
-  .imageCarousel {
-    margin-bottom: 0px;
-    height: auto;
-  }
-}
-
-/* Ejemplo de CSS para hacer que las imágenes del carrusel sean responsive */
-.carousel-inner img {
-  max-width: 100%; /* Asegura que las imágenes se ajusten al ancho de su contenedor */
-  height: auto; /* Permite que la altura se ajuste automáticamente */
-}
-
-
-.carousel-inner {
-margin-top: 10px;
-}
 
 .productTitle {
-  background-color: rgba(255, 255, 255, 0.322);
-  border-radius: 50px;
-  -webkit-box-shadow: 0px -4px 33px 0px rgba(240,145,0,0.6);
--moz-box-shadow: 0px -4px 33px 0px rgba(240,145,0,0.6);
-box-shadow: 0px -4px 33px 0px rgba(240,145,0,0.6);
-  margin-left: 20%;
-  margin-right: 20%;
-  
-  
+  animation: focus-in-expand 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards;
 }
 
 #comment-form {
@@ -134,9 +97,6 @@ input[type="radio"] {
   display: none;
 }
 
-label {
-  color: grey;
-}
 
 .clasificacion {
   text-align: center;
@@ -188,9 +148,6 @@ label {
   margin: 5px 0;
 }
 
-.carouselFlechas {
-  background-color: #f39407;
-}
 
 .form-control {
   width: 60%;
@@ -204,24 +161,27 @@ label {
 }
 
 .card-product {
-  margin-bottom: 20%;
+  margin-top: 30px;
+  text-align: center; /* Centra el contenido dentro de card-product */
 }
 
 
-
-.card-title {
+/* Centra el título y la descripción */
+.card-title, .card-text {
   text-align: center;
-  -webkit-box-shadow: 0px -4px 33px 0px rgba(240,145,0,0.6);
--moz-box-shadow: 0px -4px 33px 0px rgba(240,145,0,0.6);
-box-shadow: 0px -4px 33px 0px rgba(240,145,0,0.6);
-  margin-left: 20%;
-  margin-right: 20%;
-  margin-top: 50px;
-  border-radius: 50px;
-    font-size: 30px;
-    margin-bottom: 20px;
-
 }
+
+@keyframes text-shadow-drop-center {
+  0% {
+    text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
+  100% {
+    text-shadow: 0 0 18px rgba(0, 0, 0, 0.35);
+  }
+}
+
+
+
 
 p#product-description.card-text {
   text-align: center;
@@ -234,9 +194,9 @@ p#product-description.card-text {
 .Recommended-Product {
   border: 1px solid #ccc;
   border-radius: 8px;
-  -webkit-box-shadow: 0px -4px 33px 0px rgba(0,0,0,0.75);
--moz-box-shadow: 0px -4px 33px 0px rgba(0,0,0,0.75);
-box-shadow: 0px -4px 33px 0px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.75);
+-moz-box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.75);
+box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.75);
   margin-left: 20%;
   margin-right: 20%;
   
@@ -250,6 +210,7 @@ box-shadow: 0px -4px 33px 0px rgba(0,0,0,0.75);
 
 .Recommended-Product:hover {
   transform: scale(1.05); 
+  
 }
 
 .Recommended-Product img {
@@ -284,23 +245,51 @@ box-shadow: 0px -4px 33px 0px rgba(0,0,0,0.75);
 }
 .bg {
   background-image: url(../img/bgjar.svg);
- background-size: contain;
+  background-size: cover; /* Ajusta el tamaño de fondo para cubrir completamente el contenedor */
 }
 .card-body {
   background-color: rgba(255, 255, 255, 0.397);
+  padding: 20px; /* Agrega espacio alrededor del contenido */
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 .comprarb {
   font-weight: 500;
   background-color: #f09100;
 }
 
+
+
 .agregar-al-carrito {
+  margin-bottom: 5rem;
   width: 50%;
+  color: black;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  -webkit-box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.75);
+  -moz-box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.75);
+  box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.75);
+}
+.agregar-al-carrito:hover {
+  transform: scale(0.9); 
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+.btn {
+  color: black;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+.btn:hover {
+  transform: scale(0.9); 
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
 }
 
 @media (min-width: 992px) {
   .row > * {
-    max-width: 60% !important;
+    max-width: 57.5% !important;
     
   }
 }
@@ -310,4 +299,86 @@ box-shadow: 0px -4px 33px 0px rgba(0,0,0,0.75);
     width: 40% !important;
 }
 }
+
+
+
+
+
+#mensaje-exito {
+  color: rgb(0, 70, 0);
+}
+
+strong {
+  color: rgb(0, 54, 0);
+  
+}
+
+/* Estilo para centrar el contenido del carrusel */
+.slider-for, .slider-nav {
+ 
+  justify-content: center !important;
+  margin: auto 0;
+}
+
+/* Estilo para el contenedor principal del carrusel */
+.slider-container {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-direction: column !important;
+  padding: 20px !important;
+}
+
+/* Estilo para el contenedor del carrusel principal */
+.slider-for {
+  width: 100% !important;
+  height: auto !important; 
+  margin: 0 auto !important; 
+}
+
+/* Estilo para el contenedor de las miniaturas */
+.slider-nav {
+
+  margin: auto !important;
+}
+
+/* Estilo para las miniaturas */
+.slider-nav img {
+  max-width: 100% !important;
+  height: auto !important;
+  width: auto\9 !important;
+  margin: 5px;
+
+  cursor: pointer !important;
+}
+
+/* Estilo para la miniatura activa */
+.slider-nav img.active {
+  border-color: #007bff !important;
+}
+
+.card-product {
+  margin-top: 30px !important;
+  text-align: center !important;
+  /* Añade un margen a la parte superior e inferior para centrar verticalmente */
+  margin-bottom: 30px !important;
+}
+
+.card-body {
+  background-color: rgba(255, 255, 255, 0.397);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: auto;
+  margin-bottom: 5rem;
+}
+
+/* Centra el título y la descripción */
+.card-title, .card-text {
+  text-align: center;
+}
+
+
+
+
 
