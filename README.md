@@ -1,5 +1,5 @@
 # Proyect-Final
-
+JOC 🡆 xd
 ✅spookymode en navbarhtml
 ✅css para spokoy
 ✅imagen "arreglada" de index
