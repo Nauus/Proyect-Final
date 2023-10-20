@@ -38,7 +38,7 @@ input[type="email"] {
 
 /* Estilos para el botón "Guardar Cambios" */
 #applyChanges {
-    background-color: #007BFF;
+    background-color: #019f99;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -48,7 +48,7 @@ input[type="email"] {
 }
 
 #applyChanges:hover {
-    background-color: #0056b3;
+    background-color: #019f99;
 }
 
 /* Foto de perfil */

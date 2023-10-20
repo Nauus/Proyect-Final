@@ -31,43 +31,38 @@
                     </label>
                 </div
                 <form id="profileForm">
-                    <select id="changeOption" class="form-select mb-3">
-                        <option value="" disabled selected>Selecciona la opción</option>
-                        <option value="username">Cambiar nombre de usuario</option>
-                        <option value="password">Cambiar contraseña</option>
-                        <option value="email">Cambiar correo electrónico</option>
-                        <option value="numTelefono">Cambiar/Agregar numero de telefono</option>
-                    </select>
-                    <div id="usernameField">
-                        <label for="currentName">Nombre actual: <span id="currentUsername"></span></label>
-                        <br>
-                        <label for="newUsername">Nuevo nombre de usuario:</label>
-                        <input type="text" id="newUsername" name="newUsername">
-                    </div>
-                    <div id="passwordField">
-                        <label for="currentPassword"  >Introduce la contraseña actual:</label>
-                        <input type="password" id="currentPassword" name="currentPassword">
-                       
-                        <br>
-                        <label for="newPassword">Introduce la nueva contraseña:</label>
-                        <input type="password" id="newPassword" name="newPassword"  >
-                        <div id="passwordError" class="error-message">La contraseña actual introducida no es válida</div>
-                    </div>
-                    <div id="emailField">
-                        <label for="currentName">Correo actual: <span id="currentEmail"></span></label>
-                        <br>
-                        <label for "newEmail">Nuevo correo electrónico:</label>
-                        <input type="email" id="newEmail" name="newEmail">
-                    </div>
-                    <div id="profilePictureField">
-                        <label for="newProfilePicture"></label>
-                        <input type="file" id="newProfilePicture" name="newProfilePicture" accept="image/*">
-                    </div>
-                    <div id="numTelField">
-                        <label for="numTel">Numero de telefono:</label>
-                        <input type="tel" id="numTel" name="numTel" placeholder="092394475" required pattern="\d{3} \d{3} \d{3}" >
-                    </div>
-                    <button id="applyChanges" class="btn btn-primary" type="button">Guardar Cambios</button>
+
+                    <label for="foto">Foto de Perfil:</label>
+                     <input type="file" id="profilePictureField" name="foto"> <br>
+
+                    <label for="nombre">Nombre:</label>
+                     <input type="text" id="nombre" name="nombre" required> <br>
+
+                     <label for="apellido">Apellido:</label>
+                     <input type="text" id="apellido" name="apellido" required> <br>
+
+                     <label for="email">Correo Electrónico:</label>
+                     <input type="email" id="email" name="email" required> <br>
+
+                     <label for="direccion">Dirección:</label>
+                     <input type="text" id="direccion" name="direccion"> <br>
+
+                     <label for="telefono">Teléfono:</label>
+                     <input type="tel" id="telefono" name="telefono"> <br>
+
+                     <label for="actualPassword">Contraseña Actual:</label>
+                     <input type="password" id="actualPassword" name="actualPassword" required> <br>
+             
+                     <label for="nuevaPassword">Nueva Contraseña:</label>
+                     <input type="password" id="nuevaPassword" name="nuevaPassword" required> <br>
+             
+                     <label for="confirmarPassword">Confirmar Nueva Contraseña:</label>
+                     <input type="password" id="confirmarPassword" name="confirmarPassword" required> <br>
+             
+                     <input type="submit" id="applyChanges" value="Guardar Contraseña">
+
+                
+                     <input type="submit" id="applyChanges" value="Guardar Cambios">
                 </form>
             </div>
         </div>

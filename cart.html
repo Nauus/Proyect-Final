@@ -20,6 +20,8 @@
 <body class="cart">
   <div id="navbarContainer"></div>
 
+  <h1>MI CARRITO</h1>
+
 
   <main class="bgCart">
     
@@ -40,7 +42,7 @@
     <div class="container payment-container">
 
       <summary>
-        <h1>Complete los datos para realizar la compra</h1>
+        <h2>Complete los datos para realizar la compra</h1>
       </summary>
       <details>
         <form id="payment-form">
@@ -60,24 +62,26 @@
               <option value="sucursal3">Sucursal Aguada</option>
           </select>
           
-          <div class="">
-            <label for="direEnvio">Dirección de envío</label>
+          <div id="direccionFields">
+            <div class="">
+             <label for="direEnvio">Dirección de envío</label>
            
-          </div>
-          <div class="mb-3">
-            <label for="calle">Calle</label>
-            <input type="text" id="calle" name="calle" required pattern="[A-Za-z\s]+"
-            title="Por favor, ingrese solo letras y espacios para la calle">
-          </div>
-          <div class="mb-3">
-            <label for="direccion">Numero</label>
-            <input type="text" id="direccion" name="direccion"  required pattern="[0-9]+"
-            title="Por favor, ingrese solo números para el número">
-          </div>
-          <div class="mb-3">
-            <label for="esquina">Esquina</label>
-            <input type="text" id="esquina" name="esquina" required pattern="[A-Za-z\s]+"
-            title="Por favor, ingrese solo letras y espacios para la esquina">
+             </div>
+            <div class="mb-3">
+             <label for="calle">Calle</label>
+             <input type="text" id="calle" name="calle" required pattern="[A-Za-z\s]+"
+             title="Por favor, ingrese solo letras y espacios para la calle">
+            </div>
+            <div class="mb-3">
+             <label for="direccion">Numero</label>
+             <input type="text" id="direccion" name="direccion"  required pattern="[0-9]+"
+             title="Por favor, ingrese solo números para el número">
+            </div>
+            <div class="mb-3">
+             <label for="esquina">Esquina</label>
+             <input type="text" id="esquina" name="esquina" required pattern="[A-Za-z\s]+"
+             title="Por favor, ingrese solo letras y espacios para la esquina">
+            </div>
           </div>
 
         

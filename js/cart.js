@@ -1,3 +1,4 @@
+
 // Obtener el carrito de compras actual desde el almacenamiento local
 const currentCart = JSON.parse(localStorage.getItem('cart')) || [];
 
@@ -708,4 +709,18 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   renderCart();
   updateCartTotal();
+});
+
+// Evento para manejar el cambio en la selección de tipo de envío
+tipoEnvioSelect.addEventListener('change', () => {
+  const selectedOption = tipoEnvioSelect.value;
+
+  // Verificar si se seleccionó "Retiro en sucursal"
+  if (selectedOption === "sucursal") {
+    // Ocultar los campos de dirección
+    document.getElementById('direccionFields').style.display = 'none';
+  } else {
+    // Mostrar los campos de dirección
+    document.getElementById('direccionFields').style.display = 'block';
+  }
 });
