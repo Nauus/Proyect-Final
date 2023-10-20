@@ -29,7 +29,7 @@
         <form class="needs-validation" id="sell-info">
           <div class="row">
             <div class="col-md-6 mb-3">
-              <label for="productName">Nombre</label>
+              <label for="productName" class="form-label">Nombre</label>
               <input type="text" class="form-control" id="productName" value="" name="productName">
               <div class="invalid-feedback">
                 Ingresa un nombre
@@ -38,7 +38,7 @@
           </div>
           <div class="row">
             <div class="col-md-8 order-md-1">
-              <label>Imágenes</label>
+              <label class="form-label">Imágenes</label>
               <div class="needsclick dz-clickable" id="file-upload">
                 <div class="dz-message needsclick">
                   Arrastra tus fotos aquí<br>
@@ -48,13 +48,13 @@
           </div>
           <div class="row">
             <div class="col-md-12 mb-3">
-              <label for="productDescription">Descripción</label>
+              <label for="productDescription" class="form-label">Descripción</label>
               <textarea name="productDescription" class="form-control" id="productDescription"></textarea>
             </div>
           </div>
           <div class="row">
             <div class="col-md-3 mb-3">
-              <label for="productCostInput">Costo</label>
+              <label for="productCostInput" class="form-label">Costo</label>
               <input type="number" name="productCostInput" class="form-control" id="productCostInput" placeholder="" required="" value="0"
                 min="0">
               <div class="invalid-feedback">
@@ -62,7 +62,7 @@
               </div>
             </div>
             <div class="col-md-4 mb-3">
-              <label for="productCurrency">Moneda</label>
+              <label for="productCurrency" class="form-label">Moneda</label>
               <select name="productCurrency" class="form-select custom-select d-block w-100" id="productCurrency" required>
                 <option value="" hidden selected>Seleccionar moneda</option>
                 <option>Pesos Uruguayos (UYU)</option>
@@ -75,7 +75,7 @@
           </div>
           <div class="row">
             <div class="col-md-7 mb-3">
-              <label for="productCategory">Categoría</label>
+              <label for="productCategory" class="form-label">Categoría</label>
               <select name="productCategory" class="custom-select form-select d-block w-100" id="productCategory">
                 <option value="">Elija la categoría...</option>
                 <option>Autos</option>
@@ -92,7 +92,7 @@
           </div>
           <div class="row">
             <div class="col-md-3 mb-3">
-              <label for="productCountInput">Cantidad en stock</label>
+              <label for="productCountInput" class="form-label">Cantidad en stock</label>
               <input type="number" name="productCountInput" class="form-control" id="productCountInput"  required value="1"
                 min="0">
               <div class="invalid-feedback">

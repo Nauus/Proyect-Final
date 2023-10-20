@@ -1,11 +1,8 @@
+//! Nahuel A 
+
 // Obtener el carrito de compras actual desde el almacenamiento local
 const currentCart = JSON.parse(localStorage.getItem('cart')) || [];
 
-const currentUser = localStorage.getItem('currentUser');
-
-if (!currentUser) {
-  window.location.href = 'login.html';
-}
 // Función para crear una fila de la tabla del carrito
 function createCartTableRow (productDetails, index) {
   console.log(index);
@@ -105,8 +102,10 @@ function createCartTableRow (productDetails, index) {
       event.target.value = currentCart[index].quantity;
     }
 
+
     selectUSDCurrency();
   });
+
 
   // Event listener para eliminar un producto del carrito
   removeButton.addEventListener('click', () => {
@@ -124,6 +123,7 @@ function selectUSDCurrency () {
   usdRadio.checked = true;
 }
 
+//! Martin Rodoriguez
 // Función para actualizar el subtotal de un producto en el carrito
 function updateSubtotal (element, index) {
   const quantity = currentCart[index].quantity;
@@ -187,26 +187,19 @@ tipoEnvioSelect.addEventListener('change', () => {
 // Obtener el día actual (0 = Domingo, 1 = Lunes, ..., 6 = Sábado)
 const currentDay = new Date().getDay();
 
-
-// Luego, define la función applyDiscountOnSpecificDays
-function applyDiscountOnSpecificDays (total) {
-  const currentDay = new Date().getDay(); // Obtener el día actual (0 = Domingo, 1 = Lunes, ..., 6 = Sábado)
-
-  if (currentDay === 0) { // Domingo, Martes o Jueves
-    const discount = (total * 10) / 100; // Descuento del 10% los domingos
-    return total - discount;
-  } else if (currentDay === 2) {
-    const discount = (total * 15) / 100; // Descuento del 15% los  martes
-    return total - discount;
-  } else if (currentDay === 4) {
-    const discount = (total * 20) / 100; // Descuento del 20% los  jueves
+// Función para aplicar un descuento del 10% los viernes (día 5)
+function applyDiscountOnFriday (total) {
+  if (currentDay === 6 || 4 || 2) { // Viernes
+    const discount = (total * 10) / 100;
     return total - discount;
   }
   return total;
 }
+
 // Función para mostrar una notificación llamativa al recargar la página
 function showNotificationOnPageLoad () {
   const currentDay = new Date().getDay(); // Obtener el día actual (0 = Domingo, 1 = Lunes, ..., 6 = Sábado)
+
   const dayNames = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
   const currentDayName = dayNames[currentDay]; // Obtener el nombre del día actual
   let discount = 0; // Descuento predeterminado
@@ -219,21 +212,14 @@ function showNotificationOnPageLoad () {
     case 4: // Jueves
       discount = 20; // Descuento del 20% los jueves
       break;
-    case 0: // Domingo
-      discount = 10; // Descuento del 10% los domingos
+    case 6: // Sábado
+      discount = 10; // Descuento del 10% los sábados
       break;
-  }
-
-  // Aquí puedes mostrar el porcentaje del descuento en algún elemento HTML específico
-  const discountElement = document.getElementById('discount-amount');
-  if (discountElement) {
-    const discountPercentage = discount > 0 ? `${discount}%` : '0%'; // Formatea el porcentaje
-    discountElement.textContent = `como es un dia especial para nosotros has obtenido un descuento del ${discountPercentage} se vera reflejado en tu total.`;
   }
 
   // Mostrar notificación solo si hay un descuento aplicable
   if (discount > 0) {
-    const message = `¡Hoy es ${currentDayName}, un día especial para nosotros, por ello te damos un descuento del ${discount}% en los productos!`;
+    const message = `¡Hoy es  ${currentDayName}, un dia especial para nosotros, por ello te damos un descuento del ${discount}% en los productos!`;
 
     // Configurar el estilo CSS personalizado para la notificación
     const style = {
@@ -261,15 +247,11 @@ function showNotificationOnPageLoad () {
 showNotificationOnPageLoad();
 
 // Función para actualizar el total del carrito
-<<<<<<< Updated upstream
-=======
 
 
->>>>>>> Stashed changes
 function updateCartTotal (selectedCurrency) {
   let total = 0;
   let currency = selectedCurrency;
-  let subtotal = 0;
 
   if (!currency) {
     currency = localStorage.getItem('cartCurrency') || 'USD';
@@ -278,75 +260,46 @@ function updateCartTotal (selectedCurrency) {
   currentCart.forEach((product) => {
     if (product.currency === 'UYU' && currency === 'USD') {
       total += (product.price * product.quantity) / 40;
-      subtotal += (product.price * product.quantity) / 40;
     } else if (product.currency === 'USD' && currency === 'UYU') {
       total += product.price * product.quantity * 40;
-      subtotal += product.price * product.quantity * 40;
     } else {
       total += product.price * product.quantity;
-      subtotal += product.price * product.quantity;
     }
   });
 
-  // Aplica el descuento si corresponde
-  total = applyDiscountOnSpecificDays(total);
-
   const aumentoDescuento = (total * aumentoPorcentaje) / 100;
-  const costoEnvio = (total * aumentoPorcentaje) / 100;
+  total -= aumentoDescuento;
 
-  total += costoEnvio;
+  total = applyDiscountOnFriday(total); // Aplicar descuento los viernes
 
   const roundedTotal = Math.floor(total);
+
   const totalElement = document.getElementById('cart-total');
   if (totalElement) {
     totalElement.textContent = `Total: ${currency} ${roundedTotal} `;
     localStorage.setItem('cartTotal', roundedTotal);
   }
-
-  const roundedSubtotal = Math.floor(subtotal);
-  const subtotalElement = document.getElementById('subtotal');
-  if (subtotalElement) {
-    subtotalElement.textContent = `Subtotal: ${currency} ${roundedSubtotal} `;
-  }
-
-  const envioTotalElement = document.getElementById('envio-total');
-  if (envioTotalElement) {
-    envioTotalElement.textContent = `Costo de envío: ${currency} ${costoEnvio.toFixed(2)}`;
-  }
-
-
-
-
-
-
-  tipoEnvioSelect.addEventListener('change', () => {
-    updateCartTotal();
-  });
-
-  // Obtén todos los botones de radio con name="currency"
-  const currencyButtons = document.querySelectorAll('input[name="currency"]');
-
-  // Agrega un evento 'change' a cada botón de radio
-  currencyButtons.forEach((button) => {
-    button.addEventListener('change', () => {
-      const selectedCurrency = button.value;
-      updateCartTotal(selectedCurrency);
-    });
-  });
 }
+
+tipoEnvioSelect.addEventListener('change', () => {
+  updateCartTotal();
+});
+// Obtén todos los botones de radio con name="currency"
+const currencyButtons = document.querySelectorAll('input[name="currency"]');
+
+// Agrega un evento 'change' a cada botón de radio
+currencyButtons.forEach((button) => {
+  button.addEventListener('change', () => {
+    const selectedCurrency = button.value;
+    updateCartTotal(selectedCurrency);
+  });
+});
 
 // Función para eliminar un producto del carrito
 // Función para eliminar un producto del carrito por su ID
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
-=======
 
 //! Belen Alano
 
->>>>>>> 45dcd85a661125f73ada500835748a396f14590d
 function removeProductFromCart (productID) {
   const productIndex = currentCart.findIndex((product) => product.id === productID);
   if (productIndex !== -1) {
@@ -406,313 +359,29 @@ function renderCart () {
   });
 }
 
-// Abre el modal al hacer clic en el botón
-document.getElementById("openPaymentModal").addEventListener("click", function () {
-  document.getElementById("paymentModal").style.display = "block";
-});
+const inputFecha = document.getElementById('fecha');
 
-// Cierra el modal al hacer clic en la "x" o fuera del modal
-document.getElementById("closePaymentModal").addEventListener("click", function () {
-  document.getElementById("paymentModal").style.display = "none";
-});
+inputFecha.addEventListener('input', function () {
+  let value = this.value.replace(/\D/g, ''); // Eliminar caracteres que no son dígitos
 
-window.addEventListener("click", function (event) {
-  if (event.target === document.getElementById("paymentModal")) {
-    document.getElementById("paymentModal").style.display = "none";
+  if (value.length > 4) {
+    value = value.slice(0, 4);
   }
-});
 
-// Cambia los campos del modal según la forma de pago seleccionada
-document.getElementById("creditCardFields").style.display = "none";
-document.getElementById("bankAccountFields").style.display = "none";
-
-document.getElementById("paymentMethod").addEventListener("change", function () {
-  const selectedMethod = this.value;
-  const creditCardFields = document.getElementById("creditCardFields");
-  const bankAccountFields = document.getElementById("bankAccountFields");
-
-  if (selectedMethod === "creditCard") {
-    creditCardFields.style.display = "block";
-    bankAccountFields.style.display = "none";
-  } else if (selectedMethod === "bankAccount") {
-    bankAccountFields.style.display = "block";
-    creditCardFields.style.display = "none";
+  if (value.length > 4) {
+    this.value = value.slice(0, 2) + '/' + value.slice(2, 4) + '/' + value.slice(4);
+  } else if (value.length === 4) {
+    this.value = value.slice(0, 2) + '/' + value.slice(2, 4);
   } else {
-    // Si se selecciona la opción predeterminada, oculta todos los campos
-    creditCardFields.style.display = "none";
-    bankAccountFields.style.display = "none";
+    this.value = value;
   }
 });
 
-let paymentDataIsValid = false; // Variable para rastrear la validez de los datos de pago
-
-// Procesa los datos al confirmar el pago
-document.getElementById("confirmPayment").addEventListener("click", function () {
-  const selectedMethod = document.getElementById("paymentMethod").value;
-  let paymentData = {};
-
-  function isValidCardNumber (cardNumber) {
-    // Elimina caracteres no numéricos
-    cardNumber = cardNumber.replace(/\D/g, '');
-    // La tarjeta debe tener entre 13 y 19 dígitos
-    return /^\d{13,19}$/.test(cardNumber);
-  }
-
-  function isValidCodeCvv (codeCvv) {
-    // El CVV debe tener exactamente 3 o 4 dígitos
-    return /^\d{3,4}$/.test(codeCvv);
-  }
-
-  function isValidVencimiento (vencimiento) {
-    // La fecha de vencimiento debe tener el formato MM/YY
-    // y el mes debe estar en el rango de 01-12 y el año debe ser mayor que el actual
-    const today = new Date();
-    const currentYear = today.getFullYear() % 100;
-    const currentMonth = today.getMonth() + 1;
-
-    // Remover caracteres no numéricos
-    vencimiento = vencimiento.replace(/\D/g, '');
-
-    // Validar el formato
-    if (!/^\d{4}$/.test(vencimiento)) {
-      return false;
-    }
-
-    const expMonth = parseInt(vencimiento.substring(0, 2), 10);
-    const expYear = parseInt(vencimiento.substring(2), 10);
-
-    return (
-      expMonth >= 1 && expMonth <= 12 &&
-      (expYear > currentYear || (expYear === currentYear && expMonth >= currentMonth))
-    );
-  }
-
-  if (selectedMethod === "creditCard") {
-    const cardNumberInput = document.getElementById("cardNumber");
-    const codeCvvInput = document.getElementById("codeCvv");
-    const vencimientoInput = document.getElementById("vencimiento");
-    const cardNumber = cardNumberInput.value;
-    const codeCvv = codeCvvInput.value;
-    const vencimiento = vencimientoInput.value;
-
-    // Validaciones para tarjeta de crédito
-    if (!isValidCardNumber(cardNumber)) {
-      cardNumberInput.classList.add("invalid");
-      cardNumberInput.setAttribute("maxlength", "19");
-      console.log("tarjeta invalida");
-    } else {
-      cardNumberInput.classList.remove("invalid");
-      cardNumberInput.removeAttribute("maxlength");
-    }
-
-    if (!isValidCodeCvv(codeCvv)) {
-      // CVV inválido
-      codeCvvInput.classList.add("invalid");
-      codeCvvInput.setAttribute("maxlength", "4");
-      console.log("Code invalido");
-    } else {
-      codeCvvInput.classList.remove("invalid");
-      codeCvvInput.removeAttribute("maxlength");
-    }
-
-    if (!isValidVencimiento(vencimiento)) {
-      // Fecha de vencimiento inválida
-      vencimientoInput.classList.add("invalid");
-      console.log("vencimiento invalido");
-    } else {
-      vencimientoInput.classList.remove("invalid");
-    }
-
-    if (!isValidCardNumber(cardNumber) || !isValidCodeCvv(codeCvv) || !isValidVencimiento(vencimiento)) {
-      // Muestra un mensaje de error si los datos no son válidos
-      Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: 'Por favor, ingrese datos válidos para la tarjeta de crédito/débito.',
-      });
-      paymentDataIsValid = false;
-      return;
-    } else {
-      Swal.fire({
-        icon: 'success',
-        title: 'Aprobado',
-        text: 'Los datos de su tarjeta ha sido guardado con exito. Gracias!',
-      });
-      paymentDataIsValid = true;
-    }
-
-    // Si los datos son válidos, guárdalos
-    paymentData.cardNumber = cardNumber;
-    paymentData.codeCvv = codeCvv;
-    paymentData.vencimiento = vencimiento;
-
-
-  } else if (selectedMethod === "bankAccount") {
-    const accountNumberInput = document.getElementById("accountNumber");
-    const accountNumber = accountNumberInput.value;
-    function isValidAccountNumber (accountNumber) {
-      // Verificar si la entrada es una cadena y no está vacía
-      if (typeof accountNumber !== 'string' || accountNumber.trim() === '') {
-        return false;
-      }
-
-      // Eliminar espacios en blanco de la entrada
-      accountNumber = accountNumber.replace(/\s/g, '');
-
-      // Verificar que la entrada consista solo en dígitos y que su longitud no supere 20
-      if (/^\d{15,20}$/.test(accountNumber)) {
-        return true;
-      }
-
-      return false;
-    }
-    // Validaciones para transferencia bancaria
-    if (!isValidAccountNumber(accountNumber)) {
-      // Número de cuenta inválido
-      accountNumberInput.classList.add("invalid");
-      accountNumberInput.setAttribute("maxlength", "20");
-      Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: 'Por favor, ingrese un número de cuenta válido.',
-      });
-      paymentDataIsValid = false;
-      return;
-
-    } else {
-      accountNumberInput.classList.remove("invalid");
-      accountNumberInput.removeAttribute("maxlength");
-      Swal.fire({
-        icon: 'success',
-        title: 'Aprobado',
-        text: 'Su numero de cuenta ha sido guardada con exito. Gracias!',
-      });
-      paymentDataIsValid = true;
-    }
-
-    // Si los datos son válidos, guárdalos
-    paymentData.accountNumber = accountNumber;
-    console.log(accountNumber);
-  }
-
-  // Cerrar el modal
-  document.getElementById("paymentModal").style.display = "none";
-  const selectedPaymentDisplay = document.getElementById("selectedPaymentDisplay");
-
-  if (selectedMethod === "creditCard") {
-    selectedPaymentDisplay.textContent = "Tarjeta de Crédito/Débito";
-  } else {
-    selectedPaymentDisplay.textContent = "Cuenta Bancaria";
-  }
-
-  // Aquí puedes hacer algo con los datos, como enviarlos al servidor
-  console.log("Datos de pago:", paymentData);
-
-  // Luego, puedes habilitar el botón "Finalizar Compra" si se cumple alguna condición, por ejemplo:
-  // document.getElementById("finalizarCompra").disabled = false;
-});
-
-//! Validaciones
-
-
-document.getElementById("finalizarCompra").addEventListener("click", function (event) {
-  event.preventDefault(); // Evita que el formulario se envíe automáticamente
-
-  // Verifica si se ha seleccionado un tipo de envío
-  const tipoEnvio = document.getElementById("tipoEnvio").value;
-  if (tipoEnvio === "") {
-    Swal.fire({
-      icon: 'error',
-      title: 'Error',
-      text: 'Por favor, seleccione un tipo de envío.',
-    });
-    return;
-  }
-
-  // Verifica si se ha seleccionado una forma de pago
-  const paymentMethod = document.getElementById("paymentMethod").value;
-  if (paymentMethod === "defaultOption") {
-    Swal.fire({
-      icon: 'error',
-      title: 'Error',
-      text: 'Por favor, seleccione una forma de pago.',
-    });
-    return;
-  }
-
-  let isValid = true;
-
-  // Realiza validaciones de dirección, número y esquina en tiempo real
-  const calleInput = document.getElementById("calle");
-  const numeroInput = document.getElementById("direccion");
-  const esquinaInput = document.getElementById("esquina");
-
-  if (!/^[A-Za-z\s]+$/.test(calleInput.value.trim())) {
-    calleInput.classList.add("invalid");
-    isValid = false;
-    console.log("di false direccion");
-  } else {
-    calleInput.classList.remove("invalid");
-  }
-
-  if (!/^[0-9]+$/.test(numeroInput.value.trim())) {
-    numeroInput.classList.add("invalid");
-    isValid = false;
-    console.log("di false numero");
-  } else {
-    numeroInput.classList.remove("invalid");
-  }
-
-  if (!/^[A-Za-z\s]+$/.test(esquinaInput.value.trim())) {
-    esquinaInput.classList.add("invalid");
-    isValid = false;
-    console.log("di false esquina");
-  } else {
-    esquinaInput.classList.remove("invalid");
-  }
-
-  if (!isValid) {
-    // Muestra un mensaje de error si no se completan los campos
-    Swal.fire({
-      icon: 'error',
-      title: 'Error',
-      text: 'Por favor, complete todos los campos requeridos correctamente.',
-    });
-    return;
-  }
-  if (!paymentDataIsValid) {
-    Swal.fire({
-      icon: 'error',
-      title: 'Error',
-      text: 'Por favor, complete y verifique los datos de pago correctamente antes de continuar.',
-    });
-    return;
-  }
-
-
-  if (paymentDataIsValid && isValid) {
-    // Muestra el mensaje de éxito con SweetAlert
-    Swal.fire({
-      icon: 'success',
-      title: 'Compra exitosa',
-      text: "Gracias por tu compra, recibiras un mensaje en tu casilla de correo electronico con tu boleta e información de envio.",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        clearCart();
-        location.reload();
-      }
-    });
-  }
-
-  function clearCart () {
-    console.log('Limpieza del carrito...');
-    localStorage.removeItem('cart');
-    console.log('Carrito limpiado y localStorage actualizado.');
-    renderCart();
-    updateCartTotal();
+inputFecha.addEventListener('keydown', function (e) {
+  if (!/\d/.test(e.key)) {
+    e.preventDefault(); // Evitar la entrada de caracteres no numéricos
   }
 });
-
 // Evento que se ejecuta cuando se carga el DOM
 document.addEventListener('DOMContentLoaded', () => {
   if (currentCart.length === 0) {
