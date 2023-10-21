@@ -701,27 +701,6 @@ document.getElementById("finalizarCompra").addEventListener("click", function (e
   }
 });
 
-inputFecha.addEventListener('input', function () {
-  let value = this.value.replace(/\D/g, ''); // Eliminar caracteres que no son dígitos
-
-  if (value.length > 4) {
-    value = value.slice(0, 4);
-  }
-
-  if (value.length > 4) {
-    this.value = value.slice(0, 2) + '/' + value.slice(2, 4) + '/' + value.slice(4);
-  } else if (value.length === 4) {
-    this.value = value.slice(0, 2) + '/' + value.slice(2, 4);
-  } else {
-    this.value = value;
-  }
-});
-
-inputFecha.addEventListener('keydown', function (e) {
-  if (!/\d/.test(e.key)) {
-    e.preventDefault(); // Evitar la entrada de caracteres no numéricos
-  }
-});
 // Evento que se ejecuta cuando se carga el DOM
 document.addEventListener('DOMContentLoaded', () => {
   if (currentCart.length === 0) {
@@ -730,21 +709,3 @@ document.addEventListener('DOMContentLoaded', () => {
   renderCart();
   updateCartTotal();
 });
-
-
-const cardNumberInput = document.getElementById('cardNumber'); // Reemplaza 'cardNumber' con el ID de tu campo de tarjeta
-  cardNumberInput.addEventListener('input', () => {
-    const cardNumberValue = cardNumberInput.value;
-    // Utiliza una expresión regular para verificar si el valor contiene solo dígitos
-    const isValidCardNumber = /^\d+$/.test(cardNumberValue);
-
-    // Aplica la clase 'input-error' si el valor no es válido, de lo contrario, quita la clase
-    if (!isValidCardNumber) {
-      cardNumberInput.classList.add('input-error');
-    } else {
-      cardNumberInput.classList.remove('input-error');
-    }
-  });
-
-
-  
