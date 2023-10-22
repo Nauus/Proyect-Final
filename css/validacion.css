@@ -7,3 +7,6 @@ input:invalid {
     background-color: rgba(0, 128, 0, 0.249);
   }
   
+  .quantity-input {
+    background-color: #fff!important;
+  }

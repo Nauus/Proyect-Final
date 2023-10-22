@@ -100,12 +100,13 @@
                 <!-- Campos para tarjeta de crédito -->
                 <label for="cardNumber">Número de Tarjeta de Crédito/Débito:</label>
                 <input type="text" id="Number" name="cardNumber" placeholder="XXXX XXXX XXXX XXXX" required pattern="\d{16}">
-                <label for="cardNumber">Codigo CVV:</label>
+                
                 <label for="codeCvv">Código CVV:</label>
                 <input type="text" id="codeCvv" name="codeCvv" placeholder="XXX" required pattern="\d{3}">
 
-                <label for="cardNumber">Vencimiento:</label>
-                <input type="text" id="vencimiento" name="vencimiento" placeholder="XX/XX" required pattern="\d{4}">
+                <label for="vencimiento">Vencimiento:</label>
+                <input type="text" id="vencimiento" name="vencimiento" placeholder="XX/XX" required pattern="\d{2}/\d{2}">
+
                 <!-- Otros campos para tarjeta de crédito -->
               </div>
               <div id="bankAccountFields">
@@ -141,7 +142,7 @@
       </details>
       <button class="btn" id="finalizarCompra" type="submit">Finalizar Compra</button>
       <a class="preguntaCompra" href="categories.html">Ver mas productos</a>
-      <a class="preg-frecuente" href="#">Preguntas frecuentes</a>
+      <a class="preg-frecuente" href="PreguntasFrecuentes.html">Preguntas frecuentes</a>
       
   </main>
   <footer class="text-muted footer-cart">

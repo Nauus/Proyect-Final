@@ -88,5 +88,12 @@ fetch('navbar.html')
 });
 
     
+//JOSECODIGO PARA Q REPRODUZCA EL SONIDO Y QUE NO FALLE 
 
+function playSound() {
+    var sound = document.getElementById("sound");
+    sound.play();
+}
 
+let spookyButton = document.getElementById("spooky");
+spookyButton.addEventListener("click", playSound);

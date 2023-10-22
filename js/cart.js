@@ -451,32 +451,62 @@ document.getElementById("confirmPayment").addEventListener("click", function () 
     return /^\d{3,4}$/.test(codeCvv);
   }
 
-  function isValidVencimiento (vencimiento) {
+  function isValidVencimiento(vencimiento) {
     // La fecha de vencimiento debe tener el formato MM/YY
     // y el mes debe estar en el rango de 01-12 y el año debe ser mayor que el actual
     const today = new Date();
     const currentYear = today.getFullYear() % 100;
     const currentMonth = today.getMonth() + 1;
-
-    // Remover caracteres no numéricos
-    vencimiento = vencimiento.replace(/\D/g, '');
-
+  
     // Validar el formato
-    if (!/^\d{4}$/.test(vencimiento)) {
+    if (!/^\d{2}\/\d{2}$/.test(vencimiento)) {
       return false;
     }
-
+  
+    // Verificar si el mes y el año están en el rango deseado
     const expMonth = parseInt(vencimiento.substring(0, 2), 10);
-    const expYear = parseInt(vencimiento.substring(2), 10);
-
+    const expYear = parseInt(vencimiento.substring(3), 10);
+  
     return (
       expMonth >= 1 && expMonth <= 12 &&
       (expYear > currentYear || (expYear === currentYear && expMonth >= currentMonth))
     );
   }
+  
+  
+  
+  
+  
+  
+
+
+//JOSECODIGO AGREGAR /
+
+    const vencimientoInput = document.getElementById('vencimiento');
+
+vencimientoInput.addEventListener('input', (event) => {
+  const inputValue = event.target.value;
+  
+  // Elimina cualquier carácter no numérico para obtener solo dígitos
+  const numericValue = inputValue.replace(/\D/g, '');
+  
+  if (numericValue.length > 2) {
+    // Si ya se han ingresado al menos 2 dígitos, agrega automáticamente '/' después del segundo dígito
+    event.target.value = numericValue.slice(0, 2) + '/' + numericValue.slice(2);
+  }
+  // Esto asegura que no se ingresen más de 4 caracteres, es decir, MM/YY.
+  if (numericValue.length > 4) {
+    event.target.value = numericValue.slice(0, 4);
+  }
+});
+
+
+//JOSECODIGO AGREGAR /
+
+  
 
   if (selectedMethod === "creditCard") {
-    const cardNumberInput = document.getElementById("cardNumber");
+    const cardNumberInput = document.getElementById("Number"); //JOSECODIGO CAMBIE ID PQ NO FUNCABAN Y NO TOMABA EL VALUE HAPPENS
     const codeCvvInput = document.getElementById("codeCvv");
     const vencimientoInput = document.getElementById("vencimiento");
     const cardNumber = cardNumberInput.value;
@@ -709,3 +739,5 @@ document.addEventListener('DOMContentLoaded', () => {
   renderCart();
   updateCartTotal();
 });
+
+
