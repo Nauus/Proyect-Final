@@ -34,7 +34,7 @@ fetch('navbar.html')
     const spookyButton = document.getElementById('spooky');
     const soundElement = document.getElementById('sound');
     let soundPlayed = false;
-
+ 
     // Función para habilitar el modo oscuro
     function enableDarkMode() {
         disableSpookyMode();
@@ -94,14 +94,3 @@ fetch('navbar.html')
         }
     });
 });
-
-    
-//JOSECODIGO PARA Q REPRODUZCA EL SONIDO Y QUE NO FALLE 
-
-function playSound() {
-    var sound = document.getElementById("sound");
-    sound.play();
-}
-
-let spookyButton = document.getElementById("spooky");
-spookyButton.addEventListener("click", playSound);
