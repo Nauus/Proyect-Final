@@ -7,6 +7,3 @@ input:valid {
   background-color: rgba(0, 128, 0, 0.249);
 }
 
-.invalid {
-  background-color: rgba(255, 0, 0, 0.189)!important;
-}
