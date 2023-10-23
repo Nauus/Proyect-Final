@@ -410,6 +410,7 @@ select#segundoMenu option:checked {
   text-align: center;
   border: none;
   font-size: 16px;
+  background-color: white !important;
 }
 
 /* darkmode custom */

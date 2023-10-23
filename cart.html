@@ -99,19 +99,19 @@
               <div id="creditCardFields">
                 <!-- Campos para tarjeta de crédito -->
                 <label for="cardNumber">Número de Tarjeta de Crédito/Débito:</label>
-                <input type="text" id="Number" name="cardNumber" placeholder="XXXX XXXX XXXX XXXX" required pattern="\d{16}">
-                <label for="cardNumber">Codigo CVV:</label>
+                <input type="text" id="cardNumber" name="cardNumber" placeholder="XXXX XXXX XXXX XXXX" required pattern="^\d{16}$">
+
                 <label for="codeCvv">Código CVV:</label>
-                <input type="text" id="codeCvv" name="codeCvv" placeholder="XXX" required pattern="\d{3}">
+                <input type="text" id="codeCvv" name="codeCvv" placeholder="XXX" required pattern="^\d{3}$">
 
                 <label for="cardNumber">Vencimiento:</label>
-                <input type="text" id="vencimiento" name="vencimiento" placeholder="XX/XX" required pattern="\d{4}">
+                <input type="text" id="vencimiento" name="vencimiento" placeholder="XX/XX" required pattern="^(0[1-9]|1[0-2])\/\d{2}$">
                 <!-- Otros campos para tarjeta de crédito -->
               </div>
               <div id="bankAccountFields">
                 <!-- Campos para número de cuenta -->
                 <label for="accountNumber">Número de Cuenta:</label>
-                <input type="text" id="accountNumber" name="accountNumber" placeholder="XXXXXXXXXXXXXXXXXX" pattern="^\d{16}$">
+                <input type="text" id="accountNumber" name="accountNumber" placeholder="XXXXXXXXXXXXXXXXXX" required pattern="^\d{16}$">
                 <!-- Otros campos para número de cuenta -->
               </div>
               <button type="button" id="confirmPayment" class="btn">Confirmar</button>

@@ -8,7 +8,6 @@ if (!currentUser) {
 }
 // Función para crear una fila de la tabla del carrito
 function createCartTableRow (productDetails, index) {
-  console.log(index);
   const tableRow = document.createElement('tr');
   // Crear celda de imagen
   const imgCell = document.createElement('td');
@@ -46,6 +45,7 @@ function createCartTableRow (productDetails, index) {
   quantityInput.min = 1;
   quantityInput.step = 1;
   quantityInput.classList.add('quantity-input');
+  quantityInput.classList.add('no-valid');
   quantityInput.value = productDetails.quantity;
   quantityInput.setAttribute('inputmode', 'numeric'); // Evita las flechas de aumento y disminución
 
@@ -399,9 +399,15 @@ document.getElementById("openPaymentModal").addEventListener("click", function (
   document.getElementById("paymentModal").style.display = "block";
 });
 
-// Cierra el modal al hacer clic en la "x" o fuera del modal
-document.getElementById("closePaymentModal").addEventListener("click", function () {
+// Cierra el modal al hacer clic en la "x"
+document.getElementById("closePaymentModal").addEventListener("click", function (e) {
+  e.stopPropagation(); // Evita que el clic se propague más allá del botón "x"
   document.getElementById("paymentModal").style.display = "none";
+});
+
+// Evita que se cierre haciendo clic fuera del modal
+document.getElementById("paymentModal").addEventListener("click", function (e) {
+  e.stopPropagation(); // Evita que el clic se propague más allá del modal
 });
 
 window.addEventListener("click", function (event) {
@@ -442,13 +448,13 @@ document.getElementById("confirmPayment").addEventListener("click", function () 
   function isValidCardNumber (cardNumber) {
     // Elimina caracteres no numéricos
     cardNumber = cardNumber.replace(/\D/g, '');
-    // La tarjeta debe tener entre 13 y 19 dígitos
-    return /^\d{13,19}$/.test(cardNumber);
+    // La tarjeta debe tener 16 dígitos
+    return /^\d{16}$/.test(cardNumber);
   }
 
   function isValidCodeCvv (codeCvv) {
-    // El CVV debe tener exactamente 3 o 4 dígitos
-    return /^\d{3,4}$/.test(codeCvv);
+    // El CVV debe tener exactamente 3 dígitos
+    return /^\d{3}$/.test(codeCvv);
   }
 
   function isValidVencimiento (vencimiento) {
@@ -464,6 +470,7 @@ document.getElementById("confirmPayment").addEventListener("click", function () 
     // Validar el formato
     if (!/^\d{4}$/.test(vencimiento)) {
       return false;
+      
     }
 
     const expMonth = parseInt(vencimiento.substring(0, 2), 10);
@@ -483,51 +490,33 @@ document.getElementById("confirmPayment").addEventListener("click", function () 
     const codeCvv = codeCvvInput.value;
     const vencimiento = vencimientoInput.value;
 
-    // Validaciones para tarjeta de crédito
-    if (!isValidCardNumber(cardNumber)) {
-      cardNumberInput.classList.add("invalid");
-      cardNumberInput.setAttribute("maxlength", "19");
-      console.log("tarjeta invalida");
-    } else {
-      cardNumberInput.classList.remove("invalid");
-      cardNumberInput.removeAttribute("maxlength");
-    }
-
-    if (!isValidCodeCvv(codeCvv)) {
-      // CVV inválido
-      codeCvvInput.classList.add("invalid");
-      codeCvvInput.setAttribute("maxlength", "4");
-      console.log("Code invalido");
-    } else {
-      codeCvvInput.classList.remove("invalid");
-      codeCvvInput.removeAttribute("maxlength");
-    }
-
-    if (!isValidVencimiento(vencimiento)) {
-      // Fecha de vencimiento inválida
-      vencimientoInput.classList.add("invalid");
-      console.log("vencimiento invalido");
-    } else {
-      vencimientoInput.classList.remove("invalid");
-    }
-
-    if (!isValidCardNumber(cardNumber) || !isValidCodeCvv(codeCvv) || !isValidVencimiento(vencimiento)) {
-      // Muestra un mensaje de error si los datos no son válidos
+    if (!isValidCardNumber(cardNumber) || !isValidCodeCvv(codeCvv)) {
+      // Muestra un mensaje de error si los datos de la tarjeta no son válidos
       Swal.fire({
         icon: 'error',
         title: 'Error',
         text: 'Por favor, ingrese datos válidos para la tarjeta de crédito/débito.',
       });
       paymentDataIsValid = false;
-      return;
+    } else if (!isValidVencimiento(vencimiento)) {
+      // Muestra un mensaje de error si la fecha de vencimiento no es válida
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Por favor, Verifique la fecha de vencimiento. Debe tener el formato MM/YY y el mes debe estar en el rango de 01-12 y el año debe ser mayor que el actual.',
+      });
+      document.getElementById("vencimiento").classList.add("invalid");
+      paymentDataIsValid = false;
     } else {
+      // Los datos son válidos, muestra un mensaje de éxito
       Swal.fire({
         icon: 'success',
         title: 'Aprobado',
-        text: 'Los datos de su tarjeta ha sido guardado con exito. Gracias!',
+        text: 'Los datos de su tarjeta han sido guardados con éxito. ¡Gracias!',
       });
       paymentDataIsValid = true;
     }
+    
 
     // Si los datos son válidos, guárdalos
     paymentData.cardNumber = cardNumber;
@@ -638,7 +627,6 @@ document.getElementById("finalizarCompra").addEventListener("click", function (e
   if (!/^[A-Za-z\s]+$/.test(calleInput.value.trim())) {
     calleInput.classList.add("invalid");
     isValid = false;
-    console.log("di false direccion");
   } else {
     calleInput.classList.remove("invalid");
   }
@@ -646,7 +634,6 @@ document.getElementById("finalizarCompra").addEventListener("click", function (e
   if (!/^[0-9]+$/.test(numeroInput.value.trim())) {
     numeroInput.classList.add("invalid");
     isValid = false;
-    console.log("di false numero");
   } else {
     numeroInput.classList.remove("invalid");
   }
@@ -654,7 +641,6 @@ document.getElementById("finalizarCompra").addEventListener("click", function (e
   if (!/^[A-Za-z\s]+$/.test(esquinaInput.value.trim())) {
     esquinaInput.classList.add("invalid");
     isValid = false;
-    console.log("di false esquina");
   } else {
     esquinaInput.classList.remove("invalid");
   }
@@ -693,9 +679,7 @@ document.getElementById("finalizarCompra").addEventListener("click", function (e
   }
 
   function clearCart () {
-    console.log('Limpieza del carrito...');
     localStorage.removeItem('cart');
-    console.log('Carrito limpiado y localStorage actualizado.');
     renderCart();
     updateCartTotal();
   }

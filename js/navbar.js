@@ -21,6 +21,14 @@ fetch('navbar.html')
     });
 
    document.addEventListener('navbarLoaded', function () {
+
+    // Código de "my-profile.js" relacionado con el navbar
+    const navbarProfilePicture = document.getElementById('navbarProfilePicture');
+    const storedProfilePicture = localStorage.getItem('profilePicture_' + localStorage.getItem('currentUser'));
+
+    if (storedProfilePicture) {
+        navbarProfilePicture.src = storedProfilePicture;
+    }
     const body = document.body;
     const switchButton = document.getElementById('switch');
     const spookyButton = document.getElementById('spooky');
