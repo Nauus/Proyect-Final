@@ -333,8 +333,8 @@ function updateCartTotal (selectedCurrency) {
 // Función para eliminar un producto del carrito
 // Función para eliminar un producto del carrito por su ID
 
-//! Belen Alano
 
+//! Camila Altez
 function removeProductFromCart (productID) {
   const productIndex = currentCart.findIndex((product) => product.id === productID);
   if (productIndex !== -1) {
@@ -346,7 +346,6 @@ function removeProductFromCart (productID) {
 }
 // Función para cargar un producto predeterminado desde una URL y agregarlo al carrito
 
-//! Jose Perazza
 
 function loadDefaultProduct () {
   const productDetailsUrl =
@@ -383,7 +382,6 @@ function loadDefaultProduct () {
 }
 // Función para renderizar los productos en el carrito
 
-//!  Nahuel Medina
 function renderCart () {
   const productList = document.getElementById('product-list');
 
@@ -394,6 +392,7 @@ function renderCart () {
   });
 }
 
+//! Belen Alano
 // Abre el modal al hacer clic en el botón
 document.getElementById("openPaymentModal").addEventListener("click", function () {
   document.getElementById("paymentModal").style.display = "block";
@@ -420,6 +419,7 @@ window.addEventListener("click", function (event) {
 document.getElementById("creditCardFields").style.display = "none";
 document.getElementById("bankAccountFields").style.display = "none";
 
+//! Nahuel Medina
 document.getElementById("paymentMethod").addEventListener("change", function () {
   const selectedMethod = this.value;
   const creditCardFields = document.getElementById("creditCardFields");
@@ -440,6 +440,9 @@ document.getElementById("paymentMethod").addEventListener("change", function () 
 
 let paymentDataIsValid = false; // Variable para rastrear la validez de los datos de pago
 
+
+
+//! NAHUEL ALONSO
 // Procesa los datos al confirmar el pago
 document.getElementById("confirmPayment").addEventListener("click", function () {
   const selectedMethod = document.getElementById("paymentMethod").value;
@@ -480,16 +483,7 @@ document.getElementById("confirmPayment").addEventListener("click", function () 
     );
   }
 
-
-  
-  
-  
-  
-
-
-//JOSECODIGO AGREGAR /
-
-    const vencimientoInput = document.getElementById('vencimiento');
+const vencimientoInput = document.getElementById('vencimiento');
 
 vencimientoInput.addEventListener('input', (event) => {
   const inputValue = event.target.value;
@@ -507,11 +501,8 @@ vencimientoInput.addEventListener('input', (event) => {
   }
 });
 
-
-//JOSECODIGO AGREGAR /
-
   
-
+  //! Martin Rodriguez
   if (selectedMethod === "creditCard") {
     const cardNumberInput = document.getElementById("cardNumber");
     const codeCvvInput = document.getElementById("codeCvv");
@@ -620,7 +611,7 @@ vencimientoInput.addEventListener('input', (event) => {
 
 //! Validaciones
 
-
+//! Juan Ramella
 document.getElementById("finalizarCompra").addEventListener("click", function (event) {
   event.preventDefault(); // Evita que el formulario se envíe automáticamente
 
@@ -691,7 +682,6 @@ document.getElementById("finalizarCompra").addEventListener("click", function (e
     });
     return;
   }
-
 
   if (paymentDataIsValid && isValid) {
     // Muestra el mensaje de éxito con SweetAlert
