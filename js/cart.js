@@ -346,7 +346,6 @@ function removeProductFromCart (productID) {
 }
 // Función para cargar un producto predeterminado desde una URL y agregarlo al carrito
 
-
 function loadDefaultProduct () {
   const productDetailsUrl =
     'https://japceibal.github.io/emercado-api/user_cart/25801.json';
@@ -440,8 +439,6 @@ document.getElementById("paymentMethod").addEventListener("change", function () 
 
 let paymentDataIsValid = false; // Variable para rastrear la validez de los datos de pago
 
-
-
 //! NAHUEL ALONSO
 // Procesa los datos al confirmar el pago
 document.getElementById("confirmPayment").addEventListener("click", function () {
@@ -484,7 +481,6 @@ document.getElementById("confirmPayment").addEventListener("click", function () 
   }
 
 const vencimientoInput = document.getElementById('vencimiento');
-
 vencimientoInput.addEventListener('input', (event) => {
   const inputValue = event.target.value;
   
@@ -500,9 +496,7 @@ vencimientoInput.addEventListener('input', (event) => {
     event.target.value = numericValue.slice(0, 4);
   }
 });
-
-  
-  //! Martin Rodriguez
+  //! Jose Perazza
   if (selectedMethod === "creditCard") {
     const cardNumberInput = document.getElementById("cardNumber");
     const codeCvvInput = document.getElementById("codeCvv");
@@ -560,9 +554,10 @@ vencimientoInput.addEventListener('input', (event) => {
       if (/^\d{15,20}$/.test(accountNumber)) {
         return true;
       }
-
+      
       return false;
     }
+    //! Martin Rodriguez
     // Validaciones para transferencia bancaria
     if (!isValidAccountNumber(accountNumber)) {
       // Número de cuenta inválido
@@ -697,13 +692,14 @@ document.getElementById("finalizarCompra").addEventListener("click", function (e
     });
   }
 
+//! Camila Altez
   function clearCart () {
     localStorage.removeItem('cart');
     renderCart();
     updateCartTotal();
   }
 });
-
+////////////////////////////////
 // Evento que se ejecuta cuando se carga el DOM
 document.addEventListener('DOMContentLoaded', () => {
   if (currentCart.length === 0) {
