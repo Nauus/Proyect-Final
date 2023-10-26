@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/my-profile.css">
     <link rel="shortcut icon" href="img/logoarreglado2.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="js/navbar.js" type="module"></script>
     
 </head>
@@ -30,11 +30,11 @@
                         <img id="profilePageProfilePicture" src="img/Default_pfp.svg.png" alt="Foto de perfil actual">
                         <input type="file" id="newProfilePicture" name="newProfilePicture" accept="image/*" style="display: none;">
                     </label>
-                </div
+                </div>
                 <form id="profileForm">
                     <select id="changeOption" class="form-select mb-3">
                         <option value="" disabled selected>Selecciona la opción</option>
-                        <option value="username">Cambiar nombre de usuario</option>
+                        <optione value="username">Cambiar nombre de usuario</optione>
                         <option value="password">Cambiar contraseña</option>
                         <option value="email">Cambiar correo electrónico</option>
                         <option value="numTelefono">Cambiar/Agregar numero de telefono</option>
@@ -51,18 +51,18 @@
                        
                         <br>
                         <label for="newPassword">Introduce la nueva contraseña:</label>
-                        <input type="password" id="newPassword" name="newPassword"  >
-                        <div id="passwordError" class="error-message">La contraseña actual introducida no es válida</div>
+                        <input type="password" id="newPassword" name="newPassword">
                     </div>
                     <div id="emailField">
-                        <label for="currentName">Correo actual: <span id="currentEmail"></span></label>
+                        <label for="currentEmail"  >Introduce el correo actual:</label>
+                        <input type="email" id="currentEmail" name="currentEmail">
                         <br>
-                        <label for "newEmail">Nuevo correo electrónico:</label>
+                        <label for ="newEmail">Nuevo correo electrónico:</label>
                         <input type="email" id="newEmail" name="newEmail">
                     </div>
                     <div id="profilePictureField">
                         <label for="newProfilePicture"></label>
-                        <input type="file" id="newProfilePicture" name="newProfilePicture" accept="image/*">
+                        <input type="file" id="" name="newProfilePicture" accept="image/*">
                     </div>
                     <div id="numTelField">
                         <label for="numTel">Numero de telefono:</label>

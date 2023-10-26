@@ -442,7 +442,9 @@ let paymentDataIsValid = false; // Variable para rastrear la validez de los dato
 //! NAHUEL ALONSO
 // Procesa los datos al confirmar el pago
 document.getElementById("confirmPayment").addEventListener("click", function () {
+
   const selectedMethod = document.getElementById("paymentMethod").value;
+  
   let paymentData = {};
 
   function isValidCardNumber (cardNumber) {
@@ -470,7 +472,7 @@ document.getElementById("confirmPayment").addEventListener("click", function () 
       
     }
 
-// Verificar si el mes y el año están en el rango deseado
+  // Verificar si el mes y el año están en el rango deseado
     const expMonth = parseInt(vencimiento.substring(0, 2), 10);
     const expYear = parseInt(vencimiento.substring(3), 10);
 
@@ -479,23 +481,6 @@ document.getElementById("confirmPayment").addEventListener("click", function () 
       (expYear > currentYear || (expYear === currentYear && expMonth >= currentMonth))
     );
   }
-
-const vencimientoInput = document.getElementById('vencimiento');
-vencimientoInput.addEventListener('input', (event) => {
-  const inputValue = event.target.value;
-  
-  // Elimina cualquier carácter no numérico para obtener solo dígitos
-  const numericValue = inputValue.replace(/\D/g, '');
-  
-  if (numericValue.length > 2) {
-    // Si ya se han ingresado al menos 2 dígitos, agrega automáticamente '/' después del segundo dígito
-    event.target.value = numericValue.slice(0, 2) + '/' + numericValue.slice(2);
-  }
-  // Esto asegura que no se ingresen más de 4 caracteres, es decir, MM/YY.
-  if (numericValue.length > 4) {
-    event.target.value = numericValue.slice(0, 4);
-  }
-});
   //! Jose Perazza
   if (selectedMethod === "creditCard") {
     const cardNumberInput = document.getElementById("cardNumber");
@@ -551,10 +536,10 @@ vencimientoInput.addEventListener('input', (event) => {
       accountNumber = accountNumber.replace(/\s/g, '');
 
       // Verificar que la entrada consista solo en dígitos y que su longitud no supere 20
-      if (/^\d{15,20}$/.test(accountNumber)) {
+      if (/^\d{16}$/.test(accountNumber)) {
         return true;
       }
-      
+
       return false;
     }
     //! Martin Rodriguez
