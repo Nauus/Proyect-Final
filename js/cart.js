@@ -653,4 +653,4 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   renderCart();
   updateCartTotal();
-});
+})});
