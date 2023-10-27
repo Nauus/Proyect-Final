@@ -262,16 +262,18 @@ box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.75);
   padding: 0 15px; 
 }
 
-div.card-body {
-  background-color: #ffffff;
+.card-body {
+  background-color: rgba(255, 255, 255, 0.397);
   padding: 20px; /* Agrega espacio alrededor del contenido */
   border-radius: 8px;
-  
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 .comprarb {
   font-weight: 500;
   background-color: #f09100;
 }
+
+
 
 .agregar-al-carrito {
   margin-bottom: 5rem;

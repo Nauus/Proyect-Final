@@ -34,11 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let user = database.users.find(user => user.username === currentUser);
     // Mostrar la información actual del usuario
     const currentUsernameElement = document.getElementById('currentUsername');
-    const currentEmailElement = document.getElementById('currentEmail');
     const currentProfilePictureElement = document.getElementById('currentProfilePicture');
 
     currentUsernameElement.textContent = user.username;
-    currentEmailElement.textContent = user.email;
 
 
 
@@ -93,79 +91,157 @@ document.addEventListener('DOMContentLoaded', () => {
 
     applyChangesButton.addEventListener('click', () => {
         const selectedOption = changeOption.value;
-
+    
         if (user) {
             if (selectedOption === 'username') {
-
                 const newUsername = document.getElementById('newUsername').value;
                 if (newUsername.trim() !== '') {
                     user.username = newUsername;
                     currentUsernameElement.textContent = newUsername;
                     localStorage.setItem('currentUser', newUsername);
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Cambios guardados',
+                        text: 'Nombre de usuario actualizado correctamente.',
+                        showConfirmButton: false, // Ocultar el botón de confirmación
+                        showCancelButton: true, // Mostrar un botón de recarga
+                        cancelButtonText: 'Recargar página'
+                    }).then((result) => {
+                        if (result.dismiss === Swal.DismissReason.cancel) {
+                            location.reload();
+                        }
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'El nombre de usuario no puede estar vacío.'
+                    });
                 }
             } else if (selectedOption === 'password') {
-
                 const currentPassword = document.getElementById('currentPassword').value;
                 const newPassword = document.getElementById('newPassword').value;
-
-                if (currentPassword === user.password && newPassword.length > 6) {
+    
+                if (currentPassword === user.password && newPassword.length >= 6) {
                     user.password = newPassword;
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Cambios guardados',
+                        text: 'Contraseña actualizada correctamente.',
+                        showConfirmButton: false,
+                        showCancelButton: true,
+                        cancelButtonText: 'Recargar página'
+                    }).then((result) => {
+                        if (result.dismiss === Swal.DismissReason.cancel) {
+                            location.reload();
+                        }
+                    });
                 } else {
-
-                    alert('La contraseña actual no coincide o la nueva contraseña es muy corta (debe tener al menos 6 caracteres).');
-                    return;
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'La contraseña actual no coincide o la nueva contraseña es muy corta (debe tener al menos 6 caracteres).',
+                        allowOutsideClick: false, // Evitar que se cierre haciendo clic fuera del mensaje
+                        showConfirmButton: true
+                    });
                 }
             } else if (selectedOption === 'email') {
-                const newEmail = document.getElementById('newEmail').value;
-                console.log("entre");
-                if (isValidEmail(newEmail)) {
-                    user.email = newEmail;
-                    currentEmailElement.textContent = newEmail;
+                const currentEmailInput = document.getElementById('currentEmail');
+                const newEmailInput = document.getElementById('newEmail');
+    
+                const currentEmail = currentEmailInput.value;
+                const newEmail = newEmailInput.value;
+    
+                if (currentEmail === user.email) {
+                    if (isValidEmail(newEmail)) {
+                        user.email = newEmail;
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Cambios guardados',
+                            text: 'Correo electrónico actualizado correctamente.',
+                            showConfirmButton: false,
+                            showCancelButton: true,
+                            cancelButtonText: 'Recargar página'
+                        }).then((result) => {
+                            if (result.dismiss === Swal.DismissReason.cancel) {
+                                location.reload();
+                            }
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'El correo electrónico no es válido. Asegúrate de que tenga un formato válido.',
+                            allowOutsideClick: false,
+                            showConfirmButton: true
+                        });
+                    }
                 } else {
-                    alert('El correo electrónico no es válido. Asegúrate de que tenga un formato válido.');
-                    return;
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'El correo electrónico actual no coincide con el correo electrónico del usuario.',
+                        allowOutsideClick: false,
+                        showConfirmButton: true
+                    });
                 }
             } else if (selectedOption === 'numTelefono') {
                 const numTelInput = document.getElementById('numTel');
                 const newPhoneNumber = numTelInput.value;
-
+    
                 // Eliminar espacios y guiones existentes (si los hubiera)
                 const cleanPhoneNumber = newPhoneNumber.replace(/[\s-]/g, '');
-
+    
                 // Expresión regular para validar el número de teléfono
                 const phoneNumberPattern = /^0\d{8}$/;
-
+    
                 if (phoneNumberPattern.test(cleanPhoneNumber)) {
                     // Formatear el número de teléfono con espacios cada 3 dígitos
                     const formattedPhoneNumber = cleanPhoneNumber.replace(/(\d{3})(?=\d)/g, '$1 ');
-
+    
                     // Asignar el número de teléfono formateado al campo de entrada
                     numTelInput.value = formattedPhoneNumber;
-
+    
                     user.phoneNumber = formattedPhoneNumber;
-
+    
                     const userIndex = database.users.findIndex(u => u.username === currentUser);
                     if (userIndex !== -1) {
                         database.users[userIndex] = user;
                         saveDatabase(databaseKey, database);
                     }
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Cambios guardados',
+                        text: 'Número de teléfono actualizado correctamente.',
+                        showConfirmButton: false,
+                        showCancelButton: true,
+                        cancelButtonText: 'Recargar página'
+                    }).then((result) => {
+                        if (result.dismiss === Swal.DismissReason.cancel) {
+                            location.reload();
+                        }
+                    });
                 } else {
-                    alert('El número de teléfono no es válido. Asegúrate de que empiece con "0" y contenga 8 dígitos numéricos.');
-                    return;
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'El número de teléfono no es válido. Asegúrate de que empiece con "0" y contenga 8 dígitos numéricos.',
+                        allowOutsideClick: false,
+                        showConfirmButton: true
+                    });
                 }
             }
-
-            database = { users: database.users.map(u => (u.username === currentUser ? user : u)) };
-            saveDatabase(databaseKey, database);
-            location.reload();
-            applyChangesButton.disabled = true;
+    
+            // Habilitar el botón "Aplicar cambios" nuevamente después de mostrar un mensaje
+            applyChangesButton.disabled = false;
         }
     });
+    
+    
 
     function isValidEmail (email) {
         const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
         return emailPattern.test(email);
     }
-    swal("Pestaña en Alpha", "Esta pestaña está en fase Alpha de desarrollo. Aun falta agregar estilos. ¡Gracias por tu visita!", "warning");
 }); //////////////////JOSECODIGO PREGUNTAR CAMBIOS VALIDACIONES CONTRASEÑAS >6 BLABLABLA
 ///////////////////JOSECODIGO 2 SE DA UNA FOTO POR DEFECTO

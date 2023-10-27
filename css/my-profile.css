@@ -2,22 +2,29 @@
 body {
     font-family: 'Raleway', sans-serif;
     text-align: center;
+    background-color: #f8f8f8; /* Un color de fondo suave */
 }
 
 /* Contenedor principal */
 main {
-    padding: 20px;
-    border-radius: 5px;
+    padding: 20px !important;
+    border-radius: 5px !important;
+    background-color: rgba(255, 255, 255, 0.5) !important; /* Fondo blanco */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) !important; /* Sutil sombra */
+    margin-top: 20px !important;
+    max-width: 60rem !important; /* Ancho máximo del contenido */
 }
 
 /* Títulos y texto */
 p {
     font-size: 18px;
+    margin-bottom: 20px; /* Espacio adicional después de los párrafos */
 }
 
 /* Formulario */
 form {
     margin-top: 20px;
+    text-align: left; /* Alinéa el texto a la izquierda */
 }
 
 label {
@@ -29,7 +36,7 @@ label {
 input[type="text"],
 input[type="password"],
 input[type="email"] {
-    width: 60%;
+    width: 100%; /* Ancho completo del contenedor */
     padding: 10px;
     margin: 5px 0;
     border: 1px solid #ccc;
@@ -38,17 +45,22 @@ input[type="email"] {
 
 /* Estilos para el botón "Guardar Cambios" */
 #applyChanges {
-    background-color: #007BFF;
+    background-color: rgb(199, 76, 31);
     color: #fff;
     border: none;
     padding: 10px 20px;
     margin-top: 20px;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s; /* Transición suave de color al pasar el ratón */
 }
 
 #applyChanges:hover {
-    background-color: #0056b3;
+    background-color: rgba(243, 113, 65, 0.979);
+}
+
+.bodyProfile .dark #applyChanges:hover {
+    background-color: rgba(243, 113, 65, 0.979) !important;
 }
 
 /* Foto de perfil */
@@ -56,11 +68,7 @@ img#currentProfilePicture {
     max-width: 200px;
     max-height: 200px;
     margin: 10px 0;
-}
-
-/* Enlace Volver arriba */
-a.btn-outline-dark {
-    text-decoration: none;
+    border-radius: 50%; /* Hace que la imagen sea circular */
 }
 
 /* Pie de página */
@@ -78,36 +86,36 @@ footer {
 
 /* Estilos para el contenedor de la imagen de perfil */
 #currentProfilePictureContainer {
-    width: 150px; 
-    height: 150px; 
+    width: 150px;
+    height: 150px;
     overflow: hidden;
-    border-radius: 50%; 
-    background-color: #f0f0f0; 
+    border-radius: 50%;
+    background-color: #f0f0f0;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto; 
-    margin-bottom: 3rem;
-}
-#profilePageProfilePicture {
-    max-width: 100%;   
-    max-height: 100%;   
-    width: auto;        
-    height: auto;     
-    display: block;     
-    margin: 0 auto;     
+    margin: 0 auto;
     margin-bottom: 20px;
-    
+}
+
+#profilePageProfilePicture {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
 }
 
 /* Estilos para el select y sus opciones */
 select {
-    width: 10%;
+    width: 100%; /* Ancho completo del contenedor */
     padding: 10px;
     margin: 5px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
-    appearance: none; /* Oculta la flecha predeterminada del select */
+    appearance: none;
     background-color: #fff;
     color: #333;
     cursor: pointer;
@@ -121,15 +129,4 @@ select option {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
-/* Estilos para el mensaje de error al estilo de Bootstrap */
-.error-message {
-    color: #721c24; /* Color de texto rojo oscuro */
-    font-size: 0.875rem; /* Tamaño de fuente ligeramente más pequeño */
-    margin-top: 5px;
-    padding: 0.75rem 1.25rem; /* Relleno para el mensaje de error */
-    background-color: #f8d7da; /* Color de fondo rojo claro */
-    border: 1px solid #f5c6cb; /* Borde rojo claro */
-    border-radius: 0.25rem; /* Bordes redondeados */
-    display: none; /* Cambia a inline-block para alinear verticalmente */
-    vertical-align: middle; /* Alinea verticalmente con los otros elementos */
-}
+

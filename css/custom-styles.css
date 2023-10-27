@@ -29,7 +29,6 @@ body.dark .navbar-nav .nav-link:hover {
 .rounded-circle {
   border:2px solid white;
 }
-.btn {
 
     .Recommended-Product {
       border: 1px solid #ccc;
@@ -46,9 +45,8 @@ body.dark .navbar-nav .nav-link:hover {
       margin: 0 auto;
       margin-bottom: 20px;
   }
-    margin-right: 10px;
-    font-size: 1.5vh;
-  }
+  
+  
 .col, p, input {
   font-size: 1,5vh;
   font-family: Georgia, 'Times New Roman', Times, serif;
@@ -91,7 +89,9 @@ body.dark .navbar-nav .nav-link:hover {
   background-color: rgba(255, 255, 255, 0.5) !important; 
 }
 
-
+.card {
+  background-color: rgba(255, 255, 255, 0.5) !important; 
+}
 body.dark .cardProducts {
   background-color: #212529 !important; 
   border-radius: 10px !important;
@@ -410,6 +410,7 @@ select#segundoMenu option:checked {
   text-align: center;
   border: none;
   font-size: 16px;
+  background-color: white !important;
 }
 
 /* darkmode custom */

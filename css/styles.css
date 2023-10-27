@@ -291,12 +291,9 @@ body.dark .darkk {
 body.dark .custom-card {
   background-color: #554f4f75!important;
 }
-#btnmuchomas {
-  background-color: #552f11b6 !important;
-  border-color: transparent;
-  }
+
 body.dark #btnmuchomas {
-  background-color: grey !important;
+  background-color: rgb(255, 0, 0) !important;
   border-color: transparent;
   }
 #btnmuchomas:hover {
@@ -356,6 +353,9 @@ body.dark .remove-product:hover {
   margin: 0 auto; /* Centra la imagen horizontalmente en su contenedor */
  
   transition: transform 0.2s; /* Transición suave para el efecto de agrandamiento */
+}
+body.dark.product-name:hover {
+  color: hsl(178,99%,31%); 
 }
 
 /* Estilos para las imágenes cuando se seleccionan */
@@ -523,7 +523,7 @@ h4 {
   } 
   p { 
     font-family: Georgia, 'Times New Roman', Times, serif; ; 
- 
+    font-size: 20px; 
     font-style: normal; 
     font-variant: normal; 
     font-weight: 400; 
@@ -548,3 +548,124 @@ h4 {
 
   
   
+
+
+  @font-face {
+    font-family: 'You Murderer BB Font';
+    src: url('../webfonts/youmurderer-bb.regular.ttf') format('truetype');
+  }
+  
+body.spooky .imgindex {
+  content: url('../imgsp/spookyback.png');
+}
+
+
+body.spooky .bg {
+  
+    background-image: url(../imgsp/back.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    
+}
+body.spooky .spookyclass {
+  background-image: url(../imgsp/comentar.png);
+}
+
+body.spooky .darkk {
+  background-image: url(../imgsp/slash.png);
+  
+  background-size: cover;
+}
+body.spooky .categorias{
+  font-family: 'You Murderer BB Font', cursive;
+  font-size: 6rem;
+  color: rgb(91, 5, 5);
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.798);
+}
+body.spooky h3{
+  font-family: 'You Murderer BB Font', cursive;
+  font-size: 6rem;
+  color: rgb(91, 5, 5);
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.798);
+}
+body.spooky .vender {
+  font-family: 'You Murderer BB Font', cursive;
+  font-size: 6rem;
+  color: rgb(91, 5, 5);
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.798);
+}
+body.spooky .productos{
+  font-family: 'You Murderer BB Font', cursive;
+  font-size: 6rem;
+  color: rgb(91, 5, 5);
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.798);
+}
+
+
+body.spooky .productTitle{
+  font-family: 'You Murderer BB Font', cursive;
+  font-size: 6rem;
+  color: rgb(91, 5, 5);
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.798);
+}
+
+body.spooky .fotoTitulo{
+  font-family: 'You Murderer BB Font', cursive;
+  font-size: 6rem;
+  color: rgb(91, 5, 5);
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.798);
+}
+
+
+body.spooky #btnmuchomas {
+  background-color: white!important;
+  border-color: black;
+
+}
+   
+ 
+
+body.spooky .navbar {
+  background-color: rgb(29, 10, 0);
+  color: #fff!important;
+}
+body.spooky .bg {
+  background-color: #fff;
+}
+body.spooky footer {
+  display: none;
+}
+@font-face {
+  font-family: 'Spooky';
+  src: url('../webfonts/Halloween.ttf') format('truetype');}
+
+  body.spooky p{
+    font-family: 'Spooky', cursive;
+font-weight: 400;
+}
+body.spooky h4 {
+  font-family: 'Spooky', cursive;
+font-weight: 400;
+}
+body.spooky label 
+  {
+    font-family: 'Spooky', cursive;
+font-weight: 400;
+}
+body.spooky .cart {
+  background-image: url(../imgsp/back.jpg)!important;
+}
+
+
+body.spooky span {
+  font-family: 'Spooky', cursive;
+font-weight: 400;
+}
+body.spooky a{
+  font-family: 'Spooky', cursive;
+font-weight: 400;
+}
+
+body.spooky #applyChanges {
+  background-color: red;
+}

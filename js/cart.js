@@ -5,7 +5,6 @@ const currentCart = JSON.parse(localStorage.getItem('cart')) || [];
 
 // Función para crear una fila de la tabla del carrito
 function createCartTableRow (productDetails, index) {
-  console.log(index);
   const tableRow = document.createElement('tr');
   // Crear celda de imagen
   const imgCell = document.createElement('td');
@@ -43,6 +42,7 @@ function createCartTableRow (productDetails, index) {
   quantityInput.min = 1;
   quantityInput.step = 1;
   quantityInput.classList.add('quantity-input');
+  quantityInput.classList.add('no-valid');
   quantityInput.value = productDetails.quantity;
   quantityInput.setAttribute('inputmode', 'numeric'); // Evita las flechas de aumento y disminución
 
@@ -298,8 +298,8 @@ currencyButtons.forEach((button) => {
 // Función para eliminar un producto del carrito
 // Función para eliminar un producto del carrito por su ID
 
-//! Belen Alano
 
+//! Camila Altez
 function removeProductFromCart (productID) {
   const productIndex = currentCart.findIndex((product) => product.id === productID);
   if (productIndex !== -1) {
@@ -310,8 +310,6 @@ function removeProductFromCart (productID) {
   }
 }
 // Función para cargar un producto predeterminado desde una URL y agregarlo al carrito
-
-//! Jose Perazza
 
 function loadDefaultProduct () {
   const productDetailsUrl =
@@ -348,7 +346,6 @@ function loadDefaultProduct () {
 }
 // Función para renderizar los productos en el carrito
 
-//!  Nahuel Medina
 function renderCart () {
   const productList = document.getElementById('product-list');
 
@@ -359,29 +356,296 @@ function renderCart () {
   });
 }
 
-const inputFecha = document.getElementById('fecha');
+//! Belen Alano
+// Abre el modal al hacer clic en el botón
+document.getElementById("openPaymentModal").addEventListener("click", function () {
+  document.getElementById("paymentModal").style.display = "block";
+});
 
-inputFecha.addEventListener('input', function () {
-  let value = this.value.replace(/\D/g, ''); // Eliminar caracteres que no son dígitos
+// Cierra el modal al hacer clic en la "x"
+document.getElementById("closePaymentModal").addEventListener("click", function (e) {
+  e.stopPropagation(); // Evita que el clic se propague más allá del botón "x"
+  document.getElementById("paymentModal").style.display = "none";
+});
 
-  if (value.length > 4) {
-    value = value.slice(0, 4);
+// Evita que se cierre haciendo clic fuera del modal
+document.getElementById("paymentModal").addEventListener("click", function (e) {
+  e.stopPropagation(); // Evita que el clic se propague más allá del modal
+});
+
+window.addEventListener("click", function (event) {
+  if (event.target === document.getElementById("paymentModal")) {
+    document.getElementById("paymentModal").style.display = "none";
   }
 
-  if (value.length > 4) {
-    this.value = value.slice(0, 2) + '/' + value.slice(2, 4) + '/' + value.slice(4);
-  } else if (value.length === 4) {
-    this.value = value.slice(0, 2) + '/' + value.slice(2, 4);
+// Cambia los campos del modal según la forma de pago seleccionada
+document.getElementById("creditCardFields").style.display = "none";
+document.getElementById("bankAccountFields").style.display = "none";
+
+//! Nahuel Medina
+document.getElementById("paymentMethod").addEventListener("change", function () {
+  const selectedMethod = this.value;
+  const creditCardFields = document.getElementById("creditCardFields");
+  const bankAccountFields = document.getElementById("bankAccountFields");
+
+  if (selectedMethod === "creditCard") {
+    creditCardFields.style.display = "block";
+    bankAccountFields.style.display = "none";
+  } else if (selectedMethod === "bankAccount") {
+    bankAccountFields.style.display = "block";
+    creditCardFields.style.display = "none";
   } else {
     this.value = value;
   }
 });
 
-inputFecha.addEventListener('keydown', function (e) {
-  if (!/\d/.test(e.key)) {
-    e.preventDefault(); // Evitar la entrada de caracteres no numéricos
+let paymentDataIsValid = false; // Variable para rastrear la validez de los datos de pago
+
+//! NAHUEL ALONSO
+// Procesa los datos al confirmar el pago
+document.getElementById("confirmPayment").addEventListener("click", function () {
+
+  const selectedMethod = document.getElementById("paymentMethod").value;
+  
+  let paymentData = {};
+
+  function isValidCardNumber (cardNumber) {
+    // Elimina caracteres no numéricos
+    cardNumber = cardNumber.replace(/\D/g, '');
+    // La tarjeta debe tener 16 dígitos
+    return /^\d{16}$/.test(cardNumber);
+  }
+
+  function isValidCodeCvv (codeCvv) {
+    // El CVV debe tener exactamente 3 dígitos
+    return /^\d{3}$/.test(codeCvv);
+  }
+
+  function isValidVencimiento(vencimiento) {
+    // La fecha de vencimiento debe tener el formato MM/YY
+    // y el mes debe estar en el rango de 01-12 y el año debe ser mayor que el actual
+    const today = new Date();
+    const currentYear = today.getFullYear() % 100;
+    const currentMonth = today.getMonth() + 1;
+
+    // Validar el formato
+    if (!/^\d{2}\/\d{2}$/.test(vencimiento)) {
+      return false;
+      
+    }
+
+  // Verificar si el mes y el año están en el rango deseado
+    const expMonth = parseInt(vencimiento.substring(0, 2), 10);
+    const expYear = parseInt(vencimiento.substring(3), 10);
+
+    return (
+      expMonth >= 1 && expMonth <= 12 &&
+      (expYear > currentYear || (expYear === currentYear && expMonth >= currentMonth))
+    );
+  }
+  //! Jose Perazza
+  if (selectedMethod === "creditCard") {
+    const cardNumberInput = document.getElementById("cardNumber");
+    const codeCvvInput = document.getElementById("codeCvv");
+    const vencimientoInput = document.getElementById("vencimiento");
+    const cardNumber = cardNumberInput.value;
+    const codeCvv = codeCvvInput.value;
+    const vencimiento = vencimientoInput.value;
+
+    if (!isValidCardNumber(cardNumber) || !isValidCodeCvv(codeCvv)) {
+      // Muestra un mensaje de error si los datos de la tarjeta no son válidos
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Por favor, ingrese datos válidos para la tarjeta de crédito/débito.',
+      });
+      paymentDataIsValid = false;
+    } else if (!isValidVencimiento(vencimiento)) {
+      // Muestra un mensaje de error si la fecha de vencimiento no es válida
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Por favor, Verifique la fecha de vencimiento. Debe tener el formato MM/YY y el mes debe estar en el rango de 01-12 y el año debe ser mayor que el actual.',
+      });
+      paymentDataIsValid = false;
+    } else {
+      // Los datos son válidos, muestra un mensaje de éxito
+      Swal.fire({
+        icon: 'success',
+        title: 'Aprobado',
+        text: 'Los datos de su tarjeta han sido guardados con éxito. ¡Gracias!',
+      });
+      paymentDataIsValid = true;
+    }
+    
+
+    // Si los datos son válidos, guárdalos
+    paymentData.cardNumber = cardNumber;
+    paymentData.codeCvv = codeCvv;
+    paymentData.vencimiento = vencimiento;
+
+
+  } else if (selectedMethod === "bankAccount") {
+    const accountNumberInput = document.getElementById("accountNumber");
+    const accountNumber = accountNumberInput.value;
+    function isValidAccountNumber (accountNumber) {
+      // Verificar si la entrada es una cadena y no está vacía
+      if (typeof accountNumber !== 'string' || accountNumber.trim() === '') {
+        return false;
+      }
+
+      // Eliminar espacios en blanco de la entrada
+      accountNumber = accountNumber.replace(/\s/g, '');
+
+      // Verificar que la entrada consista solo en dígitos y que su longitud no supere 20
+      if (/^\d{16}$/.test(accountNumber)) {
+        return true;
+      }
+
+      return false;
+    }
+    //! Martin Rodriguez
+    // Validaciones para transferencia bancaria
+    if (!isValidAccountNumber(accountNumber)) {
+      // Número de cuenta inválido
+      accountNumberInput.classList.add("invalid");
+      accountNumberInput.setAttribute("maxlength", "20");
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Por favor, ingrese un número de cuenta válido.',
+      });
+      paymentDataIsValid = false;
+      return;
+
+    } else {
+      accountNumberInput.classList.remove("invalid");
+      accountNumberInput.removeAttribute("maxlength");
+      Swal.fire({
+        icon: 'success',
+        title: 'Aprobado',
+        text: 'Su numero de cuenta ha sido guardada con exito. Gracias!',
+      });
+      paymentDataIsValid = true;
+    }
+
+    // Si los datos son válidos, guárdalos
+    paymentData.accountNumber = accountNumber;
+    console.log(accountNumber);
+  }
+
+  // Cerrar el modal
+  document.getElementById("paymentModal").style.display = "none";
+  const selectedPaymentDisplay = document.getElementById("selectedPaymentDisplay");
+
+  if (selectedMethod === "creditCard") {
+    selectedPaymentDisplay.textContent = "Tarjeta de Crédito/Débito";
+  } else {
+    selectedPaymentDisplay.textContent = "Cuenta Bancaria";
+  }
+
+  // Aquí puedes hacer algo con los datos, como enviarlos al servidor
+  console.log("Datos de pago:", paymentData);
+
+  // Luego, puedes habilitar el botón "Finalizar Compra" si se cumple alguna condición, por ejemplo:
+  // document.getElementById("finalizarCompra").disabled = false;
+});
+
+//! Validaciones
+
+document.getElementById("finalizarCompra").addEventListener("click", function (event) {
+  event.preventDefault(); // Evita que el formulario se envíe automáticamente
+
+  // Verifica si se ha seleccionado un tipo de envío
+  const tipoEnvio = document.getElementById("tipoEnvio").value;
+  if (tipoEnvio === "") {
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'Por favor, seleccione un tipo de envío.',
+    });
+    return;
+  }
+
+  // Verifica si se ha seleccionado una forma de pago
+  const paymentMethod = document.getElementById("paymentMethod").value;
+  if (paymentMethod === "defaultOption") {
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'Por favor, seleccione una forma de pago.',
+    });
+    return;
+  }
+
+  let isValid = true;
+
+  // Realiza validaciones de dirección, número y esquina en tiempo real
+  const calleInput = document.getElementById("calle");
+  const numeroInput = document.getElementById("direccion");
+  const esquinaInput = document.getElementById("esquina");
+
+  if (!/^[A-Za-z\s]+$/.test(calleInput.value.trim())) {
+    calleInput.classList.add("invalid");
+    isValid = false;
+  } else {
+    calleInput.classList.remove("invalid");
+  }
+
+  if (!/^[0-9]+$/.test(numeroInput.value.trim())) {
+    numeroInput.classList.add("invalid");
+    isValid = false;
+  } else {
+    numeroInput.classList.remove("invalid");
+  }
+
+  if (!/^[A-Za-z\s]+$/.test(esquinaInput.value.trim())) {
+    esquinaInput.classList.add("invalid");
+    isValid = false;
+  } else {
+    esquinaInput.classList.remove("invalid");
+  }
+
+  if (!isValid) {
+    // Muestra un mensaje de error si no se completan los campos
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'Por favor, complete todos los campos requeridos correctamente.',
+    });
+    return;
+  }
+  if (!paymentDataIsValid) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: 'Por favor, complete y verifique los datos de pago correctamente antes de continuar.',
+    });
+    return;
+  }
+
+  if (paymentDataIsValid && isValid) {
+    // Muestra el mensaje de éxito con SweetAlert
+    Swal.fire({
+      icon: 'success',
+      title: 'Compra exitosa',
+      text: "Gracias por tu compra, recibiras un mensaje en tu casilla de correo electronico con tu boleta e información de envio.",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        clearCart();
+        location.reload();
+      }
+    });
+  }
+
+//! Camila Altez
+  function clearCart () {
+    localStorage.removeItem('cart');
+    renderCart();
+    updateCartTotal();
   }
 });
+////////////////////////////////
 // Evento que se ejecuta cuando se carga el DOM
 document.addEventListener('DOMContentLoaded', () => {
   if (currentCart.length === 0) {
