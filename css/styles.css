@@ -230,10 +230,7 @@ body.dark .custom-card {
   background-color: #554f4f75!important;
 }
 
-body.dark #btnmuchomas {
-  background-color: rgb(255, 0, 0) !important;
-  border-color: transparent;
-  }
+
 #btnmuchomas:hover {
   transform: scale(1.1); 
 
