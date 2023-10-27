@@ -590,8 +590,6 @@ document.getElementById("confirmPayment").addEventListener("click", function () 
 });
 
 //! Validaciones
-
-//! Juan Ramella
 document.getElementById("finalizarCompra").addEventListener("click", function (event) {
   event.preventDefault(); // Evita que el formulario se envíe automáticamente
 
@@ -624,7 +622,7 @@ document.getElementById("finalizarCompra").addEventListener("click", function (e
   const numeroInput = document.getElementById("direccion");
   const esquinaInput = document.getElementById("esquina");
 
-  if (!/^[A-Za-z\s]+$/.test(calleInput.value.trim())) {
+  if (!/^[A-Za-zÁÉÍÓÚáéíóú0-9\s]+$/.test(calleInput.value.trim())) {
     calleInput.classList.add("invalid");
     isValid = false;
   } else {
@@ -638,7 +636,7 @@ document.getElementById("finalizarCompra").addEventListener("click", function (e
     numeroInput.classList.remove("invalid");
   }
 
-  if (!/^[A-Za-z\s]+$/.test(esquinaInput.value.trim())) {
+  if (!/^[A-Za-zÁÉÍÓÚáéíóú0-9\s]+$/.test(esquinaInput.value.trim())) {
     esquinaInput.classList.add("invalid");
     isValid = false;
   } else {
@@ -677,7 +675,6 @@ document.getElementById("finalizarCompra").addEventListener("click", function (e
     });
   }
 
-//! Camila Altez
   function clearCart () {
     localStorage.removeItem('cart');
     renderCart();
