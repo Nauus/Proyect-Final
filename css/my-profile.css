@@ -86,8 +86,8 @@ footer {
 
 /* Estilos para el contenedor de la imagen de perfil */
 #currentProfilePictureContainer {
-    width: 150px;
-    height: 150px;
+    width: 400px;
+    height: 400px;
     overflow: hidden;
     border-radius: 50%;
     background-color: #f0f0f0;
