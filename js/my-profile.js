@@ -35,8 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mostrar la información actual del usuario
     const currentUsernameElement = document.getElementById('currentUsername');
     const currentProfilePictureElement = document.getElementById('currentProfilePicture');
-
-    currentUsernameElement.textContent = user.username;
+    
+    document.getElementById("emailInput").value = user.email;
+    document.getElementById("usernameInput").value = user.username;
 
 
 
@@ -237,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    
+
 
     function isValidEmail (email) {
         const emailPattern = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
