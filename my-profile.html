@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Type" content="text/html;" charset=UTF-8>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>eMercado - Mi perfil</title>
     
@@ -22,38 +22,43 @@
     <div class="bg">
         <main class="container">
             <div class="row justify-content-center align-items-center">
-                <div class="col-lg-8">
-                    <div id="profilepicture" class="text-center">
-                        <div class="card-body text-center"> <img id="currentProfilePictureContainer" src="img/Default_pfp.svg.png" alt="Foto de perfil actual"> <button class="btn btn-primary" type="button" id="changeIMG">Subir nueva imagen</button></div>
-                    </div>
+                <div class="col-lg-8">  
+                 <div id="currentProfilePictureContainer" class="text-center">
+                    <label for="newProfilePicture" style="cursor: pointer;">
+                        <img id="profilePageProfilePicture" src="img/Default_pfp.svg.png" alt="Foto de perfil actual">
+                        <input type="file" id="newProfilePicture" name="newProfilePicture" accept="image/*" style="display: none;">
+                    </label>
+                 </div>
                 </div>
+                
                 <div class="col-lg-4"> <!-- Redefinir el ancho del otro col -->
                     <div class="p-3 py-5 text-center" id="editprofileform">
                         <div class="d-flex justify-content-center align-items-center mb-3">
-                        </div>
+                      </div>
+                      
                         <div class="row mt-2">
-                            <div class="col-md-6"><label class="labels">Nombre*</label><input type="text" class="form-control" placeholder="Nombre" value="" id="usernameInput"></div>
-                            <div class="col-md-6"><label class="labels">2° nombre</label><input type="text" class="form-control" value="" placeholder="Segundo nombre" id="secondnameInput"></div>
+                            <div class="col-md-6"><label class="labels">Nombre*</label><input id="name" type="text" class="form-control" placeholder="Nombre" ></div>
+                            <div class="col-md-6"><label class="labels">2° nombre</label><input id="name2" type="text" class="form-control" placeholder="Segundo nombre"></div>
                         </div>
                         <div class="row mt-3">
-                            <div class="col-md-12"><label class="labels">Apellido*</label><input type="text" class="form-control" placeholder="Primer apellido" value="" id="lastnameInput"></div>
-                            <div class="col-md-12"><label class="labels">Segundo apellido</label><input type="text" class="form-control" value="" placeholder="Segundo apellido" id="secondlastnameInput"></div>
+                            <div class="col-md-12"><label class="labels">Apellido*</label><input id="lastaname" type="text" class="form-control" placeholder="Primer apellido" value=""></div>
+                            <div class="col-md-12"><label class="labels">Segundo apellido</label><input id="lastname2" type="text" class="form-control" value="" placeholder="Segundo apellido"></div>
                         </div>
                         <div class="row mt-4">
-                            <div class="col-md-12"><label class="labels">Email*</label><input type="text" class="form-control" placeholder="Ingrese su email" value="" id="emailInput"></div>
-                            <div class="col-md-12"><label class="labels">Teléfono de contacto</label><input type="text" pattern="[0-9]*" inputmode="numeric" class="form-control" placeholder="Ingrese su número de teléfono" value="" id="phonenumberInput"></div>
+                            <div class="col-md-12"><label id="email" class="labels">Email*</label><input id="email" type="text" class="form-control" placeholder="Ingrese su email" value=""></div>
+                            <div class="col-md-12"><label id="numTel" class="labels">Teléfono de contacto</label><input id="phoneNumber" type="text" pattern="[0-9]*" inputmode="numeric" class="form-control" placeholder="Ingrese su número de teléfono" value=""></div>
                         </div>
                         <div class="row mt-5">
-                            <div class="col-md-12"><label class="labels">Contraseña actual</label><input type="text" class="form-control" placeholder="Contraseña actual" value="" id="currentpasswordInput"></div>
-                            <div class="col-md-12"><label class="labels">Nueva contraseña</label><input type="text" class="form-control" value="" placeholder="Nueva contraseña" id="newpasswordInput"></div>
+                            <div class="col-md-12"><label class="labels">Contraseña actual</label><input id="currentPassword" type="text" class="form-control" placeholder="Contraseña actual" value=""></div>
+                            <div class="col-md-12"><label class="labels">Nueva contraseña</label><input id="newPassword" type="text" class="form-control" value="" placeholder="Nueva contraseña"></div>
                         </div>
-                        <div class="mt-5"><button class="btn btn-primary profile-button" type="button" id="saveChanges">Guardar cambios</button></div>
+                        <div class="mt-5"><button id="applyChanges" class="btn btn-primary profile-button" type="button">Guardar cambios</button></div>
+                      
                     </div>
                 </div>
             </div>
         </main>
     </div>    
-    </main>
     <footer class="text-muted footerProfile">
         <div class="container-footer">
             <div class="d-flex justify-content-between align-items-center">

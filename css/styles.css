@@ -171,8 +171,9 @@ body.dark nav {
 }
 
 
-
-
+.custom-form.dark form{
+  background: rgb(105, 103, 103);
+}
 
 .imgindex {
   display: block;
@@ -286,8 +287,7 @@ body.dark .remove-product:hover {
   height: auto; /* La altura se ajustará automáticamente para mantener la proporción */
   display: block; /* Asegura que la imagen esté centrada en su contenedor */
   margin: 0 auto; /* Centra la imagen horizontalmente en su contenedor */
- 
-  transition: transform 0.2s; /* Transición suave para el efecto de agrandamiento */
+  transition: 0.2s; /* Transición suave para el efecto de agrandamiento */
 }
 body.dark.product-name:hover {
   color: hsl(178,99%,31%); 
