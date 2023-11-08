@@ -1,89 +1,93 @@
 import { loadDatabase, saveDatabase } from './localStorageUtils.js';
 
-document.addEventListener('DOMContentLoaded', () => {
-    const profilePictureInput = document.getElementById('profilePicture');
-    const profilePicturePreview = document.getElementById('profilePicturePreview');
-    const profileForm = document.getElementById('profileForm');
-    const currentUser = localStorage.getItem('currentUser');
+document.addEventListener("DOMContentLoaded", function() {
+    const newProfilePicture = document.getElementById('newProfilePicture').nextSibling.value;   
+    const name = document.getElementById('name').nextElementSibling.value;
+    const name2 = document.getElementById('name2').nextElementSibling.value;
+    const apellido = document.getElementById('apellido').nextElementSibling.value;
+    const apellido2 = document.getElementById('apellido2').nextElementSibling.value;
+    const email = document.getElementById('email').nextElementSibling.value;
+    const numTel = document.getElementById('numTel').nextElementSibling.value;
+    const currentPassword = document.getElementById('currentPassword').nextElementSibling.value;
+    const newPassword = document.getElementById('newPassword').nextElementSibling.value;
 
-    // Cargar la base de datos de usuarios y encontrar el usuario actual
-    const databaseKey = 'userDatabase';
-    const database = loadDatabase(databaseKey);
 
-    if (database) {
-        const user = database.users.find(user => user.username === currentUser);
+    const newProfilePictureInput = document.getElementById('newProfilePicture');
+    newProfilePictureInput.addEventListener('change', (event) => {
+        const newProfilePictureFile = event.target.files[0];
 
-        if (user) {
-            // Cargar datos del perfil actual del usuario
-            let userProfile = JSON.parse(localStorage.getItem(currentUser)) || {
-                firstName: '',
-                middleName: '',
-                lastName: '',
-                secondLastName: '',
-                email: user.email, // Utilizar el correo electrónico de la base de datos
-                phone: ''
+        if (newProfilePictureFile) {
+            const reader = new FileReader();
+
+            reader.onload = (event) => {
+                profilePageProfilePicture.src = event.target.result;
+                user.profilePicture = event.target.result;
+
+                const uniqueKey = 'profilePicture_' + user.username;
+                localStorage.setItem(uniqueKey, event.target.result);
             };
-
-            // Display user data in the form
-            Object.keys(userProfile).forEach(key => {
-                const input = document.getElementById(key);
-                if (input) {
-                    input.value = userProfile[key];
-                }
-            });
-
-            // Display user profile picture if available
-            const profilePicture = localStorage.getItem('profilePicture_' + currentUser);
-            if (profilePicture) {
-                profilePicturePreview.src = profilePicture;
-            }
-
-            // Handle profile picture change
-            profilePictureInput.addEventListener('change', () => {
-                const file = profilePictureInput.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = function(event) {
-                        profilePicturePreview.src = event.target.result;
-                    };
-                    reader.readAsDataURL(file);
-                }
-            });
-
-            // Handle form submission
-            profileForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                // Update the user profile data with the form values
-                userProfile.firstName = document.getElementById('firstName').value;
-                userProfile.middleName = document.getElementById('middleName').value;
-                userProfile.lastName = document.getElementById('lastName').value;
-                userProfile.secondLastName = document.getElementById('secondLastName').value;
-                userProfile.email = document.getElementById('email').value;
-                userProfile.phone = document.getElementById('phone').value;
-
-                // Actualizar el correo electrónico del usuario
-                user.email = userProfile.email
-
-
-
-                // Save the updated user profile data in localStorage
-                localStorage.setItem(currentUser, JSON.stringify(userProfile));
-
-                // Save the profile picture if one is selected
-                if (profilePictureInput.files.length > 0) {
-                    const profilePictureFile = profilePictureInput.files[0];
-                    const reader = new FileReader();
-                    reader.onload = function(event) {
-                        localStorage.setItem('profilePicture_' + currentUser, event.target.result);
-                    };
-                    reader.readAsDataURL(profilePictureFile);
-                }
-                window.location.href = 'my-profile.html';
-            });
-        } else {
-            console.error("Usuario no encontrado en la base de datos");
         }
-    } else {
-        console.error("Error al cargar la base de datos");
+    });
+
+    const profilePageProfilePicture = document.getElementById('profilePageProfilePicture');
+    if (user.profilePicture) {
+        profilePageProfilePicture.src = user.profilePicture;
     }
+
+
+
+
+// Crear un objeto user con los datos capturados del formulario
+const user = {
+    name: name,
+    name2: name2,
+    apellido: apellido,
+    apellido2: apellido2,
+    email: email,
+    numTel: numTel,
+    currentPassword: currentPassword,
+    newPassword: newPassword,
+};
+    
+};
+
+// Convertir el objeto user a JSON para almacenarlo en el localStorage
+const userData = JSON.stringify(user);
+
+// Guardar en el localStorage con una clave específica
+localStorage.setItem('userData', userData);
+
+// Una vez guardado, los datos se almacenarán en el localStorage con la clave 'userData'
+
+
+    // Cargar datos del localStorage al formulario si existen
+    function saveDatabase() {
+        const name = localStorage.getItem('name');
+        if (name) document.getElementById('name').nextElementSibling.value = name;
+
+        const name2 = localStorage.getItem('name2');
+        if (name2) document.getElementById('name2').nextElementSibling.value = name2;
+
+        const apellido = localStorage.getItem('apellido');
+        if (apellido) document.getElementById('apellido').nextElementSibling.value = apellido;
+
+        const apellido2 = localStorage.getItem('apellido2');
+        if (apellido2) document.getElementById('apellido2').nextElementSibling.value = apellido2;
+
+        const email = localStorage.getItem('email');
+        if (email) document.getElementById('email').nextElementSibling.value = email;
+
+        const numTel = localStorage.getItem('numTel');
+        if (numTel) document.getElementById('numTel').nextElementSibling.value = numTel;
+
+        const currentPassword = localStorage.getItem('currentPassword');
+        if (currentPassword) document.getElementById('currentPassword').nextElementSibling.value = currentPassword;
+
+        const newPassword = localStorage.getItem('newPassword');
+        if (newPassword) document.getElementById('newPassword').nextElementSibling.value = newPassword;
+    }
+
+    // Capturar el evento click en el botón "Guardar cambios"
+    const applyChangesButton = document.getElementById('applyChanges');
+    applyChangesButton.addEventListener('click', saveChanges);
 });

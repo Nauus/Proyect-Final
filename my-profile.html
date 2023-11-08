@@ -11,74 +11,54 @@
     <link href="css/custom-styles.css" rel="stylesheet">
     <link rel="stylesheet" href="css/my-profile.css">
     <link rel="shortcut icon" href="img/logoarreglado2.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="js/navbar.js" type="module"></script>
-    
 </head>
 
 <body class="bodyProfile">
     <div id="navbarContainer">
     </div>
-        <div class="bg">
-            <main class="container">
-                <div class="row justify-content-center align-items-center">
-                    <div class="col-lg-8">
-                        <form id="profileForm" class="custom-form">
-                            <h1>Actualizar Perfil</h1>
-                            <div class="profile-picture-container">
-                                <label for="profilePicture" style="cursor: pointer">
-                                    <div class="profile-picture-overlay">
-                                        <p>Editar Imagen</p>
-                                    </div>
-                                    <img id="profilePicturePreview" src="img/img_perfil.png" alt="Foto de perfil" class="profile-picture">
-                                    <input type="file" id="profilePicture" accept="image/*" style="display: none">
-                                </label>
-                            </div>
-                            <hr class="input-separator">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="firstName">Nombre *</label>
-                                        <input type="text" id="firstName" name="firstName" required>
-                                    </div>
-                                    <hr class="input-separator">
-                                    <div class="form-group">
-                                        <label for="middleName">Segundo nombre</label>
-                                        <input type="text" id="middleName" name="middleName">
-                                    </div>
-                                    <hr class="input-separator">
-                                    <div class="form-group">
-                                        <label for="lastName">Apellido *</label>
-                                        <input type="text" id="lastName" name="lastName" required>
-                                    </div>
-                                    <hr class="input-separator">
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="secondLastName">Segundo apellido</label>
-                                        <input type="text" id="secondLastName" name="secondLastName">
-                                    </div>
-                                    <hr class="input-separator">
-                                    <div class="form-group">
-                                        <label for="email">E-mail *</label>
-                                        <input type="email" id="email" name="email" required>
-                                    </div>
-                                    <hr class="input-separator">
-                                    <div class="form-group">
-                                        <label for="phone">Teléfono de contacto</label>
-                                        <input type="tel" id="phone" name="phone">
-                                    </div>
-                                    <hr class="input-separator">
-                                </div>
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-submit">Guardar Cambios</button>
-                        </form>
-        
+    <div class="bg">
+        <main class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-lg-8">  
+                 <div id="currentProfilePictureContainer" class="text-center">
+                    <label for="newProfilePicture" style="cursor: pointer;">
+                        <img id="profilePageProfilePicture" src="img/Default_pfp.svg.png" alt="Foto de perfil actual">
+                        <input type="file" id="newProfilePicture" name="newProfilePicture" accept="image/*" style="display: none;">
+                    </label>
+                 </div>
+                </div>
+                
+                <div class="col-lg-4"> <!-- Redefinir el ancho del otro col -->
+                    <div class="p-3 py-5 text-center" id="editprofileform">
+                        <div class="d-flex justify-content-center align-items-center mb-3">
+                      </div>
+                      
+                        <div class="row mt-2">
+                            <div class="col-md-6"><label id="name" class="labels">Nombre*</label><input type="text" class="form-control" placeholder="Nombre" value=""></div>
+                            <div class="col-md-6"><label id="name2" class="labels">2° nombre</label><input type="text" class="form-control" value="" placeholder="Segundo nombre"></div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-12"><label id="apellido" class="labels">Apellido*</label><input type="text" class="form-control" placeholder="Primer apellido" value=""></div>
+                            <div class="col-md-12"><label id="apellido2" class="labels">Segundo apellido</label><input type="text" class="form-control" value="" placeholder="Segundo apellido"></div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col-md-12"><label id="email" class="labels">Email*</label><input type="text" class="form-control" placeholder="Ingrese su email" value=""></div>
+                            <div class="col-md-12"><label id="numTel" class="labels">Teléfono de contacto</label><input type="text" pattern="[0-9]*" inputmode="numeric" class="form-control" placeholder="Ingrese su número de teléfono" value=""></div>
+                        </div>
+                        <div class="row mt-5">
+                            <div class="col-md-12"><label id="currentPassword" class="labels">Contraseña actual</label><input type="text" class="form-control" placeholder="Contraseña actual" value=""></div>
+                            <div class="col-md-12"><label id="newPassword" class="labels">Nueva contraseña</label><input type="text" class="form-control" value="" placeholder="Nueva contraseña"></div>
+                        </div>
+                        <div class="mt-5"><button id="applyChanges" class="btn btn-primary profile-button" type="button">Guardar cambios</button></div>
+                      
                     </div>
                 </div>
-            </main>
+            </div>
+        </main>
+    </div>    
     <footer class="text-muted footerProfile">
         <div class="container-footer">
             <div class="d-flex justify-content-between align-items-center">
