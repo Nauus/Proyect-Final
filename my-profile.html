@@ -1,129 +1,138 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-  <meta http-equiv="Content-Type" content="text/html;" charset=UTF-8>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>eMercado - Mi perfil</title>
-
-  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet">
-  <link href="css/custom-styles.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/my-profile.css">
-  <link rel="shortcut icon" href="img/logoarreglado2.png">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="js/navbar.js" type="module"></script>
-  <script src="js/my-profile.js" type="module"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>eMercado - Mi perfil</title>
+    
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/custom-styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/my-profile.css">
+    <link rel="shortcut icon" href="img/logoarreglado2.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="js/navbar.js" type="module"></script>
+    
 </head>
 
 <body class="bodyProfile">
-  <div id="navbarContainer">
-  </div>
-  <form class="row g-3 needs-validation was-validated" id="registrationForm" novalidate>
-    <div class="bg">
-      <main class="container">
-        <div class="row justify-content-center align-items-center">
-          <div class="col-lg-8">
-            <div class="profile-picture-container">
-                <label for="profilePicture" style="cursor: pointer">
-                    <div class="profile-picture-overlay">
-                    </div>
-                    <img id="profilePicturePreview" src="img/img_perfil.png" alt="Foto de perfil" class="profile-picture">
-                    <input type="file" id="profilePicture" accept="image/*" style="display: none">
-                </label>
-            </div>
-          </div>
-
-          <div class="col-lg-4"> <!-- Redefinir el ancho del otro col -->
-            <div class="p-3 py-5 text-center" id="editprofileform">
-              <div class="d-flex justify-content-center align-items-center mb-3">
-              </div>
-
-              <div class="row mt-2">
-                <div class="col-md-6"><label class="labels">Nombre*</label><input minlength="2" required id="name"
+    <div id="navbarContainer">
+    </div>
+        <div class="bg">
+            <main class="container">
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-lg-8">
+                        <form id="profileForm" class="custom-form">
+                            <h1>Actualizar Perfil</h1>
+                            <div class="profile-picture-container">
+                                <label for="profilePicture" style="cursor: pointer">
+                                    <div class="profile-picture-overlay">
+                                        <p>Editar Imagen</p>
+                                    </div>
+                                    <img id="profilePicturePreview" src="img/img_perfil.png" alt="Foto de perfil" class="profile-picture">
+                                    <input type="file" id="profilePicture" accept="image/*" style="display: none">
+                                </label>
+                            </div>
+                            <hr class="input-separator">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="firstName">Nombre *</label>
+                                        <input minlength="2" required id="name"
                     type="text" class="form-control" placeholder="Nombre" value="">
                   <div class="invalid-feedback">
                     Debe llenar este campo.
                   </div>
-                </div>
-                <div class="col-md-6"><label class="labels">2° nombre</label><input minlength="2" id="name2" type="text"
-                    class="" placeholder="Segundo nombre" value=""></div>
-              </div>
-              <div class="row mt-3">
-                <div class="col-md-12"><label class="labels">Apellido*</label><input minlength="2" required id="lastname"
+                                    </div>
+                                    <hr class="input-separator">
+                                    <div class="form-group">
+                                        <label for="middleName">Segundo nombre</label>
+                                        <input minlength="2" id="name2" type="text"
+                    class="" placeholder="Segundo nombre" value="">
+                                    </div>
+                                    <hr class="input-separator">
+                                    <div class="form-group">
+                                        <label for="lastName">Apellido *</label>
+                                        <input minlength="2" required id="lastname"
                     type="text" class="form-control" placeholder="Primer apellido" value="">
                   <div class="invalid-feedback">
                     Debe llenar este campo.
                   </div>
-                </div>
-                <div class="col-md-12"><label class="labels">Segundo apellido</label><input minlength="2" id="lastname2"
-                    type="text" class="" value="" placeholder="Segundo apellido" value="">
-                </div>
-              </div>
-              <div class="row mt-4">
-                <div class="col-md-12"><label for="email" class="labels">Email*</label><input id="email" required
-                    type="email" class="form-control" placeholder="Ingrese su email" value="">
-                    <div class="invalid-feedback" id="emailErrorDiv" style="display: none;">
-                      Debe llenar este campo.
-                    </div>
-                </div>
-                <div class="col-md-12"><label class="labels">Teléfono de contacto</label><input value=""
-                    id="phoneNumber" type="text" pattern="[0-9]*" inputmode="numeric" class=""
-                    placeholder="Ingrese su número de teléfono" value="" minlength="9" maxlength="15"></div>
-              </div>
-              <div class="row mt-5">
-                <div class="col-12 col-md-12">
-                  <label class="labels">Contraseña actual</label>
-                  <input minlength="6" alue="" id="currentPassword" type="password" class="form-control"
+                                    </div>
+                                    <hr class="input-separator">
+                                    <div class="form-group">
+                                      <label for="lastName">Contraseña actual</label>
+                                      <input minlength="6" alue="" id="currentPassword" type="password" class="form-control"
                     placeholder="La contraseña debe tener al menos 6 caracteres." value="" required>
                     <div class="invalid-feedback" id="errorDiv" style="display: none;">
                       No coincide con la contraseña actual.
                     </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="btnShowOldPassword">
-                  </div>
-                </div>
-                <div class="col-12 col-md-12">
-                  <label class="labels">Nueva contraseña</label>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="btnShowOldPassword">
+                    </div>
+                                  </div>
+                                  <hr class="input-separator">
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="secondLastName">Segundo apellido</label>
+                                        <input minlength="2" id="lastname2"
+                    type="text" class="" value="" placeholder="Segundo apellido" value="">
+                                    </div>
+                                    <hr class="input-separator">
+                                    <div class="form-group">
+                                        <label for="email">E-mail *</label>
+                                        <input id="email" required
+                    type="email" class="form-control" placeholder="Ingrese su email" value="">
+                    <div class="invalid-feedback" id="emailErrorDiv" style="display: none;">
+                      Debe llenar este campo.
+                    </div>
+                                    </div>
+                                    <hr class="input-separator">
+                                    <div class="form-group">
+                                        <label for="phone">Teléfono de contacto</label>
+                                        <input value=""
+                    id="phoneNumber" type="text" pattern="[0-9]*" inputmode="numeric" class=""
+                    placeholder="Ingrese su número de teléfono" value="" minlength="9" maxlength="15">
+                                    </div>
+                                    <hr class="input-separator">
+                                    <div class="form-group">
+                                      <label class="labels">Nueva contraseña</label>
                   <input minlength="6" value="" id="newPassword" type="password" class="form-control" value=""
                     placeholder="La contraseña debe tener al menos 6 caracteres.">
                     <div class="invalid-feedback" id="repeatErrorDiv" style="display: none;">
                       La nueva contraseña debe tener más de 6 digitos.
                     </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="btnShowNewPassword">
-                  </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="btnShowNewPassword">
+                    </div>
+                                  </div>
+                                  <hr class="input-separator">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-submit" id="applyChanges">Guardar Cambios</button>
+                        </form>
+        
+                    </div>
                 </div>
-              </div>
-              <div class="mt-5">
-                <button id="applyChanges" class="btn btn-primary profile-button" type="submit">Guardar
-                  cambios
-                </button>
-              </div>
+            </main>
+    <footer class="text-muted footerProfile">
+        <div class="container-footer">
+            <div class="d-flex justify-content-between align-items-center">
+                <p class="float-start mb-0">
+                    Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank" class="text-decoration-none text-dark">Jovenes a Programar</a>
+                </p>
+                <p class="mb-0">
+                    <a href="#" class="btn btn-outline-dark btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Volver arriba">Volver arriba</a>
+                </p>
             </div>
-          </div>
         </div>
-      </main>
-    </div>
-  </form>
-  <footer class="text-muted footerProfile">
-    <div class="container-footer">
-      <div class="d-flex justify-content-between align-items-center">
-        <p class="float-start mb-0">
-          Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank"
-            class="text-decoration-none text-dark">Jovenes a Programar</a>
-        </p>
-        <p class="mb-0">
-          <a href="#" class="btn btn-outline-dark btn-sm" data-bs-toggle="tooltip" data-bs-placement="top"
-            title="Volver arriba">Volver arriba</a>
-        </p>
-      </div>
-    </div>
-  </footer>
-  <script src="js/bootstrap.bundle.min.js"></script>
+    </footer>
+   
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/my-profile.js" type="module"></script>
 </body>
-
 </html>

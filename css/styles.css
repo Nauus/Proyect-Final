@@ -30,8 +30,9 @@ nav a {
 }
 
 footer {
-  padding-top: 1rem; 
-  padding-bottom: 1rem;
+  margin-top: 20px;
+  padding-top: 0.5rem; 
+  padding-bottom: 0.5rem;
   background-color: #552f11b6;
 }
 

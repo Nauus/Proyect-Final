@@ -12,8 +12,6 @@ const currentPasswordInput = document.getElementById("currentPassword")
 
 const newPasswordInput = document.getElementById("newPassword")
 
-const profilePictureInput = document.getElementById('profilePicture');
-
 const profilePicturePreview = document.getElementById('profilePicturePreview');
 
 // Botones para mostrar el contenido de los inputs de contraseñas.
@@ -106,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (String(currentPasswordInput.value) !== String(currentUserInfo.password)) {
 
         errorDiv.style.display = "block";
-        currentPasswordInput.setCustomValidity("No coincide con la contraseña acttual.");
+        currentPasswordInput.setCustomValidity("No coincide con la contraseña actual.");
 
     } else {
 
@@ -134,6 +132,15 @@ document.addEventListener("DOMContentLoaded", function() {
     newPasswordInput.setCustomValidity("La nueva contraseña debe tener más de 6 digitos.");
 
   };
+});
+
+// Cambiar foto de perfil
+
+document.getElementById('profilePicture').addEventListener('', function (event) {
+ event.preventDefault();
+ const profilePictureInput = document.getElementById('profilePicture');
+ 
+ console.log(profilePictureInput.files.length);
 });
 
 // Aplicar cambios a los datos de la cuenta en localStorage.
@@ -237,14 +244,4 @@ document.addEventListener("DOMContentLoaded", function() {
           text: "Alguno de los campos presenta errores.",
         })
 }
-if (profilePictureInput.files.length > 0) {
-    const profilePictureFile = profilePictureInput.files[0];
-    const reader = new FileReader();
-    reader.onload = function(event) {
-        localStorage.setItem('profilePicture_' + currentUser, event.target.result);
-    };
-    reader.readAsDataURL(profilePictureFile);
-}
-window.location.href = 'my-profile.html';
-      };
-});
+}});
