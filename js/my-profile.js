@@ -143,3 +143,6 @@ document.addEventListener("DOMContentLoaded", function() {
         localStorage.setItem('userDatabase', JSON.stringify(existingData));
         });
 });
+
+// Cambio de imagen de perfil
+
