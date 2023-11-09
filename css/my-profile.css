@@ -64,14 +64,6 @@ input[type="email"] {
     background-color: rgba(243, 113, 65, 0.979) !important;
 }
 
-/* Foto de perfil */
-img#currentProfilePicture {
-    max-width: 200px;
-    max-height: 200px;
-    margin: 10px 0;
-    border-radius: 50%; /* Hace que la imagen sea circular */
-}
-
 /* Pie de página */
 @media (max-width: 991px) {
     footer {
@@ -83,33 +75,42 @@ img#currentProfilePicture {
 /* Estilos adicionales para personalizar opciones */
 #usernameField,
 #passwordField,
-#emailField,
-#profilePictureField {
+#emailField, {
     display: none;
 }
 
-/* Estilos para el contenedor de la imagen de perfil */
-#currentProfilePictureContainer {
-    width: 400px;
-    height: 400px;
-    overflow: hidden;
-    border-radius: 50%;
-    background-color: #f0f0f0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
+/* Estilo para el contenedor de la imagen de perfil */
+.profile-picture-container {
+    text-align: center;
+    position: relative;
     margin-bottom: 20px;
 }
 
-#profilePageProfilePicture {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-    margin-bottom: 20px;
+/* Estilo para la superposición de la imagen de perfil */
+.profile-picture-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* Estilo de la imagen de perfil */
+.profile-picture-container img.profile-picture {
+    max-width: 320px;
+    max-height: 320px;
+    margin: 10px 0;
+    border-radius: 100%;
+}
+
+/* Mostrar la superposición al pasar el mouse sobre la imagen de perfil */
+.profile-picture-container:hover .profile-picture-overlay {
+    opacity: 1;
 }
 
 /* Estilos para el select y sus opciones */
