@@ -25,7 +25,7 @@
             <main class="container">
                 <div class="row justify-content-center align-items-center">
                     <div class="col-lg-8">
-                        <form id="profileForm" class="custom-form">
+                        <form id="profileForm" class="custom-form needs-validation was-validated">
                             <h1>Actualizar Perfil</h1>
                             <div class="profile-picture-container">
                                 <label for="profilePicture" style="cursor: pointer">
@@ -42,25 +42,28 @@
                                     <div class="form-group">
                                         <label for="firstName">Nombre *</label>
                                         <input minlength="2" required id="name"
-                    type="text" class="form-control" placeholder="Nombre" value="">
-                  <div class="invalid-feedback">
-                    Debe llenar este campo.
+                    type="text" class="form-control nameInputs" placeholder="Nombre" value="">
+                  <div class="invalid-feedback" id="errorNameDivN" style="display: none;">
+                    Debe llenar este campo. Solamente se admiten letras.
                   </div>
                                     </div>
                                     <hr class="input-separator">
                                     <div class="form-group">
                                         <label for="middleName">Segundo nombre</label>
                                         <input minlength="2" id="name2" type="text"
-                    class="" placeholder="Segundo nombre" value="">
+                    class="form-control nameInputs" placeholder="Segundo nombre" value="" required>
+                    <div class="invalid-feedback" id="errorNameDivN2" style="display: none;">
+                      Debe llenar este campo. Solamente se admiten letras.
+                    </div>
                                     </div>
                                     <hr class="input-separator">
                                     <div class="form-group">
                                         <label for="lastName">Apellido *</label>
                                         <input minlength="2" required id="lastname"
-                    type="text" class="form-control" placeholder="Primer apellido" value="">
-                  <div class="invalid-feedback">
-                    Debe llenar este campo.
-                  </div>
+                    type="text" class="form-control nameInputs" placeholder="Primer apellido" value="">
+                    <div class="invalid-feedback" id="errorNameDivLN" style="display: none;">
+                      Debe llenar este campo. Solamente se admiten letras.
+                    </div>
                                     </div>
                                     <hr class="input-separator">
                                     <div class="form-group">
@@ -68,7 +71,7 @@
                                       <input minlength="6" alue="" id="currentPassword" type="password" class="form-control"
                     placeholder="La contraseña debe tener al menos 6 caracteres." value="" required>
                     <div class="invalid-feedback" id="errorDiv" style="display: none;">
-                      No coincide con la contraseña actual.
+
                     </div>
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" value="" id="btnShowOldPassword">
@@ -80,7 +83,10 @@
                                     <div class="form-group">
                                         <label for="secondLastName">Segundo apellido</label>
                                         <input minlength="2" id="lastname2"
-                    type="text" class="" value="" placeholder="Segundo apellido" value="">
+                    type="text" class="form-control nameInputs" value="" placeholder="Segundo apellido" value="">
+                    <div class="invalid-feedback" id="errorNameDivLN2" style="display: none;">
+                      Debe llenar este campo. Solamente se admiten letras.
+                    </div>
                                     </div>
                                     <hr class="input-separator">
                                     <div class="form-group">
@@ -95,7 +101,7 @@
                                     <div class="form-group">
                                         <label for="phone">Teléfono de contacto</label>
                                         <input value=""
-                    id="phoneNumber" type="text" pattern="[0-9]*" inputmode="numeric" class=""
+                    id="phoneNumber" type="text" pattern="[0-9]*" inputmode="numeric" class="form-control"
                     placeholder="Ingrese su número de teléfono" value="" minlength="9" maxlength="15">
                                     </div>
                                     <hr class="input-separator">

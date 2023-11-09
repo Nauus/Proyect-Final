@@ -102,10 +102,10 @@ input[type="email"] {
 
 /* Estilo de la imagen de perfil */
 .profile-picture-container img.profile-picture {
-    max-width: 420px;
-    max-height: 420px;
+    max-width: 320px;
+    max-height: 320px;
     margin: 10px 0;
-    border-radius: 50%;
+    border-radius: 100%;
 }
 
 /* Mostrar la superposición al pasar el mouse sobre la imagen de perfil */
