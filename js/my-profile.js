@@ -12,7 +12,7 @@ const currentPasswordInput = document.getElementById("currentPassword")
 
 const newPasswordInput = document.getElementById("newPassword")
 
-// Botones para mostrar el contenido de los inputs de contraseñas.
+// Botones para mostrar el contenido de los inputs de contraseñas. CHECKBOXES //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 document.getElementById('btnShowOldPassword').addEventListener('click', function() {
     if(document.getElementById('currentPassword').getAttribute('type') == 'text') {
@@ -30,27 +30,7 @@ document.getElementById('btnShowOldPassword').addEventListener('click', function
         }
         });
 
-// Función para pintar de rojo o verde inputs.
-
-(function () {
-    'use strict'
-  
-    var forms = document.querySelectorAll('.needs-validation')
-  
-    Array.prototype.slice.call(forms)
-      .forEach(function (form) {
-        form.addEventListener('submit', function (event) {
-          if (!form.checkValidity()) {
-            event.preventDefault()
-            event.stopPropagation()
-          }
-  
-          form.classList.add('was-validated')
-        }, false)
-      })
-  })()
-
-// Cambiar value de inputs a los datos del localStorage.
+// ACTUALIZAR VALOR DE INPUTS PARA QUE SE MUESTRE LOS DATOS ACTUALES DEL LOCALSTORAGE ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -78,7 +58,15 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("lastname2").value = currentUserInfo.secondlastname;
     document.getElementById("email").value = currentUserInfo.email;
     document.getElementById("phoneNumber").value = currentUserInfo.phonenumber;
+
+    const storedProfilePicture = localStorage.getItem('profilePicture_' + localStorage.getItem('currentUser'));
+
+    if (storedProfilePicture) {
+        profilePicturePreview.src = storedProfilePicture;
+    }
   });
+
+//  FEEDBACK DE CONTRASEÑAS //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Validar que el value del input de contraseña actual sea correcto, y dar feedback al usuario.
 
@@ -96,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (String(currentPasswordInput.value) !== String(currentUserInfo.password)) {
 
         errorDiv.style.display = "block";
-        currentPasswordInput.setCustomValidity("No coincide con la contraseña acttual.");
+        currentPasswordInput.setCustomValidity("No coincide con la contraseña actual.");
 
     } else {
 
@@ -126,12 +114,98 @@ document.addEventListener("DOMContentLoaded", function() {
   };
 });
 
-// Aplicar cambios a los datos de la cuenta en localStorage.
+// CAMBIAR Y PREVISUALIZAR FOTO DE PERFIL ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const profilePictureInput = document.getElementById('profilePicture');
+const profilePicturePreview = document.getElementById('profilePicturePreview');
+
+// Display user profile picture if available
+const currentUser = localStorage.getItem('currentUser');
+const profilePicture = localStorage.getItem('profilePicture_' + currentUser);
+if (profilePicture) {
+    profilePicturePreview.src = profilePicture;
+}
+
+// Handle profile picture change
+profilePictureInput.addEventListener('change', () => {
+    const file = profilePictureInput.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (event) {
+            profilePicturePreview.src = event.target.result;
+
+            // Update local storage with the new profile picture
+            localStorage.setItem('profilePicture_' + currentUser, event.target.result);
+        };
+        reader.readAsDataURL(file);
+    }
+});
+            
+// FEEDBACK DE NOMBRES ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Feedback instantaneo de inputs para nombres y apellidos.
+
+document.addEventListener('DOMContentLoaded', function () {
+  var inputElementN = document.getElementById('name');
+  var inputElementN2 = document.getElementById('name2');
+  var inputElementLN = document.getElementById('lastname');
+  var inputElementLN2 = document.getElementById('lastname2');
+  var errorMessageN = document.getElementById('errorNameDivN');
+  var errorMessageN2 = document.getElementById('errorNameDivN2');
+  var errorMessageLN = document.getElementById('errorNameDivLN');
+  var errorMessageLN2 = document.getElementById('errorNameDivLN2');
+
+  function addValidationListener(inputElement, errorDiv) {
+    function validateInput(inputElement, errorDiv) {
+      if (/^[a-zA-Z]+$/.test(inputElement.value)) {
+        errorDiv.style.display = 'none';
+        inputElement.setCustomValidity('is-invalid');
+        inputElement.setCustomValidity('');
+      } else {
+        errorDiv.style.display = 'block';
+        inputElement.setCustomValidity('');
+        inputElement.setCustomValidity('is-invalid');
+      }
+    }
+    inputElement.addEventListener('input', function () {
+      validateInput(inputElement, errorDiv);
+    });
+  }
+
+  addValidationListener(inputElementN, errorMessageN);
+  addValidationListener(inputElementN2, errorMessageN2);
+  addValidationListener(inputElementLN, errorMessageLN);
+  addValidationListener(inputElementLN2, errorMessageLN2);
+
+});
+
+  // Función para pintar de rojo o verde inputs.
+
+(function () {
+  'use strict'
+
+  var forms = document.querySelectorAll('.needs-validation')
+
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+
+// VALIDACIONES Y CAMBIOS AL LOCALSTORAGE.///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     document.getElementById('applyChanges').addEventListener('click', function (event) {
         event.preventDefault();
 
-        if (String(currentPasswordInput.value) == String(currentUserInfo.password)) {
+        if (String(currentPasswordInput.value) == String(currentUserInfo.password)) { // Especificamos que solamente suceda si el campo de contraseña actual es correcto.
+
+// Creación de constantes y funciones para las validaciones.
 
           function name_lastnameIsValidInput(inputElement) {
             const regex = /^[A-Za-z]+$/;
@@ -157,12 +231,14 @@ document.addEventListener("DOMContentLoaded", function() {
       let phoneNumberIsValid = true
       let newPasswordIsValid = true
 
+// Aplicación de constantes y funciones para finalmente hacer los cambios en los datos del userDatabase.
+
           if (name_lastnameIsValidInput(document.getElementById("name"))) {
             console.log("Nombre es válido");
             currentUserInfo.username = `${document.getElementById("name").value}`;
           } else {
             nameIsValid = false;
-            console.log(nameIsValid);
+            document.getElementById("name").setCustomValidity('No se admiten números.')
           };
 
           if (name_lastnameIsValidInput(document.getElementById("name2"))) {
@@ -206,6 +282,8 @@ document.addEventListener("DOMContentLoaded", function() {
               currentUserInfo.password = `${document.getElementById("newPassword").value}`;
             };
 
+// Sweet Alerts para informar al usuario.
+
           if((nameIsValid && name2IsValid && lastnameIsValid && lastname2IsValid && emailIsValid && phoneNumberIsValid && newPasswordIsValid === true)) {
           Swal.fire({
               icon: 'success',
@@ -215,7 +293,6 @@ document.addEventListener("DOMContentLoaded", function() {
               if (result.isConfirmed) {
                 localStorage.setItem('userDatabase', JSON.stringify(existingData));
                 location.reload();
-
               }
             });
           return;
@@ -228,6 +305,4 @@ document.addEventListener("DOMContentLoaded", function() {
           text: "Alguno de los campos presenta errores.",
         })
 }
-
-      };
-});
+}});
