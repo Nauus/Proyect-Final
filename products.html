@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>eMercado - Productos</title>
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <link href="css/custom-styles.css" rel="stylesheet">
+  <link rel="shortcut icon" href="img/logoarreglado2.png">
+  <script src="js/navbar.js" type="module"></script>
+</head>
+<body >
+  <div id="navbarContainer"></div>
+  <div class="bg">
+  <main class="pb-5 container">
+  
+    <div class="container">
+      <div class="text-center p-4">
+        <h2 class="productos">Productos</h2>
+        <h4 class="lead" id="parrafoProductos">Verás aquí todos los productos de la categoría <span id="categoriaNombre"></span></h4>
+      </div>
+    </div>
+    <div class="col text-end">
+      <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
+        <input type="radio" class="btn-check" name="options" id="sortAscPrice">
+        <label class="btn btn-light" for="sortAscPrice" content="\f062"><i class="fas fa-arrow-up mr-1"></i>$</label>
+        <input type="radio" class="btn-check" name="options" id="sortDescPrice">
+        <label class="btn btn-light" for="sortDescPrice"><i class="fas fa-arrow-down mr-1"></i>$</label>
+        <input type="radio" class="btn-check" name="options" id="sortDescRelevance" checked="">
+        <label class="btn btn-light" for="sortDescRelevance"><i class="fas fa-sort-amount-down mr-1"></i></label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
+        <div class="row container p-0 m-0">
+          <div class="col">
+            <p class="font-weight-normal text-end my-2 textcant">Cant.</p>
+          </div>
+          <div class="col">
+            <input class="form-control filtermaxymin" type="number" placeholder="min." id="rangeFilterPriceMin">
+          </div>
+          <div class="col">
+            <input class="form-control filtermaxymin" type="number" placeholder="máx." id="rangeFilterPriceMax">
+          </div>
+          <div class="col-3 p-0">
+
+            <input type="radio" class="btn-check" name="options" id="sortNone" checked>
+            <label class="btn btn-light mb-lg-4" for="sortNone">Quitar Filtros</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-12 mb-4">
+        <div class="form-outline">
+          <input type="search" id="searchInput" class="form-control searchProducts" placeholder="Buscar Productos" aria-label="Search" />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="list-group animate__animated animate__slideInLeft" id="car-list-container"></div>
+      </div>
+    </div>
+  </main>
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-end">
+        <a href="#" class="btn btn-outline-dark btn-sm" data-bs-toggle="tooltip" data-bs-placement="top"
+          title="Volver arriba">Volver arriba</a>
+      </p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank"
+          class="text-decoration-none text-dark">Jovenes a Programar</a></p>
+    </div>
+  </div>
+  </footer>
+  <div id="spinner-wrapper">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/products.js" type="module"></script>
+  <script src="js/init.js" type="module"></script>
+  <script src="js/logout.js" type="module"></script>
+</body>
+</html>

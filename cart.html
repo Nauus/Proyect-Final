@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>eMercado - Carrito de compras</title>
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <link href="css/custom-styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/validacion.css">
+  <link rel="shortcut icon" href="img/logoarreglado2.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="js/navbar.js" type="module"></script>
+</head>
+
+<body class="cart">
+  <div id="navbarContainer"></div>
+
+
+  <main class="bgCart">
+    
+    <div class="centered-container">
+      
+      <table id="product-list">
+        <tr>
+          <th>Producto</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Cantidad</th>
+          <th>Subtotal</th>
+         </tr>
+         <tr><td colspan="6" style="border-top: 1px solid black;"></td></tr>
+      </table>
+    </div>
+    
+    <div class="container payment-container">
+
+      <summary>
+        <h1>Complete los datos para realizar la compra</h1>
+      </summary>
+      <details>
+        <form id="payment-form">
+          <div class="mb-3">
+            <label for="tipoEnvio">Tipo de Envío</label>
+            <select id="tipoEnvio" name="tipoEnvio">
+              <option value="" disabled selected>Selecciona la opción</option>
+              <option value="premium">Envío Premium 2 a 5 días(15%)</option>
+              <option value="express">Envío Express 5 a 8 días (7%)</option>
+              <option value="estandar">Envío standard 12 a 15 días (5%)</option>
+              <option value="default">Retiro en sucursal (0%)</option>
+             
+            </select>
+            <select id="segundoMenu" style="display: none;">
+              <option value="sucursal1">Sucursal Sayago</option>
+              <option value="sucursal2">Sucursal Cordon</option>
+              <option value="sucursal3">Sucursal Aguada</option>
+          </select>
+          
+          <div class="" >
+            <label for="direEnvio">Dirección de envío</label>
+            <input  novalidate type="text" id="direEnvio" name="direEnvio" required pattern="[A-Za-z0-9\s]+" title="Por favor, ingrese una dirección válida" >
+           
+          </div>
+          <div class="mb-3">
+            <label for="calle">Calle</label>
+            <input type="text" id="calle" name="calle" required pattern="[A-Za-z\s]+" title="Por favor, ingrese solo letras y espacios para la calle">
+            <div class="feedback"></div>
+          </div>
+          <div class="mb-3">
+            <label for="direccion">Número</label>
+            <input type="text" id="direccion" name="direccion" required pattern="[0-9]+" title="Por favor, ingrese solo números para el número">
+          </div>
+          <div class="mb-3">
+            <label for="esquina">Esquina</label>
+            <input type="text" id="esquina" name="esquina" required pattern="[A-Za-z\s]+" title="Por favor, ingrese solo letras y espacios para la esquina">
+          </div>
+
+        
+          <button type="button" id="openPaymentModal" class="btn">Seleccionar Forma de Pago</button>
+          <div id="selectedPaymentInfo">
+            Forma de Pago: <span id="selectedPaymentDisplay"></span>
+          </div>
+          <div id="paymentModal" class="modal">
+            <div class="modal-content">
+              <span class="close" id="closePaymentModal">&times;</span>
+              <h2>Seleccione una Forma de Pago</h2>
+              <label for="paymentMethod">Forma de Pago:</label>
+              <select id="paymentMethod" name="paymentMethod">
+                <option value="defaultOption" selected disabled>Selecciona la opción</option>
+                <option value="creditCard">Tarjeta de Crédito/Débito</option>
+                <option value="bankAccount">Transferencia bancaria</option>
+              </select>
+              <div id="creditCardFields">
+                <!-- Campos para tarjeta de crédito -->
+                <label for="cardNumber">Número de Tarjeta de Crédito/Débito:</label>
+                <input type="text" id="cardNumber" name="cardNumber" placeholder="XXXX XXXX XXXX XXXX" required pattern="^\d{16}$">
+
+                                <label for="codeCvv">Código CVV:</label>
+                <input type="text" id="codeCvv" name="codeCvv" placeholder="XXX" required pattern="^\d{3}$">
+
+                <label for="cardNumber">Vencimiento:</label>
+                <input type="text" id="vencimiento" name="vencimiento" placeholder="XX/XX" required pattern="^(0[1-9]|1[0-2])\/\d{2}$">
+                                <!-- Otros campos para tarjeta de crédito -->
+              </div>
+              <div id="bankAccountFields">
+                <!-- Campos para número de cuenta -->
+                <label for="accountNumber">Número de Cuenta:</label>
+                <input type="text" id="accountNumber" name="accountNumber" placeholder="XXXXXXXXXXXXXXXXXX" required pattern="^\d{16}$">
+                <!-- Otros campos para número de cuenta -->
+              </div>
+              <button type="button" id="confirmPayment" class="btn">Confirmar</button>
+            </div>
+          </div>
+            
+          <div id="currency-selector">
+            <div class="currency-options">
+             <span>Moneda de pago</span>
+              <label>
+                <input type="radio" name="currency" value="USD" checked>
+                <span class="checkmark"></span> 
+              </label>
+              <span>USD</span>
+              <label>
+                <input type="radio" name="currency" value="UYU">
+                <span class="checkmark"></span>
+              </label>
+              <span>UYU</span>
+            </div>
+          </div>
+          <h1 id="subtotal"></h1>
+          <h1 id="envio-total"></h1>
+          <h1 id="cart-total" class="total-below-subtotal"></h1>
+        </div>
+        <p id="discount-amount"></p>
+      </details>
+      <button class="btn" id="finalizarCompra" type="submit">Finalizar Compra</button>
+      <a class="preguntaCompra" href="categories.html">Ver mas productos</a>
+      <a class="preg-frecuente" href="PreguntasFrecuentes.html">Preguntas frecuentes</a>
+      
+  </main>
+  <footer class="text-muted footer-cart">
+    <div class="container">
+      <p class="float-end">
+        <a href="#" class="btn btn-outline-dark btn-sm" data-bs-toggle="tooltip" data-bs-placement="top"
+          title="Volver arriba">Volver arriba</a>
+      </p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank"
+          class="text-decoration-none text-dark">Jovenes a Programar</a></p>
+    </div>
+
+
+    </div>
+    </div>
+
+
+  </footer>
+
+  <div id="spinner-wrapper">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/init.js" type="module"></script>
+  <script src="js/cart.js" type="module"></script>
+  <script src="js/logout.js" type="module"></script>
+</body>
+
+</html>

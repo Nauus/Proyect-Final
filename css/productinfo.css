@@ -1,0 +1,408 @@
+.slide {
+  position: relative;
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.64);
+  margin-top: 26px;
+}
+
+.slide-open:checked + .slide-item {
+  position: static;
+  opacity: 100;
+}
+.slide-item {
+  position: absolute;
+  opacity: 0;
+  -webkit-transition: opacity 0.6s ease-out;
+  transition: opacity 0.6s ease-out;
+}
+.slide-item img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+
+.productTitle {
+  animation: focus-in-expand 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards;
+}
+
+#comment-form {
+width: 100%;
+height: 100%;
+margin-top: 30px;
+text-align: center;
+padding: 20px;
+background-color: rgba(255, 255, 255, 0.322);
+border: 1px solid #e0e0e0;
+border-radius: 8px;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.seccioncomentarios {
+display: flex;
+justify-content: center;
+align-items: center;
+}
+p.comentarios {
+text-align: center;
+font-size: 30px;
+background-color: #d4d4d400;
+  border-radius: 50px;
+  -webkit-box-shadow: 0px -4px 33px 0px rgba(240,145,0,0.6);
+-moz-box-shadow: 0px -4px 33px 0px rgba(240,145,0,0.6);
+box-shadow: 0px -4px 33px 0px rgba(240,145,0,0.6);
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 50px;
+
+}
+
+textarea#comment.form-control {
+height: 100px;
+width: 100%;
+}
+div.comments-container {
+padding: 40px;
+}
+div.comment {
+width: 92%;
+}
+span.comentarios  {
+font-size: 30px;
+display: flex; 
+justify-content: center;
+height: 55px;
+-webkit-box-shadow: 0px -4px 33px 0px rgba(240,145,0,0.6);
+-moz-box-shadow: 0px -4px 33px 0px rgba(240,145,0,0.6);
+box-shadow: 0px -4px 33px 0px rgba(240,145,0,0.6);
+margin-bottom: 20px;
+margin-left: 20%;
+margin-right: 20%;
+border-radius: 50px;
+margin-bottom: 50px;
+}
+#form {
+width: 250px;
+margin: 0 auto;
+height: 50px;
+}
+
+#form p {
+ text-align: center;
+}
+
+#form label {
+  font-size: 20px;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+
+.clasificacion {
+  text-align: center;
+  direction: rtl;
+
+}
+.clasificacion input[type="radio"] {
+  display: none;
+}
+.clasificacion label {
+  font-size: 30px;
+  cursor: pointer;
+  color: #ccc;
+  transition: color 0.3s;
+  margin: 0 10px;
+}
+.clasificacion input[type="radio"]:checked ~ label {
+  color: #f39407;
+}
+
+
+
+.pintada span  {
+  text-align: center;
+}
+
+.pintada span  {
+  font-size: 30px;
+  cursor: pointer;
+  color: #ccc;
+  transition: color 0.3s;
+  margin: 0 10px;
+}
+
+.pintada span {
+  color: #f39407; 
+}
+.comment {
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 15px;
+  background-color: rgba(255, 255, 255, 0.322);
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.comment p {
+  margin: 5px 0;
+}
+
+
+.form-control {
+  width: 60%;
+}
+
+.comentarios {
+  padding-left: 40px;
+  margin-bottom: -5px;
+  font-size: 40px;
+  
+}
+
+.card-product {
+  margin-top: 30px;
+  text-align: center; /* Centra el contenido dentro de card-product */
+}
+
+
+/* Centra el título y la descripción */
+.card-title, .card-text {
+  text-align: center;
+}
+
+@keyframes text-shadow-drop-center {
+  0% {
+    text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
+  100% {
+    text-shadow: 0 0 18px rgba(0, 0, 0, 0.35);
+  }
+}
+
+h1#product-title.card-title {
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold
+}
+
+
+p#product-category.card-text {
+  text-align: left;
+  font-size: 15px; 
+  line-height: 1.5; 
+  font-family: 'Raleway', sans-serif;
+}
+
+p#product-cost.card-text {
+  text-align: right;
+  font-size: 20px; 
+ color: #3d3d3d;
+ font-weight: bold;
+  line-height: 1.5; 
+}
+
+
+p#product-description.card-text {
+  text-align: center;
+  font-size: 15px; 
+  font-family: 'Raleway', sans-serif;
+  line-height: 1.5; 
+}
+
+.Recommended-Product {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  -webkit-box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.75);
+-moz-box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.75);
+box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.75);
+  margin-left: 20%;
+  margin-right: 20%;
+  
+  padding: 5px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  max-width: 500px; 
+  margin: 0 auto; 
+  margin-bottom: 20px; 
+}
+
+.Recommended-Product:hover {
+  transform: scale(1.05); 
+  
+}
+
+.Recommended-Product img {
+  max-width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.Recommended-Product h3 {
+  font-size: 20px;
+  margin: 10px 0;
+  font-weight: bold; 
+  text-align: center; 
+  color: #1b1000; 
+  text-transform: uppercase; 
+}
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; 
+  padding: 20px; 
+}
+.btn {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
+}
+.comentarios-column {
+  padding: 0 15px; 
+}
+
+.comentar-column {
+  padding: 0 15px; 
+}
+
+.card-body {
+  background-color: rgba(255, 255, 255, 0.397);
+  padding: 20px; /* Agrega espacio alrededor del contenido */
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.comprarb {
+  font-weight: 500;
+  background-color: #f09100;
+}
+
+
+
+.agregar-al-carrito {
+  margin-bottom: 5rem;
+  width: 50%;
+  color: black;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  -webkit-box-shadow: 5px 5px 3px 7px rgba(0,0,0,0.75);
+  -moz-box-shadow: 5px 5px 3px 7px rgba(0,0,0,0.75);
+  box-shadow: 3px 3px 3px 3px rgba(0,0,0,0.75);
+}
+.agregar-al-carrito:hover {
+  transform: scale(0.9); 
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+.btn {
+  color: black;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+.btn:hover {
+  transform: scale(0.9); 
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+@media (min-width: 992px) {
+  .row > * {
+    max-width: 57.5% !important;
+    
+  }
+}
+@media (min-width: 768px) {
+.Recommended-Product {
+    flex: 0 0 auto;
+    width: 40% !important;
+}
+}
+
+
+
+
+
+#mensaje-exito {
+  color: rgb(0, 70, 0);
+}
+
+strong {
+  color: rgb(0, 54, 0);
+  
+}
+
+/* Estilo para centrar el contenido del carrusel */
+.slider-for, .slider-nav {
+ 
+  justify-content: center !important;
+  margin: auto 0;
+}
+
+/* Estilo para el contenedor principal del carrusel */
+.slider-container {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-direction: column !important;
+  padding: 20px !important;
+}
+
+/* Estilo para el contenedor del carrusel principal */
+.slider-for {
+  width: 100% !important;
+  height: auto !important; 
+  margin: 0 auto !important; 
+}
+
+/* Estilo para el contenedor de las miniaturas */
+.slider-nav {
+
+  margin: auto !important;
+}
+
+/* Estilo para las miniaturas */
+.slider-nav img {
+  max-width: 100% !important;
+  height: auto !important;
+  width: auto\9 !important;
+  margin: 5px;
+
+  cursor: pointer !important;
+}
+
+/* Estilo para la miniatura activa */
+.slider-nav img.active {
+  border-color: #007bff !important;
+}
+
+.card-product {
+  margin-top: 30px !important;
+  text-align: center !important;
+  /* Añade un margen a la parte superior e inferior para centrar verticalmente */
+  margin-bottom: 30px !important;
+}
+
+h3.card-title {
+  margin-bottom: 2rem;
+  background-color: #e0e0e0;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px; 
+}
+
+
+.card-body {
+  background-color: rgba(255, 255, 255, 0.397);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: auto;
+  margin-bottom: 5rem;
+}
+
+/* Centra el título y la descripción */
+.card-title, .card-text {
+  text-align: center;
+}
+
+
+
+
+
