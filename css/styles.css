@@ -1,4 +1,3 @@
-
 .card-body,
 .container,
 .site-header {
@@ -30,7 +29,7 @@ nav a {
 }
 
 footer {
-  padding-top: 20px; 
+  padding-top: 20px;
   padding-bottom: 3rem;
   background-color: #552f11b6;
 }
@@ -152,206 +151,80 @@ a.custom-card:hover {
 
 .checked {
   color: orange;
-} 
+}
 
 .dropdown-menu-wide {
-  width: 300px; /* Ajusta el ancho según tu preferencia */
+  width: 300px;
+  /* Ajusta el ancho según tu preferencia */
 }
-
-
-/* DARKMODE */
-
-body.dark{
-  background-color:rgb(164, 160, 153);
-  color: #000000;
-  
-}
-body.dark nav {
-  background-color:#484749 !important ;
-}
-
-
-
-
-
 .imgindex {
   display: block;
-  margin: 0 auto; /* Centra horizontalmente */
+  margin: 0 auto;
+  /* Centra horizontalmente */
   margin-top: 4rem;
   height: 45%;
   width: 45%;
   max-width: 100%;
 }
 
-
-@keyframes kenburns-bottom {
-  0% {
-    -webkit-transform: scale(1) translateY(0);
-            transform: scale(1) translateY(0);
-    -webkit-transform-origin: 50% 84%;
-            transform-origin: 50% 84%;
-  }
-  100% {
-    -webkit-transform: scale(1.25) translateY(15px);
-            transform: scale(1.25) translateY(15px);
-    -webkit-transform-origin: bottom;
-            transform-origin: bottom;
-  }
-}
-@-webkit-keyframes scale-in-center {
-  0% {
-    -webkit-transform: scale(0);
-            transform: scale(0);
-    opacity: 1;
-  }
-  100% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-    opacity: 1;
-  }
-}
-@keyframes scale-in-center {
-  0% {
-    -webkit-transform: scale(0);
-            transform: scale(0);
-    opacity: 1;
-  }
-  100% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-    opacity: 1;
-  }
-}
-
-body.dark .darkk {
-  background-color: rgb(164, 160, 153)!important;
-}
-body.dark .custom-card {
-  background-color: #554f4f75!important;
-}
-
-body.dark #btnmuchomas {
-  background-color: rgb(255, 0, 0) !important;
-  border-color: transparent;
-  }
-#btnmuchomas:hover {
-  transform: scale(1.1); 
-
-}
-body.dark .btn {
-  background-color: hsl(178,99%,31%)!important;
-  border: #484749;
-}
-body.dark .card-title  {
-  color: #B9B9B9;
-}
-
-body.dark .productos  {
-  color: #B9B9B9;
-}
-
-body.dark .productTitle  {
-  color: #B9B9B9;
-}
-
-body.dark .carouselFlechas  {
-  background-color: hsl(178,99%,31%);
-}
-
-body.dark .categorias  {
-  color: #B9B9B9;
-}
-
-body.dark h4{
-  color: #B9B9B9;
-}
-
-body.dark .filtermaxymin {
-  border-color: hsl(178,99%,31%) !important;
-}
-
-
-body.dark .searchProducts {
-  border-color: hsl(178,99%,31%) !important;
-}
-body.dark .product-image:hover {
-  transform: scale(1.1); 
-  border: 1px solid rgb(164, 160, 153); 
-  box-shadow: 0 0 10px hsl(178,99%,31%); 
-}
-
-body.dark .remove-product:hover {
-  background-color: hsl(178,99%,31%); 
-}
-/* Estilos para las imágenes de los productos */
-.product-image {
-  max-width: 100px; /* Ancho máximo de la imagen */
-  height: auto; /* La altura se ajustará automáticamente para mantener la proporción */
-  display: block; /* Asegura que la imagen esté centrada en su contenedor */
-  margin: 0 auto; /* Centra la imagen horizontalmente en su contenedor */
- 
-  transition: transform 0.2s; /* Transición suave para el efecto de agrandamiento */
-}
-body.dark.product-name:hover {
-  color: hsl(178,99%,31%); 
-}
-
 /* Estilos para las imágenes cuando se seleccionan */
 
 .product-image:hover {
-  transform: scale(1.1); 
-  border: 1px solid rgb(164, 160, 153); 
-  box-shadow: 0 0 10px hsl(36,100%,47%); 
+  transform: scale(1.1);
+  border: 1px solid rgb(164, 160, 153);
+  box-shadow: 0 0 10px hsl(36, 100%, 47%);
 }
 
 
 /* Estilos para la tabla */
 table {
   width: 100%;
-  border-collapse: collapse; 
+  border-collapse: collapse;
 }
 
 /* Estilos para las celdas de la tabla */
-td, th {
-  padding: 10px; 
+td,
+th {
+  padding: 10px;
   text-align: center;
- 
-}
-.product-name {
-  text-decoration: none; 
-  color: inherit; 
-  cursor: default;
-}
-.product-name:hover {
-  color: #ff6600; /* Cambia el color al pasar el mouse sobre el elemento */
-}
-body.dark.product-name:hover {
-  color: hsl(178,99%,31%); 
+
 }
 
-.preguntaCompra  {
-  text-decoration: none; 
-  color: inherit; 
+.product-name {
+  text-decoration: none;
+  color: inherit;
+  cursor: default;
+}
+
+.product-name:hover {
+  color: #ff6600;
+
+}
+
+.preguntaCompra {
+  text-decoration: none;
+  color: inherit;
   cursor: default;
 }
 
 .preg-frecuente {
-  text-decoration: none; 
-  color: inherit; 
+  text-decoration: none;
+  color: inherit;
   cursor: default;
   margin-left: 10rem;
 }
+
 /* Estilos para los botones de eliminar */
 .remove-product {
-  background-color: transparent; 
-  color: white; 
-  border: none; 
+  background-color: transparent;
+  color: white;
+  border: none;
   padding: 5px 10px;
   cursor: pointer;
 }
 
 .remove-product:hover {
-  background-color: hsl(36,100%,47%); 
+  background-color: hsl(36, 100%, 47%);
 }
 
 /* Estilo para el contenedor del carrito */
@@ -407,7 +280,8 @@ body.dark.product-name:hover {
 }
 
 #cart-total {
-  position: absolute; /* Opcionalmente, puedes usar 'fixed' si lo prefieres fijo en la ventana */
+  position: absolute;
+  /* Opcionalmente, puedes usar 'fixed' si lo prefieres fijo en la ventana */
 }
 
 
@@ -419,12 +293,13 @@ body.dark.product-name:hover {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s, border 0.3s;
-  position: relative; /* Agrega posición relativa para que el .checkmark sea relativo a este elemento */
+  position: relative;
+  /* Agrega posición relativa para que el .checkmark sea relativo a este elemento */
 }
 
 
 /* Estilo para el .checkmark personalizado */
-.currency-options input[type="radio"] + span::before {
+.currency-options input[type="radio"]+span::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -433,106 +308,121 @@ body.dark.product-name:hover {
   height: 20px;
   width: 20px;
   background-color: #B9B9B9;
-  border-radius: 50px; /* Esto crea un círculo para el .checkmark */
+  border-radius: 50px;
+  /* Esto crea un círculo para el .checkmark */
 }
 
 
-.currency-options input[type="radio"]:checked + span::before {
-  background-color: hsl(178, 99%, 31%); /* Cambia el color del .checkmark cuando está seleccionado */
+.currency-options input[type="radio"]:checked+span::before {
+  background-color: hsl(178, 99%, 31%);
+  /* Cambia el color del .checkmark cuando está seleccionado */
 }
 
 
-h4 { 
-  font-family: Georgia, 'Times New Roman', Times, serif;; 
-  font-size: 1.25rem; 
-  font-style: normal; 
-  font-variant: normal; 
-  line-height: 26.4px; 
+h4 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  ;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-variant: normal;
+  line-height: 26.4px;
   padding-top: 0.6rem;
-} 
-  
-  h2 h3 { 
-    font-family: Georgia, 'Times New Roman', Times, serif;; 
-    font-size: 40px; 
-    font-style: normal; 
-    font-variant: normal; 
-    font-weight: 700; 
-    line-height: 15.4px; 
-  } 
-  p { 
-    font-family: Georgia, 'Times New Roman', Times, serif; ; 
-    font-size: 20px; 
-    font-style: normal; 
-    font-variant: normal; 
-    font-weight: 400; 
-    line-height: 20px; 
-  } 
-  
-  div.h3 { 
-    font-family: Georgia, 'Times New Roman', Times, serif;; 
-    font-size: 40px; 
-    font-style: normal; 
-    font-variant: normal; 
-    font-weight: 400; 
-    line-height: 20px; 
-  }
+}
 
-  .col-md-8 {
-    border: 1rem solid transparent;
-    background-color: #ffffff75;
-    margin-bottom: 4rem;
-    border-radius: 2rem;
-  }
+h2 h3 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  ;
+  font-size: 40px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 700;
+  line-height: 15.4px;
+}
 
-  
-  
+p {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  ;
+  font-size: 20px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+div.h3 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  ;
+  font-size: 40px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.col-md-8 {
+  border: 1rem solid transparent;
+  background-color: #ffffff75;
+  margin-bottom: 4rem;
+  border-radius: 2rem;
+}
 
 
-  @font-face {
-    font-family: 'You Murderer BB Font';
-    src: url('../webfonts/youmurderer-bb.regular.ttf') format('truetype');
-  }
-  
+
+
+
+
+/* SPOOKY MODE *//* SPOOKY MODE *//* SPOOKY MODE *//* SPOOKY MODE *//* SPOOKY MODE *//* SPOOKY MODE *//* SPOOKY MODE */
+
+@font-face {
+  font-family: 'You Murderer BB Font';
+  src: url('../webfonts/youmurderer-bb.regular.ttf') format('truetype');
+}
+
 body.spooky .imgindex {
   content: url('../imgsp/spookyback.png');
 }
 
 
 body.spooky .bg {
-  
-    background-image: url(../imgsp/back.jpg);
-    background-attachment: fixed;
-    background-size: cover;
-    
+
+  background-image: url(../imgsp/back.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+
 }
+
 body.spooky .spookyclass {
   background-image: url(../imgsp/comentar.png);
 }
 
 body.spooky .darkk {
   background-image: url(../imgsp/slash.png);
-  
+
   background-size: cover;
 }
-body.spooky .categorias{
+
+body.spooky .categorias {
   font-family: 'You Murderer BB Font', cursive;
   font-size: 6rem;
   color: rgb(91, 5, 5);
   text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.798);
 }
-body.spooky h3{
+
+body.spooky h3 {
   font-family: 'You Murderer BB Font', cursive;
   font-size: 6rem;
   color: rgb(91, 5, 5);
   text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.798);
 }
+
 body.spooky .vender {
   font-family: 'You Murderer BB Font', cursive;
   font-size: 6rem;
   color: rgb(91, 5, 5);
   text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.798);
 }
-body.spooky .productos{
+
+body.spooky .productos {
   font-family: 'You Murderer BB Font', cursive;
   font-size: 6rem;
   color: rgb(91, 5, 5);
@@ -540,14 +430,14 @@ body.spooky .productos{
 }
 
 
-body.spooky .productTitle{
+body.spooky .productTitle {
   font-family: 'You Murderer BB Font', cursive;
   font-size: 6rem;
   color: rgb(91, 5, 5);
   text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.798);
 }
 
-body.spooky .fotoTitulo{
+body.spooky .fotoTitulo {
   font-family: 'You Murderer BB Font', cursive;
   font-size: 6rem;
   color: rgb(91, 5, 5);
@@ -556,54 +446,263 @@ body.spooky .fotoTitulo{
 
 
 body.spooky #btnmuchomas {
-  background-color: white!important;
+  background-color: white !important;
   border-color: black;
 
 }
-   
- 
+
+
 
 body.spooky .navbar {
   background-color: rgb(29, 10, 0);
-  color: #fff!important;
+  color: #fff !important;
 }
+
 body.spooky .bg {
   background-color: #fff;
 }
+
 body.spooky footer {
   display: none;
 }
+
 @font-face {
   font-family: 'Spooky';
-  src: url('../webfonts/Halloween.ttf') format('truetype');}
-
-  body.spooky p{
-    font-family: 'Spooky', cursive;
-font-weight: 400;
+  src: url('../webfonts/Emilys_Candy/EmilysCandy-Regular.ttf') format('truetype');
 }
+
+body.spooky p {
+  font-family: 'Spooky', cursive;
+  font-weight: 400;
+}
+body.spooky h1 {
+  font-family: 'Spooky', cursive;
+  
+}
+body.spooky th {
+  font-family: 'Spooky', cursive;
+  
+}
+body.spooky td {
+  font-family: 'Spooky', cursive;
+  
+}
+body.spooky select {
+  font-family: 'Spooky', cursive;
+  
+}
+body.spooky button {
+  font-family: 'Spooky', cursive;
+  
+}
+
 body.spooky h4 {
   font-family: 'Spooky', cursive;
-font-weight: 400;
+  font-weight: 400;
 }
-body.spooky label 
-  {
-    font-family: 'Spooky', cursive;
-font-weight: 400;
+
+body.spooky label {
+  font-family: 'Spooky', cursive;
+  font-weight: 400;
 }
+
 body.spooky .cart {
-  background-image: url(../imgsp/back.jpg)!important;
+  background-image: url(../imgsp/back.jpg) !important;
 }
 
 
 body.spooky span {
   font-family: 'Spooky', cursive;
-font-weight: 400;
+  font-weight: 400;
 }
-body.spooky a{
+
+body.spooky a {
   font-family: 'Spooky', cursive;
-font-weight: 400;
+  font-weight: 400;
 }
 
 body.spooky #applyChanges {
   background-color: red;
 }
+
+
+/* SPOOKY MODE *//* SPOOKY MODE *//* SPOOKY MODE *//* SPOOKY MODE *//* SPOOKY MODE *//* SPOOKY MODE *//* SPOOKY MODE */
+
+
+
+
+/* DARKMODE *//* DARKMODE *//* DARKMODE *//* DARKMODE *//* DARKMODE *//* DARKMODE *//* DARKMODE *//* DARKMODE *//* DARKMODE *//* DARKMODE *//* DARKMODE */
+
+body.dark {
+  background-color: rgb(164, 160, 153);
+  color: #000000;
+
+}
+
+body.dark nav {
+  background-color: #484749 !important;
+}
+
+body.dark.product-name:hover {
+  color: hsl(178, 99%, 31%);
+}
+@keyframes kenburns-bottom {
+  0% {
+    -webkit-transform: scale(1) translateY(0);
+    transform: scale(1) translateY(0);
+    -webkit-transform-origin: 50% 84%;
+    transform-origin: 50% 84%;
+  }
+
+  100% {
+    -webkit-transform: scale(1.25) translateY(15px);
+    transform: scale(1.25) translateY(15px);
+    -webkit-transform-origin: bottom;
+    transform-origin: bottom;
+  }
+}
+
+@-webkit-keyframes scale-in-center {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in-center {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+body.dark .darkk {
+  background-color: rgb(164, 160, 153) !important;
+}
+
+body.dark .custom-card {
+  background-color: #554f4f75 !important;
+}
+
+
+#btnmuchomas:hover {
+  transform: scale(1.1);
+
+}
+
+body.dark .btn {
+  background-color: hsl(178, 99%, 31%) !important;
+  border: #484749;
+}
+
+body.dark .card-title {
+  color: #B9B9B9;
+}
+
+body.dark .productos {
+  color: #B9B9B9;
+}
+
+body.dark .productTitle {
+  color: #B9B9B9;
+}
+
+body.dark .carouselFlechas {
+  background-color: hsl(178, 99%, 31%);
+}
+
+body.dark .categorias {
+  color: #B9B9B9;
+}
+
+body.dark h4 {
+  color: #B9B9B9;
+}
+
+body.dark .filtermaxymin {
+  border-color: hsl(178, 99%, 31%) !important;
+}
+
+
+body.dark .searchProducts {
+  border-color: hsl(178, 99%, 31%) !important;
+}
+
+body.dark .product-image:hover {
+  transform: scale(1.1);
+  border: 1px solid rgb(164, 160, 153);
+  box-shadow: 0 0 10px hsl(178, 99%, 31%);
+}
+
+body.dark .remove-product:hover {
+  background-color: hsl(178, 99%, 31%);
+}
+/* MY PROFILE */
+body.dark #profileForm {
+
+  box-shadow: 0 0 60px hsl(36, 100%, 47%);
+  animation: changShadow 5s 3;
+background-color: #c1c1c1;
+border-color: transparent;
+}
+body.dark #profilePicturePreview {
+  border-color: #c1c1c1;
+  box-shadow: 0 0 60px hsl(36, 100%, 47%);
+}
+body.dark .profileTitle{
+background-color: #d4d4d400;
+    margin-left: 20%;
+    margin-right: 20%;
+    animation: focus-in-expand 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards;
+}
+body.dark .btnProfile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    text-decoration: none;
+    color: #580606;
+    font-size: 18px;
+    border-radius: 20px;
+    width: 200px;
+    height: 40px;
+    font-weight: bold;
+    border: 2px solid #555555;
+    transition: 0.3s;
+    box-shadow: 0px 6px 0px -2px #BC5C1C;
+    background-color: #ef7a22!important;
+  }
+  
+  body.dark .original-button:hover {
+    box-shadow: 0 0 #fff;
+    transform: translateY(1px);
+  
+}
+/* Estilos para las imágenes de los productos */
+.product-image {
+  max-width: 100px;
+  height: auto;
+  display: block; 
+  margin: 0 auto; 
+  transition: transform 0.2s;
+}
+
+body.dark.product-name:hover {
+  color: hsl(178, 99%, 31%);
+}
+
+/* DARKMODE *//* DARKMODE *//* DARKMODE *//* DARKMODE *//* DARKMODE *//* DARKMODE *//* DARKMODE *//* DARKMODE *//* DARKMODE */

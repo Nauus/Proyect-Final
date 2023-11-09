@@ -1,135 +1,149 @@
-/* Estilos generales */
-body {
-    font-family: 'Raleway', sans-serif;
+
+h2 {
+    font-size: 32px;
+    margin: 20px 0;
     text-align: center;
 }
 
-/* Contenedor principal */
-main {
-    padding: 20px;
+.profile-picture-container {
+    text-align: center;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+
+.profile-picture-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
     border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s;
 }
 
-/* Títulos y texto */
-p {
+
+.profile-picture-container img.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border-color: transparent;
+    box-shadow: 0 0 60px hsl(36, 100%, 47%);
+}
+
+.profile-picture-container:hover .profile-picture-overlay {
+    opacity: 1;
+}
+
+
+
+.custom-form {
+    background: #fff;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 8px 18px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    margin-top: 40px;
+    max-width: 600px;
+   
+    margin-top: 20px !important;
+    margin: 0 auto;
+   
+}
+
+.custom-form:hover {
+    box-shadow: 0 16px 36px 0 rgba(0, 0, 0, 0.2);
+}
+
+
+.form-column {
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.form-group label {
+
+    margin-bottom: 5px;
     font-size: 18px;
-}
-
-/* Formulario */
-form {
-    margin-top: 20px;
-}
-
-label {
-    font-weight: bold;
-    display: block;
-    margin-top: 10px;
+ 
 }
 
 input[type="text"],
-input[type="password"],
-input[type="email"] {
-    width: 60%;
+input[type="email"],
+input[type="tel"] {
+    width: 100%;
     padding: 10px;
-    margin: 5px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 16px;
+    font-family: 'Raleway', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    transition: border-color 0.3s;
 }
 
-/* Estilos para el botón "Guardar Cambios" */
-#applyChanges {
-    background-color: #007BFF;
+.footerProfile {
     color: #fff;
-    border: none;
-    padding: 10px 20px;
-    margin-top: 20px;
-    border-radius: 5px;
-    cursor: pointer;
+    padding: 10px 0;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
-#applyChanges:hover {
-    background-color: #0056b3;
+.input-separator {
+    border: 0;
+    border-top: 2px solid black;
+    margin: 20px 0;
 }
+/* jocestilos */
+#profileForm {
+    box-shadow: 0 0 60px hsl(36, 100%, 47%);
+    animation: changShadow 5s 3;
+  background-color: transparent;
+  border-color: transparent;
+  }
 
-/* Foto de perfil */
-img#currentProfilePicture {
-    max-width: 200px;
-    max-height: 200px;
-    margin: 10px 0;
-}
-
-/* Enlace Volver arriba */
-a.btn-outline-dark {
-    text-decoration: none;
-}
-
-/* Pie de página */
-footer {
-    margin-top: 40px;
-}
-
-/* Estilos adicionales para personalizar opciones */
-#usernameField,
-#passwordField,
-#emailField,
-#profilePictureField {
-    display: none;
-}
-
-/* Estilos para el contenedor de la imagen de perfil */
-#currentProfilePictureContainer {
-    width: 150px; 
-    height: 150px; 
-    overflow: hidden;
-    border-radius: 50%; 
-    background-color: #f0f0f0; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto; 
-    margin-bottom: 3rem;
-}
-#profilePageProfilePicture {
-    max-width: 100%;   
-    max-height: 100%;   
-    width: auto;        
-    height: auto;     
-    display: block;     
-    margin: 0 auto;     
-    margin-bottom: 20px;
+  .profileTitle{
+  background-color: #d4d4d400;
+  font-family: Georgia, 'Times New Roman', Times, serif!important;
+      margin-left: 20%;
+      margin-right: 20%;
+     
+  }
+  .btnProfile {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      text-decoration: none;
+      color: #580606;
+      font-size: 18px;
+      border-radius: 20px;
+      width: 200px;
+      height: 40px;
+      font-weight: bold;
+      border: 2px solid #555555;
+      transition: 0.3s;
+      box-shadow: 0px 6px 0px -2px #BC5C1C;
+      background-color: #ef7a22!important;
+    }
     
-}
-
-/* Estilos para el select y sus opciones */
-select {
-    width: 10%;
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    appearance: none; /* Oculta la flecha predeterminada del select */
-    background-color: #fff;
-    color: #333;
-    cursor: pointer;
-}
-
-/* Estilos para las opciones */
-select option {
-    padding: 10px;
-    background-color: #fff;
-    color: #333;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-/* Estilos para el mensaje de error al estilo de Bootstrap */
-.error-message {
-    color: #721c24; /* Color de texto rojo oscuro */
-    font-size: 0.875rem; /* Tamaño de fuente ligeramente más pequeño */
-    margin-top: 5px;
-    padding: 0.75rem 1.25rem; /* Relleno para el mensaje de error */
-    background-color: #f8d7da; /* Color de fondo rojo claro */
-    border: 1px solid #f5c6cb; /* Borde rojo claro */
-    border-radius: 0.25rem; /* Bordes redondeados */
-    display: none; /* Cambia a inline-block para alinear verticalmente */
-    vertical-align: middle; /* Alinea verticalmente con los otros elementos */
-}
+    .original-button:hover {
+      box-shadow: 0 0 #fff;
+      transform: translateY(1px);
+    
+  }
+  .edit {
+    color: #000000;
+  }

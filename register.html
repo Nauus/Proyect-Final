@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="shortcut icon" href="img/logoarreglado2.png">
     <script src="https://kit.fontawesome.com/b72f4da2bc.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
     <div class="navbar"></div>
     <div class="register-section">
@@ -18,7 +20,7 @@
                     <span class="icono">
                         <!-- agregar icono-->
                         <i class="fa-solid fa-user" style="color: #f09100;"></i>
-                                        </span>
+                    </span>
                     <input type="name" id="registerUsername" required placeholder="Nombre">
                     <label for="registerUsername"></label>
                 </div>
@@ -27,17 +29,18 @@
                         <span class="icono">
                             <!-- agregar icono-->
                             <i class="fa-solid fa-envelope" style="color: #f09100;"></i>
-                                            </span>
+                        </span>
                         <input type="email" id="registerEmail" required placeholder="Correo Electrónico">
                         <label for="registerEmail"></label>
                     </div>
                 </div>
                 <div class="input">
                     <span class="icono">
-                      <!-- agregar icono-->
-                      <i class="fa-solid fa-key" style="color: #f09100;"></i>
+                        <!-- agregar icono-->
+                        <i class="fa-solid fa-key" style="color: #f09100;"></i>
                     </span>
-                    <input type="password" id="registerPassword" required placeholder="Contraseña"  pattern=".{6,}" title="La contraseña debe tener al menos 6 caracteres."><br>
+                    <input type="password" id="registerPassword" required placeholder="Contraseña" pattern=".{6,}"
+                        title="La contraseña debe tener al menos 6 caracteres."><br>
                     <label for="registerPassword"></label>
                 </div>
                 <div class="input">
@@ -45,25 +48,29 @@
                         <!-- agregar icono-->
                         <i class="fa-solid fa-key" style="color: #f09100;"></i>
                     </span>
-                    <input type="password" id="verifyPassword" placeholder="Confirmar Contraseña"  pattern=".{6,}" title="La contraseña debe tener al menos 6 caracteres."><br>
+                    <input type="password" id="verifyPassword" placeholder="Confirmar Contraseña" pattern=".{6,}"
+                        title="La contraseña debe tener al menos 6 caracteres."><br>
                     <label for=""></label>
                 </div>
                 <button class="btn" id="buttonRegister">Registrarme</button>
-                
+
                 <div class="create">
-                    <p>o registrate con:<a href="#" target="_blank" style="color: #f09100;">  <i class="fa-brands fa-google"></i></a>
-                        <a href="#" target="_blank" style="color: #f09100;">  <i class="fa-brands fa-facebook"></i></a>
-                            <a href="#" target="_blank" style="color: #f09100;">  <i class="fa-brands fa-apple"></i></a>
-                                <a href="#" target="_blank" style="color: #f09100;"> <i class="fa-brands fa-github"></i></a></p>
+                    <p>o registrate con:<a href="#" target="_blank" style="color: #f09100;"> <i
+                                class="fa-brands fa-google"></i></a>
+                        <a href="#" target="_blank" style="color: #f09100;"> <i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" target="_blank" style="color: #f09100;"> <i class="fa-brands fa-apple"></i></a>
+                        <a href="#" target="_blank" style="color: #f09100;"> <i class="fa-brands fa-github"></i></a>
+                    </p>
                     <p>¿Ya tienes una cuenta? <a href="login.html" class="login-link">Iniciar sesión</a></p>
                     <div id="message" class="messageRegister"></div>
-                    </div>
+                </div>
             </form>
-            
+
         </div>
     </div>
-    
+
     <script src="js/localStorageUtils.js" type="module"></script>
     <script src="js/register.js" type="module"></script>
 </body>
+
 </html>

@@ -1,93 +1,103 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>eMercado - Mi perfil</title>
-    
+
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
     <link href="css/custom-styles.css" rel="stylesheet">
     <link rel="stylesheet" href="css/my-profile.css">
     <link rel="shortcut icon" href="img/logoarreglado2.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="js/navbar.js" type="module"></script>
-    
+
 </head>
 
 <body class="bodyProfile">
     <div id="navbarContainer">
     </div>
-        <div class="bg">
-    <main class="container">
-        <div class="row justify-content-center align-items-center">
-            <div class="col-lg-8">
-                <h1 class="text-center fotoTitulo">Foto actual <i class="fa fa-user" aria-hidden="true"></i></h1>
-                <div id="currentProfilePictureContainer" class="text-center">
-                    <label for="newProfilePicture" style="cursor: pointer;">
-                        <img id="profilePageProfilePicture" src="img/Default_pfp.svg.png" alt="Foto de perfil actual">
-                        <input type="file" id="newProfilePicture" name="newProfilePicture" accept="image/*" style="display: none;">
-                    </label>
-                </div
-                <form id="profileForm">
-                    <select id="changeOption" class="form-select mb-3">
-                        <option value="" disabled selected>Selecciona la opción</option>
-                        <option value="username">Cambiar nombre de usuario</option>
-                        <option value="password">Cambiar contraseña</option>
-                        <option value="email">Cambiar correo electrónico</option>
-                        <option value="numTelefono">Cambiar/Agregar numero de telefono</option>
-                    </select>
-                    <div id="usernameField">
-                        <label for="currentName">Nombre actual: <span id="currentUsername"></span></label>
-                        <br>
-                        <label for="newUsername">Nuevo nombre de usuario:</label>
-                        <input type="text" id="newUsername" name="newUsername">
-                    </div>
-                    <div id="passwordField">
-                        <label for="currentPassword"  >Introduce la contraseña actual:</label>
-                        <input type="password" id="currentPassword" name="currentPassword">
-                       
-                        <br>
-                        <label for="newPassword">Introduce la nueva contraseña:</label>
-                        <input type="password" id="newPassword" name="newPassword"  >
-                        <div id="passwordError" class="error-message">La contraseña actual introducida no es válida</div>
-                    </div>
-                    <div id="emailField">
-                        <label for="currentName">Correo actual: <span id="currentEmail"></span></label>
-                        <br>
-                        <label for "newEmail">Nuevo correo electrónico:</label>
-                        <input type="email" id="newEmail" name="newEmail">
-                    </div>
-                    <div id="profilePictureField">
-                        <label for="newProfilePicture"></label>
-                        <input type="file" id="newProfilePicture" name="newProfilePicture" accept="image/*">
-                    </div>
-                    <div id="numTelField">
-                        <label for="numTel">Numero de telefono:</label>
-                        <input type="tel" id="numTel" name="numTel" placeholder="092394475" required pattern="\d{3} \d{3} \d{3}" >
-                    </div>
-                    <button id="applyChanges" class="btn btn-primary" type="button">Guardar Cambios</button>
-                </form>
+    <div class="bg">
+        <main class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-lg-8">
+                    <form id="profileForm" class="custom-form">
+                        <h2 class="profileTitle">   Actualizar Perfil</h2>
+                        <div class="profile-picture-container">
+                            <label for="profilePicture" style="cursor: pointer">
+                                <div class="profile-picture-overlay">
+                                    <p class="edit">Editar Imagen</p>
+                                </div>
+                                <img id="profilePicturePreview" src="img/img_perfil.png" alt="Foto de perfil"
+                                    class="profile-picture">
+                                <input type="file" id="profilePicture" accept="image/*" style="display: none">
+                            </label>
+                        </div>
+                        <hr class="input-separator">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="firstName">Nombre *</label>
+                                    <input type="text" id="firstName" name="firstName" required>
+                                </div>
+                                <hr class="input-separator">
+                                <div class="form-group">
+                                    <label for="middleName">Segundo nombre</label>
+                                    <input type="text" id="middleName" name="middleName">
+                                </div>
+                                <hr class="input-separator">
+                                <div class="form-group">
+                                    <label for="lastName">Apellido *</label>
+                                    <input type="text" id="lastName" name="lastName" required>
+                                </div>
+                                <hr class="input-separator">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="secondLastName">Segundo apellido</label>
+                                    <input type="text" id="secondLastName" name="secondLastName">
+                                </div>
+                                <hr class="input-separator">
+                                <div class="form-group">
+                                    <label for="email">E-mail *</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                                <hr class="input-separator">
+                                <div class="form-group">
+                                    <label for="phone">Teléfono de contacto</label>
+                                    <input type="tel" id="phone" name="phone">
+                                </div>
+                                <hr class="input-separator">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-submit btnProfile">Guardar Cambios</button>
+                    </form>
+
+                </div>
             </div>
-        </div>
-    </div>
-    </main>
-    <footer class="text-muted footerProfile">
-        <div class="container-footer">
-            <div class="d-flex justify-content-between align-items-center">
-                <p class="float-start mb-0">
-                    Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank" class="text-decoration-none text-dark">Jovenes a Programar</a>
-                </p>
-                <p class="mb-0">
-                    <a href="#" class="btn btn-outline-dark btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Volver arriba">Volver arriba</a>
-                </p>
+        </main>
+        <footer class="text-muted footerProfile">
+            <div class="container-footer">
+                <div class="d-flex justify-content-between align-items-center">
+                    <p class="float-start mb-0">
+                        Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank"
+                            class="text-decoration-none text-dark">Jovenes a Programar</a>
+                    </p>
+                    <p class="mb-0">
+                        <a href="#" class="btn btn-outline-dark btn-sm" data-bs-toggle="tooltip" data-bs-placement="top"
+                            title="Volver arriba">Volver arriba</a>
+                    </p>
+                </div>
             </div>
-        </div>
-    </footer>
-   
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/my-profile.js" type="module"></script>
+        </footer>
+
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/my-profile.js" type="module"></script>
 </body>
+
 </html>
