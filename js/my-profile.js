@@ -4,6 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const profilePictureInput = document.getElementById('profilePicture');
     const profilePicturePreview = document.getElementById('profilePicturePreview');
     const profileForm = document.getElementById('profileForm');
+
+    // OBTENER USUARIO ACTUAL Y OBTENER SUS DATOS /////////////////////////////////////////////////////////////////////////////////////////////// CAMILA
+    
     const currentUser = localStorage.getItem('currentUser');
 
 // Cargar la base de datos de usuarios y encontrar el usuario actual
@@ -24,6 +27,8 @@ if (database) {
             phone: database.users[userIndex].phone || ''
         };
 
+    // MOSTRAR DATOS YA ALMACENADOS EN INPUT /////////////////////////////////////////////////////////////////////////////////////////////// MARTÍN
+
         // Display user data in the form
         Object.keys(userProfile).forEach(key => {
             const input = document.getElementById(key);
@@ -32,12 +37,15 @@ if (database) {
             }
         });
 
+    // FOTO DE PERFIL /////////////////////////////////////////////////////////////////////////////////////////////// NAHUEL
+
             // Display user profile picture if available
             const profilePicture = localStorage.getItem('profilePicture_' + currentUser);
             if (profilePicture) {
                 profilePicturePreview.src = profilePicture;
             }
 
+            
             // Handle profile picture change
             profilePictureInput.addEventListener('change', () => {
                 const file = profilePictureInput.files[0];
@@ -49,6 +57,9 @@ if (database) {
                     reader.readAsDataURL(file);
                 }
             });
+
+
+    // CAMBIAR INFORMACIÓN DEL USUARIO EN EL LOCAL STORAGE POR LA DE LOS INPUTS /////////////////////////////////////////////////////////////////////////////////////////////// JOSÉ
 
             // Handle form submission
             profileForm.addEventListener('submit', (e) => {
@@ -62,6 +73,8 @@ if (database) {
                 userProfile.phone = document.getElementById('phone').value;
 
             
+    // ACTUALIZAR INFORMACIÓN DEL USUARIO EN EL LOCAL STORAGE /////////////////////////////////////////////////////////////////////////////////////////////// NACHO
+
                 // Actualizar los campos en el objeto user de la base de datos
                 database.users[userIndex].firstName = userProfile.firstName;
                 database.users[userIndex].middleName = userProfile.middleName;
