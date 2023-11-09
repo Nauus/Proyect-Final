@@ -151,7 +151,8 @@ document.addEventListener('DOMContentLoaded', function () {
   var inputElementLN2 = document.getElementById('lastname2');
   var errorMessageN = document.getElementById('errorNameDivN');
   var errorMessageN2 = document.getElementById('errorNameDivN2');
-  var errorMessageLN = document.getElementById('errorNameDivLN');
+  var git branch -d master
+  = document.getElementById('errorNameDivLN');
   var errorMessageLN2 = document.getElementById('errorNameDivLN2');
 
   function addValidationListener(inputElement, errorDiv) {
