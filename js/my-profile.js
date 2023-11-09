@@ -6,31 +6,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const profileForm = document.getElementById('profileForm');
     const currentUser = localStorage.getItem('currentUser');
 
-    // Cargar la base de datos de usuarios y encontrar el usuario actual
-    const databaseKey = 'userDatabase';
-    const database = loadDatabase(databaseKey);
+// Cargar la base de datos de usuarios y encontrar el usuario actual
+const databaseKey = 'userDatabase';
+const database = loadDatabase(databaseKey);
 
-    if (database) {
-        const user = database.users.find(user => user.username === currentUser);
+if (database) {
+    const userIndex = database.users.findIndex(user => user.username === currentUser);
 
-        if (user) {
-            // Cargar datos del perfil actual del usuario
-            let userProfile = JSON.parse(localStorage.getItem(currentUser)) || {
-                firstName: '',
-                middleName: '',
-                lastName: '',
-                secondLastName: '',
-                email: user.email, // Utilizar el correo electrónico de la base de datos
-                phone: ''
-            };
+    if (userIndex !== -1) {
+        // Obtener datos del perfil actual del usuario desde la base de datos
+        let userProfile = {
+            firstName: database.users[userIndex].firstName || '',
+            middleName: database.users[userIndex].middleName || '',
+            lastName: database.users[userIndex].lastName || '',
+            secondLastName: database.users[userIndex].secondLastName || '',
+            email: database.users[userIndex].email || '',
+            phone: database.users[userIndex].phone || ''
+        };
 
-            // Display user data in the form
-            Object.keys(userProfile).forEach(key => {
-                const input = document.getElementById(key);
-                if (input) {
-                    input.value = userProfile[key];
-                }
-            });
+        // Display user data in the form
+        Object.keys(userProfile).forEach(key => {
+            const input = document.getElementById(key);
+            if (input) {
+                input.value = userProfile[key];
+            }
+        });
 
             // Display user profile picture if available
             const profilePicture = localStorage.getItem('profilePicture_' + currentUser);
@@ -61,15 +61,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 userProfile.email = document.getElementById('email').value;
                 userProfile.phone = document.getElementById('phone').value;
 
-                // Actualizar el correo electrónico del usuario
-                user.email = userProfile.email
+            
+                // Actualizar los campos en el objeto user de la base de datos
+                database.users[userIndex].firstName = userProfile.firstName;
+                database.users[userIndex].middleName = userProfile.middleName;
+                database.users[userIndex].lastName = userProfile.lastName;
+                database.users[userIndex].secondLastName = userProfile.secondLastName;
+                database.users[userIndex].email = userProfile.email;
+                database.users[userIndex].phone = userProfile.phone;
 
 
+              // Guardar los datos actualizados en la base de datos
+              saveDatabase(databaseKey, database);
 
-                // Save the updated user profile data in localStorage
-                localStorage.setItem(currentUser, JSON.stringify(userProfile));
-
-                // Save the profile picture if one is selected
                 if (profilePictureInput.files.length > 0) {
                     const profilePictureFile = profilePictureInput.files[0];
                     const reader = new FileReader();
