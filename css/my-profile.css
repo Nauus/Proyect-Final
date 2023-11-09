@@ -24,6 +24,7 @@ p {
 /* Formulario */
 form {
     margin-top: 20px;
+    margin-bottom: 20px;
     text-align: left; /* Alinéa el texto a la izquierda */
 }
 
@@ -72,9 +73,12 @@ img#currentProfilePicture {
 }
 
 /* Pie de página */
-footer {
-    margin-top: 40px;
-}
+@media (max-width: 991px) {
+    footer {
+        display: none!;
+    }
+  }
+
 
 /* Estilos adicionales para personalizar opciones */
 #usernameField,
