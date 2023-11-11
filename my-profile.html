@@ -22,68 +22,59 @@
 <body class="bodyProfile">
     <div id="navbarContainer">
     </div>
-    <div class="bg">
-        <main class="container">
-            <div class="row justify-content-center align-items-center">
-                <div class="col-lg-8">
-                    <form id="profileForm" class="custom-form">
-<<<<<<< Updated upstream
-                        <h2 class="profileTitle"> Actualizar Perfil</h2>
-=======
-                        <h2 class="profileTitle">   Actualizar Perfil</h2>
->>>>>>> Stashed changes
-                        <div class="profile-picture-container">
-                            <label for="profilePicture" style="cursor: pointer">
-                                <div class="profile-picture-overlay">
-                                    <p class="edit">Editar Imagen</p>
-                                </div>
-                                <img id="profilePicturePreview" src="img/img_perfil.png" alt="Foto de perfil"
-                                    class="profile-picture">
-                                <input type="file" id="profilePicture" accept="image/*" style="display: none">
-                            </label>
-                        </div>
-                        <hr class="input-separator">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="firstName">Nombre *</label>
-                                    <input type="text" id="firstName" name="firstName" required>
-                                </div>
-                                <hr class="input-separator">
-                                <div class="form-group">
-                                    <label for="middleName">Segundo nombre</label>
-                                    <input type="text" id="middleName" name="middleName">
-                                </div>
-                                <hr class="input-separator">
-                                <div class="form-group">
-                                    <label for="lastName">Apellido *</label>
-                                    <input type="text" id="lastName" name="lastName" required>
-                                </div>
-                                <hr class="input-separator">
+        <div class="bg">
+            <main class="container">
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-lg-8">
+                        <form id="profileForm" class="custom-form">
+                            <h1>Actualizar Perfil</h1>
+                            <div class="profile-picture-container">
+                                <label for="profilePicture" style="cursor: pointer">
+                                    <div class="profile-picture-overlay">
+                                        <p>Editar Imagen</p>
+                                    </div>
+                                    <img id="profilePicturePreview" src="img/img_perfil.png" alt="Foto de perfil" class="profile-picture">
+                                    <input type="file" id="profilePicture" accept="image/*" style="display: none">
+                                </label>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="secondLastName">Segundo apellido</label>
-                                    <input type="text" id="secondLastName" name="secondLastName">
+                            <hr class="input-separator">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="firstName">Nombre *</label>
+                                        <input type="text" id="firstName" name="firstName" required>
+                                    </div>
+                                    <hr class="input-separator">
+                                    <div class="form-group">
+                                        <label for="middleName">Segundo nombre</label>
+                                        <input type="text" id="middleName" name="middleName">
+                                    </div>
+                                    <hr class="input-separator">
+                                    <div class="form-group">
+                                        <label for="lastName">Apellido *</label>
+                                        <input type="text" id="lastName" name="lastName" required>
+                                    </div>
+                                    <hr class="input-separator">
                                 </div>
-                                <hr class="input-separator">
-                                <div class="form-group">
-                                    <label for="email">E-mail *</label>
-                                    <input type="email" id="email" name="email" required>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="secondLastName">Segundo apellido</label>
+                                        <input type="text" id="secondLastName" name="secondLastName">
+                                    </div>
+                                    <hr class="input-separator">
+                                    <div class="form-group">
+                                        <label for="email">E-mail *</label>
+                                        <input type="email" id="email" name="email" required>
+                                    </div>
+                                    <hr class="input-separator">
+                                    <div class="form-group">
+                                        <label for="phone">Teléfono de contacto*</label>
+                                        <input type="tel" id="phone" name="phone" pattern="^0\d{8}$"  title="Debe comenzar con 0 y tener 9 dígitos" required >
+                                    </div>
+                                    <hr class="input-separator">
                                 </div>
-                                <hr class="input-separator">
-                                <div class="form-group">
-                                    <label for="phone">Teléfono de contacto</label>
-                                    <input type="tel" id="phone" name="phone">
-                                </div>
-                                <hr class="input-separator">
                             </div>
-                        </div>
-<<<<<<< Updated upstream
-                        <button type="submit" class="btn btn-primary btnProfile">Guardar Cambios</button>
-=======
                         <button type="submit" class="btn btn-primary btn-submit btnProfile">Guardar Cambios</button>
->>>>>>> Stashed changes
                     </form>
 
                 </div>
