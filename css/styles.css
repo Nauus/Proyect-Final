@@ -524,13 +524,9 @@ body.spooky a {
 body.spooky #applyChanges {
   background-color: red;
 }
-<<<<<<< Updated upstream
 body.spooky #profileForm {
   background-color: rgba(241, 241, 241, 0.729);
 }
-=======
-
->>>>>>> Stashed changes
 
 /* SPOOKY MODE *//* SPOOKY MODE *//* SPOOKY MODE *//* SPOOKY MODE *//* SPOOKY MODE *//* SPOOKY MODE *//* SPOOKY MODE */
 
@@ -675,34 +671,8 @@ background-color: #d4d4d400;
     margin-right: 20%;
     animation: focus-in-expand 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards;
 }
-<<<<<<< Updated upstream
 
   
-=======
-body.dark .btnProfile {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 1;
-    text-decoration: none;
-    color: #580606;
-    font-size: 18px;
-    border-radius: 20px;
-    width: 200px;
-    height: 40px;
-    font-weight: bold;
-    border: 2px solid #555555;
-    transition: 0.3s;
-    box-shadow: 0px 6px 0px -2px #BC5C1C;
-    background-color: #ef7a22!important;
-  }
-  
-  body.dark .original-button:hover {
-    box-shadow: 0 0 #fff;
-    transform: translateY(1px);
-  
-}
->>>>>>> Stashed changes
 /* Estilos para las imágenes de los productos */
 .product-image {
   max-width: 100px;

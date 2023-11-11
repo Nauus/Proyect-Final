@@ -137,10 +137,7 @@ input[type="tel"] {
       transition: 0.3s;
       box-shadow: 0px 6px 0px -2px #BC5C1C;
       background-color: #ef7a22!important;
-<<<<<<< Updated upstream
       border-color: transparent!important;
-=======
->>>>>>> Stashed changes
     }
     
     .original-button:hover {
