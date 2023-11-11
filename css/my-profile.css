@@ -1,20 +1,17 @@
 
-
-/* Estilo para el encabezado de la página */
-h1 {
+h2 {
     font-size: 32px;
     margin: 20px 0;
     text-align: center;
 }
 
-/* Estilo para el contenedor de la imagen de perfil */
 .profile-picture-container {
     text-align: center;
     position: relative;
     margin-bottom: 20px;
 }
 
-/* Estilo para la superposición de la imagen de perfil */
+
 .profile-picture-overlay {
     position: absolute;
     top: 50%;
@@ -28,23 +25,22 @@ h1 {
     transition: opacity 0.3s;
 }
 
-/* Estilo de la imagen de perfil */
+
 .profile-picture-container img.profile-picture {
     width: 150px;
     height: 150px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid #007bff;
+    border-color: transparent;
+    box-shadow: 0 0 60px hsl(36, 100%, 47%);
 }
 
-/* Mostrar la superposición al pasar el mouse sobre la imagen de perfil */
 .profile-picture-container:hover .profile-picture-overlay {
     opacity: 1;
 }
 
 
 
-/* Estilo personalizado para los formularios */
 .custom-form {
     background: #fff;
     border: 2px solid #ccc;
@@ -53,17 +49,18 @@ h1 {
     box-shadow: 0 8px 18px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
     margin-top: 40px;
-    max-width: 600px; /* Limita el ancho del formulario para una mejor legibilidad */
+    max-width: 600px;
+   
     margin-top: 20px !important;
-    margin: 0 auto; /* Centra el formulario horizontalmente */
+    margin: 0 auto;
+   
 }
 
 .custom-form:hover {
-    box-shadow: 0 16px 36px 0 rgba(0,0,0,0.2);
-  }
-  
+    box-shadow: 0 16px 36px 0 rgba(0, 0, 0, 0.2);
+}
 
-/* Estilo para las dos columnas de input */
+
 .form-column {
     display: flex;
     gap: 10px;
@@ -74,14 +71,13 @@ h1 {
     justify-content: space-between;
 }
 
-/* Estilo para las etiquetas de los campos de entrada */
 .form-group label {
-    font-weight: bold;
+
     margin-bottom: 5px;
-    font-size: 18px; /* Aumenta el tamaño de fuente para hacerlo más atractivo */
+    font-size: 18px;
+ 
 }
 
-/* Estilo para los campos de entrada */
 input[type="text"],
 input[type="email"],
 input[type="tel"] {
@@ -90,35 +86,14 @@ input[type="tel"] {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
-    font-family: 'Raleway', sans-serif; /* Cambia la fuente a Raleway o la que desees */
-    /* Otros estilos personalizados */
+    font-family: 'Raleway', sans-serif;
     background-color: #f9f9f9;
     color: #333;
     transition: border-color 0.3s;
 }
 
-
-
-/* Estilo para el botón de guardar cambios */
-button.btn.btn-primary {
-    margin-top: 40px !important;
-    padding: 15px 30px;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
-    font-size: 15px;
-    cursor: pointer;
-    display: block;
-    margin: 0 auto;
-}
-
-
-
-
-/* Estilo personalizado para el footer */
 .footerProfile {
-
-    color: #fff; /* Cambia el color del texto según tus preferencias */
+    color: #fff;
     padding: 10px 0;
     text-align: center;
     position: absolute;
@@ -126,9 +101,53 @@ button.btn.btn-primary {
     width: 100%;
 }
 
-/* Estilo para la línea horizontal entre los campos de entrada */
 .input-separator {
     border: 0;
-    border-top: 2px solid black; /* Establece el color y grosor de la línea */
-    margin: 20px 0; /* Ajusta el espacio entre la línea y los campos de entrada */
+    border-top: 2px solid black;
+    margin: 20px 0;
 }
+/* jocestilos */
+#profileForm {
+    box-shadow: 0 0 60px hsl(36, 100%, 47%);
+    animation: changShadow 5s 3;
+  background-color: transparent;
+  border-color: transparent;
+  }
+
+  .profileTitle{
+  background-color: #d4d4d400;
+  font-family: Georgia, 'Times New Roman', Times, serif!important;
+      margin-left: 20%;
+      margin-right: 20%;
+     
+  }
+  .btnProfile {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      text-decoration: none;
+      color: #580606;
+      font-size: 18px;
+      border-radius: 20px;
+      width: 200px;
+      height: 40px;
+      font-weight: bold;
+      border: 2px solid #555555;
+      transition: 0.3s;
+      box-shadow: 0px 6px 0px -2px #BC5C1C;
+      background-color: #ef7a22!important;
+<<<<<<< Updated upstream
+      border-color: transparent!important;
+=======
+>>>>>>> Stashed changes
+    }
+    
+    .original-button:hover {
+      box-shadow: 0 0 #fff;
+      transform: translateY(1px);
+    
+  }
+  .edit {
+    color: #000000;
+  }

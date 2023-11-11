@@ -1,8 +1,7 @@
-
 .m-3 {
-margin-left: 70%;
-margin-right: 20%;
-animation: focus-in-expand 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards;    
+    margin-left: 70%;
+    margin-right: 20%;
+    animation: focus-in-expand 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards;
 }
 
 
@@ -19,8 +18,9 @@ body {
 h3 {
     text-align: center;
     padding: 2%;
-    
+
 }
+
 .faq-item {
     background-color: #fff;
     border: 1px solid #ddd;
@@ -40,11 +40,13 @@ h3 {
 
 .answer {
     padding: 10px;
-    display: none; /* Oculta la respuesta por defecto */
+    display: none;
+    /* Oculta la respuesta por defecto */
 }
 
 .faq-item.active .answer {
-    display: block; /* Muestra la respuesta cuando se hace clic */
+    display: block;
+    /* Muestra la respuesta cuando se hace clic */
     transition: display 0.3s ease;
     background-color: #cac7c7;
 }
