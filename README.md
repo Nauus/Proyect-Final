@@ -1,4 +1,4 @@
 # Proyect-Final
 JOC 🡆 xd
 ✅formateo css js html
-✅css paramyprofile
+✅css paramyprofile normal/darkmode/spooky
