@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const user = database.users.find((user) => user.username === currentUser);
     if (!user.profilePicture) {
       // Si no tiene una foto de perfil, establece una foto predeterminada
-      user.profilePicture = "default-profile.jpg"; // Nombre de archivo de la foto predeterminada
+      user.profilePicture = "default-profile.jpg"; 
       saveDatabase(databaseKey, database);
     }
   }
@@ -23,7 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const identifier = document.getElementById("loginIdentifier").value;
     const password = document.getElementById("loginPassword").value;
 
-    // Verificar las credenciales
     const user = database.users.find(
       (user) =>
         (user.username === identifier || user.email === identifier) &&
@@ -36,4 +35,5 @@ document.addEventListener("DOMContentLoaded", () => {
       messageDiv.innerHTML = "Credenciales inválidas.";
     }
   });
+  
 });

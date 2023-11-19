@@ -5,8 +5,8 @@ const addToCartButton = document.querySelector(".agregar-al-carrito");
 if (productId) {
   localStorage.setItem("selectedProductId", productId);
 
-  const productDetailsUrl = `https://japceibal.github.io/emercado-api/products/${productId}.json`;
-  const productCommentsUrl = `https://japceibal.github.io/emercado-api/products_comments/${productId}.json`;
+  const productDetailsUrl = `http://localhost:3001/json/products/${productId}.json`;
+  const productCommentsUrl = `http://localhost:3001/json/products_comments/${productId}.json`;
 
   function cargarComentarios(product) {
     fetch(productCommentsUrl)

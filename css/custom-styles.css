@@ -121,6 +121,12 @@ body.dark .cardProducts {
 
 }
 
+.profileTitle {
+  background-color: #d4d4d400;
+  margin-left: 20%;
+  margin-right: 20%;
+  animation: focus-in-expand 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards;
+}
 
 .categorias {
   background-color: #d4d4d400;
@@ -486,9 +492,6 @@ body.dark #related-products {
   margin-top: 2rem !important;
 }
 
-.footerProfile {
-  padding-top: 3rem;
-}
 
 /* Estilos para el modal */
 .modal {

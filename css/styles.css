@@ -213,7 +213,9 @@ th {
   cursor: default;
   margin-left: 10rem;
 }
-
+.darkk {
+  background-color: transparent;
+}
 /* Estilos para los botones de eliminar */
 .remove-product {
   background-color: transparent;
@@ -524,7 +526,9 @@ body.spooky a {
 body.spooky #applyChanges {
   background-color: red;
 }
-
+body.spooky #profileForm {
+  background-color: rgba(241, 241, 241, 0.729);
+}
 
 /* SPOOKY MODE *//* SPOOKY MODE *//* SPOOKY MODE *//* SPOOKY MODE *//* SPOOKY MODE *//* SPOOKY MODE *//* SPOOKY MODE */
 
@@ -599,16 +603,39 @@ body.dark .custom-card {
 }
 
 
-#btnmuchomas:hover {
-  transform: scale(1.1);
+#btnmuchomas {
+  margin-left: 40%;
+  margin-right: 40%;
+  margin-bottom: 5rem;
+  width: 20%;
+  color: black;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 18px;
+ 
+  height: 40px;
+  font-weight: bold;
+  border: 2px solid #555555;
+  transition: 0.3s;
+  box-shadow: 0px 6px 0px -2px #BC5C1C;
+  background-color: #ef7a22!important;
+  border-color: transparent!important;
+  transition: all 0.5s ease-in-out;
 
 }
 
-body.dark .btn {
-  background-color: hsl(178, 99%, 31%) !important;
-  border: #484749;
+body.dark .productoX {
+  background-color:#b9b9b94e!important;
 }
-
+body.dark .card-body {
+  background-color:#b9b9b94e ;
+  
+}
 body.dark .card-title {
   color: #B9B9B9;
 }
@@ -618,9 +645,12 @@ body.dark .productos {
 }
 
 body.dark .productTitle {
-  color: #B9B9B9;
+  color: #c1c1c1;
 }
+body.dark .product-cost {
+  color: #B9B9B9;
 
+}
 body.dark .carouselFlechas {
   background-color: hsl(178, 99%, 31%);
 }
@@ -630,7 +660,7 @@ body.dark .categorias {
 }
 
 body.dark h4 {
-  color: #B9B9B9;
+  color: #494949;
 }
 
 body.dark .filtermaxymin {
@@ -669,29 +699,8 @@ background-color: #d4d4d400;
     margin-right: 20%;
     animation: focus-in-expand 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards;
 }
-body.dark .btnProfile {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 1;
-    text-decoration: none;
-    color: #580606;
-    font-size: 18px;
-    border-radius: 20px;
-    width: 200px;
-    height: 40px;
-    font-weight: bold;
-    border: 2px solid #555555;
-    transition: 0.3s;
-    box-shadow: 0px 6px 0px -2px #BC5C1C;
-    background-color: #ef7a22!important;
-  }
+
   
-  body.dark .original-button:hover {
-    box-shadow: 0 0 #fff;
-    transform: translateY(1px);
-  
-}
 /* Estilos para las imágenes de los productos */
 .product-image {
   max-width: 100px;
