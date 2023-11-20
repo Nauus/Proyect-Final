@@ -601,7 +601,16 @@ body.dark .darkk {
 body.dark .custom-card {
   background-color: #554f4f75 !important;
 }
+.btn-outline-light {
+  font-weight: bold;
+  border: 2px solid #555555;
+  transition: 0.3s;
+  box-shadow: 0px 6px 0px -2px #BC5C1C;
+  background-color: #ef7a22!important;
+  border-color: transparent!important;
+  transition: all 0.5s ease-in-out;
 
+}
 
 #btnmuchomas {
   margin-left: 40%;

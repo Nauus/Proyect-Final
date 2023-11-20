@@ -63,18 +63,6 @@ USUARIO Y REGISTER
 3 SE GENERA EL TOKEN
 4 Q XUXA HAGO CON EL TOKEN
 */
-app.post('/login', (req, res) => {
-    const { username, password } = req.body;
-  
-    const user = users.find(u => u.username === username && u.password === password);
-  
-    if (!user) {
-      return res.status(401).json({ error: 'Usuario o contrase;a mal' });
-    }
-  
-    const token = jwt.sign({ userId: user.id }, 'xddd', { expiresIn: '1h' }); 
-    res.json({ token });
-  });
 
   app.post('/register', (req, res) => {
     const { username, password, email } = req.body;
@@ -89,6 +77,18 @@ app.post('/login', (req, res) => {
       email,
     };
     users.push(newUser);
+    app.post('/login', (req, res) => {
+      const { username, password } = req.body;
+    
+      const user = users.find(u => u.username === username && u.password === password);
+    
+      if (!user) {
+        return res.status(401).json({ error: 'Usuario o contrase;a mal' });
+      }
+    
+      const token = jwt.sign({ userId: user.id }, 'xddd', { expiresIn: '1h' }); 
+      res.json({ token });
+    });
   
     res.status(201).json({ message: 'Usuario registrado' });
   });

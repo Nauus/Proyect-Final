@@ -41,3 +41,28 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+fetch('/register', {
+  method: 'POST',
+  headers: {
+      'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+      username,
+      email,
+      password,
+  }),
+})
+.then(response => {
+  if (response.ok) {
+      // Si la respuesta es exitosa, puedes redirigir a otra página o mostrar un mensaje de éxito
+      console.log('Usuario registrado exitosamente');
+      // Ejemplo de redirección a la página de inicio de sesión después del registro exitoso
+      window.location.href = 'login.html';
+  } else {
+      // Manejar errores si el registro falla
+      console.error('Error al registrar el usuario');
+  }
+})
+.catch(error => {
+  console.error('Error:', error);
+});
