@@ -1,10 +1,11 @@
-/* Estilos generales */
-body {
-    font-family: 'Raleway', sans-serif;
+h2 {
+    font-size: 32px;
+    margin: 20px 0;
     text-align: center;
     background-color: #f8f8f8; /* Un color de fondo suave */
 }
 
+<<<<<<< HEAD
 /* Contenedor principal */
 main {
     padding: 20px !important;
@@ -13,11 +14,82 @@ main {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) !important; /* Sutil sombra */
     margin-top: 20px !important;
     max-width: 60rem !important; /* Ancho máximo del contenido */
+=======
+.profile-picture-container {
+    text-align: center;
+    position: relative;
+    margin-bottom: 50px;
 }
 
-/* Títulos y texto */
-p {
+.profile-picture-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s;
+    margin-top: 105px;
+}
+footer {
+    display: none;
+}
+.navbarContainer {
+   background-color:  #552f11b6;}
+
+.profile-picture-container img.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border-color: transparent;
+    box-shadow: 0 0 60px hsl(36, 100%, 47%);
+>>>>>>> 1bf04238b151008ed9530aece0b522a752037350
+}
+
+.profile-picture-preview-container:hover .profile-picture-overlay {
+    opacity: 1;
+}
+
+
+.custom-form {
+    background: #fff;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 8px 18px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    margin-top: 40px;
+    max-width: 600px;
+   
+    margin-top: 20px !important;
+    margin: 0 auto;
+   
+}
+
+.custom-form:hover {
+    box-shadow: 0 16px 36px 0 rgba(0, 0, 0, 0.2);
+}
+
+
+.form-column {
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.form-group label {
+
+    margin-bottom: 5px;
     font-size: 18px;
+<<<<<<< HEAD
     margin-bottom: 20px; /* Espacio adicional después de los párrafos */
 }
 
@@ -38,12 +110,26 @@ input[type="text"],
 input[type="password"],
 input[type="email"] {
     width: 100%; /* Ancho completo del contenedor */
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+=======
+ 
 }
 
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+    width: 100%;
+>>>>>>> 1bf04238b151008ed9530aece0b522a752037350
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: 'Raleway', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    transition: border-color 0.3s;
+}
+
+<<<<<<< HEAD
 /* Estilos para el botón "Guardar Cambios" */
 #applyChanges {
     background-color: rgb(199, 76, 31);
@@ -134,3 +220,54 @@ select option {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+=======
+
+
+.input-separator {
+    border: 0;
+    border-top: 2px solid black;
+    margin: 20px 0;
+}
+/* jocestilos */
+#profileForm {
+    box-shadow: 0 0 60px hsl(36, 100%, 47%);
+    animation: changShadow 5s 3;
+  background-color: transparent;
+  border-color: transparent;
+  }
+
+  .profileTitle{
+  background-color: #d4d4d400;
+  font-family: Georgia, 'Times New Roman', Times, serif!important;
+      margin-left: 20%;
+      margin-right: 20%;
+     
+  }
+  .btnProfile {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      text-decoration: none;
+      color: #580606;
+      font-size: 18px;
+      border-radius: 20px;
+      width: 100%;
+      height: 40px;
+      font-weight: bold;
+      border: 2px solid #555555;
+      transition: 0.3s;
+      box-shadow: 0px 6px 0px -2px #BC5C1C;
+      background-color: #ef7a22!important;
+      border-color: transparent!important;
+    }
+    
+    .original-button:hover {
+      box-shadow: 0 0 #fff;
+      transform: translateY(1px);
+    
+  }
+  .edit {
+    color: #000000;
+  }
+>>>>>>> 1bf04238b151008ed9530aece0b522a752037350

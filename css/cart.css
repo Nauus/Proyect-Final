@@ -1,0 +1,25 @@
+footer {
+    display: none;
+}
+.btn {
+margin-bottom: 1em;
+    width: 50%;
+    color: black;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    text-decoration: none;
+    color: #580606;
+    font-size: 18px;
+    border-radius: 20px;
+    height: 40px;
+    font-weight: bold;
+    border: 2px solid #555555;
+    transition: 0.3s;
+    box-shadow: 0px 6px 0px -2px #BC5C1C;
+    background-color: #ef7a22!important;
+    border-color: transparent!important;
+    transition: all 0.5s ease-in-out;
+}

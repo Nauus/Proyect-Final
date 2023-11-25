@@ -24,9 +24,9 @@
 
 
   <main class="bgCart">
-    
+
     <div class="centered-container">
-      
+
       <table id="product-list">
         <tr>
           <th>Producto</th>
@@ -34,11 +34,13 @@
           <th>Precio</th>
           <th>Cantidad</th>
           <th>Subtotal</th>
-         </tr>
-         <tr><td colspan="6" style="border-top: 1px solid black;"></td></tr>
+        </tr>
+        <tr>
+          <td colspan="6" style="border-top: 1px solid black;"></td>
+        </tr>
       </table>
     </div>
-    
+
     <div class="container payment-container">
 
       <summary>
@@ -54,12 +56,13 @@
               <option value="express">Envío Express 5 a 8 días (7%)</option>
               <option value="estandar">Envío standard 12 a 15 días (5%)</option>
               <option value="default">Retiro en sucursal (0%)</option>
-             
+
             </select>
             <select id="segundoMenu" style="display: none;">
               <option value="sucursal1">Sucursal Sayago</option>
               <option value="sucursal2">Sucursal Cordon</option>
               <option value="sucursal3">Sucursal Aguada</option>
+<<<<<<< HEAD
           </select>
           
           <div class="" >
@@ -80,27 +83,16 @@
             <label for="esquina">Esquina</label>
             <input type="text" id="esquina" name="esquina" required pattern="[A-Za-zÁÉÍÓÚáéíóú0-9\s]+" title="Por favor, ingrese solo letras y espacios para la esquina">
           </div>
+=======
+            </select>
+>>>>>>> 1bf04238b151008ed9530aece0b522a752037350
 
-        
-          <button type="button" id="openPaymentModal" class="btn">Seleccionar Forma de Pago</button>
-          <div id="selectedPaymentInfo">
-            Forma de Pago: <span id="selectedPaymentDisplay"></span>
-          </div>
-          <div id="paymentModal" class="modal">
-            <div class="modal-content">
-              <span class="close" id="closePaymentModal">&times;</span>
-              <h2>Seleccione una Forma de Pago</h2>
-              <label for="paymentMethod">Forma de Pago:</label>
-              <select id="paymentMethod" name="paymentMethod">
-                <option value="defaultOption" selected disabled>Selecciona la opción</option>
-                <option value="creditCard">Tarjeta de Crédito/Débito</option>
-                <option value="bankAccount">Transferencia bancaria</option>
-              </select>
-              <div id="creditCardFields">
-                <!-- Campos para tarjeta de crédito -->
-                <label for="cardNumber">Número de Tarjeta de Crédito/Débito:</label>
-                <input type="text" id="cardNumber" name="cardNumber" placeholder="XXXX XXXX XXXX XXXX" required pattern="^\d{16}$">
+            <div class="">
+              <label for="direEnvio">Dirección de envío</label>
+              <input novalidate type="text" id="direEnvio" name="direEnvio" required pattern="[A-Za-z0-9\s]+"
+                title="Por favor, ingrese una dirección válida">
 
+<<<<<<< HEAD
                                 <label for="codeCvv">Código CVV:</label>
                 <input type="text" id="codeCvv" name="codeCvv" placeholder="XXX" required pattern="^\d{3}$">
 
@@ -115,34 +107,95 @@
                 <!-- Otros campos para número de cuenta -->
               </div>
               <button type="button" id="confirmPayment" class="btn">Confirmar</button>
+=======
+>>>>>>> 1bf04238b151008ed9530aece0b522a752037350
             </div>
-          </div>
-            
-          <div id="currency-selector">
-            <div class="currency-options">
-             <span>Moneda de pago</span>
-              <label>
-                <input type="radio" name="currency" value="USD" checked>
-                <span class="checkmark"></span> 
-              </label>
-              <span>USD</span>
-              <label>
-                <input type="radio" name="currency" value="UYU">
-                <span class="checkmark"></span>
-              </label>
-              <span>UYU</span>
+            <div class="mb-3">
+              <label for="calle">Calle</label>
+              <input type="text" id="calle" name="calle" required pattern="[A-Za-z\s]+"
+                title="Por favor, ingrese solo letras y espacios para la calle">
+              <div class="feedback"></div>
             </div>
+            <div class="mb-3">
+              <label for="direccion">Número</label>
+              <input type="text" id="direccion" name="direccion" required pattern="[0-9]+"
+                title="Por favor, ingrese solo números para el número">
+            </div>
+            <div class="mb-3">
+              <label for="esquina">Esquina</label>
+              <input type="text" id="esquina" name="esquina" required pattern="[A-Za-z\s]+"
+                title="Por favor, ingrese solo letras y espacios para la esquina">
+            </div>
+
+
+            <button type="button" id="openPaymentModal" class="btn">Seleccionar Forma de Pago</button>
+            <div id="selectedPaymentInfo">
+              Forma de Pago: <span id="selectedPaymentDisplay"></span>
+            </div>
+            <div id="paymentModal" class="modal">
+              <div class="modal-content">
+                <span class="close" id="closePaymentModal">&times;</span>
+                <h2>Seleccione una Forma de Pago</h2>
+                <label for="paymentMethod">Forma de Pago:</label>
+                <select id="paymentMethod" name="paymentMethod">
+                  <option value="defaultOption" selected disabled>Selecciona la opción</option>
+                  <option value="creditCard">Tarjeta de Crédito/Débito</option>
+                  <option value="bankAccount">Transferencia bancaria</option>
+                </select>
+                <div id="creditCardFields">
+                  <!-- Campos para tarjeta de crédito -->
+                  <label for="cardNumber">Número de Tarjeta de Crédito/Débito:</label>
+                  <input type="text" id="cardNumber" name="cardNumber" placeholder="XXXX XXXX XXXX XXXX" required
+                    pattern="^\d{16}$">
+
+                  <label for="codeCvv">Código CVV:</label>
+                  <input type="text" id="codeCvv" name="codeCvv" placeholder="XXX" required pattern="^\d{3}$">
+
+                  <label for="cardNumber">Vencimiento:</label>
+                  <input type="text" id="vencimiento" name="vencimiento" placeholder="XX/XX" required
+                    pattern="^(0[1-9]|1[0-2])\/\d{2}$">
+                  <!-- Otros campos para tarjeta de crédito -->
+                </div>
+                <div id="bankAccountFields">
+                  <!-- Campos para número de cuenta -->
+                  <label for="accountNumber">Número de Cuenta:</label>
+                  <input type="text" id="accountNumber" name="accountNumber" placeholder="XXXXXXXXXXXXXXXXXX" required
+                    pattern="^\d{16}$">
+                  <!-- Otros campos para número de cuenta -->
+                </div>
+                <button type="button" id="confirmPayment" class="btn">Confirmar</button>
+              </div>
+            </div>
+
+            <div id="currency-selector">
+              <div class="currency-options">
+                <span>Moneda de pago</span>
+                <label>
+                  <input type="radio" name="currency" value="USD" checked>
+                  <span class="checkmark"></span>
+                </label>
+                <span>USD</span>
+                <label>
+                  <input type="radio" name="currency" value="UYU">
+                  <span class="checkmark"></span>
+                </label>
+                <span>UYU</span>
+              </div>
+            </div>
+            <h1 id="subtotal"></h1>
+            <h1 id="envio-total"></h1>
+            <h1 id="cart-total" class="total-below-subtotal"></h1>
           </div>
-          <h1 id="subtotal"></h1>
-          <h1 id="envio-total"></h1>
-          <h1 id="cart-total" class="total-below-subtotal"></h1>
-        </div>
-        <p id="discount-amount"></p>
+          <p id="discount-amount"></p>
       </details>
       <button class="btn" id="finalizarCompra" type="submit">Finalizar Compra</button>
       <a class="preguntaCompra" href="categories.html">Ver mas productos</a>
       <a class="preg-frecuente" href="PreguntasFrecuentes.html">Preguntas frecuentes</a>
+<<<<<<< HEAD
       
+=======
+
+>>>>>>> 1bf04238b151008ed9530aece0b522a752037350
   </main>
   <footer class="text-muted footer-cart">
     <div class="container">

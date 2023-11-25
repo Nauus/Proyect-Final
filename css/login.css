@@ -36,21 +36,23 @@ body {
     .navbar {
         display: none;
     }
+
     .logo {
-        display: none; 
+        display: none;
     }
-   
+
 }
 
 .login-section {
-    
+
     height: 690px;
     width: 400px;
     backdrop-filter: blur(1px);
     border-radius: 10px;
     transition: .3s;
     display: flex;
-    overflow: hidden; }
+    overflow: hidden;
+}
 
 .formbox {
     display: flex;
@@ -59,7 +61,7 @@ body {
     height: 100%;
     width: 100%;
     transition: transform 0.6s;
-    
+
 }
 
 .formbox h3 {
@@ -144,22 +146,27 @@ body {
     0% {
         box-shadow: 0 0 60px hsla(36, 100%, 47%, 0)
     }
+
     25% {
         box-shadow: 0 0 60px hsl(36, 100%, 47%)
     }
+
     50% {
-        box-shadow: 0 0 60px hsl(178,99%,31%);
+        box-shadow: 0 0 60px hsl(178, 99%, 31%);
     }
+
     75% {
         box-shadow: 0 0 60px hsl(36, 100%, 47%)
     }
+
     100% {
         box-shadow: 0 0 60px hsla(36, 100%, 47%, 0)
     }
 }
+
 .login-section:hover {
-    
-        box-shadow: 0 0 60px hsl(36,100%,47%);
-        animation: changShadow  5s 3 ;
-    
+
+    box-shadow: 0 0 60px hsl(36, 100%, 47%);
+    animation: changShadow 5s 3;
+
 }
