@@ -362,7 +362,7 @@ function removeProductFromCart(productID) {
 
 function loadDefaultProduct() {
   const productDetailsUrl =
-    "http://localhost:3001/json/user_cart/25801.json";
+    "https://japceibal.github.io/emercado-api/user_cart/25801.json";
 
   fetch(productDetailsUrl)
     .then((response) => response.json())

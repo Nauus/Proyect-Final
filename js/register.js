@@ -6,15 +6,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const databaseKey = "userDatabase";
   const database = loadDatabase(databaseKey);
   const currentUser = localStorage.getItem("currentUser");
-
   const messageElement = document.getElementById("message");
-  console.log(database);
 
   if (currentUser) {
     window.location.href = "index.html";
   }
 
-  registerForm.addEventListener("submit", (e) => {
+  registerForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     messageElement.textContent = "";
     const username = document.getElementById("registerUsername").value;
@@ -26,43 +24,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (password !== confirmPasswordInput) {
       messageElement.textContent = "Las contraseñas no coinciden.";
-      console.log("las contraseñas no coincidieron");
+      console.log("Las contraseñas no coinciden");
       return;
     } else if (existingUser) {
-      // Verificar si el usuario ya existe
       messageDiv.innerHTML = "El correo ya se encuentra registrado.";
       return;
     } else {
-      // Crear nuevo usuario
-      const newUser = { username, email, password };
-      database.users.push(newUser);
-      saveDatabase(databaseKey, database);
-      messageDiv.innerHTML = "Usuario registrado con éxito.";
+      try {
+        const registerResponse = await fetch('http://localhost:3001/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ username, password })
+        });
+
+        if (registerResponse.ok) {
+          messageDiv.innerHTML = "Usuario registrado con éxito.";
+        } else {
+          messageDiv.innerHTML = "Error durante el registro.";
+        }
+      } catch (error) {
+        console.error('Error durante el registro:', error);
+        messageDiv.innerHTML = "Error durante el registro.";
+      }
     }
   });
-});
-fetch('/register', {
-  method: 'POST',
-  headers: {
-      'Content-Type': 'application/json',
-  },
-  body: JSON.stringify({
-      username,
-      email,
-      password,
-  }),
-})
-.then(response => {
-  if (response.ok) {
-      // Si la respuesta es exitosa, puedes redirigir a otra página o mostrar un mensaje de éxito
-      console.log('Usuario registrado exitosamente');
-      // Ejemplo de redirección a la página de inicio de sesión después del registro exitoso
-      window.location.href = 'login.html';
-  } else {
-      // Manejar errores si el registro falla
-      console.error('Error al registrar el usuario');
-  }
-})
-.catch(error => {
-  console.error('Error:', error);
 });
